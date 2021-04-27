@@ -95,7 +95,7 @@ class ModeDependency(object):
 
 class ModeInstanceRef:
     """
-    Implementation of MODE-IREF (AUTOSAR3)
+    Implementation of MODE-IREF (AUTOSAR3, AUTOSAR4)
     """
     def __init__(self,modeDeclarationRef,modeDeclarationGroupPrototypeRef=None,requirePortPrototypeRef=None):
         self.modeDeclarationRef=modeDeclarationRef #MODE-DECLARATION-REF
