@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ComponentType &mdash; AUTOSAR 0.3.11 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ServiceComponent" href="service_swc.html" />
+    <link rel="prev" title="ComponentPrototype" href="component_prototype.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior/index.html">Behavior</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Component</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="application_swc.html">ApplicationSoftwareComponent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atomic_swc.html">AtomicSoftwareComponent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cdd_swc.html">ComplexDeviceDriverComponent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composition_swc.html">CompositionComponent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="component_prototype.html">ComponentPrototype</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ComponentType</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#public-methods">Public Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method-description">Method Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="service_swc.html">ServiceComponent</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../constant/index.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datatype/index.html">DataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">AUTOSAR 4 API</a> &raquo;</li>
+          <li><a href="index.html">Component</a> &raquo;</li>
+      <li>ComponentType</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autosar4_api/component/component_type.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="componenttype">
+<span id="ar4-component-componenttype"></span><h1>ComponentType<a class="headerlink" href="#componenttype" title="Permalink to this headline"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>(abstract class)</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td><p><a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>The ComponentType class is the base class for <a class="reference internal" href="atomic_swc.html#ar4-component-atomicsoftwarecomponent"><span class="std std-ref">AtomicSoftwareComponent</span></a> and <a class="reference internal" href="composition_swc.html#ar4-component-compositioncomponent"><span class="std std-ref">CompositionComponent</span></a>.</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 44%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>providePorts</strong></p></td>
+<td><p><em>list(:ref:`ar4_port_ProvidePort`)</em></p></td>
+<td><p>Provide ports in this component</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>requirePorts</strong></p></td>
+<td><p><em>list(:ref:`ar4_port_RequirePort`)</em></p></td>
+<td><p>Require ports in this componen</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="public-methods">
+<h2>Public Methods<a class="headerlink" href="#public-methods" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-component-componenttype-find"><span class="std std-ref">find</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-component-componenttype-createprovideport"><span class="std std-ref">createProvidePort</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-component-componenttype-createrequireport"><span class="std std-ref">createRequirePort</span></a></p></li>
+</ul>
+</section>
+<section id="method-description">
+<h2>Method Description<a class="headerlink" href="#method-description" title="Permalink to this headline"></a></h2>
+<section id="find">
+<span id="ar4-component-componenttype-find"></span><h3>find<a class="headerlink" href="#find" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="ComponentType.find">
+<span class="sig-prename descclassname"><span class="pre">ComponentType.</span></span><span class="sig-name descname"><span class="pre">find</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ref</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ComponentType.find" title="Permalink to this definition"></a></dt>
+<dd><p>Find port based in info in reference string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ref</strong> (<em>str</em>) – Reference string</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createprovideport">
+<span id="ar4-component-componenttype-createprovideport"></span><h3>createProvidePort<a class="headerlink" href="#createprovideport" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="ComponentType.createProvidePort">
+<span class="sig-prename descclassname"><span class="pre">ComponentType.</span></span><span class="sig-name descname"><span class="pre">createProvidePort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portInterfaceRef</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ComponentType.createProvidePort" title="Permalink to this definition"></a></dt>
+<dd><p>Creates new ProvidePort on this component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName for the new port</p></li>
+<li><p><strong>portInterfaceRef</strong> (<em>str</em>) – Reference to port interface</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments depending on port interface type (see below)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../port/provide_port.html#ar4-port-provideport"><span class="std std-ref">RequirePort</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createrequireport">
+<span id="ar4-component-componenttype-createrequireport"></span><h3>createRequirePort<a class="headerlink" href="#createrequireport" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="ComponentType.createRequirePort">
+<span class="sig-prename descclassname"><span class="pre">ComponentType.</span></span><span class="sig-name descname"><span class="pre">createRequirePort</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">portInterfaceRef</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#ComponentType.createRequirePort" title="Permalink to this definition"></a></dt>
+<dd><p>Creates new RequirePort on this component.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName for the new port</p></li>
+<li><p><strong>portInterfaceRef</strong> (<em>str</em>) – Reference to port interface</p></li>
+<li><p><strong>kwargs</strong> – Additional arguments depending on port interface type (see below)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="../port/require_port.html#ar4-port-requireport"><span class="std std-ref">RequirePort</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="additional-arguments-for-senderreceiverinterface">
+<h3>Additional arguments for <a class="reference internal" href="../portinterface/sender_receiver_interface.html#ar4-portinterface-senderreceiverinterface"><span class="std std-ref">SenderReceiverInterface</span></a><a class="headerlink" href="#additional-arguments-for-senderreceiverinterface" title="Permalink to this headline"></a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 20%" />
+<col style="width: 63%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>comspec</p></td>
+<td><p>dict, list(dict)</p></td>
+<td><p>Used primarily when port interface has multiple data elements</p></td>
+</tr>
+<tr class="row-odd"><td><p>dataElement</p></td>
+<td><p>str</p></td>
+<td><p>Name of the data element this ComSpec refers to.</p>
+<p>For single-element port interfaces this parameter is not required</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>initValue</p></td>
+<td><p>int, float, str</p></td>
+<td><p>Used to set an init value literal.
+Mutually exclusive to initValueRef.</p></td>
+</tr>
+<tr class="row-odd"><td><p>initValueRef</p></td>
+<td><p>str</p></td>
+<td><p>Reference to existing constant specification
+Mutually exclusive to initValue.</p></td>
+</tr>
+<tr class="row-even"><td><p>aliveTimeout</p></td>
+<td><p>int</p></td>
+<td><p>Alive timeout setting (in seconds).</p></td>
+</tr>
+<tr class="row-odd"><td><p>queueLength</p></td>
+<td><p>int</p></td>
+<td><p>Length of queue (only applicable for queued port interfaces</p></td>
+</tr>
+</tbody>
+</table>
+<section id="examples-senderreceiverinterface">
+<h4>Examples — SenderReceiverInterface<a class="headerlink" href="#examples-senderreceiverinterface" title="Permalink to this headline"></a></h4>
+<section id="port-interface-with-single-data-element">
+<h5>Port interface with single data element<a class="headerlink" href="#port-interface-with-single-data-element" title="Permalink to this headline"></a></h5>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="k">def</span> <span class="nf">create_workspace_and_packages</span><span class="p">():</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationTypes&#39;</span><span class="p">)</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;PortInterfaces&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;PortInterface&#39;</span><span class="p">)</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;ComponentTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;ComponentType&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ws</span>
+
+<span class="k">def</span> <span class="nf">create_data_types</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">baseTypes</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/DataTypes/BaseTypes&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/DataTypes/ImplementationTypes&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
+                            <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint8&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypeRef</span><span class="p">(</span><span class="s1">&#39;OffOn_T&#39;</span><span class="p">,</span>
+                            <span class="n">implementationTypeRef</span> <span class="o">=</span> <span class="s1">&#39;/DataTypes/ImplementationTypes/uint8&#39;</span><span class="p">,</span>
+                            <span class="n">valueTable</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OffOn_Off&#39;</span><span class="p">,</span>
+                                           <span class="s1">&#39;OffOn_On&#39;</span><span class="p">,</span>
+                                           <span class="s1">&#39;OffOn_Error&#39;</span><span class="p">,</span>
+                                           <span class="s1">&#39;OffOn_NotAvailable&#39;</span>
+                                        <span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">create_port_interfaces</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/PortInterfaces&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSenderReceiverInterface</span><span class="p">(</span><span class="s1">&#39;HeaterPwrStat_I&#39;</span><span class="p">,</span>
+        <span class="n">autosar</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">DataElement</span><span class="p">(</span><span class="s1">&#39;HeaterPwrStat&#39;</span><span class="p">,</span>
+                                    <span class="s1">&#39;/DataTypes/ImplementationTypes/OffOn_T&#39;</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">create_components</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/ComponentTypes&#39;</span><span class="p">)</span>
+    <span class="n">comp1</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createApplicationSoftwareComponent</span><span class="p">(</span><span class="s1">&#39;Component1&#39;</span><span class="p">)</span>
+    <span class="n">comp1</span><span class="o">.</span><span class="n">createProvidePort</span><span class="p">(</span><span class="s1">&#39;HeaterPwrStat&#39;</span><span class="p">,</span> <span class="s1">&#39;HeaterPwrStat_I&#39;</span><span class="p">,</span> <span class="n">initValue</span><span class="o">=</span><span class="s1">&#39;OffOn_NotAvailable&#39;</span><span class="p">)</span>
+
+    <span class="n">comp2</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createApplicationSoftwareComponent</span><span class="p">(</span><span class="s1">&#39;Component2&#39;</span><span class="p">)</span>
+    <span class="n">comp2</span><span class="o">.</span><span class="n">createRequirePort</span><span class="p">(</span><span class="s1">&#39;HeaterPwrStat&#39;</span><span class="p">,</span> <span class="s1">&#39;HeaterPwrStat_I&#39;</span><span class="p">,</span> <span class="n">initValue</span><span class="o">=</span><span class="s1">&#39;OffOn_NotAvailable&#39;</span><span class="p">,</span> <span class="n">aliveTimeout</span> <span class="o">=</span> <span class="mi">30</span><span class="p">)</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">create_workspace_and_packages</span><span class="p">()</span>
+<span class="n">create_data_types</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+<span class="n">create_port_interfaces</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+<span class="n">create_components</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;Component1.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/ComponentTypes/Component1&#39;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;Component2.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/ComponentTypes/Component2&#39;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;DataTypes.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/DataTypes&#39;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;PortInterfaces.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/PortInterfaces&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="port-interface-with-multiple-data-elements">
+<h5>Port interface with multiple data elements<a class="headerlink" href="#port-interface-with-multiple-data-elements" title="Permalink to this headline"></a></h5>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="k">def</span> <span class="nf">create_workspace_and_packages</span><span class="p">():</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;Units&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;Unit&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationTypes&#39;</span><span class="p">)</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;PortInterfaces&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;PortInterface&#39;</span><span class="p">)</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;ComponentTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;ComponentType&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ws</span>
+
+<span class="k">def</span> <span class="nf">create_data_types</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">baseTypes</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/DataTypes/BaseTypes&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/DataTypes/ImplementationTypes&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">65535</span><span class="p">,</span>
+                                <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint16&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
+                                <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint8&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypeRef</span><span class="p">(</span><span class="s1">&#39;PercentLevel_T&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span> <span class="o">=</span> <span class="mi">255</span><span class="p">,</span>
+                                <span class="n">implementationTypeRef</span> <span class="o">=</span> <span class="s1">&#39;/DataTypes/ImplementationTypes/uint8&#39;</span><span class="p">,</span>
+                                <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;Percent&#39;</span><span class="p">,</span> <span class="n">forceFloat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypeRef</span><span class="p">(</span><span class="s1">&#39;VoltageLevel_T&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span> <span class="o">=</span> <span class="mi">65535</span><span class="p">,</span>
+                                <span class="n">implementationTypeRef</span> <span class="o">=</span> <span class="s1">&#39;/DataTypes/ImplementationTypes/uint16&#39;</span><span class="p">,</span>
+                                <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scaling</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">64</span><span class="p">,</span> <span class="n">unit</span><span class="o">=</span><span class="s1">&#39;Volt&#39;</span><span class="p">,</span> <span class="n">forceFloat</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">create_port_interfaces</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/PortInterfaces&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSenderReceiverInterface</span><span class="p">(</span><span class="s1">&#39;BatteryStat_I&#39;</span><span class="p">,</span>
+        <span class="p">[</span>
+            <span class="n">autosar</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">DataElement</span><span class="p">(</span><span class="s1">&#39;ChargeLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;/DataTypes/ImplementationTypes/PercentLevel_T&#39;</span><span class="p">),</span>
+            <span class="n">autosar</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">DataElement</span><span class="p">(</span><span class="s1">&#39;VoltageLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;/DataTypes/ImplementationTypes/VoltageLevel_T&#39;</span><span class="p">)</span>
+        <span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">create_components</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/ComponentTypes&#39;</span><span class="p">)</span>
+    <span class="n">comp1</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createApplicationSoftwareComponent</span><span class="p">(</span><span class="s1">&#39;Component1&#39;</span><span class="p">)</span>
+    <span class="n">comp1</span><span class="o">.</span><span class="n">createProvidePort</span><span class="p">(</span><span class="s1">&#39;BatteryStat&#39;</span><span class="p">,</span> <span class="s1">&#39;BatteryStat_I&#39;</span><span class="p">,</span> <span class="n">comspec</span> <span class="o">=</span>
+        <span class="p">[</span>
+            <span class="p">{</span><span class="s1">&#39;dataElement&#39;</span><span class="p">:</span> <span class="s1">&#39;ChargeLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;initValue&#39;</span><span class="p">:</span> <span class="mi">255</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;dataElement&#39;</span><span class="p">:</span> <span class="s1">&#39;VoltageLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;initValue&#39;</span><span class="p">:</span> <span class="mi">65535</span><span class="p">}</span>
+        <span class="p">])</span>
+
+
+    <span class="n">comp2</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createApplicationSoftwareComponent</span><span class="p">(</span><span class="s1">&#39;Component2&#39;</span><span class="p">)</span>
+    <span class="n">comp2</span><span class="o">.</span><span class="n">createRequirePort</span><span class="p">(</span><span class="s1">&#39;BatteryStat&#39;</span><span class="p">,</span> <span class="s1">&#39;BatteryStat_I&#39;</span><span class="p">,</span> <span class="n">comspec</span> <span class="o">=</span>
+        <span class="p">[</span>
+            <span class="p">{</span><span class="s1">&#39;dataElement&#39;</span><span class="p">:</span> <span class="s1">&#39;ChargeLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;initValue&#39;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span> <span class="s1">&#39;aliveTimeout&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">},</span>
+            <span class="p">{</span><span class="s1">&#39;dataElement&#39;</span><span class="p">:</span> <span class="s1">&#39;VoltageLevel&#39;</span><span class="p">,</span> <span class="s1">&#39;initValue&#39;</span><span class="p">:</span> <span class="mi">65535</span><span class="p">,</span> <span class="s1">&#39;aliveTimeout&#39;</span><span class="p">:</span> <span class="mi">30</span><span class="p">}</span>
+        <span class="p">])</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">create_workspace_and_packages</span><span class="p">()</span>
+<span class="n">create_data_types</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+<span class="n">create_port_interfaces</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+<span class="n">create_components</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;Component1.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/ComponentTypes/Component1&#39;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;Component2.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/ComponentTypes/Component2&#39;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;DataTypes.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/DataTypes&#39;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;PortInterfaces.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/PortInterfaces&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="additional-arguments-for-clientserverinterface">
+<h3>Additional arguments for <a class="reference internal" href="../portinterface/client_server_interface.html#ar4-portinterface-clientserverinterface"><span class="std std-ref">ClientServerInterface</span></a><a class="headerlink" href="#additional-arguments-for-clientserverinterface" title="Permalink to this headline"></a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 21%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>comspec</p></td>
+<td><p>dict, list(dict)</p></td>
+<td><p>Used primarily when port interface has multiple operations</p></td>
+</tr>
+<tr class="row-odd"><td><p>operation</p></td>
+<td><p>int, float, str</p></td>
+<td><p>Used to set an init value literal.
+Mutually exclusive to initValueRef.</p></td>
+</tr>
+<tr class="row-even"><td><p>queueLength</p></td>
+<td><p>int</p></td>
+<td><p>Length of queue</p></td>
+</tr>
+</tbody>
+</table>
+<section id="examples-clientserverinterface">
+<h4>Examples — ClientServerInterface<a class="headerlink" href="#examples-clientserverinterface" title="Permalink to this headline"></a></h4>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="k">def</span> <span class="nf">create_platform_types</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">pushRoles</span><span class="p">()</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;AUTOSAR_Platform&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">,</span> <span class="n">role</span> <span class="o">=</span> <span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span> <span class="o">=</span> <span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span> <span class="o">=</span> <span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;dtRef_const_VOID&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;VOID&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span> <span class="o">=</span> <span class="s1">&#39;void&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;dtRef_VOID&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;VOID&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span> <span class="o">=</span> <span class="s1">&#39;void&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;boolean&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;BOOLEAN&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;boolean&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationDataTypes&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;boolean&#39;</span><span class="p">,</span> <span class="s1">&#39;/AUTOSAR_Platform/BaseTypes/boolean&#39;</span><span class="p">,</span>
+        <span class="n">valueTable</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FALSE&#39;</span><span class="p">,</span> <span class="s1">&#39;TRUE&#39;</span><span class="p">],</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypePtr</span><span class="p">(</span><span class="s1">&#39;dtRef_const_VOID&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;/AUTOSAR_Platform/BaseTypes/dtRef_const_VOID&#39;</span><span class="p">,</span> <span class="n">swImplPolicy</span> <span class="o">=</span> <span class="s1">&#39;CONST&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypePtr</span><span class="p">(</span><span class="s1">&#39;dtRef_VOID&#39;</span><span class="p">,</span> <span class="s1">&#39;/AUTOSAR_Platform/BaseTypes/dtRef_VOID&#39;</span><span class="p">)</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">popRoles</span><span class="p">()</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">pushRoles</span><span class="p">()</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;Predefined_DEV&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span> <span class="o">=</span> <span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span> <span class="o">=</span> <span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationDataTypes&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;NvM_RequestResultType&#39;</span><span class="p">,</span> <span class="s1">&#39;/AUTOSAR_Platform/BaseTypes/uint8&#39;</span><span class="p">,</span>
+        <span class="n">valueTable</span><span class="o">=</span><span class="p">[</span>
+                <span class="s1">&#39;NVM_REQ_OK&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;NVM_REQ_NOT_OK&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;NVM_REQ_PENDING&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;NVM_REQ_INTEGRITY_FAILED&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;NVM_REQ_BLOCK_SKIPPED&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;NVM_REQ_NV_INVALIDATED&#39;</span><span class="p">])</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">popRoles</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">create_port_interfaces</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;PortInterfaces&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;PortInterface&#39;</span><span class="p">)</span>
+    <span class="n">portInterface</span><span class="o">=</span><span class="n">package</span><span class="o">.</span><span class="n">createClientServerInterface</span><span class="p">(</span><span class="s2">&quot;NvM_RequestResult&quot;</span><span class="p">,</span>
+        <span class="n">errors</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">ApplicationError</span><span class="p">(</span><span class="s2">&quot;E_NOT_OK&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">isService</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="s2">&quot;EraseBlock&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;GetErrorStatus&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;InvalidateNvBlock&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;ReadBlock&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;SetRamBlockStatus&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;WriteBlock&quot;</span><span class="p">])</span>
+    <span class="n">NvM_RequestResultType_ref</span> <span class="o">=</span> <span class="s2">&quot;/Predefined_DEV/ImplementationDataTypes/NvM_RequestResultType&quot;</span>
+    <span class="n">boolean_ref</span> <span class="o">=</span> <span class="s2">&quot;/AUTOSAR_Platform/ImplementationDataTypes/boolean&quot;</span>
+    <span class="n">dtRef_const_VOID_ref</span> <span class="o">=</span> <span class="s2">&quot;/AUTOSAR_Platform/ImplementationDataTypes/dtRef_const_VOID&quot;</span>
+    <span class="n">dtRef_VOID_ref</span> <span class="o">=</span> <span class="s2">&quot;/AUTOSAR_Platform/ImplementationDataTypes/dtRef_VOID&quot;</span>
+    <span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;EraseBlock&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">possibleErrors</span> <span class="o">=</span> <span class="s2">&quot;E_NOT_OK&quot;</span>
+    <span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;GetErrorStatus&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">createOutArgument</span><span class="p">(</span><span class="s2">&quot;ErrorStatus&quot;</span><span class="p">,</span> <span class="n">NvM_RequestResultType_ref</span><span class="p">,</span>
+        <span class="s2">&quot;NOT-ACCESSIBLE&quot;</span><span class="p">,</span> <span class="s2">&quot;USE-ARGUMENT-TYPE&quot;</span><span class="p">)</span>
+    <span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;GetErrorStatus&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">possibleErrors</span> <span class="o">=</span> <span class="s2">&quot;E_NOT_OK&quot;</span>
+    <span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;InvalidateNvBlock&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">possibleErrors</span> <span class="o">=</span> <span class="s2">&quot;E_NOT_OK&quot;</span>
+    <span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;ReadBlock&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">createInArgument</span><span class="p">(</span><span class="s2">&quot;DstPtr&quot;</span><span class="p">,</span> <span class="n">dtRef_VOID_ref</span><span class="p">,</span> <span class="s2">&quot;NOT-ACCESSIBLE&quot;</span><span class="p">,</span> <span class="s2">&quot;USE-ARGUMENT-TYPE&quot;</span><span class="p">)</span>
+    <span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;ReadBlock&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">possibleErrors</span> <span class="o">=</span> <span class="s2">&quot;E_NOT_OK&quot;</span>
+    <span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;SetRamBlockStatus&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">createInArgument</span><span class="p">(</span><span class="s2">&quot;RamBlockStatus&quot;</span><span class="p">,</span> <span class="n">boolean_ref</span><span class="p">,</span> <span class="s2">&quot;NOT-ACCESSIBLE&quot;</span><span class="p">,</span> <span class="s2">&quot;USE-ARGUMENT-TYPE&quot;</span><span class="p">)</span>
+    <span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;SetRamBlockStatus&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">possibleErrors</span> <span class="o">=</span> <span class="s2">&quot;E_NOT_OK&quot;</span>
+    <span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;WriteBlock&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">createInArgument</span><span class="p">(</span><span class="s2">&quot;SrcPtr&quot;</span><span class="p">,</span> <span class="n">dtRef_const_VOID_ref</span><span class="p">,</span> <span class="s2">&quot;NOT-ACCESSIBLE&quot;</span><span class="p">,</span> <span class="s2">&quot;USE-ARGUMENT-TYPE&quot;</span><span class="p">)</span>
+    <span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;WriteBlock&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">possibleErrors</span> <span class="o">=</span> <span class="s2">&quot;E_NOT_OK&quot;</span>
+
+
+<span class="k">def</span> <span class="nf">create_components</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;ComponentTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;ComponentType&#39;</span><span class="p">)</span>
+    <span class="n">comp1</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createServiceComponent</span><span class="p">(</span><span class="s1">&#39;ServerComponent&#39;</span><span class="p">)</span>
+    <span class="n">comp1</span><span class="o">.</span><span class="n">createProvidePort</span><span class="p">(</span><span class="s1">&#39;Nvm_PersonalSettings&#39;</span><span class="p">,</span> <span class="s1">&#39;NvM_RequestResult&#39;</span><span class="p">)</span>
+
+    <span class="n">comp2</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createApplicationSoftwareComponent</span><span class="p">(</span><span class="s1">&#39;ClientComponent&#39;</span><span class="p">)</span>
+    <span class="n">comp2</span><span class="o">.</span><span class="n">createRequirePort</span><span class="p">(</span><span class="s1">&#39;Nvm_PersonalSettings&#39;</span><span class="p">,</span> <span class="s1">&#39;NvM_RequestResult&#39;</span><span class="p">)</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">create_platform_types</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+<span class="n">create_port_interfaces</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+<span class="n">create_components</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;ServerComponent.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/ComponentTypes/ServerComponent&#39;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;ClientComponent.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/ComponentTypes/ClientComponent&#39;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;Platform.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/AUTOSAR_Platform&#39;</span><span class="p">,</span> <span class="s1">&#39;/Predefined_DEV&#39;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;PortInterfaces.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/PortInterfaces&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="additional-arguments-for-parameterinterface">
+<h3>Additional arguments for <a class="reference internal" href="../portinterface/parameter_interface.html#ar4-portinterface-parameterinterface"><span class="std std-ref">ParameterInterface</span></a><a class="headerlink" href="#additional-arguments-for-parameterinterface" title="Permalink to this headline"></a></h3>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 21%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>comspec</p></td>
+<td><p>dict, list(dict)</p></td>
+<td><p>Used primarily when port interface has multiple parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>parameter</p></td>
+<td><p>str</p></td>
+<td><p>Specifices which parameter this ComSpec is for.</p>
+<p>Not required when port interface has a single parameter.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>initValue</p></td>
+<td><p>int, float, str</p></td>
+<td><p>Used to set an init value literal.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-arguments-for-modeswitchinterface">
+<h3>Additional arguments for <a class="reference internal" href="../portinterface/mode_switch_interface.html#ar4-portinterface-modeswitchinterface"><span class="std std-ref">ModeSwitchInterface</span></a><a class="headerlink" href="#additional-arguments-for-modeswitchinterface" title="Permalink to this headline"></a></h3>
+<p><strong>Provide Ports:</strong></p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 20%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>comspec</p></td>
+<td><p>dict, list(dict)</p></td>
+<td><p>Used primarily when port interface has multiple parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>modeGroup</p></td>
+<td><p>str</p></td>
+<td><p>Specifices the mode group name</p></td>
+</tr>
+<tr class="row-even"><td><p>enhancedMode</p></td>
+<td><p>bool</p></td>
+<td><p>Enhanced mode enable/disable</p></td>
+</tr>
+<tr class="row-odd"><td><p>queueLength</p></td>
+<td><p>int</p></td>
+<td><p>Queue length</p></td>
+</tr>
+<tr class="row-even"><td><p>modeSwitchAckTimeout</p></td>
+<td><p>int</p></td>
+<td><p>Acknowledgement timeout in milliseconds</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Require Ports:</strong></p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 21%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>comspec</p></td>
+<td><p>dict, list(dict)</p></td>
+<td><p>Used primarily when port interface has multiple parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>modeGroup</p></td>
+<td><p>str</p></td>
+<td><p>Specifices the mode group name</p></td>
+</tr>
+<tr class="row-even"><td><p>enhancedMode</p></td>
+<td><p>bool</p></td>
+<td><p>Enhanced mode enable/disable</p></td>
+</tr>
+<tr class="row-odd"><td><p>supportAsync</p></td>
+<td><p>bool</p></td>
+<td><p>Asynchronous support enable/disable</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="additional-arguments-for-nvdatainterface">
+<h3>Additional arguments for <a class="reference internal" href="../portinterface/nvdata_interface.html#ar4-portinterface-nvdatainterface"><span class="std std-ref">NvDataInterface</span></a><a class="headerlink" href="#additional-arguments-for-nvdatainterface" title="Permalink to this headline"></a></h3>
+<p><strong>Provide Ports:</strong></p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 20%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>comspec</p></td>
+<td><p>dict, list(dict)</p></td>
+<td><p>Used primarily when port interface has multiple parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>nvData</p></td>
+<td><p>str</p></td>
+<td><p>Specifices the name of the data element.</p>
+<p>Not required when port interface only has one element.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>ramBlockInitValue</p></td>
+<td><p>int, float, str</p></td>
+<td><p>Init value literal for RAM block</p></td>
+</tr>
+<tr class="row-odd"><td><p>ramBlockInitValueRef</p></td>
+<td><p>str</p></td>
+<td><p>Used when you want an existing constant as init value</p></td>
+</tr>
+<tr class="row-even"><td><p>romBlockInitValue</p></td>
+<td><p>int, float, str</p></td>
+<td><p>Init value literal for ROM block</p></td>
+</tr>
+<tr class="row-odd"><td><p>romBlockInitValueRef</p></td>
+<td><p>str</p></td>
+<td><p>Used when you want an existing constant as init value</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Require Ports:</strong></p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 21%" />
+<col style="width: 61%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Parameter name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>comspec</p></td>
+<td><p>dict, list(dict)</p></td>
+<td><p>Used primarily when port interface has multiple parameters</p></td>
+</tr>
+<tr class="row-odd"><td><p>nvData</p></td>
+<td><p>str</p></td>
+<td><p>Specifices the name of the data element.</p>
+<p>Not required when port interface only has one element.</p>
+</td>
+</tr>
+<tr class="row-even"><td><p>InitValue</p></td>
+<td><p>int, float, str</p></td>
+<td><p>Init value literal for RAM block</p></td>
+</tr>
+<tr class="row-odd"><td><p>InittValueRef</p></td>
+<td><p>str</p></td>
+<td><p>Used when you want an existing constant as init value</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

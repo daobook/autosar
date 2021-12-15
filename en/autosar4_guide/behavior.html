@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SWC Behavior &mdash; AUTOSAR 0.3.11 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Modes" href="modes.html" />
+    <link rel="prev" title="Ports" href="ports.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AUTOSAR 4 Developer Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="roles.html">Package Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ports.html">Ports</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SWC Behavior</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#runnables">Runnables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#port-access">Port Access</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#timer-events">Timer Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mode-switch-events">Mode Switch Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-events">Data Events</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="modes.html">Modes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar4_api/index.html">AUTOSAR 4 API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">AUTOSAR 4 Developer Guide</a> &raquo;</li>
+      <li>SWC Behavior</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autosar4_guide/behavior.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="swc-behavior">
+<h1>SWC Behavior<a class="headerlink" href="#swc-behavior" title="Permalink to this headline"></a></h1>
+<p>The behavior object is a container for runnables, events and other objects. All SWCs has its own behavior object, except for compositions.</p>
+<p>In AUTOSAR4, the behavior object is an instance of the SwcInternalBehavior class and it is created automatically when you create SWCs using these helper methods:</p>
+<ul class="simple">
+<li><p>Package.createApplicationSoftwareComponent</p></li>
+<li><p>Package.createServiceComponent</p></li>
+<li><p>Package.createComplexDeviceDriverComponent</p></li>
+</ul>
+<section id="runnables">
+<h2>Runnables<a class="headerlink" href="#runnables" title="Permalink to this headline"></a></h2>
+<p>Runnables are execution points. They are implemented as C functions and are triggered by events.</p>
+<p>Examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="c1">#... Datatypes, port interfaces and constants are loaded or created here</span>
+
+<span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;ComponentTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;ComponentType&#39;</span><span class="p">)</span>
+<span class="n">swc</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createApplicationSoftwareComponent</span><span class="p">(</span><span class="s1">&#39;MyApplication&#39;</span><span class="p">)</span>
+<span class="n">swc</span><span class="o">.</span><span class="n">createRequirePort</span><span class="p">(</span><span class="s1">&#39;VehicleSpeed&#39;</span><span class="p">,</span> <span class="s1">&#39;VehicleSpeed_I&#39;</span><span class="p">,</span> <span class="n">initValueRef</span> <span class="o">=</span> <span class="s1">&#39;VehicleSpeed_IV&#39;</span><span class="p">)</span>
+<span class="n">swc</span><span class="o">.</span><span class="n">createRequirePort</span><span class="p">(</span><span class="s1">&#39;EngineSpeed&#39;</span><span class="p">,</span> <span class="s1">&#39;EngineSpeed_I&#39;</span><span class="p">,</span> <span class="n">initValueRef</span> <span class="o">=</span> <span class="s1">&#39;EngineSpeed_IV&#39;</span><span class="p">)</span>
+
+<span class="n">swc</span><span class="o">.</span><span class="n">behavior</span><span class="o">.</span><span class="n">createRunnable</span><span class="p">(</span><span class="s1">&#39;runnableName&#39;</span><span class="p">,</span> <span class="n">portAccess</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;VehicleSpeed&#39;</span><span class="p">,</span> <span class="s1">&#39;EngineSpeed&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<section id="port-access">
+<h3>Port Access<a class="headerlink" href="#port-access" title="Permalink to this headline"></a></h3>
+<p>Port access is a list of intent. This is where you list which SWC data elements (sender-receiver interface) or
+operations (client-server interface) that you intend to call from this runnable.
+It is important that you correctly fill in the port access list since it is used by the RTE generator.</p>
+<p>In those cases where your port only as a single data element it is enough to just give the name of the port (as a string).
+If you want to declare a specific data-element or operation use a front-slash as a seprator</p>
+<p>Examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="c1">#... Datatypes, port interfaces and constants are loaded or created here</span>
+
+<span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;ComponentTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;ComponentType&#39;</span><span class="p">)</span>
+<span class="n">swc</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createApplicationSoftwareComponent</span><span class="p">(</span><span class="s1">&#39;MyApplication&#39;</span><span class="p">)</span>
+<span class="n">swc</span><span class="o">.</span><span class="n">createRequirePort</span><span class="p">(</span><span class="s1">&#39;FreeRunningTimer&#39;</span><span class="p">,</span> <span class="s1">&#39;FreeRunningTimer_I&#39;</span><span class="p">)</span> <span class="c1">#port interface has operations GetTime and IsTimerElapsed</span>
+<span class="n">swc</span><span class="o">.</span><span class="n">behavior</span><span class="o">.</span><span class="n">createRunnable</span><span class="p">(</span><span class="s1">&#39;runnableName&#39;</span><span class="p">,</span>
+                            <span class="n">portAccess</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FreeRunningTimer/GetTime&#39;</span><span class="p">,</span> <span class="s1">&#39;FreeRunningTimer/IsTimerElapsed&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="timer-events">
+<h2>Timer Events<a class="headerlink" href="#timer-events" title="Permalink to this headline"></a></h2>
+</section>
+<section id="mode-switch-events">
+<h2>Mode Switch Events<a class="headerlink" href="#mode-switch-events" title="Permalink to this headline"></a></h2>
+</section>
+<section id="data-events">
+<h2>Data Events<a class="headerlink" href="#data-events" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

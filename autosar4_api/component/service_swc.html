@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ServiceComponent &mdash; AUTOSAR 0.3.11 文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="Constant" href="../constant/index.html" />
+    <link rel="prev" title="ComponentType" href="component_type.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior/index.html">Behavior</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Component</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="application_swc.html">ApplicationSoftwareComponent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atomic_swc.html">AtomicSoftwareComponent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cdd_swc.html">ComplexDeviceDriverComponent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composition_swc.html">CompositionComponent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="component_prototype.html">ComponentPrototype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="component_type.html">ComponentType</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ServiceComponent</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory-methods">Factory Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../constant/index.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datatype/index.html">DataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">AUTOSAR 4 API</a> &raquo;</li>
+          <li><a href="index.html">Component</a> &raquo;</li>
+      <li>ServiceComponent</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autosar4_api/component/service_swc.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="servicecomponent">
+<span id="ar4-component-servicecomponent"></span><h1>ServiceComponent<a class="headerlink" href="#servicecomponent" title="永久链接至标题"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 87%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>&lt;SERVICE-SW-COMPONENT-TYPE&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.component</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td><p><a class="reference internal" href="atomic_swc.html#ar4-component-atomicsoftwarecomponent"><span class="std std-ref">autosar.component.AtomicSoftwareComponent</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Application software component.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="永久链接至标题"></a></h2>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="k">def</span> <span class="nf">init_ws</span><span class="p">():</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+    <span class="c1">#Create Packages</span>
+    <span class="n">datatypes</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+    <span class="n">datatypes</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+    <span class="n">datatypes</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+    <span class="n">basetypes</span> <span class="o">=</span> <span class="n">datatypes</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+    <span class="n">portinterfaces</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;PortInterfaces&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;PortInterface&quot;</span><span class="p">)</span>
+    <span class="n">components</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;ComponentTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;ComponentType&#39;</span><span class="p">)</span>
+    <span class="n">constants</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;Constants&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;Constant&#39;</span><span class="p">)</span>
+    <span class="c1">#Create DataTypes</span>
+    <span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
+    <span class="n">datatypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">65535</span><span class="p">,</span> <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint16&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+    <span class="c1">#Create Constants</span>
+    <span class="n">constants</span><span class="o">.</span><span class="n">createConstant</span><span class="p">(</span><span class="s1">&#39;VehicleSpeed_IV&#39;</span><span class="p">,</span> <span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="mi">65535</span><span class="p">)</span>
+    <span class="n">constants</span><span class="o">.</span><span class="n">createConstant</span><span class="p">(</span><span class="s1">&#39;EngineSpeed_IV&#39;</span><span class="p">,</span> <span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="mi">65535</span><span class="p">)</span>
+    <span class="c1">#Create PortInterfaces</span>
+    <span class="n">portinterfaces</span><span class="o">.</span><span class="n">createSenderReceiverInterface</span><span class="p">(</span><span class="s1">&#39;VehicleSpeed_I&#39;</span><span class="p">,</span> <span class="n">autosar</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">DataElement</span><span class="p">(</span><span class="s1">&#39;VehicleSpeed&#39;</span><span class="p">,</span> <span class="s1">&#39;uint16&#39;</span><span class="p">))</span>
+    <span class="n">portinterfaces</span><span class="o">.</span><span class="n">createSenderReceiverInterface</span><span class="p">(</span><span class="s1">&#39;EngineSpeed_I&#39;</span><span class="p">,</span> <span class="n">autosar</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">DataElement</span><span class="p">(</span><span class="s1">&#39;EngineSpeed&#39;</span><span class="p">,</span> <span class="s1">&#39;uint16&#39;</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">ws</span>
+
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">init_ws</span><span class="p">()</span>
+<span class="n">components</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/ComponentTypes&#39;</span><span class="p">)</span>
+<span class="n">swc</span> <span class="o">=</span> <span class="n">components</span><span class="o">.</span><span class="n">createApplicationSoftwareComponent</span><span class="p">(</span><span class="s1">&#39;SWC1&#39;</span><span class="p">)</span>
+<span class="n">swc</span><span class="o">.</span><span class="n">createRequirePort</span><span class="p">(</span><span class="s1">&#39;VehicleSpeed&#39;</span><span class="p">,</span> <span class="s1">&#39;VehicleSpeed_I&#39;</span><span class="p">,</span> <span class="n">initValueRef</span> <span class="o">=</span> <span class="s1">&#39;VehicleSpeed_IV&#39;</span><span class="p">,</span> <span class="n">aliveTimeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">swc</span><span class="o">.</span><span class="n">createRequirePort</span><span class="p">(</span><span class="s1">&#39;EngineSpeed&#39;</span><span class="p">,</span> <span class="s1">&#39;EngineSpeed_I&#39;</span><span class="p">,</span> <span class="n">initValueRef</span> <span class="o">=</span> <span class="s1">&#39;EngineSpeed_IV&#39;</span><span class="p">,</span> <span class="n">aliveTimeout</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1">#save SWC1 into separate ARXML file</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.arxml&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">swc</span><span class="o">.</span><span class="n">name</span><span class="p">),</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/ComponentTypes/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">swc</span><span class="o">.</span><span class="n">name</span><span class="p">)])</span>
+</pre></div>
+</div>
+</section>
+<section id="factory-methods">
+<h2>Factory Methods<a class="headerlink" href="#factory-methods" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../package.html#ar4-package-package-createservicecomponent"><span class="std std-ref">Package.createServiceComponent</span></a></p></li>
+</ul>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="永久链接至标题"></a></h2>
+<p>For inherited attributes see <a class="reference internal" href="atomic_swc.html#ar4-component-atomicsoftwarecomponent"><span class="std std-ref">autosar.component.AtomicSoftwareComponent</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

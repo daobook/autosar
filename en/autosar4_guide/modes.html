@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modes &mdash; AUTOSAR 0.3.11 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AUTOSAR 4 API" href="../autosar4_api/index.html" />
+    <link rel="prev" title="SWC Behavior" href="behavior.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AUTOSAR 4 Developer Guide</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="roles.html">Package Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ports.html">Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior.html">SWC Behavior</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Modes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-mode-declaration-group-package">Creating a Mode Declaration Group package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-mode-declaration-groups">Creating Mode Declaration Groups</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar4_api/index.html">AUTOSAR 4 API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">AUTOSAR 4 Developer Guide</a> &raquo;</li>
+      <li>Modes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autosar4_guide/modes.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modes">
+<h1>Modes<a class="headerlink" href="#modes" title="Permalink to this headline"></a></h1>
+<p>Modes are states in state machines that are running in the vehicle. SWCs can react to modes either as events (mode switch events) or
+they can choose to allow certain runnables to be active only in certain modes.</p>
+<p>A set of states is called a mode declaration group which acts as a container of sorts for the mode (state) names.</p>
+<section id="creating-a-mode-declaration-group-package">
+<h2>Creating a Mode Declaration Group package<a class="headerlink" href="#creating-a-mode-declaration-group-package" title="Permalink to this headline"></a></h2>
+<p>It is recommended that you create a unique AUTOSAR package to hold your mode declaration groups. Remember to use the role “ModeDclrGroup”.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;ModeDclrGroups&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;ModeDclrGroup&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-mode-declaration-groups">
+<h2>Creating Mode Declaration Groups<a class="headerlink" href="#creating-mode-declaration-groups" title="Permalink to this headline"></a></h2>
+<p>Remember to check with your AUTOSAR vendor which mode groups you should use and what their definitions are.
+Here is an example containing a made up mode declaration group called <em>BswM_Mode</em> with the following mode declarations (state names):</p>
+<ul class="simple">
+<li><p>POSTRUN</p></li>
+<li><p>RUN</p></li>
+<li><p>SHUTDOWN</p></li>
+<li><p>STARTUP (initial state)</p></li>
+<li><p>WAKEUP</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;ModeDclrGroups&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;ModeDclrGroup&quot;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">.</span><span class="n">createModeDeclarationGroup</span><span class="p">(</span><span class="s1">&#39;BswM_Mode&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;POSTRUN&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;RUN&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;SHUTDOWN&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;STARTUP&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;WAKEUP&quot;</span><span class="p">],</span> <span class="s2">&quot;STARTUP&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In addition, you can also set a category and adminData for your newly created mode declaration group.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workspace &mdash; AUTOSAR 0.3.11 文档</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Package" href="package.html" />
+    <link rel="prev" title="ModeGroup" href="mode/mode_group.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constant/index.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/index.html">DataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mode/index.html">Mode</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Workspace</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#factory-methods">Factory Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#public-properties">Public Properties</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#public-methods">Public Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-description">Method Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#loadxml">loadXML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#openxml">openXML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#loadpackage">loadPackage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listpackages">listPackages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#savexml">saveXML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#toxml">toXML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createpackage">createPackage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#find">find</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#findall">findall</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#findrolepackage">findRolePackage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#getrole">getRole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setrole">setRole</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#setroles">setRoles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pushroles">pushRoles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#poproles">popRoles</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#workspaceprofile">WorkspaceProfile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">AUTOSAR 4 API</a> &raquo;</li>
+      <li>Workspace</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autosar4_api/workspace.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="workspace">
+<span id="ar4-workspace"></span><h1>Workspace<a class="headerlink" href="#workspace" title="永久链接至标题"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>&lt;AUTOSAR&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.workspace</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>The autosar workspace class.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="永久链接至标题"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="factory-methods">
+<h2>Factory Methods<a class="headerlink" href="#factory-methods" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>autosar.workspace</p></li>
+</ul>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="永久链接至标题"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 27%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>packages</strong></p></td>
+<td><p><em>list</em></p></td>
+<td><p>List of packages</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>version</strong></p></td>
+<td><p><em>float</em></p></td>
+<td><p>AUTOSAR version using major.minor format</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>patch</strong></p></td>
+<td><p><em>int</em></p></td>
+<td><p>AUTOSAR patch version</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>profile</strong></p></td>
+<td><p><a class="reference internal" href="#ar4-workspace-profile"><span class="std std-ref">WorkspaceProfile</span></a></p></td>
+<td><p>Workspace profile</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="public-properties">
+<h2>Public Properties<a class="headerlink" href="#public-properties" title="永久链接至标题"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 21%" />
+<col style="width: 11%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>version_str</strong></p></td>
+<td><p>str</p></td>
+<td><p>Get</p></td>
+<td><p>Full version string using the major.minor.patch format</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="public-methods">
+<span id="ar4-workspace-methods"></span><h2>Public Methods<a class="headerlink" href="#public-methods" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-loadxml"><span class="std std-ref">loadXML</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-openxml"><span class="std std-ref">openXML</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-loadpackage"><span class="std std-ref">loadPackage</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-listpackages"><span class="std std-ref">listPackages</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-savexml"><span class="std std-ref">saveXML</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-toxml"><span class="std std-ref">toXML</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-createpackage"><span class="std std-ref">createPackage</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-find"><span class="std std-ref">find</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-findall"><span class="std std-ref">findall</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-findrolepackage"><span class="std std-ref">findRolePackage</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-getrole"><span class="std std-ref">getRole</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-setrole"><span class="std std-ref">setRole</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-setroles"><span class="std std-ref">setRoles</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-pushroles"><span class="std std-ref">pushRoles</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-workspace-workspace-poproles"><span class="std std-ref">popRoles</span></a></p></li>
+</ul>
+</section>
+<section id="method-description">
+<h2>Method Description<a class="headerlink" href="#method-description" title="永久链接至标题"></a></h2>
+<section id="loadxml">
+<span id="ar4-workspace-workspace-loadxml"></span><h3>loadXML<a class="headerlink" href="#loadxml" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Workspace.loadXML">
+<span class="sig-prename descclassname"><span class="pre">Workspace.</span></span><span class="sig-name descname"><span class="pre">loadXML</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">roles=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Workspace.loadXML" title="永久链接至目标"></a></dt>
+<dd><blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">param str filename</dt>
+<dd class="field-odd"><p>Path to ARXML file to parse</p>
+</dd>
+<dt class="field-even">param dict roles</dt>
+<dd class="field-even"><p>Roles dictionary.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>Automatically opens and loads (imports) all packages found in <em>filename</em>. Filename must be a valid .arxml file.
+Roles is an optional dictionary object with roles as key-value pairs where key is the reference of the package and the value is the (package) role name.</p>
+</dd></dl>
+
+<section id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="永久链接至标题"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">()</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">loadXML</span><span class="p">(</span><span class="s2">&quot;DataTypes.arxml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">()</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">loadXML</span><span class="p">(</span><span class="s2">&quot;DataTypes.arxml&quot;</span><span class="p">,</span> <span class="n">roles</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;/DataTypes&quot;</span><span class="p">:</span> <span class="s2">&quot;DataType&quot;</span><span class="p">})</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="openxml">
+<span id="ar4-workspace-workspace-openxml"></span><h3>openXML<a class="headerlink" href="#openxml" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Workspace.openXML">
+<span class="sig-prename descclassname"><span class="pre">Workspace.</span></span><span class="sig-name descname"><span class="pre">openXML</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Workspace.openXML" title="永久链接至目标"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>filename</strong> (<em>str</em>) – Path to ARXML file to parse</p>
+</dd>
+</dl>
+<p>Opens an ARXML file but does not automatically import any packages into the workspace. Use the loadPackage method to customize which packages you want to load.</p>
+</dd></dl>
+
+<section id="example">
+<h4>Example<a class="headerlink" href="#example" title="永久链接至标题"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">()</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">openXML</span><span class="p">(</span><span class="s2">&quot;ECU_Extract.arxml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="loadpackage">
+<span id="ar4-workspace-workspace-loadpackage"></span><h3>loadPackage<a class="headerlink" href="#loadpackage" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Workspace.loadPackage(packagename,</span> <span class="pre">[role=None]):</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>packageName</strong> (<em>str</em>) – Name of the package in the ARXML file</p></li>
+<li><p><strong>role</strong> (<em>str</em>) – Path to ARXML file to parse</p></li>
+</ul>
+</dd>
+</dl>
+<p>Manually import a package into your current workspace. Use the <a class="reference internal" href="#ar4-workspace-workspace-openxml"><span class="std std-ref">openXML</span></a> method before this call to open a file.
+The loadPackage method can be callled more than once on an opened file.</p>
+<p>The role argument is optionally used to tell what role the package has in the workspace.</p>
+</dd></dl>
+
+<section id="id1">
+<h4>Example<a class="headerlink" href="#id1" title="永久链接至标题"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">()</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">openXML</span><span class="p">(</span><span class="s2">&quot;ECU_Extract.arxml&quot;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">loadPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;DataType&quot;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">loadPackage</span><span class="p">(</span><span class="s1">&#39;PortInterfaces&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;PortInterface&quot;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">loadPackage</span><span class="p">(</span><span class="s1">&#39;Constants&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;Constant&quot;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">loadPackage</span><span class="p">(</span><span class="s1">&#39;ComponentTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;ComponentType&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="listpackages">
+<span id="ar4-workspace-workspace-listpackages"></span><h3>listPackages<a class="headerlink" href="#listpackages" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Workspace.listPackages():</span></span></dt>
+<dd><p>Returns a list of strings containing the top-level packages of the opened ARXML.</p>
+</dd></dl>
+
+<section id="id2">
+<h4>Example<a class="headerlink" href="#id2" title="永久链接至标题"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">()</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">openXML</span><span class="p">(</span><span class="s1">&#39;ECU_Extract.arxml&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">listPackages</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="savexml">
+<span id="ar4-workspace-workspace-savexml"></span><h3>saveXML<a class="headerlink" href="#savexml" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Workspace.saveXML">
+<span class="sig-prename descclassname"><span class="pre">Workspace.</span></span><span class="sig-name descname"><span class="pre">saveXML</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">filters=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">ignore=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Workspace.saveXML" title="永久链接至目标"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the file to write</p></li>
+<li><p><strong>filters</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – Selects what packages, sub-packages or elements to export</p></li>
+<li><p><strong>ignore</strong> – Deprecated (might be removed later)</p></li>
+</ul>
+</dd>
+</dl>
+<p>Exports the workspace in ARXML file format. It tries to use the Workspace.version attribute to determine what schema to use.
+Note that the version handling mechanism is currently flawed and does not work correctly for AUTOSAR v4.3, v4.4 (will be implemented later).</p>
+<p>By default this method saves all packages found in the workspace and writes them to the same file.
+You can however split your workspace into multiple ARXML files by using the filters option.</p>
+</dd></dl>
+
+<section id="id3">
+<h4>Example<a class="headerlink" href="#id3" title="永久链接至标题"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+
+<span class="c1">#Create packages and elements</span>
+<span class="o">...</span>
+
+<span class="c1">#Save your work into a single ARXML file</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s2">&quot;single_file.arxml&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-filters">
+<h4>Using filters<a class="headerlink" href="#using-filters" title="永久链接至标题"></a></h4>
+<p>Filters allows you to use reference strings to select what to export.</p>
+<p><strong>Save top-level packages into separate files</strong></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="o">...</span>
+
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s2">&quot;DataTypes.arxml&quot;</span><span class="p">,</span> <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/DataTypes&quot;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s2">&quot;Constants.arxml&quot;</span><span class="p">,</span> <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/Constants&quot;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s2">&quot;PortInterfaces.arxml&quot;</span><span class="p">,</span> <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/PortInterfaces&quot;</span><span class="p">,</span> <span class="s2">&quot;/ModeDclrGroups&quot;</span><span class="p">])</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s2">&quot;PlatformTypes.arxml&quot;</span><span class="p">,</span> <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/AUTOSAR_Platform&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><strong>Save each software component to its own file</strong></p>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="o">...</span>
+
+<span class="n">dest_dir</span> <span class="o">=</span> <span class="s2">&quot;.&quot;</span>
+
+<span class="k">for</span> <span class="n">swc</span> <span class="ow">in</span> <span class="n">ws</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;/ComponentTypes/*&quot;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">swc</span><span class="p">,</span> <span class="n">autosar</span><span class="o">.</span><span class="n">component</span><span class="o">.</span><span class="n">ComponentType</span><span class="p">):</span>
+        <span class="n">filters</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;/ComponentTypes/&quot;</span> <span class="o">+</span> <span class="n">swc</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;/ComponentTypes/</span><span class="si">{0.name}</span><span class="s2">_Implementation&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">swc</span><span class="p">)]</span>
+        <span class="c1">#Add DataTypeMappingSets if it exists</span>
+        <span class="n">type_mapping_ref</span> <span class="o">=</span> <span class="s2">&quot;/ComponentTypes/DataTypeMappingSets/</span><span class="si">{0.name}</span><span class="s2">_TypeMappingSet&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">swc</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">type_mapping_ref</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">filters</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">type_mapping_ref</span><span class="p">)</span>
+        <span class="n">dest_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dest_dir</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">{0.name}</span><span class="s2">.arxml&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">swc</span><span class="p">))</span>
+        <span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="n">dest_file</span><span class="p">,</span> <span class="n">filters</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="toxml">
+<span id="ar4-workspace-workspace-toxml"></span><h3>toXML<a class="headerlink" href="#toxml" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Workspace.toXML">
+<span class="sig-prename descclassname"><span class="pre">Workspace.</span></span><span class="sig-name descname"><span class="pre">toXML</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">filters=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">ignore=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Workspace.toXML" title="永久链接至目标"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filters</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – Selects what packages, sub-packages or elements to export</p></li>
+<li><p><strong>ignore</strong> – Deprecated (Might be removed)</p></li>
+</ul>
+</dd>
+</dl>
+<p>This method works exactly like <a class="reference internal" href="#ar4-workspace-workspace-savexml"><span class="std std-ref">saveXML</span></a> but returns a string instead of writing to a file.</p>
+</dd></dl>
+
+</section>
+<section id="createpackage">
+<span id="ar4-workspace-workspace-createpackage"></span><h3>createPackage<a class="headerlink" href="#createpackage" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Workspace.createPackage">
+<span class="sig-prename descclassname"><span class="pre">Workspace.</span></span><span class="sig-name descname"><span class="pre">createPackage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">role=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Workspace.createPackage" title="永久链接至目标"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new package</p></li>
+<li><p><strong>role</strong> (<em>str</em>) – Optional <a class="reference internal" href="package.html#ar4-package-package-roles"><span class="std std-ref">package role</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference internal" href="package.html#ar4-package-package"><span class="std std-ref">Package</span></a></p>
+</dd>
+</dl>
+<p>creates a new package and appends it to the internal list of packages</p>
+</dd></dl>
+
+<section id="id4">
+<h4>Example<a class="headerlink" href="#id4" title="永久链接至标题"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s1">&#39;4.2.2&#39;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;Constants&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;Constant&#39;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;PortInterfaces&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;PortInterface&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="find">
+<span id="ar4-workspace-workspace-find"></span><h3>find<a class="headerlink" href="#find" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Workspace.find(ref,</span> <span class="pre">[role=None]):</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ref</strong> (<em>str</em>) – Reference to package or element</p></li>
+<li><p><strong>role</strong> (<em>str</em>) – Optional role name</p></li>
+</ul>
+</dd>
+</dl>
+<p>By using the reference string, this methods attempts to find and return the referenced object from the internal model.
+If no object is found (invalid reference) the value None is returned.</p>
+</dd></dl>
+
+<section id="id5">
+<h4>Examples<a class="headerlink" href="#id5" title="永久链接至标题"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get the workspace itself</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+
+<span class="c1">#Get the package with the name &#39;DataTypes&#39; (if the package exists)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;/DataTypes&quot;</span><span class="p">)</span>
+
+<span class="c1">#Get the CoolantTemp_T data type from the DataTypes package</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;/DataTypes/CoolantTemp_T&quot;</span><span class="p">)</span>
+
+<span class="c1">#Get the AntiLockBrakingActive Port from the AntiLockBraking component type.</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;/ComponentTypes/AntiLockBraking/AntiLockBrakingActive&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can also use the role argument in the find method. This allows you to just give the name of the element you want to find without caring about the full reference string.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Get the CoolantTemp_T data type from the package currently associated with the &quot;DataType&quot; role</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;CoolantTemp_T&quot;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;DataType&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>An alternative to using the find method directly is to treat the Workspace object as a dictionary. This allows easier syntax when chaining together method calls.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1">#Returns the DataTypes package</span>
+<span class="n">ws</span><span class="p">[</span><span class="s2">&quot;DataTypes&quot;</span><span class="p">]</span>
+
+<span class="c1">#Sort all elements in the DataTypes package alphabetically by their element name (case insensitive)</span>
+<span class="n">ws</span><span class="p">[</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">elements</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span> <span class="n">ws</span><span class="p">[</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">elements</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="findall">
+<span id="ar4-workspace-workspace-findall"></span><h3>findall<a class="headerlink" href="#findall" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Workspace.findall(ref):</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>ref</strong> (<em>str</em>) – Reference string</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>List of object</p>
+</dd>
+</dl>
+<p>Experimental find-method that has rudimentary support for wild cards (a.k.a) globs.
+This method returns a list of items it finds.</p>
+</dd></dl>
+
+<section id="id6">
+<h4>Example<a class="headerlink" href="#id6" title="永久链接至标题"></a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="c1">#Add components to ComponentTypes package</span>
+<span class="o">...</span>
+
+<span class="c1">#Loop over all SWCs in package &quot;ComponentTypes&quot;</span>
+<span class="k">for</span> <span class="n">swc</span> <span class="ow">in</span> <span class="n">ws</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="s2">&quot;/ComponentTypes/*&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">swc</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="findrolepackage">
+<span id="ar4-workspace-workspace-findrolepackage"></span><h3>findRolePackage<a class="headerlink" href="#findrolepackage" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Workspace.findRolePackage(role):</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>role</strong> (<em>str</em>) – <a class="reference internal" href="package.html#ar4-package-package-roles"><span class="std std-ref">Role</span></a> name</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p><a class="reference internal" href="package.html#ar4-package-package"><span class="std std-ref">autosar.package.Package</span></a></p>
+</dd>
+</dl>
+<p>Finds and returns package instance currently associated with given role name.</p>
+</dd></dl>
+
+</section>
+<section id="getrole">
+<span id="ar4-workspace-workspace-getrole"></span><h3>getRole<a class="headerlink" href="#getrole" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Workspace.getRole(role):</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>role</strong> (<em>str</em>) – <a class="reference internal" href="package.html#ar4-package-package-roles"><span class="std std-ref">Role</span></a> name</p>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+<p>Returns reference to package currently mapped to the given role. Returns None if role has not been set.</p>
+</dd></dl>
+
+</section>
+<section id="setrole">
+<span id="ar4-workspace-workspace-setrole"></span><h3>setRole<a class="headerlink" href="#setrole" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Workspace.setRole(ref,</span> <span class="pre">role):</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ref</strong> (<em>str</em>) – Package reference</p></li>
+<li><p><strong>role</strong> (<em>str</em>) – <a class="reference internal" href="package.html#ar4-package-package-roles"><span class="std std-ref">Role</span></a> name</p></li>
+</ul>
+</dd>
+</dl>
+<p>Assigns package role to the package referenced by ref.</p>
+</dd></dl>
+
+</section>
+<section id="setroles">
+<span id="ar4-workspace-workspace-setroles"></span><h3>setRoles<a class="headerlink" href="#setroles" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Workspace.setRoles(items):</span></span></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ref</strong> (<em>str</em>) – Package reference</p></li>
+<li><p><strong>items</strong> (<em>list</em>) – list of 2-tuples</p></li>
+</ul>
+</dd>
+</dl>
+<p>Same as setRole but caller gives a list of tuples where the first tuple item is the package reference, and second is the role name.</p>
+</dd></dl>
+
+</section>
+<section id="pushroles">
+<span id="ar4-workspace-workspace-pushroles"></span><h3>pushRoles<a class="headerlink" href="#pushroles" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Workspace.pushRoles():</span></span></dt>
+<dd><p>Saves current package role settings to internal role stack.</p>
+</dd></dl>
+
+</section>
+<section id="poproles">
+<span id="ar4-workspace-workspace-poproles"></span><h3>popRoles<a class="headerlink" href="#poproles" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">Workspace.popRoles():</span></span></dt>
+<dd><p>Restores last saved package role settings from internal role stack.</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="workspaceprofile">
+<span id="ar4-workspace-profile"></span><h2>WorkspaceProfile<a class="headerlink" href="#workspaceprofile" title="永久链接至标题"></a></h2>
+<p>The WorkspaceProfile is an internal class of the Workspace. It’s intented to be used as a set of properties that describes the default behavior
+of an AUTOSAR toolchain.</p>
+<p>As of now this class is just an embryo and will have to grow signifcantly in order to support more than one toolchain.
+The current default profile is set to match DaVinci Developer.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computation &mdash; AUTOSAR 0.3.11 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="DataConstraint" href="data_constraint.html" />
+    <link rel="prev" title="CompuScaleElement" href="compu_scale_element.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constant/index.html">Constant</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">DataType</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="application_array_data_type.html">ApplicationArrayDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_array_element.html">ApplicationArrayElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_data_type.html">ApplicationDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_primitive_data_type.html">ApplicationPrimitiveDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_record_data_type.html">ApplicationRecordDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_record_element.html">ApplicationRecordElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compu_method.html">CompuMethod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compu_scale_element.html">CompuScaleElement</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Computation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#factory-methods">Factory Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constructor">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#public-properties">Public Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#public-methods">Public Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method-description">Method Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="data_constraint.html">DataConstraint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_type_map.html">DataTypeMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatype_mapping_set.html">DataTypeMappingSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="implementation_data_type.html">ImplementationDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="implementation_data_type_element.html">ImplementationDataTypeElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mode_request_type_map.html">ModeRequestTypeMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sw_base_type.html">SwBaseType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">AUTOSAR 4 API</a> &raquo;</li>
+          <li><a href="index.html">DataType</a> &raquo;</li>
+      <li>Computation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autosar4_api/datatype/computation.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="computation">
+<span id="ar4-datatype-computation"></span><h1>Computation<a class="headerlink" href="#computation" title="Permalink to this headline"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>&lt;COMPU-INTERNAL-TO-PHYS&gt; or &lt;COMPU-PHYS-TO-INTERNAL&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.datatype</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Represents one computation (internal to physical, physical to internal).
+Contains a list of CompuScaleElement objects as well as an optional default value.
+Instances of this class are used as internal objects of <a class="reference internal" href="compu_method.html#ar4-datatype-compumethod"><span class="std std-ref">CompuMethod</span></a>.</p>
+<section id="factory-methods">
+<h2>Factory Methods<a class="headerlink" href="#factory-methods" title="Permalink to this headline"></a></h2>
+<p>See <a class="reference internal" href="compu_method.html#ar4-datatype-compumethod"><span class="std std-ref">CompuMethod</span></a>.</p>
+</section>
+<section id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="datatype.Computation">
+<span class="sig-prename descclassname"><span class="pre">datatype.</span></span><span class="sig-name descname"><span class="pre">Computation</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">defaultValue</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#datatype.Computation" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>defaultValue</strong> (<em>None</em><em>, </em><em>str</em><em>, </em><em>int</em><em> or </em><em>float</em>) – Optional default value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 21%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>elements</strong></p></td>
+<td><p>str</p></td>
+<td><p>List of <a class="reference internal" href="compu_scale_element.html#ar4-datatype-compuscaleelement"><span class="std std-ref">CompuScaleElement</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>defaultValue</strong></p></td>
+<td><p>None, str, int, float</p></td>
+<td><p>Optional default value</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="public-properties">
+<h2>Public Properties<a class="headerlink" href="#public-properties" title="Permalink to this headline"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 48%" />
+<col style="width: 28%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>lowerLimit</strong></p></td>
+<td><p>int, float</p></td>
+<td><p>Get</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>upperLimit</strong></p></td>
+<td><p>int, float</p></td>
+<td><p>Get</p></td>
+</tr>
+</tbody>
+</table>
+<section id="lowerlimit">
+<h3>lowerLimit<a class="headerlink" href="#lowerlimit" title="Permalink to this headline"></a></h3>
+<p>Returns lowerLimit of first element. Raises KeyError if <em>elements</em> list is empty.</p>
+</section>
+<section id="upperlimit">
+<h3>upperLimit<a class="headerlink" href="#upperlimit" title="Permalink to this headline"></a></h3>
+<p>Returns upperLimit of first element. Raises KeyError if <em>elements</em> list is empty.</p>
+</section>
+</section>
+<section id="public-methods">
+<h2>Public Methods<a class="headerlink" href="#public-methods" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-datatype-computation-createvaluetable"><span class="std std-ref">createValueTable</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-datatype-computation-createrationalscaling"><span class="std std-ref">createRationalScaling</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-datatype-computation-createbitmask"><span class="std std-ref">createBitMask</span></a></p></li>
+</ul>
+</section>
+<section id="method-description">
+<h2>Method Description<a class="headerlink" href="#method-description" title="Permalink to this headline"></a></h2>
+<section id="createvaluetable">
+<span id="ar4-datatype-computation-createvaluetable"></span><h3>createValueTable<a class="headerlink" href="#createvaluetable" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Computation.createValueTable">
+<span class="sig-prename descclassname"><span class="pre">Computation.</span></span><span class="sig-name descname"><span class="pre">createValueTable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elements</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">autoLabel</span> <span class="pre">=</span> <span class="pre">True</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Computation.createValueTable" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>elements</strong> (<em>list</em>) – Elements of new value table.</p></li>
+<li><p><strong>autoLabel</strong> (<em>bool</em>) – Automatically create &lt;SHORT-LABEL&gt; for each element.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Creates a list of <a class="reference internal" href="compu_scale_element.html#ar4-datatype-compuscaleelement"><span class="std std-ref">CompuScaleElements</span></a> with text values.</p>
+<p>When <em>elements</em> is a list of strings:</p>
+<p>Creates one <a class="reference internal" href="compu_scale_element.html#ar4-datatype-compuscaleelement"><span class="std std-ref">CompuScaleElement</span></a> per list item and automatically calculates lower and upper limits.</p>
+<p>When <em>elements</em> is a list of tuples:</p>
+<p>If 2-tuple: First element is both lowerLimit and upperLimit, second element is textValue.</p>
+<p>If 3-tuple: First element is lowerLimit, second element is upperLimit, third element is textValue.</p>
+</dd></dl>
+
+</section>
+<section id="createrationalscaling">
+<span id="ar4-datatype-computation-createrationalscaling"></span><h3>createRationalScaling<a class="headerlink" href="#createrationalscaling" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Computation.createRationalScaling">
+<span class="sig-prename descclassname"><span class="pre">Computation.</span></span><span class="sig-name descname"><span class="pre">createRationalScaling</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numerator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">denominator</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerLimit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperLimit</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">lowerLimitType</span> <span class="pre">=</span> <span class="pre">'CLOSED'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">upperLimitType</span> <span class="pre">=</span> <span class="pre">'CLOSED'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">label</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">symbol</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Computation.createRationalScaling" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>offset</strong> (<em>int</em><em>, </em><em>float</em>) – Scaling offset.</p></li>
+<li><p><strong>numerator</strong> (<em>int</em><em>, </em><em>float</em>) – Scaling numerator.</p></li>
+<li><p><strong>denominator</strong> (<em>int</em><em>, </em><em>float</em>) – Scaling denominator.</p></li>
+<li><p><strong>lowerLimit</strong> (<em>int</em><em>, </em><em>float</em>) – lower limit.</p></li>
+<li><p><strong>upperLimit</strong> (<em>int</em><em>, </em><em>float</em>) – upper limit.</p></li>
+<li><p><strong>lowerLimitType</strong> (<em>str</em>) – lower limit type (<code class="docutils literal notranslate"><span class="pre">'OPEN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CLOSED'</span></code>).</p></li>
+<li><p><strong>upperLimitType</strong> (<em>str</em>) – upper limit type (<code class="docutils literal notranslate"><span class="pre">'OPEN'</span></code>, <code class="docutils literal notranslate"><span class="pre">'CLOSED'</span></code>).</p></li>
+<li><p><strong>label</strong> (<em>None</em><em>, </em><em>str</em>) – Optional label (used instead of name attribute).</p></li>
+<li><p><strong>symbol</strong> (<em>None</em><em>, </em><em>str</em>) – Optional symbol name.</p></li>
+<li><p><strong>adminData</strong> (<a class="reference internal" href="../base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>) – AdminData.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Creates <a class="reference internal" href="compu_scale_element.html#ar4-datatype-compuscaleelement"><span class="std std-ref">CompuScaleElement</span></a> with it rational scaling properties.</p>
+</dd></dl>
+
+</section>
+<section id="createbitmask">
+<span id="ar4-datatype-computation-createbitmask"></span><h3>createBitMask<a class="headerlink" href="#createbitmask" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Computation.createBitMask">
+<span class="sig-prename descclassname"><span class="pre">Computation.</span></span><span class="sig-name descname"><span class="pre">createBitMask</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elements</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">autoLabel</span> <span class="pre">=</span> <span class="pre">True</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Computation.createBitMask" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>elements</strong> (<em>list</em>) – list of 2-tuples.</p></li>
+<li><p><strong>autoLabel</strong> (<em>bool</em>) – Automatically create &lt;SHORT-LABEL&gt; for each element.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Creates a list of <a class="reference internal" href="compu_scale_element.html#ar4-datatype-compuscaleelement"><span class="std std-ref">CompuScaleElements</span></a> with text values.</p>
+<p>The <em>element</em> parameter is expected to be a list tubles.</p>
+<p>If 2-tuple: First element is both lowerLimit and upperLimit, second element is textValue.</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApplicationDataType &mdash; AUTOSAR 0.3.11 文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="ApplicationPrimitiveDataType" href="application_primitive_data_type.html" />
+    <link rel="prev" title="ApplicationArrayElement" href="application_array_element.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constant/index.html">Constant</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">DataType</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="application_array_data_type.html">ApplicationArrayDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_array_element.html">ApplicationArrayElement</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ApplicationDataType</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#properties">Properties</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="application_primitive_data_type.html">ApplicationPrimitiveDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_record_data_type.html">ApplicationRecordDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_record_element.html">ApplicationRecordElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compu_method.html">CompuMethod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compu_scale_element.html">CompuScaleElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="computation.html">Computation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_constraint.html">DataConstraint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_type_map.html">DataTypeMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatype_mapping_set.html">DataTypeMappingSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="implementation_data_type.html">ImplementationDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="implementation_data_type_element.html">ImplementationDataTypeElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mode_request_type_map.html">ModeRequestTypeMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sw_base_type.html">SwBaseType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">AUTOSAR 4 API</a> &raquo;</li>
+          <li><a href="index.html">DataType</a> &raquo;</li>
+      <li>ApplicationDataType</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autosar4_api/datatype/application_data_type.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="applicationdatatype">
+<span id="ar4-datatype-applicationdatatype"></span><h1>ApplicationDataType<a class="headerlink" href="#applicationdatatype" title="永久链接至标题"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.datatype</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td><p><a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Base class for AUTOSAR application data types. Types that derive from this class are:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="application_primitive_data_type.html#ar4-datatype-applicationprimitivedatatype"><span class="std std-ref">ApplicationPrimitiveDataType</span></a></p></li>
+<li><p><a class="reference internal" href="application_array_data_type.html#ar4-datatype-applicationarraydatatype"><span class="std std-ref">ApplicationArrayDataType</span></a></p></li>
+<li><p><a class="reference internal" href="application_record_data_type.html#ar4-datatype-applicationrecorddatatype"><span class="std std-ref">ApplicationRecordDataType</span></a></p></li>
+</ul>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="永久链接至标题"></a></h2>
+<p>For inherited attributes see <a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a>.</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 50%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head" colspan="2"><p>Type                | Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>variantProps</strong></p></td>
+<td><p>list of <a class="reference internal" href="../base/sw_data_def_props_conditional.html#ar4-base-swdatadefpropsconditional"><span class="std std-ref">SwDataDefPropsConditional</span></a></p></td>
+<td><p>List of properties</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="永久链接至标题"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 39%" />
+<col style="width: 41%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access Type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>compuMethodRef</strong></p></td>
+<td><p><em>str</em></p></td>
+<td><p>Get</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dataConstraintRef</strong></p></td>
+<td><p><em>str</em></p></td>
+<td><p>Get</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>unitRef</strong></p></td>
+<td><p><em>str</em></p></td>
+<td><p>Get</p></td>
+</tr>
+</tbody>
+</table>
+<section id="compumethodref">
+<h3>compuMethodRef<a class="headerlink" href="#compumethodref" title="永久链接至标题"></a></h3>
+<p>Returns the <a class="reference internal" href="compu_method.html#ar4-datatype-compumethod"><span class="std std-ref">CompuMethod</span></a> reference from the first item of the variantProps list.
+Raises Runtime error if variantProps list is empty.</p>
+</section>
+<section id="dataconstraintref">
+<h3>dataConstraintRef<a class="headerlink" href="#dataconstraintref" title="永久链接至标题"></a></h3>
+<p>Returns the <a class="reference internal" href="data_constraint.html#ar4-datatype-dataconstraint"><span class="std std-ref">DataConstraint</span></a> reference from the first item of the variantProps list.
+Raises Runtime error if variantProps list is empty.</p>
+</section>
+<section id="unitref">
+<h3>unitRef<a class="headerlink" href="#unitref" title="永久链接至标题"></a></h3>
+<p>Returns the <a class="reference internal" href="unit.html#ar4-datatype-unit"><span class="std std-ref">Unit</span></a> reference from the first item of the variantProps list.
+Raises Runtime error if variantProps list is empty.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package &mdash; AUTOSAR 0.3.11 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Element" href="element.html" />
+    <link rel="prev" title="AUTOSAR 3 API" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AUTOSAR 3 API</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-roles">Package Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#public-methods">Public Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-description">Method Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#createintegerdatatype">createIntegerDataType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createarraydatatype">createArrayDataType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createrecorddatatype">createRecordDataType</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="element.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes/index.html">Data Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar4_api/index.html">AUTOSAR 4 API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">AUTOSAR 3 API</a> &raquo;</li>
+      <li>Package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autosar3_api/package.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="package">
+<span id="ar3-package"></span><h1>Package<a class="headerlink" href="#package" title="Permalink to this headline"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 68%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>&lt;AR-PACKAGE&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.package</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>An AUTOSAR package is a container for elements. Elements can be basically anything that are not packages.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;3.0.2&quot;</span><span class="p">)</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span> <span class="o">=</span> <span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 30%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>name</strong></p></td>
+<td><p>str</p></td>
+<td><p>Name of the package</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>elements</strong></p></td>
+<td><p>list[Elements]</p></td>
+<td><p>List of elements</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>subPackages</strong></p></td>
+<td><p>list[Package]</p></td>
+<td><p>List of sub-packages</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>role</strong></p></td>
+<td><p>str</p></td>
+<td><p>Package role</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="package-roles">
+<h2>Package Roles<a class="headerlink" href="#package-roles" title="Permalink to this headline"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Constant</em></p></td>
+<td><p>Main container for Constants</p></td>
+</tr>
+<tr class="row-even"><td><p><em>ComponentType</em></p></td>
+<td><p>Main container for Components</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>CompuMethod</em></p></td>
+<td><p>Main Container for Computational Methods</p></td>
+</tr>
+<tr class="row-even"><td><p><em>DataType</em></p></td>
+<td><p>Main container for Data Types</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>ModeDclrGroup</em></p></td>
+<td><p>Main Container for Mode Declaration Groups</p></td>
+</tr>
+<tr class="row-even"><td><p><em>PortInterface</em></p></td>
+<td><p>Main Container for Port Interfaces</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>Unit</em></p></td>
+<td><p>Main Container for Units</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="public-methods">
+<h2>Public Methods<a class="headerlink" href="#public-methods" title="Permalink to this headline"></a></h2>
+<p><strong>Data Types</strong>:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar3-package-createintegerdatatype"><span class="std std-ref">createIntegerDataType</span></a></p></li>
+<li><p><a class="reference internal" href="#ar3-package-createarraydatatype"><span class="std std-ref">createArrayDataType</span></a></p></li>
+<li><p><a class="reference internal" href="#ar3-package-createrecorddatatype"><span class="std std-ref">createRecordDataType</span></a></p></li>
+</ul>
+</section>
+<section id="method-description">
+<h2>Method Description<a class="headerlink" href="#method-description" title="Permalink to this headline"></a></h2>
+<section id="createintegerdatatype">
+<span id="ar3-package-createintegerdatatype"></span><h3>createIntegerDataType<a class="headerlink" href="#createintegerdatatype" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createIntegerDataType">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createIntegerDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">min=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">max=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">valueTable=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">offset=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">scaling=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">unit=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createIntegerDataType" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new IntegerDataType object add appends it to this package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – (short)Name of new datatype</p></li>
+<li><p><strong>min</strong> (<em>int</em>) – Lower limit</p></li>
+<li><p><strong>max</strong> (<em>str</em>) – Upper limit</p></li>
+<li><p><strong>valueTable</strong> (<em>list</em>) – Value table</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em> or </em><em>float</em>) – Scaling offset</p></li>
+<li><p><strong>scaling</strong> (<em>int</em><em> or </em><em>float</em>) – Scaling factor</p></li>
+<li><p><strong>unit</strong> (<em>str</em>) – Unit name</p></li>
+<li><p><strong>adminData</strong> – Optional AdminData</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createarraydatatype">
+<span id="ar3-package-createarraydatatype"></span><h3>createArrayDataType<a class="headerlink" href="#createarraydatatype" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createArrayDataType">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createArrayDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typeRef</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arraySize</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">elementName=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createArrayDataType" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new array data type and appends it to current package</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – (short)Name of new datatype</p></li>
+<li><p><strong>typeRef</strong> (<em>str</em>) – Reference to data type (used as the type for array element)</p></li>
+<li><p><strong>arraySize</strong> (<em>int</em>) – Number of elements in the array</p></li>
+<li><p><strong>adminData</strong> – Optional AdminData</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createrecorddatatype">
+<span id="ar3-package-createrecorddatatype"></span><h3>createRecordDataType<a class="headerlink" href="#createrecorddatatype" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createRecordDataType">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createRecordDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elements</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createRecordDataType" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new array data type and appends it to current package</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – (short)Name of new datatype</p></li>
+<li><p><strong>elements</strong> (<em>list</em>) – Elements in the record</p></li>
+<li><p><strong>adminData</strong> – Optional AdminData</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AUTOSAR 4 API &mdash; AUTOSAR 0.3.11 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Package Root" href="autosar.html" />
+    <link rel="prev" title="Modes" href="../autosar4_guide/modes.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AUTOSAR 4 API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constant/index.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/index.html">DataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>AUTOSAR 4 API</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autosar4_api/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="autosar-4-api">
+<h1>AUTOSAR 4 API<a class="headerlink" href="#autosar-4-api" title="Permalink to this headline"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="autosar.html">Package Root</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autosar.html#public-methods">Public Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar.html#method-details">Method Details</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="base/index.html">Base</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="base/admin_data.html">AdminData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base/sw_data_def_props_conditional.html">SwDataDefPropsConditional</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base/sw_pointer_target_props.html">SwPointerTargetProps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base/symbol_props.html">SymbolProps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="behavior/index.html">Behavior</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="behavior/data_received_event.html">DataReceivedEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior/event.html">Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior/exclusive_area.html">ExclusiveArea</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior/init_event.html">InitEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior/mode_switch_event.html">ModeSwitchEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior/operation_invoked_event.html">OperationInvokedEvent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior/runnable_entity.html">RunnableEntity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior/behavior.html">SwcInternalBehavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior/timing_event.html">TimingEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="component/index.html">Component</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="component/application_swc.html">ApplicationSoftwareComponent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component/atomic_swc.html">AtomicSoftwareComponent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component/cdd_swc.html">ComplexDeviceDriverComponent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component/composition_swc.html">CompositionComponent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component/component_prototype.html">ComponentPrototype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component/component_type.html">ComponentType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component/service_swc.html">ServiceComponent</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="constant/index.html">Constant</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="constant/application_value.html">ApplicationValue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constant/constant.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constant/numerical_value.html">NumericalValue</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="datatype/index.html">DataType</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="datatype/application_array_data_type.html">ApplicationArrayDataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/application_array_element.html">ApplicationArrayElement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/application_data_type.html">ApplicationDataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/application_primitive_data_type.html">ApplicationPrimitiveDataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/application_record_data_type.html">ApplicationRecordDataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/application_record_element.html">ApplicationRecordElement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/compu_method.html">CompuMethod</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/compu_scale_element.html">CompuScaleElement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/computation.html">Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/data_constraint.html">DataConstraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/data_type_map.html">DataTypeMap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/datatype_mapping_set.html">DataTypeMappingSet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/implementation_data_type.html">ImplementationDataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/implementation_data_type_element.html">ImplementationDataTypeElement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/mode_request_type_map.html">ModeRequestTypeMap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/sw_base_type.html">SwBaseType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="element/index.html">Element</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="element/element.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="element/data_element.html">DataElement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="element/parameter_data_prototype.html">ParameterDataPrototype</a></li>
+<li class="toctree-l2"><a class="reference internal" href="element/software_address_method.html">SoftwareAddressMethod</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="mode/index.html">Mode</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mode/mode_declaration_group.html">ModeDeclarationGroup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mode/mode_declaration.html">ModeDeclaration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mode/mode_group.html">ModeGroup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspace</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html#factory-methods">Factory Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html#public-properties">Public Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html#public-methods">Public Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html#method-description">Method Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html#workspaceprofile">WorkspaceProfile</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="package.html">Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="package.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="package.html#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="package.html#package-roles">Package Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="package.html#public-methods">Public Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="package.html#method-description">Method Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="package.html#parameter-details">Parameter Details</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="port/index.html">Port</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="port/port.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="port/provide_port.html">ProvidePort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="port/require_port.html">RequirePort</a></li>
+<li class="toctree-l2"><a class="reference internal" href="port/data_element_com_spec.html">DataElementComSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="port/mode_switch_com_spec.html">ModeSwitchComSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="port/parameter_com_spec.html">ParameterComSpec</a></li>
+<li class="toctree-l2"><a class="reference internal" href="port/operation_com_spec.html">OperationComSpec</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="portinterface/index.html">PortInterface</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="portinterface/client_server_interface.html">ClientServerInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portinterface/mode_switch_interface.html">ModeSwitchInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portinterface/operation.html">Operation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portinterface/parameter_interface.html">ParameterInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portinterface/portinterface.html">PortInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portinterface/sender_receiver_interface.html">SenderReceiverInterface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portinterface/nvdata_interface.html">NvDataInterface</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

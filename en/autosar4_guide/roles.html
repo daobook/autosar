@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package Roles &mdash; AUTOSAR 0.3.11 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Ports" href="ports.html" />
+    <link rel="prev" title="AUTOSAR 4 Developer Guide" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AUTOSAR 4 Developer Guide</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Package Roles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#role-types">Role Types</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-1-setting-roles-on-package-creation">Example 1 - Setting roles on package creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-2-setting-roles-while-loading-arxml">Example 2 - Setting roles while loading ARXML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-3-pushing-and-popping-roles-on-the-roles-stack">Example 3 - Pushing and popping roles on the roles stack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ports.html">Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior.html">SWC Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modes.html">Modes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar4_api/index.html">AUTOSAR 4 API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">AUTOSAR 4 Developer Guide</a> &raquo;</li>
+      <li>Package Roles</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autosar4_guide/roles.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="package-roles">
+<span id="ar4-roles"></span><h1>Package Roles<a class="headerlink" href="#package-roles" title="Permalink to this headline"></a></h1>
+<p>Package roles are used as a hint to Python, telling it what AUTOSAR package contains what kind of element.
+Using this mechanism allows the AUTOSAR Python package to implictly find or create elements and place them into the right package.
+AUTOSAR package roles are not stored anywhere in the XML. You have to explicitly set them programmatically while either creating or loading AUTOSAR packages.</p>
+<section id="role-types">
+<h2>Role Types<a class="headerlink" href="#role-types" title="Permalink to this headline"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package Role Name</p></th>
+<th class="head"><p>Element Types</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DataType</p></td>
+<td><p>Data Types</p></td>
+</tr>
+<tr class="row-odd"><td><p>Constant</p></td>
+<td><p>Constants</p></td>
+</tr>
+<tr class="row-even"><td><p>ComponentType</p></td>
+<td><p>Components (prototypes)</p></td>
+</tr>
+<tr class="row-odd"><td><p>ModeDclrGroup</p></td>
+<td><p>Mode Declaration Groups</p></td>
+</tr>
+<tr class="row-even"><td><p>CompuMethod</p></td>
+<td><p>Computational Methods</p></td>
+</tr>
+<tr class="row-odd"><td><p>DataConstraint</p></td>
+<td><p>Data Constraints</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h2>
+<section id="example-1-setting-roles-on-package-creation">
+<h3>Example 1 - Setting roles on package creation<a class="headerlink" href="#example-1-setting-roles-on-package-creation" title="Permalink to this headline"></a></h3>
+<p>This example demonstrates how to assign a role when the package is created.
+By assigning both <em>CompuMethod</em> and <em>DataConstraint</em> allows the <a class="reference internal" href="../autosar4_api/package.html#ar4-package-package-createimplementationdatatype"><span class="std std-ref">createImplementationDataType</span></a> method to
+implictly create associated <a class="reference internal" href="../autosar4_api/datatype/compu_method.html#ar4-datatype-compumethod"><span class="std std-ref">CompuMethod</span></a> and <a class="reference internal" href="../autosar4_api/datatype/data_constraint.html#ar4-datatype-dataconstraint"><span class="std std-ref">DataConstraint</span></a> objects.</p>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">=</span><span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;Units&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;Unit&#39;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">=</span><span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationTypes&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint8&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">65535</span><span class="p">,</span> <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint16&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;DataTypes.arxml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-2-setting-roles-while-loading-arxml">
+<h3>Example 2 - Setting roles while loading ARXML<a class="headerlink" href="#example-2-setting-roles-while-loading-arxml" title="Permalink to this headline"></a></h3>
+<p>This example uses the saved XML from previous example and reassigns the roles while the XML is loading.</p>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">loadXML</span><span class="p">(</span><span class="s1">&#39;DataTypes.arxml&#39;</span><span class="p">,</span> <span class="n">roles</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;/DataTypes&#39;</span><span class="p">:</span> <span class="s1">&#39;DataType&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/DataTypes/CompuMethods&#39;</span><span class="p">:</span> <span class="s1">&#39;CompuMethod&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/DataTypes/Units&#39;</span><span class="p">:</span> <span class="s1">&#39;Unit&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;/DataTypes/DataConstrs&#39;</span><span class="p">:</span> <span class="s1">&#39;DataConstraint&#39;</span><span class="p">})</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">roles</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="example-3-pushing-and-popping-roles-on-the-roles-stack">
+<h3>Example 3 - Pushing and popping roles on the roles stack<a class="headerlink" href="#example-3-pushing-and-popping-roles-on-the-roles-stack" title="Permalink to this headline"></a></h3>
+<p>When working in large scale scale projects it can sometimes be beneficial to temporarily overrride the currently selected roles while inside a Python function.
+For this purpose you can use the <a class="reference internal" href="../autosar4_api/workspace.html#ar4-workspace-workspace-pushroles"><span class="std std-ref">pushRoles</span></a> and <a class="reference internal" href="../autosar4_api/workspace.html#ar4-workspace-workspace-poproles"><span class="std std-ref">popRoles</span></a> methods from the <a class="reference internal" href="../autosar4_api/workspace.html#ar4-workspace"><span class="std std-ref">Workspace</span></a> class.</p>
+<p>The next example has two functions:</p>
+<ul class="simple">
+<li><p>create_platform_types</p></li>
+<li><p>create_component_data_types</p></li>
+</ul>
+<p>By calling <em>pushRoles</em> in the beginning and <em>popRoles</em> at the end of each function we prevent roles to still remain active after each function call.
+In this example, we use this mechanism to allow <em>AUTOSAR_Platform</em> and <em>DataTypes</em> to have independent CompuMethod and DataConstraint sub-packages while we are
+creating <a class="reference internal" href="../autosar4_api/datatype/implementation_data_type.html#ar4-datatype-implementationdatatype"><span class="std std-ref">ImplementationDataTypes</span></a>.</p>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="k">def</span> <span class="nf">create_platform_types</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">pushRoles</span><span class="p">()</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;AUTOSAR_Platform&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationDataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="s1">&#39;/AUTOSAR_Platform/BaseTypes/uint8&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">popRoles</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">create_component_data_types</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">pushRoles</span><span class="p">()</span>
+    <span class="n">package</span><span class="o">=</span><span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationDataTypes&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypeRef</span><span class="p">(</span><span class="s1">&#39;OffOn_T&#39;</span><span class="p">,</span>
+        <span class="n">implementationTypeRef</span> <span class="o">=</span> <span class="s1">&#39;/AUTOSAR_Platform/ImplementationDataTypes/uint8&#39;</span><span class="p">,</span>
+        <span class="n">valueTable</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OffOn_Off&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;OffOn_On&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;OffOn_Error&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;OffOn_NotAvailable&#39;</span><span class="p">])</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">popRoles</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+    <span class="n">create_platform_types</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+    <span class="n">create_component_data_types</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;AUTOSAR_Platform.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/AUTOSAR_Platform&#39;</span><span class="p">])</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;DataTypes.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/DataTypes&#39;</span><span class="p">])</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

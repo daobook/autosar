@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ExclusiveArea &mdash; AUTOSAR 0.3.11 文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="InitEvent" href="init_event.html" />
+    <link rel="prev" title="Event" href="event.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html">Base</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Behavior</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="data_received_event.html">DataReceivedEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="event.html">Event</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ExclusiveArea</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#factory-methods">Factory Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="init_event.html">InitEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mode_switch_event.html">ModeSwitchEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="operation_invoked_event.html">OperationInvokedEvent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="runnable_entity.html">RunnableEntity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="behavior.html">SwcInternalBehavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="timing_event.html">TimingEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constant/index.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datatype/index.html">DataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">AUTOSAR 4 API</a> &raquo;</li>
+          <li><a href="index.html">Behavior</a> &raquo;</li>
+      <li>ExclusiveArea</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autosar4_api/behavior/exclusive_area.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="exclusivearea">
+<span id="ar4-behavior-exclusivearea"></span><h1>ExclusiveArea<a class="headerlink" href="#exclusivearea" title="永久链接至标题"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>&lt;EXCLUSIVE-AREA&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.behavior</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td><p><a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<section id="factory-methods">
+<h2>Factory Methods<a class="headerlink" href="#factory-methods" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p>ref:<cite>SwcInternalBehavior.ar4_behavior_Behavior_createExclusiveArea</cite></p></li>
+</ul>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="永久链接至标题"></a></h2>
+<p>For inherited attributes see <a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

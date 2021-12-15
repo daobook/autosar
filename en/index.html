@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Python AUTOSAR package &mdash; AUTOSAR 0.3.11 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Getting Started" href="start.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosar4_api/index.html">AUTOSAR 4 API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>The Python AUTOSAR package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-python-autosar-package">
+<h1>The Python AUTOSAR package<a class="headerlink" href="#the-python-autosar-package" title="Permalink to this headline"></a></h1>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this headline"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="start.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#writing-your-first-script">Writing your first script</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Basic Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#arxml">ARXML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#workspace">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#packages">Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#elements">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#short-name">Short Name</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autosar3_api/index.html">AUTOSAR 3 API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autosar3_api/package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar3_api/element.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar3_api/datatypes/index.html">Data Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_guide/roles.html">Package Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_guide/ports.html">Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_guide/behavior.html">SWC Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_guide/modes.html">Modes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autosar4_api/index.html">AUTOSAR 4 API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/constant/index.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/datatype/index.html">DataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="supported-autosar-versions">
+<h2>Supported AUTOSAR Versions<a class="headerlink" href="#supported-autosar-versions" title="Permalink to this headline"></a></h2>
+<p>These are the AUTOSAR versions that this module is known to work with:</p>
+<ul class="simple">
+<li><p>AUTOSAR 3.0</p></li>
+<li><p>AUTOSAR 4.2</p></li>
+</ul>
+<p>Other versions might work for you but they have not been tested by the author of this module.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

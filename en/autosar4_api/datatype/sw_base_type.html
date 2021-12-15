@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SwBaseType &mdash; AUTOSAR 0.3.11 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Unit" href="unit.html" />
+    <link rel="prev" title="ModeRequestTypeMap" href="mode_request_type_map.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constant/index.html">Constant</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">DataType</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="application_array_data_type.html">ApplicationArrayDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_array_element.html">ApplicationArrayElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_data_type.html">ApplicationDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_primitive_data_type.html">ApplicationPrimitiveDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_record_data_type.html">ApplicationRecordDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_record_element.html">ApplicationRecordElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compu_method.html">CompuMethod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compu_scale_element.html">CompuScaleElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="computation.html">Computation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_constraint.html">DataConstraint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_type_map.html">DataTypeMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatype_mapping_set.html">DataTypeMappingSet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="implementation_data_type.html">ImplementationDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="implementation_data_type_element.html">ImplementationDataTypeElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mode_request_type_map.html">ModeRequestTypeMap</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">SwBaseType</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory-methods">Factory Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constructor">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">AUTOSAR 4 API</a> &raquo;</li>
+          <li><a href="index.html">DataType</a> &raquo;</li>
+      <li>SwBaseType</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autosar4_api/datatype/sw_base_type.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="swbasetype">
+<span id="ar4-datatype-swbasetype"></span><h1>SwBaseType<a class="headerlink" href="#swbasetype" title="Permalink to this headline"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>&lt;SW-BASE-TYPE&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.datatype</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td><p><a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>The SwBaseType is the lowest level of the AUTOSAR 4 type system. It defines a type in terms of bits and bytes.
+All other data types eventually end up being defined by a base type.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;AUTOSAR_Platform&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;dtRef_const_VOID&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;VOID&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span> <span class="o">=</span> <span class="s1">&#39;void&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;dtRef_VOID&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;VOID&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span> <span class="o">=</span> <span class="s1">&#39;void&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;boolean&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;BOOLEAN&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;boolean&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;IEEE754&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span> <span class="o">=</span> <span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;IEEE754&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span> <span class="o">=</span> <span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;sint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;2C&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;sint8&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;sint16&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;2C&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;sint32&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;2C&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;sint32&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint32&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint32&#39;</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;AUTOSAR_Platform.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/AUTOSAR_Platform&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+<section id="factory-methods">
+<h2>Factory Methods<a class="headerlink" href="#factory-methods" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../package.html#ar4-package-package-createswbasetype"><span class="std std-ref">Package.createSwBaseType</span></a></p></li>
+<li><p><a class="reference internal" href="../package.html#ar4-package-package-createbasetype"><span class="std std-ref">Package.createBaseType (alias)</span></a></p></li>
+</ul>
+</section>
+<section id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="datatype.SwBaseType">
+<span class="sig-prename descclassname"><span class="pre">datatype.</span></span><span class="sig-name descname"><span class="pre">SwBaseType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">size</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">typeEncoding</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">nativeDeclaration</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category</span> <span class="pre">=</span> <span class="pre">'FIXED_LENGTH'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">parent</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#datatype.SwBaseType" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Short name.</p></li>
+<li><p><strong>size</strong> (<em>None</em><em>, </em><em>int</em>) – Type size in bits.</p></li>
+<li><p><strong>typeEncoding</strong> (<em>None</em><em>, </em><em>str</em>) – Type encoding (e.g. “2C” for Two’s-complement encoding).</p></li>
+<li><p><strong>nativeDeclaration</strong> – Native declaration (name of type in C programming language).</p></li>
+<li><p><strong>category</strong> (<em>None</em><em>, </em><em>str</em>) – Category string.</p></li>
+<li><p><strong>parent</strong> (<a class="reference internal" href="../package.html#ar4-package-package"><span class="std std-ref">Package</span></a>) – parent package.</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="../base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h2>
+<p>For inherited attributes see <a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a>.</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 20%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>nativeDeclaration</strong></p></td>
+<td><p>None, str</p></td>
+<td><p>&lt;NATIVE-DECLARATION&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>size</strong></p></td>
+<td><p>None, int</p></td>
+<td><p>&lt;BASE-TYPE-SIZE&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typeEncoding</strong></p></td>
+<td><p>None, str</p></td>
+<td><p>&lt;BASE-TYPE-ENCODING&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

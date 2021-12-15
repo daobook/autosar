@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ImplementationDataType &mdash; AUTOSAR 0.3.11 文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="ImplementationDataTypeElement" href="implementation_data_type_element.html" />
+    <link rel="prev" title="DataTypeMappingSet" href="datatype_mapping_set.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constant/index.html">Constant</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">DataType</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="application_array_data_type.html">ApplicationArrayDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_array_element.html">ApplicationArrayElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_data_type.html">ApplicationDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_primitive_data_type.html">ApplicationPrimitiveDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_record_data_type.html">ApplicationRecordDataType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="application_record_element.html">ApplicationRecordElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compu_method.html">CompuMethod</a></li>
+<li class="toctree-l3"><a class="reference internal" href="compu_scale_element.html">CompuScaleElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="computation.html">Computation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_constraint.html">DataConstraint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="data_type_map.html">DataTypeMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="datatype_mapping_set.html">DataTypeMappingSet</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ImplementationDataType</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory-methods">Factory Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#constructor">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#public-methods">Public Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method-description">Method Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="implementation_data_type_element.html">ImplementationDataTypeElement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mode_request_type_map.html">ModeRequestTypeMap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sw_base_type.html">SwBaseType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="unit.html">Unit</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">AUTOSAR 4 API</a> &raquo;</li>
+          <li><a href="index.html">DataType</a> &raquo;</li>
+      <li>ImplementationDataType</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autosar4_api/datatype/implementation_data_type.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="implementationdatatype">
+<span id="ar4-datatype-implementationdatatype"></span><h1>ImplementationDataType<a class="headerlink" href="#implementationdatatype" title="永久链接至标题"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>&lt;IMPLEMENTATION-DATA-TYPE&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.datatype</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td><p><a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Implementation Data Types is a very generic container and can define almost any data type.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="永久链接至标题"></a></h2>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="k">def</span> <span class="nf">setup</span><span class="p">():</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">=</span><span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">=</span><span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;dtRef_const_VOID&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;VOID&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span> <span class="o">=</span> <span class="s1">&#39;void&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationTypes&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ws</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">setup</span><span class="p">()</span>
+<span class="n">implTypes</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/DataTypes/ImplementationTypes&#39;</span><span class="p">)</span>
+
+<span class="c1">#Basic Implementation Type</span>
+<span class="n">uint8_BaseRef</span> <span class="o">=</span> <span class="s1">&#39;/DataTypes/BaseTypes/uint8&#39;</span>
+<span class="n">uint8_Impl</span> <span class="o">=</span> <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
+    <span class="n">baseTypeRef</span> <span class="o">=</span> <span class="n">uint8_BaseRef</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+<span class="c1">#Type Reference</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypeRef</span><span class="p">(</span><span class="s1">&#39;OffOn_T&#39;</span><span class="p">,</span> <span class="n">implementationTypeRef</span> <span class="o">=</span> <span class="n">uint8_Impl</span><span class="o">.</span><span class="n">ref</span><span class="p">,</span>
+    <span class="n">valueTable</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OffOn_Off&#39;</span><span class="p">,</span> <span class="s1">&#39;OffOn_On&#39;</span><span class="p">,</span> <span class="s1">&#39;OffOn_Error&#39;</span><span class="p">,</span> <span class="s1">&#39;OffOn_NotAvailable&#39;</span><span class="p">])</span>
+
+<span class="c1">#Pointer Type</span>
+<span class="n">dtRef_const_VOID_BaseRef</span> <span class="o">=</span> <span class="s1">&#39;/DataTypes/BaseTypes/dtRef_const_VOID&#39;</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypePtr</span><span class="p">(</span><span class="s1">&#39;dtRef_const_VOID&#39;</span><span class="p">,</span> <span class="n">dtRef_const_VOID_BaseRef</span><span class="p">,</span> <span class="n">swImplPolicy</span> <span class="o">=</span> <span class="s1">&#39;CONST&#39;</span><span class="p">)</span>
+
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;DataTypes.arxml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="factory-methods">
+<h2>Factory Methods<a class="headerlink" href="#factory-methods" title="永久链接至标题"></a></h2>
+<section id="basic-implementation-types">
+<h3>Basic Implementation Types<a class="headerlink" href="#basic-implementation-types" title="永久链接至标题"></a></h3>
+<p>In its simplest form, an implementation data type is just a reference to a <a class="reference internal" href="sw_base_type.html#ar4-datatype-swbasetype"><span class="std std-ref">SwBaseType</span></a> with optional data constraint and compuMethod.
+Use the <a class="reference internal" href="../package.html#ar4-package-package-createimplementationdatatype"><span class="std std-ref">Package.createImplementationDataType</span></a> method to create basic implementation types.</p>
+</section>
+<section id="type-references">
+<h3>Type References<a class="headerlink" href="#type-references" title="永久链接至标题"></a></h3>
+<p>You can also create an implementation data type that references another implementation data type. This is known as <em>typedef</em> in the C programming language.
+Use the <a class="reference internal" href="../package.html#ar4-package-package-createimplementationdatatyperef"><span class="std std-ref">Package.createImplementationDataTypeRef</span></a> method to create type references.</p>
+</section>
+<section id="pointer-types">
+<h3>Pointer Types<a class="headerlink" href="#pointer-types" title="永久链接至标题"></a></h3>
+<p>You can create data types that are pointers to base types. A future release should be able to support pointers to other implementation types.
+Use the <a class="reference internal" href="../package.html#ar4-package-package-createimplementationdatatypeptr"><span class="std std-ref">Package.createImplementationDataTypePtr</span></a> method to create pointer types.</p>
+</section>
+<section id="array-types">
+<h3>Array Types<a class="headerlink" href="#array-types" title="永久链接至标题"></a></h3>
+<p>You can create implementation data types that are arrays of other implementation data types.
+Use the <a class="reference internal" href="../package.html#ar4-package-package-createimplementationarraydatatype"><span class="std std-ref">createImplementationArrayDataType</span></a> to create array data types.</p>
+</section>
+<section id="record-types">
+<h3>Record Types<a class="headerlink" href="#record-types" title="永久链接至标题"></a></h3>
+<p>You can create implementation data types that are records of other implementation data types.
+Use the <a class="reference internal" href="../package.html#ar4-package-package-createimplementationrecorddatatype"><span class="std std-ref">createImplementationRecordDataType</span></a> to create record data types.</p>
+<p>Note: Record types are sometimes called structs or structure types.</p>
+</section>
+</section>
+<section id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="永久链接至标题"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="datatype.ImplementationDataType">
+<span class="sig-prename descclassname"><span class="pre">datatype.</span></span><span class="sig-name descname"><span class="pre">ImplementationDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">variantProps</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">dynamicArraySizeProfile</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">typeEmitter</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category='VALUE'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">parent</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#datatype.ImplementationDataType" title="永久链接至目标"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Short name.</p></li>
+<li><p><strong>variantProps</strong> (None, <a class="reference internal" href="../base/sw_data_def_props_conditional.html#ar4-base-swdatadefpropsconditional"><span class="std std-ref">SwDataDefPropsConditional</span></a>, list) – variant properties.</p></li>
+<li><p><strong>dynamicArraySizeProfile</strong> (<em>None</em><em>, </em><em>str</em>) – Dynamic array size profile.</p></li>
+<li><p><strong>typeEmitter</strong> (<em>None</em><em>, </em><em>str</em>) – Type emitter</p></li>
+<li><p><strong>category</strong> (<em>None</em><em>, </em><em>str</em>) – Category string.</p></li>
+<li><p><strong>parent</strong> (None, <a class="reference internal" href="../package.html#ar4-package-package"><span class="std std-ref">Package</span></a>) – Parent package.</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="../base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>) – Admin data.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="永久链接至标题"></a></h2>
+<p>For inherited attributes see <a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a>.</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 50%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>dynamicArraySizeProfile</strong></p></td>
+<td><p>None, str</p></td>
+<td><p>&lt;DYNAMIC-ARRAY-SIZE-PROFILE&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>subElements</strong></p></td>
+<td><p>list of <a class="reference internal" href="implementation_data_type_element.html#ar4-datatype-implementationdatatypeelement"><span class="std std-ref">ImplementationDataTypeElement</span></a></p></td>
+<td><p>&lt;SUB-ELEMENTS&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>symbolProps</strong></p></td>
+<td><p>None, <a class="reference internal" href="../base/symbol_props.html#ar4-base-symbolprops"><span class="std std-ref">SymbolProps</span></a></p></td>
+<td><p>&lt;SYMBOL-PROPS&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>typeEmitter</strong></p></td>
+<td><p>None, str</p></td>
+<td><p>&lt;TYPE-EMITTER&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>variantProps</strong></p></td>
+<td><p>list of <a class="reference internal" href="../base/sw_data_def_props_conditional.html#ar4-base-swdatadefpropsconditional"><span class="std std-ref">SwDataDefPropsConditional</span></a></p></td>
+<td><p>&lt;SW-DATA-DEF-PROPS&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="永久链接至标题"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 22%" />
+<col style="width: 11%" />
+<col style="width: 10%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Access Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>arraySize</strong></p></td>
+<td><p>int</p></td>
+<td><p>Get</p></td>
+<td><p>Returns the array size of first <em>subElements</em> element</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>baseTypeRef</strong></p></td>
+<td><p>str</p></td>
+<td><p>Get</p></td>
+<td><p>Returns the base type reference of first <em>subElements</em> element</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>compuMethodRef</strong></p></td>
+<td><p>str</p></td>
+<td><p>Get</p></td>
+<td><p>Returns the CompuMethod reference of first <em>subElements</em> element</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>dataConstraintRef</strong></p></td>
+<td><p>str</p></td>
+<td><p>Get</p></td>
+<td><p>Returns the data constraint reference of first <em>subElements</em> element</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>implementationTypeRef</strong></p></td>
+<td><p>str</p></td>
+<td><p>Get</p></td>
+<td><p>Returns the implementation type reference of first <em>subElements</em> element</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="public-methods">
+<h2>Public Methods<a class="headerlink" href="#public-methods" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-datatype-implementationdatatype-setsymbolprops"><span class="std std-ref">setSymbolProps</span></a></p></li>
+</ul>
+</section>
+<section id="method-description">
+<h2>Method Description<a class="headerlink" href="#method-description" title="永久链接至标题"></a></h2>
+<section id="setsymbolprops">
+<span id="ar4-datatype-implementationdatatype-setsymbolprops"></span><h3>setSymbolProps<a class="headerlink" href="#setsymbolprops" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="ImplementationDataType.setSymbolProps">
+<span class="sig-prename descclassname"><span class="pre">ImplementationDataType.</span></span><span class="sig-name descname"><span class="pre">setSymbolProps</span></span><span class="sig-paren">(</span><span class="optional">[</span><em class="sig-param"><span class="n"><span class="pre">name</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">symbol</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#ImplementationDataType.setSymbolProps" title="永久链接至目标"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>None</em><em>, </em><em>str</em>) – Short name.</p></li>
+<li><p><strong>symbol</strong> (<em>None</em><em>, </em><em>str</em>) – Symbol name.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Assigns the symbolProps attribute by creating a new instance of <a class="reference internal" href="../base/symbol_props.html#ar4-base-symbolprops"><span class="std std-ref">SymbolProps</span></a>.</p>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

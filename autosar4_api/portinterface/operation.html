@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operation &mdash; AUTOSAR 0.3.11 文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="ParameterInterface" href="parameter_interface.html" />
+    <link rel="prev" title="ModeSwitchInterface" href="mode_switch_interface.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constant/index.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datatype/index.html">DataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../port/index.html">Port</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">PortInterface</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="client_server_interface.html">ClientServerInterface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mode_switch_interface.html">ModeSwitchInterface</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Operation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#factory-methods">Factory Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#public-methods">Public Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method-description">Method Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="parameter_interface.html">ParameterInterface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="portinterface.html">PortInterface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sender_receiver_interface.html">SenderReceiverInterface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nvdata_interface.html">NvDataInterface</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">AUTOSAR 4 API</a> &raquo;</li>
+          <li><a href="index.html">PortInterface</a> &raquo;</li>
+      <li>Operation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autosar4_api/portinterface/operation.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="operation">
+<span id="ar4-portinterface-operation"></span><h1>Operation<a class="headerlink" href="#operation" title="永久链接至标题"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>&lt;CLIENT-SERVER-OPERATION&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.portinterface</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td><p><a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>An operation of a client-server port interface.</p>
+<section id="factory-methods">
+<h2>Factory Methods<a class="headerlink" href="#factory-methods" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../package.html#ar4-package-package-createclientserverinterface"><span class="std std-ref">Package.createClientServerInterface</span></a></p></li>
+</ul>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="永久链接至标题"></a></h2>
+<p>For inherited attributes see <a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a>.</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 58%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>arguments</strong></p></td>
+<td><p>list(Arguments)</p></td>
+<td><p>List of operation arguments</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>errorRefs</strong></p></td>
+<td><p>list(str)</p></td>
+<td><p>References to ApplicationError objects that this operation can return</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="永久链接至标题"></a></h2>
+<section id="possibleerrors">
+<h3>possibleErrors<a class="headerlink" href="#possibleerrors" title="永久链接至标题"></a></h3>
+<p>This is a convenience property setter for seclecting one or more error codes that this operation can possibly return.
+You can assign either a string or a list of strings to this property. The object will automatically validate if
+the name(s) are possible errors that have been previously assigned to the port interface (its parent object).
+The object will convert the names of the errors in to actual references by updating the self.errorRefs list</p>
+<section id="example">
+<h4>Example<a class="headerlink" href="#example" title="永久链接至标题"></a></h4>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;PortInterfaces&#39;</span><span class="p">,</span> <span class="n">role</span> <span class="o">=</span> <span class="s2">&quot;PortInterface&quot;</span><span class="p">)</span>
+
+<span class="n">portInterface</span><span class="o">=</span><span class="n">package</span><span class="o">.</span><span class="n">createClientServerInterface</span><span class="p">(</span><span class="s2">&quot;Example_I&quot;</span><span class="p">,</span>
+    <span class="n">operations</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Invalidate&quot;</span><span class="p">],</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">ApplicationError</span><span class="p">(</span><span class="s2">&quot;E_NOT_OK&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">isService</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;Invalidate&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">possibleErrors</span> <span class="o">=</span> <span class="s2">&quot;E_NOT_OK&quot;</span>
+
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;PortInterfaces.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/PortInterfaces&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="public-methods">
+<h2>Public Methods<a class="headerlink" href="#public-methods" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#operation-createoutargument"><span class="std std-ref">createOutArgument</span></a></p></li>
+<li><p><a class="reference internal" href="#operation-createinoutargument"><span class="std std-ref">createInOutArgument</span></a></p></li>
+<li><p><a class="reference internal" href="#operation-createinargument"><span class="std std-ref">createInArgument</span></a></p></li>
+<li><p><a class="reference internal" href="#operation-append"><span class="std std-ref">append</span></a></p></li>
+</ul>
+</section>
+<section id="method-description">
+<h2>Method Description<a class="headerlink" href="#method-description" title="永久链接至标题"></a></h2>
+<section id="createoutargument">
+<span id="operation-createoutargument"></span><h3>createOutArgument<a class="headerlink" href="#createoutargument" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Operation.createOutArgument">
+<span class="sig-prename descclassname"><span class="pre">Operation.</span></span><span class="sig-name descname"><span class="pre">createOutArgument</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typeRef</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swCalibrationAccess</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">serverArgumentImplPolicy=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Operation.createOutArgument" title="永久链接至目标"></a></dt>
+<dd><p>Creates a new argument with direction set to ‘OUT’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the new argument</p></li>
+<li><p><strong>typeRef</strong> (<em>str</em>) – Reference to data type.</p></li>
+<li><p><strong>swCalibrationAccess</strong> (<em>str</em>) – Optional swCalibrationAccess string.</p></li>
+<li><p><strong>serverArgumentImplPolicy</strong> (<em>str</em>) – Optional serverArgumentImplPolicy string.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>Argument</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createinoutargument">
+<span id="operation-createinoutargument"></span><h3>createInOutArgument<a class="headerlink" href="#createinoutargument" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Operation.createInOutArgument">
+<span class="sig-prename descclassname"><span class="pre">Operation.</span></span><span class="sig-name descname"><span class="pre">createInOutArgument</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typeRef</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swCalibrationAccess</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">serverArgumentImplPolicy=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Operation.createInOutArgument" title="永久链接至目标"></a></dt>
+<dd><p>Creates a new argument with direction set to ‘INOUT’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the new argument</p></li>
+<li><p><strong>typeRef</strong> (<em>str</em>) – Reference to data type.</p></li>
+<li><p><strong>swCalibrationAccess</strong> (<em>str</em>) – Optional swCalibrationAccess string.</p></li>
+<li><p><strong>serverArgumentImplPolicy</strong> (<em>str</em>) – Optional serverArgumentImplPolicy string.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>Argument</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createinargument">
+<span id="operation-createinargument"></span><h3>createInArgument<a class="headerlink" href="#createinargument" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Operation.createInArgument">
+<span class="sig-prename descclassname"><span class="pre">Operation.</span></span><span class="sig-name descname"><span class="pre">createInArgument</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typeRef</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swCalibrationAccess</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">serverArgumentImplPolicy=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Operation.createInArgument" title="永久链接至目标"></a></dt>
+<dd><p>Creates a new argument with direction set to ‘IN’.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Name of the new argument</p></li>
+<li><p><strong>typeRef</strong> (<em>str</em>) – Reference to data type.</p></li>
+<li><p><strong>swCalibrationAccess</strong> (<em>str</em>) – Optional swCalibrationAccess string.</p></li>
+<li><p><strong>serverArgumentImplPolicy</strong> (<em>str</em>) – Optional serverArgumentImplPolicy string.</p></li>
+</ul>
+</dd>
+<dt class="field-even">返回类型</dt>
+<dd class="field-even"><p>Argument</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="append">
+<span id="operation-append"></span><h3>append<a class="headerlink" href="#append" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Operation.append">
+<span class="sig-prename descclassname"><span class="pre">Operation.</span></span><span class="sig-name descname"><span class="pre">append</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">elem</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Operation.append" title="永久链接至目标"></a></dt>
+<dd><p>Adds element to either the self.arguments or self.errorRefs depending on its type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>elem</strong> (<em>Argument</em><em> or </em><em>str</em>) – Element</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

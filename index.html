@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python AUTOSAR 软件包 &mdash; AUTOSAR 0.3.11 文档</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/translations.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="genindex.html" />
+    <link rel="search" title="搜索" href="search.html" />
+    <link rel="next" title="快速上手" href="start.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosar4_api/index.html">AUTOSAR 4 API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Python AUTOSAR 软件包</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-python-autosar-package">
+<h1>Python AUTOSAR 软件包<a class="headerlink" href="#the-python-autosar-package" title="永久链接至标题"></a></h1>
+<section id="table-of-contents">
+<h2>目录<a class="headerlink" href="#table-of-contents" title="永久链接至标题"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="start.html">快速上手</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="start.html#installation">安装</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#running-unit-tests">运行单元测试</a></li>
+<li class="toctree-l2"><a class="reference internal" href="start.html#writing-your-first-script">写下你的第一个脚本</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Basic Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#arxml">ARXML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#workspace">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#packages">Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#elements">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basics.html#short-name">Short Name</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autosar3_api/index.html">AUTOSAR 3 API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autosar3_api/package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar3_api/element.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar3_api/datatypes/index.html">Data Types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_guide/roles.html">Package Roles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_guide/ports.html">Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_guide/behavior.html">SWC Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_guide/modes.html">Modes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="autosar4_api/index.html">AUTOSAR 4 API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/constant/index.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/datatype/index.html">DataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autosar4_api/portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="supported-autosar-versions">
+<h2>所支持的 AUTOSAR 版本<a class="headerlink" href="#supported-autosar-versions" title="永久链接至标题"></a></h2>
+<p>这些是该模块已知可使用的 AUTOSAR 版本：</p>
+<ul class="simple">
+<li><p>AUTOSAR 3.0</p></li>
+<li><p>AUTOSAR 4.2</p></li>
+</ul>
+<p>其他版本可能对你有用，但它们没有经过本模块作者的测试。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

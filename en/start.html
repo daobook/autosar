@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Getting Started &mdash; AUTOSAR 0.3.11 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Basic Concepts" href="basics.html" />
+    <link rel="prev" title="The Python AUTOSAR package" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-the-cfile-package">Installing the cfile package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pip-install">PIP Install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manual-install">Manual Install</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-the-autosar-package">Installing the autosar package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">PIP Install</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Manual Install</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#running-unit-tests">Running Unit Tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#writing-your-first-script">Writing your first script</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autosar4_api/index.html">AUTOSAR 4 API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Getting Started</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/start.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"></a></h1>
+<section id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"></a></h2>
+<section id="installing-the-cfile-package">
+<h3>Installing the cfile package<a class="headerlink" href="#installing-the-cfile-package" title="Permalink to this headline"></a></h3>
+<p>First install the cfile package.</p>
+<section id="pip-install">
+<h4>PIP Install<a class="headerlink" href="#pip-install" title="Permalink to this headline"></a></h4>
+<div class="highlight-Text notranslate"><div class="highlight"><pre><span></span>pip3 install cfile
+</pre></div>
+</div>
+</section>
+<section id="manual-install">
+<h4>Manual Install<a class="headerlink" href="#manual-install" title="Permalink to this headline"></a></h4>
+<p>Download latest release from the <a class="reference external" href="https://github.com/cogu/cfile/releases">cfile Github page</a>.</p>
+<p>Unzip the release then install using setuptools.</p>
+<div class="highlight-Text notranslate"><div class="highlight"><pre><span></span>Linux (shell):
+python3 setup.py install
+
+Windows (PowerShell):
+python setup.py install
+</pre></div>
+</div>
+</section>
+</section>
+<section id="installing-the-autosar-package">
+<h3>Installing the autosar package<a class="headerlink" href="#installing-the-autosar-package" title="Permalink to this headline"></a></h3>
+<section id="id1">
+<h4>PIP Install<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h4>
+<p>The autosar package is not yet available on <a class="reference external" href="https://pypi.org/">PyPI</a>.</p>
+</section>
+<section id="id2">
+<h4>Manual Install<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h4>
+<p>Download latest release from the <a class="reference external" href="https://github.com/cogu/autosar/releases">autosar Github page</a>.</p>
+<p>Unzip the release then install using setuptools.</p>
+<div class="highlight-Text notranslate"><div class="highlight"><pre><span></span>Linux (shell):
+python3 setup.py install
+
+Windows (PowerShell):
+python setup.py install
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="running-unit-tests">
+<h2>Running Unit Tests<a class="headerlink" href="#running-unit-tests" title="Permalink to this headline"></a></h2>
+<p>In case you want to run unit tests you can use the convenience shell scripts to trigger Python to run test cases.</p>
+<div class="highlight-Text notranslate"><div class="highlight"><pre><span></span>Linux (shell):
+./run_tests.sh
+
+Windows (PowerShell):
+.\run_tests.cmd
+</pre></div>
+</div>
+</section>
+<section id="writing-your-first-script">
+<h2>Writing your first script<a class="headerlink" href="#writing-your-first-script" title="Permalink to this headline"></a></h2>
+<p>The primary purpose of the Python AUTOSAR package is to programmatically create AUTOSAR XML files or ARXML for short.</p>
+<p>Below is a simple example you can use to see if your installation works as expected.</p>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">=</span><span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+<span class="n">BaseTypeUint8</span> <span class="o">=</span> <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="n">BaseTypeUint8</span><span class="o">.</span><span class="n">ref</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;DataTypes.arxml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Here is what  the script does:</p>
+<ul class="simple">
+<li><p>Creates an AUTOSAR <a class="reference internal" href="autosar4_api/workspace.html#ar4-workspace"><span class="std std-ref">Workspace</span></a>.</p></li>
+<li><p>Creates an AUTOSAR <a class="reference internal" href="autosar4_api/package.html#ar4-package-package"><span class="std std-ref">Package</span></a> hierarchy.</p></li>
+<li><p>Creates a <a class="reference internal" href="autosar4_api/datatype/sw_base_type.html#ar4-datatype-swbasetype"><span class="std std-ref">SwBaseType</span></a> named <em>uint8</em>.</p></li>
+<li><p>Creates an <a class="reference internal" href="autosar4_api/datatype/implementation_data_type.html#ar4-datatype-implementationdatatype"><span class="std std-ref">ImplementationDataType</span></a> also named <em>uint8</em>.</p></li>
+<li><p>Saves the workspace under file name <em>DataTypes.arxml</em>.</p></li>
+</ul>
+<p>If you are new to the AUTOSAR Python package you should continue by reading more about <a class="reference internal" href="basics.html#basic-concepts"><span class="std std-ref">Basic Concepts</span></a>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

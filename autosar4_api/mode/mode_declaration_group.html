@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ModeDeclarationGroup &mdash; AUTOSAR 0.3.11 文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="ModeDeclaration" href="mode_declaration.html" />
+    <link rel="prev" title="Mode" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constant/index.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datatype/index.html">DataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../element/index.html">Element</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Mode</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ModeDeclarationGroup</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#factory-methods">Factory Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="mode_declaration.html">ModeDeclaration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mode_group.html">ModeGroup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">AUTOSAR 4 API</a> &raquo;</li>
+          <li><a href="index.html">Mode</a> &raquo;</li>
+      <li>ModeDeclarationGroup</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autosar4_api/mode/mode_declaration_group.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modedeclarationgroup">
+<span id="ar4-mode-modedeclarationgroup"></span><h1>ModeDeclarationGroup<a class="headerlink" href="#modedeclarationgroup" title="永久链接至标题"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 84%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>&lt;MODE-DECLARATION-GROUP&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.mode</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td><p><a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>A collection of <a class="reference internal" href="mode_declaration.html#ar4-mode-modedeclaration"><span class="std std-ref">Mode Declarations</span></a>.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="永久链接至标题"></a></h2>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;ModeDclrGroups&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;ModeDclrGroup&quot;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">.</span><span class="n">createModeDeclarationGroup</span><span class="p">(</span><span class="s1">&#39;BswM_Mode&#39;</span><span class="p">,</span> <span class="p">[</span>
+                                                <span class="s2">&quot;STARTUP&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;RUN&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;POSTRUN&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;WAKEUP&quot;</span><span class="p">,</span>
+                                                <span class="s2">&quot;SHUTDOWN&quot;</span>
+                                                <span class="p">],</span> <span class="s2">&quot;STARTUP&quot;</span><span class="p">)</span>
+
+<span class="n">package</span><span class="o">.</span><span class="n">createModeDeclarationGroup</span><span class="p">(</span><span class="s1">&#39;BswM_ModeWithValue&#39;</span><span class="p">,</span> <span class="p">[</span>
+                                                <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;STARTUP&quot;</span><span class="p">),</span>
+                                                <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;RUN&quot;</span><span class="p">),</span>
+                                                <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;POSTRUN&quot;</span><span class="p">),</span>
+                                                <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;WAKEUP&quot;</span><span class="p">),</span>
+                                                <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="s2">&quot;SHUTDOWN&quot;</span><span class="p">)</span>
+                                                <span class="p">],</span> <span class="s2">&quot;STARTUP&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ws</span><span class="o">.</span><span class="n">toXML</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="factory-methods">
+<h2>Factory Methods<a class="headerlink" href="#factory-methods" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../package.html#ar4-package-package-createmodedeclarationgroup"><span class="std std-ref">Package.createModeDeclarationGroup</span></a></p></li>
+</ul>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="永久链接至标题"></a></h2>
+<p>For inherited attributes see <a class="reference internal" href="../element/element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a>.</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 41%" />
+<col style="width: 32%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>modeDeclarations</strong></p></td>
+<td><p>list(<a class="reference internal" href="mode_declaration.html#ar4-mode-modedeclaration"><span class="std std-ref">ModeDeclaration</span></a>)</p></td>
+<td><p>List of mode declarations</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>initialModeRef</strong></p></td>
+<td><p>str</p></td>
+<td><p>Initial mode value</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DataElement &mdash; AUTOSAR 0.3.11 文档</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="ParameterDataPrototype" href="parameter_data_prototype.html" />
+    <link rel="prev" title="Element" href="element.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="在文档中搜索" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../start.html">快速上手</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../constant/index.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datatype/index.html">DataType</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Element</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="element.html">Element</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">DataElement</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#constructor">Constructor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#properties">Properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#public-methods">Public Methods</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method-description">Method Description</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="parameter_data_prototype.html">ParameterDataPrototype</a></li>
+<li class="toctree-l3"><a class="reference internal" href="software_address_method.html">SoftwareAddressMethod</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../workspace.html">Workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../package.html">Package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html">AUTOSAR 4 API</a> &raquo;</li>
+          <li><a href="index.html">Element</a> &raquo;</li>
+      <li>DataElement</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/autosar4_api/element/data_element.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dataelement">
+<span id="ar4-element-dataelement"></span><h1>DataElement<a class="headerlink" href="#dataelement" title="永久链接至标题"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>&lt;DATA-ELEMENT&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.element</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td><p><a class="reference internal" href="element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a></p></td>
+</tr>
+</tbody>
+</table>
+<p>DataElements are commonly used in <a class="reference internal" href="../portinterface/sender_receiver_interface.html#ar4-portinterface-senderreceiverinterface"><span class="std std-ref">SenderReceiverInterface</span></a> but they sometimes are used for other purposes.</p>
+<section id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="永久链接至标题"></a></h2>
+<dl class="py method">
+<dt class="sig sig-object py" id="DataElement">
+<span class="sig-name descname"><span class="pre">DataElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typeRef</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">isQueued</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swAddressMethodRef</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swCalibrationAccess</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swImplPolicy</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">parent</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#DataElement" title="永久链接至目标"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – Short-name identifer</p></li>
+<li><p><strong>typeRef</strong> (<em>str</em>) – Type reference</p></li>
+<li><p><strong>isQueued</strong> (<em>bool</em>) – Queued property</p></li>
+<li><p><strong>swAddressMethodRef</strong> (<em>str</em>) – Reference to SoftwareAddressMethod</p></li>
+<li><p><strong>swCalibrationAccess</strong> (<em>str</em>) – Calibration access setting</p></li>
+<li><p><strong>swImplPolicy</strong> (<em>str</em>) – Implementation policy</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – Category string</p></li>
+<li><p><strong>parent</strong> – Only used internally (leave as None)</p></li>
+<li><p><strong>adminData</strong> – Optional AdminData object</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="swcalibrationaccess">
+<h3>swCalibrationAccess<a class="headerlink" href="#swcalibrationaccess" title="永久链接至标题"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>No calibration access set</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (Empty string)</p></td>
+<td><p>Create default calibration access value
+as set by Workspace.profile.swCalibrationAccessDefault</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;NOT-ACCESSIBLE&quot;</span></code></p></td>
+<td><p>The element will not be accessible by external tools</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;READ-ONLY&quot;</span></code></p></td>
+<td><p>Read only access</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;READ-WRITE&quot;</span></code></p></td>
+<td><p>Read-write access</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="swimplpolicy">
+<h3>swImplPolicy<a class="headerlink" href="#swimplpolicy" title="永久链接至标题"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>No policy set</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;CONST&quot;</span></code></p></td>
+<td><p>Prevent implementation to modify the memory. Uses the “const” modifier in C.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;FIXED&quot;</span></code></p></td>
+<td><p>Data element is fixed and might be implemented as in place data such as a #define.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;MEASUREMENT-POINT&quot;</span></code></p></td>
+<td><p>Data element is created for measurement purposes only.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;QUEUED&quot;</span></code></p></td>
+<td><p>Data element is queued and has event semantics. Data is processed in FIFO order.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;STANDARD&quot;</span></code></p></td>
+<td><p>Data element is non-queued and uses the “last is best” semantics</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="永久链接至标题"></a></h2>
+<p>For inherited attributes see <a class="reference internal" href="element.html#ar4-element-element"><span class="std std-ref">autosar.element.Element</span></a>.</p>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 19%" />
+<col style="width: 54%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>dataConstraintRef</strong></p></td>
+<td><p>None or str</p></td>
+<td><p>&lt;DATA-CONSTR-REF&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>isQueued</strong></p></td>
+<td><p>bool</p></td>
+<td><p>&lt;IS-QUEUED&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>swAddressMethodRef</strong></p></td>
+<td><p>None or str</p></td>
+<td><p>&lt;SW-DATA-DEF-PROPS&gt;&lt;SW-ADDR-METHOD-REF&gt;</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>swCalibrationAccess</strong></p></td>
+<td><p>None or str</p></td>
+<td><p>&lt;SW-DATA-DEF-PROPS&gt;&lt;SW-CALIBRATION-ACCESS&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>typeRef</strong></p></td>
+<td><p>str</p></td>
+<td><p>&lt;TYPE-TREF&gt;</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>It might be better idea to change DataElement to have a single instance of autosar.base.SwDataDefPropsConditional.
+This will remove some duplicated attributes found in this class.</p>
+</div>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="永久链接至标题"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 19%" />
+<col style="width: 13%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head" colspan="2"><p>Access Type | Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>swImplPolicy</strong></p></td>
+<td><p>None or str</p></td>
+<td><p>Get, Set</p></td>
+<td><p>&lt;SW-DATA-DEF-PROPS&gt;&lt;SW-IMPL-POLICY&gt;</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="public-methods">
+<h2>Public Methods<a class="headerlink" href="#public-methods" title="永久链接至标题"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-element-dataelement-setprops"><span class="std std-ref">setProps</span></a></p></li>
+</ul>
+</section>
+<section id="method-description">
+<h2>Method Description<a class="headerlink" href="#method-description" title="永久链接至标题"></a></h2>
+<section id="setprops">
+<span id="ar4-element-dataelement-setprops"></span><h3>setProps<a class="headerlink" href="#setprops" title="永久链接至标题"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="DataElement.setProps">
+<span class="sig-prename descclassname"><span class="pre">DataElement.</span></span><span class="sig-name descname"><span class="pre">setProps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">props</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#DataElement.setProps" title="永久链接至目标"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">参数</dt>
+<dd class="field-odd"><p><strong>props</strong> (<em>autosar.base.SwDataDefPropsConditional</em>) – Properties object</p>
+</dd>
+</dl>
+<p>Updates the following attributes/properties from the given props object</p>
+<ul class="simple">
+<li><p>dataConstraintRef</p></li>
+<li><p>swAddressMethodRef</p></li>
+<li><p>swCalibrationAccess</p></li>
+<li><p>swImplPolicy</p></li>
+</ul>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用了 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a>开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

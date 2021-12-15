@@ -1,0 +1,1381 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Package &mdash; AUTOSAR 0.3.11 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/theme_overrides.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Port" href="port/index.html" />
+    <link rel="prev" title="Workspace" href="workspace.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> AUTOSAR
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../start.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics.html">Basic Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar3_api/index.html">AUTOSAR 3 API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../autosar4_guide/index.html">AUTOSAR 4 Developer Guide</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">AUTOSAR 4 API</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="autosar.html">Package Root</a></li>
+<li class="toctree-l2"><a class="reference internal" href="base/index.html">Base</a></li>
+<li class="toctree-l2"><a class="reference internal" href="behavior/index.html">Behavior</a></li>
+<li class="toctree-l2"><a class="reference internal" href="component/index.html">Component</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constant/index.html">Constant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatype/index.html">DataType</a></li>
+<li class="toctree-l2"><a class="reference internal" href="element/index.html">Element</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mode/index.html">Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="workspace.html">Workspace</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-roles">Package Roles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#public-methods">Public Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#method-description">Method Description</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#createapplicationsoftwarecomponent">createApplicationSoftwareComponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createcomplexdevicedrivercomponent">createComplexDeviceDriverComponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createcompositioncomponent">createCompositionComponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createnvblockcomponent">createNvBlockComponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createservicecomponent">createServiceComponent</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createcompumethodconst">createCompuMethodConst</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createcompumethodlinear">createCompuMethodLinear</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createcompumethodrational">createCompuMethodRational</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createcompumethodrationalphys">createCompuMethodRationalPhys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createapplicationvalueconstant">createApplicationValueConstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createconstant">createConstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createnumericalvalueconstant">createNumericalValueConstant</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createinternaldataconstraint">createInternalDataConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createphysicaldataconstraint">createPhysicalDataConstraint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createapplicationarraydatatype">createApplicationArrayDataType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createapplicationprimitivedatatype">createApplicationPrimitiveDataType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createapplicationrecorddatatype">createApplicationRecordDataType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createbasetype">createBaseType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createimplementationarraydatatype">createImplementationArrayDataType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createimplementationdatatype">createImplementationDataType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createimplementationdatatyperef">createImplementationDataTypeRef</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createimplementationdatatypeptr">createImplementationDataTypePtr</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createimplementationrecorddatatype">createImplementationRecordDataType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createswbasetype">createSwBaseType</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createmodedeclarationgroup">createModeDeclarationGroup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createclientserverinterface">createClientServerInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createmodeswitchinterface">createModeSwitchInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createnvdatainterface">createNvDataInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createparameterinterface">createParameterInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createsenderreceiverinterface">createSenderReceiverInterface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createsubpackage">createSubPackage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createsoftwareaddressmethod">createSoftwareAddressMethod</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createunit">createUnit</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#createdatatypemappingset">createDataTypeMappingSet</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#parameter-details">Parameter Details</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#swcalibrationaccess">swCalibrationAccess</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#valuetable">valueTable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bitmask">bitmask</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="port/index.html">Port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="portinterface/index.html">PortInterface</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AUTOSAR</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">AUTOSAR 4 API</a> &raquo;</li>
+      <li>Package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/autosar4_api/package.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="package">
+<span id="ar4-package-package"></span><h1>Package<a class="headerlink" href="#package" title="Permalink to this headline"></a></h1>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 32%" />
+<col style="width: 68%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>XML tag</p></td>
+<td><p>&lt;AR-PACKAGE&gt;</p></td>
+</tr>
+<tr class="row-even"><td><p>Module</p></td>
+<td><p>autosar.package</p></td>
+</tr>
+<tr class="row-odd"><td><p>Inherits</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>An AUTOSAR package is a container for elements.
+Elements are almost everything else that are not packages.
+In addition to elements each package can also contain zero or more sub-packages.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;ComponentTypes&#39;</span><span class="p">,</span> <span class="n">role</span> <span class="o">=</span> <span class="s1">&#39;ComponentType&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 30%" />
+<col style="width: 44%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>name</strong></p></td>
+<td><p>str</p></td>
+<td><p>Name of the package</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>elements</strong></p></td>
+<td><p>list[Elements]</p></td>
+<td><p>List of elements</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>subPackages</strong></p></td>
+<td><p>list[Package]</p></td>
+<td><p>List of sub-packages</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>role</strong></p></td>
+<td><p>str</p></td>
+<td><p>Package role</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="package-roles">
+<span id="ar4-package-package-roles"></span><h2>Package Roles<a class="headerlink" href="#package-roles" title="Permalink to this headline"></a></h2>
+<table class="docutils align-left">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><em>Constant</em></p></td>
+<td><p>Main container for Constants</p></td>
+</tr>
+<tr class="row-even"><td><p><em>ComponentType</em></p></td>
+<td><p>Main container for Components</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>CompuMethod</em></p></td>
+<td><p>Main container for Computational Methods</p></td>
+</tr>
+<tr class="row-even"><td><p><em>DataConstraint</em></p></td>
+<td><p>Main container for Data Constraints</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>DataType</em></p></td>
+<td><p>Main container for Data Types</p></td>
+</tr>
+<tr class="row-even"><td><p><em>ModeDclrGroup</em></p></td>
+<td><p>Main container for Mode Declaration Groups</p></td>
+</tr>
+<tr class="row-odd"><td><p><em>PortInterface</em></p></td>
+<td><p>Main container for Port Interfaces</p></td>
+</tr>
+<tr class="row-even"><td><p><em>Unit</em></p></td>
+<td><p>Main container for Units</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="public-methods">
+<span id="ar4-package-package-methods"></span><h2>Public Methods<a class="headerlink" href="#public-methods" title="Permalink to this headline"></a></h2>
+<p><strong>ComponentType</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-package-package-createapplicationsoftwarecomponent"><span class="std std-ref">createApplicationSoftwareComponent</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createcomplexdevicedrivercomponent"><span class="std std-ref">createComplexDeviceDriverComponent</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createcompositioncomponent"><span class="std std-ref">createCompositionComponent</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createnvblockcomponent"><span class="std std-ref">createNvBlockComponent</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createservicecomponent"><span class="std std-ref">createServiceComponent</span></a></p></li>
+</ul>
+<p><strong>CompuMethod</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-package-package-createcompumethodconst"><span class="std std-ref">createCompuMethodConst</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createcompumethodlinear"><span class="std std-ref">createCompuMethodLinear</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createcompumethodrational"><span class="std std-ref">createCompuMethodRational</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createcompumethodrationalphys"><span class="std std-ref">createCompuMethodRationalPhys</span></a></p></li>
+</ul>
+<p><strong>Constant</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-package-package-createapplicationvalueconstant"><span class="std std-ref">createApplicationValueConstant</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createconstant"><span class="std std-ref">createConstant</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createnumericalvalueconstant"><span class="std std-ref">createNumericalValueConstant</span></a></p></li>
+</ul>
+<p><strong>DataConstraint</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-package-package-createinternaldataconstraint"><span class="std std-ref">createInternalDataConstraint</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createphysicaldataconstraint"><span class="std std-ref">createPhysicalDataConstraint</span></a></p></li>
+</ul>
+<p><strong>DataType</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-package-package-createapplicationarraydatatype"><span class="std std-ref">createApplicationArrayDataType</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createapplicationprimitivedatatype"><span class="std std-ref">createApplicationPrimitiveDataType</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createapplicationrecorddatatype"><span class="std std-ref">createApplicationRecordDataType</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createbasetype"><span class="std std-ref">createBaseType</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createimplementationarraydatatype"><span class="std std-ref">createImplementationArrayDataType</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createimplementationdatatype"><span class="std std-ref">createImplementationDataType</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createimplementationdatatyperef"><span class="std std-ref">createImplementationDataTypeRef</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createimplementationdatatypeptr"><span class="std std-ref">createImplementationDataTypePtr</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createimplementationrecorddatatype"><span class="std std-ref">createImplementationRecordDataType</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createswbasetype"><span class="std std-ref">createSwBaseType</span></a></p></li>
+</ul>
+<p><strong>Mode</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-package-package-createmodedeclarationgroup"><span class="std std-ref">createModeDeclarationGroup</span></a></p></li>
+</ul>
+<p><strong>PortInterface</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-package-package-createclientserverinterface"><span class="std std-ref">createClientServerInterface</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createmodeswitchinterface"><span class="std std-ref">createModeSwitchInterface</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createnvdatainterface"><span class="std std-ref">createNvDataInterface</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createparameterinterface"><span class="std std-ref">createParameterInterface</span></a></p></li>
+<li><p><a class="reference internal" href="#ar4-package-package-createsenderreceiverinterface"><span class="std std-ref">createSenderReceiverInterface</span></a></p></li>
+</ul>
+<p><strong>SubPackage</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-package-package-createsubpackage"><span class="std std-ref">createSubPackage</span></a></p></li>
+</ul>
+<p><strong>SoftwareAddressMethod</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-package-package-createsoftwareaddressmethod"><span class="std std-ref">createSoftwareAddressMethod</span></a></p></li>
+</ul>
+<p><strong>Unit</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-package-package-createunit"><span class="std std-ref">createUnit</span></a></p></li>
+</ul>
+<p><strong>DataTypeMapping</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#ar4-package-package-createdatatypemappingset"><span class="std std-ref">createDataTypeMappingSet</span></a></p></li>
+</ul>
+</section>
+<section id="method-description">
+<h2>Method Description<a class="headerlink" href="#method-description" title="Permalink to this headline"></a></h2>
+<section id="createapplicationsoftwarecomponent">
+<span id="ar4-package-package-createapplicationsoftwarecomponent"></span><h3>createApplicationSoftwareComponent<a class="headerlink" href="#createapplicationsoftwarecomponent" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createApplicationSoftwareComponent">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createApplicationSoftwareComponent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">swcName</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">behaviorName</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">implementationName</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">multipleInstance</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createApplicationSoftwareComponent" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="component/application_swc.html#ar4-component-applicationsoftwarecomponent"><span class="std std-ref">ApplicationSoftwareComponent</span></a> and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>swcName</strong> (<em>str</em>) – ShortName of the component type</p></li>
+<li><p><strong>behaviorName</strong> (<em>str</em>) – ShortName of the associated Behavior object. If not set an automatic name is selected.</p></li>
+<li><p><strong>implementationName</strong> (<em>str</em>) – ShortName of the associated Implementation object. If not set an automatic name is selected.</p></li>
+<li><p><strong>multipleInstance</strong> (<em>bool</em>) – Set to True if this component prototype needs to support multiple instances</p></li>
+<li><p><strong>autoCreatePortAPIOptions</strong> (<em>bool</em>) – Set to True to automatically create port API options.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="component/application_swc.html#ar4-component-applicationsoftwarecomponent"><span class="std std-ref">ApplicationSoftwareComponent</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h4>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">components</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s2">&quot;ComponentTypes&quot;</span><span class="p">)</span>
+<span class="n">swc</span> <span class="o">=</span> <span class="n">components</span><span class="o">.</span><span class="n">createApplicationSoftwareComponent</span><span class="p">(</span><span class="s2">&quot;MyApp&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">swc</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="createcomplexdevicedrivercomponent">
+<span id="ar4-package-package-createcomplexdevicedrivercomponent"></span><h3>createComplexDeviceDriverComponent<a class="headerlink" href="#createcomplexdevicedrivercomponent" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createComplexDeviceDriverComponent">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createComplexDeviceDriverComponent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">swcName</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">behaviorName</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">implementationName</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">multipleInstance</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createComplexDeviceDriverComponent" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="component/cdd_swc.html#ar4-component-complexdevicedrivercomponent"><span class="std std-ref">ComplexDeviceDriverComponent</span></a> and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>swcName</strong> (<em>str</em>) – ShortName of the component type</p></li>
+<li><p><strong>behaviorName</strong> (<em>str</em>) – ShortName of the associated Behavior object. If not set an automatic name is selected.</p></li>
+<li><p><strong>implementationName</strong> (<em>str</em>) – ShortName of the associated Implementation object. If not set an automatic name is selected.</p></li>
+<li><p><strong>multipleInstance</strong> (<em>bool</em>) – Set to True if this component prototype needs to support multiple instances</p></li>
+<li><p><strong>autoCreatePortAPIOptions</strong> (<em>bool</em>) – Set to True to automatically create port API options.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="component/cdd_swc.html#ar4-component-complexdevicedrivercomponent"><span class="std std-ref">ComplexDeviceDriverComponent</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createcompositioncomponent">
+<span id="ar4-package-package-createcompositioncomponent"></span><h3>createCompositionComponent<a class="headerlink" href="#createcompositioncomponent" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createCompositionComponent">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createCompositionComponent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">componentName</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createCompositionComponent" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="component/composition_swc.html#ar4-component-compositioncomponent"><span class="std std-ref">CompositionComponent</span></a> and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>componentName</strong> (<em>str</em>) – ShortName of the component type</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="component/composition_swc.html#ar4-component-compositioncomponent"><span class="std std-ref">CompositionComponent</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="id1">
+<h4>Example<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h4>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">components</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s2">&quot;ComponentTypes&quot;</span><span class="p">)</span>
+<span class="n">swc</span> <span class="o">=</span> <span class="n">components</span><span class="o">.</span><span class="n">createCompositionComponent</span><span class="p">(</span><span class="s2">&quot;MyComposition&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">swc</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="createnvblockcomponent">
+<span id="ar4-package-package-createnvblockcomponent"></span><h3>createNvBlockComponent<a class="headerlink" href="#createnvblockcomponent" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createNvBlockComponent">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createNvBlockComponent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">swcName</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">behaviorName</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">implementationName</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">multipleInstance</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createNvBlockComponent" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new NvBlockComponent and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>swcName</strong> (<em>str</em>) – ShortName of the component type</p></li>
+<li><p><strong>behaviorName</strong> (<em>str</em>) – ShortName of the associated Behavior object. If not set an automatic name is selected.</p></li>
+<li><p><strong>implementationName</strong> (<em>str</em>) – ShortName of the associated Implementation object. If not set an automatic name is selected.</p></li>
+<li><p><strong>multipleInstance</strong> (<em>bool</em>) – Set to True if this component prototype needs to support multiple instances</p></li>
+<li><p><strong>autoCreatePortAPIOptions</strong> (<em>bool</em>) – Set to True to automatically create port API options.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>NvBlockComponent</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createservicecomponent">
+<span id="ar4-package-package-createservicecomponent"></span><h3>createServiceComponent<a class="headerlink" href="#createservicecomponent" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createServiceComponent">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createServiceComponent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">swcName</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">behaviorName</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">implementationName</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">multipleInstance</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createServiceComponent" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="component/service_swc.html#ar4-component-servicecomponent"><span class="std std-ref">ServiceComponent</span></a> and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>swcName</strong> (<em>str</em>) – ShortName of the component type.</p></li>
+<li><p><strong>behaviorName</strong> (<em>str</em>) – ShortName of the associated Behavior object. If not set an automatic name is selected.</p></li>
+<li><p><strong>implementationName</strong> (<em>str</em>) – ShortName of the associated Implementation object. If not set an automatic name is selected.</p></li>
+<li><p><strong>multipleInstance</strong> (<em>bool</em>) – Set to True if this component prototype needs to support multiple instances.</p></li>
+<li><p><strong>autoCreatePortAPIOptions</strong> (<em>bool</em>) – Set to True to automatically create port API options.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="component/service_swc.html#ar4-component-servicecomponent"><span class="std std-ref">ServiceComponent</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="id2">
+<h4>Example<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h4>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">components</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s2">&quot;ComponentTypes&quot;</span><span class="p">)</span>
+<span class="n">swc</span> <span class="o">=</span> <span class="n">components</span><span class="o">.</span><span class="n">createServiceComponent</span><span class="p">(</span><span class="s2">&quot;MyService&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">swc</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="createcompumethodconst">
+<span id="ar4-package-package-createcompumethodconst"></span><h3>createCompuMethodConst<a class="headerlink" href="#createcompumethodconst" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createCompuMethodConst">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createCompuMethodConst</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">valueTable</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">unit</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">defaultValue</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category</span> <span class="pre">=</span> <span class="pre">'TEXTTABLE'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createCompuMethodConst" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new CompuMethod based on a value-table (better known as enumeration) and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – shortName of the new CompuMethod.</p></li>
+<li><p><strong>valueTable</strong> (<em>list</em>) – List of strings containing enumeration values. See below for more advanced options.</p></li>
+<li><p><strong>unit</strong> (<em>str</em>) – Optional unit name (requires <a class="reference internal" href="#ar4-package-package-roles"><span class="std std-ref">package role</span></a> ‘Unit’ to be setup).</p></li>
+<li><p><strong>defaultValue</strong> (<em>str</em>) – Optional default value.</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – Category string used for the new CompuMethod.</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>CompuMethod</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createcompumethodlinear">
+<span id="ar4-package-package-createcompumethodlinear"></span><h3>createCompuMethodLinear<a class="headerlink" href="#createcompumethodlinear" title="Permalink to this headline"></a></h3>
+<p>Alias for <a class="reference internal" href="#ar4-package-package-createcompumethodrational"><span class="std std-ref">createCompuMethodRational</span></a>.</p>
+</section>
+<section id="createcompumethodrational">
+<span id="ar4-package-package-createcompumethodrational"></span><h3>createCompuMethodRational<a class="headerlink" href="#createcompumethodrational" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createCompuMethodRational">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createCompuMethodRational</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">offset</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scaling</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">lowerLimit</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">upperLimit</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">lowerLimitType</span> <span class="pre">=</span> <span class="pre">'CLOSED'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">upperLimitType</span> <span class="pre">=</span> <span class="pre">'CLOSED'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">unit</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">defaultValue</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">label</span> <span class="pre">=</span> <span class="pre">'SCALING'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">forceFloat</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">useIntToPhys=True</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">usePhysToInt</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category</span> <span class="pre">=</span> <span class="pre">'LINEAR'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createCompuMethodRational" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new CompuMethod containing a CompuScaleElement (offset+scaling) and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new CompuMethod.</p></li>
+<li><p><strong>offset</strong> (<em>int</em><em>,</em><em>float</em>) – Offset.</p></li>
+<li><p><strong>scaling</strong> (<em>int</em><em>, </em><em>float</em><em>, </em><em>rational number</em>) – Scaling factor.</p></li>
+<li><p><strong>lowerLimit</strong> (<em>int</em>) – Lower limit of the CompuScaleElement.</p></li>
+<li><p><strong>upperLimit</strong> (<em>int</em>) – Upper limit of the CompuScaleElement.</p></li>
+<li><p><strong>lowerLimitType</strong> (<em>str</em>) – Interval type of lowerLimit (“OPEN” or “CLOSED”). Only applies when lowerLimit is not None.</p></li>
+<li><p><strong>upperLimitType</strong> (<em>str</em>) – Interval type of upperLimit (“OPEN” or “CLOSED”). Only applies when upperLimit is not None.</p></li>
+<li><p><strong>unit</strong> (<em>str</em>) – Optional unit name (requires <a class="reference internal" href="#ar4-package-package-roles"><span class="std std-ref">package role</span></a> ‘Unit’ to be setup).</p></li>
+<li><p><strong>defaultValue</strong> (<em>None</em><em>, </em><em>int</em><em>, </em><em>float</em><em>, </em><em>str</em>) – Optional default value.</p></li>
+<li><p><strong>label</strong> (<em>str</em>) – Label of the CompuScaleElement</p></li>
+<li><p><strong>forceFloat</strong> (<em>bool</em>) – When False it sets the scaling numerator/denominator to closest possible rational number. When True it forces numerator to float and sets denominator to 1.</p></li>
+<li><p><strong>useIntToPhys</strong> (<em>bool</em>) – When True, creates an internal to physical Computation. Cannot be True when usePhysToInt is also True.</p></li>
+<li><p><strong>usePhysToInt</strong> (<em>bool</em>) – When True, creates a physical to internal Computation. Cannot be True when useIntToPhys is also True.</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – Category string used for the new CompuMethod.</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>CompuMethod</p>
+</dd>
+</dl>
+<p>This method by default creates an internal to physical computation, use the method <a class="reference internal" href="#ar4-package-package-createcompumethodrationalphys"><span class="std std-ref">createCompuMethodRationalPhys</span></a> to create a physical to internal computation.
+Some AUTOSAR toolchains does not work when numerator and denominator is a rational number. Use the option forceFloat to force the scaling factor to be stored as a floating point number.</p>
+</dd></dl>
+
+</section>
+<section id="createcompumethodrationalphys">
+<span id="ar4-package-package-createcompumethodrationalphys"></span><h3>createCompuMethodRationalPhys<a class="headerlink" href="#createcompumethodrationalphys" title="Permalink to this headline"></a></h3>
+<p>Convenience method that calls <a class="reference internal" href="#ar4-package-package-createcompumethodrational"><span class="std std-ref">createCompuMethodRational</span></a> but creates physical to internal computation instead.</p>
+</section>
+<section id="createapplicationvalueconstant">
+<span id="ar4-package-package-createapplicationvalueconstant"></span><h3>createApplicationValueConstant<a class="headerlink" href="#createapplicationvalueconstant" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createApplicationValueConstant">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createApplicationValueConstant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swValueCont</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swAxisCont</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">valueCategory</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">valueLabel</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createApplicationValueConstant" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an application value constant and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new constant</p></li>
+<li><p><strong>swValueCont</strong> (<em>SwValueCont</em>) – Value container</p></li>
+<li><p><strong>swAxisCont</strong> (<em>SwValueCont</em>) – Axis container</p></li>
+<li><p><strong>valueCategory</strong> (<em>str</em>) – Optional category for (inner) value</p></li>
+<li><p><strong>valueLabel</strong> (<em>str</em>) – Optional label for (inner) value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="constant/constant.html#ar4-constant-constant"><span class="std std-ref">Constant</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createconstant">
+<span id="ar4-package-package-createconstant"></span><h3>createConstant<a class="headerlink" href="#createconstant" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createConstant">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createConstant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">typeRef</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initValue</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adminData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Package.createConstant" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new constant (based on a type reference) and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new constant</p></li>
+<li><p><strong>typeRef</strong> (<em>str</em>) – Reference to (existing) data type</p></li>
+<li><p><strong>initValue</strong> – Init value (type depends on typeRef)</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="constant/constant.html#ar4-constant-constant"><span class="std std-ref">Constant</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createnumericalvalueconstant">
+<span id="ar4-package-package-createnumericalvalueconstant"></span><h3>createNumericalValueConstant<a class="headerlink" href="#createnumericalvalueconstant" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createNumericalValueConstant">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createNumericalValueConstant</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Package.createNumericalValueConstant" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new constant (based on a numerical value) and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new constant</p></li>
+<li><p><strong>value</strong> (<em>int</em><em>, </em><em>float</em>) – Value</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="constant/constant.html#ar4-constant-constant"><span class="std std-ref">Constant</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createinternaldataconstraint">
+<span id="ar4-package-package-createinternaldataconstraint"></span><h3>createInternalDataConstraint<a class="headerlink" href="#createinternaldataconstraint" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createInternalDataConstraint">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createInternalDataConstraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerLimit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperLimit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerLimitType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperLimitType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adminData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Package.createInternalDataConstraint" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new internal data constraint and adds it the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new DataConstraint.</p></li>
+<li><p><strong>lowerLimit</strong> (<em>int</em><em>, </em><em>float.</em>) – Lower limit.</p></li>
+<li><p><strong>upperLimit</strong> (<em>int</em><em>, </em><em>float.</em>) – Upper limit.</p></li>
+<li><p><strong>lowerLimitType</strong> (<em>str</em>) – Interval type of lowerLimit (“OPEN”/”CLOSED”).</p></li>
+<li><p><strong>upperLimitType</strong> (<em>str</em>) – Interval type of upperLimit (“OPEN”/”CLOSED”).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="datatype/data_constraint.html#ar4-datatype-dataconstraint"><span class="std std-ref">DataConstraint</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createphysicaldataconstraint">
+<span id="ar4-package-package-createphysicaldataconstraint"></span><h3>createPhysicalDataConstraint<a class="headerlink" href="#createphysicaldataconstraint" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createPhysicalDataConstraint">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createPhysicalDataConstraint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerLimit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperLimit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lowerLimitType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">upperLimitType</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'CLOSED'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adminData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Package.createPhysicalDataConstraint" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new physical data constraint and adds it the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new DataConstraint.</p></li>
+<li><p><strong>lowerLimit</strong> (<em>int</em><em>, </em><em>float.</em>) – Lower limit.</p></li>
+<li><p><strong>upperLimit</strong> (<em>int</em><em>, </em><em>float.</em>) – Upper limit.</p></li>
+<li><p><strong>lowerLimitType</strong> (<em>str</em>) – Interval type of lowerLimit (“OPEN”/”CLOSED”).</p></li>
+<li><p><strong>upperLimitType</strong> (<em>str</em>) – Interval type of upperLimit (“OPEN”/”CLOSED”).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="datatype/data_constraint.html#ar4-datatype-dataconstraint"><span class="std std-ref">DataConstraint</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createapplicationarraydatatype">
+<span id="ar4-package-package-createapplicationarraydatatype"></span><h3>createApplicationArrayDataType<a class="headerlink" href="#createapplicationarraydatatype" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createApplicationArrayDataType">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createApplicationArrayDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">element</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swCalibrationAccess</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category</span> <span class="pre">=</span> <span class="pre">'ARRAY'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createApplicationArrayDataType" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new ApplicationArrayDataType and appends it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new datatype</p></li>
+<li><p><strong>element</strong> (<em>ApplicationArrayElement</em>) – An ApplicationArrayElement object</p></li>
+<li><p><strong>swCalibrationAccess</strong> (<em>None</em><em>, </em><em>str</em>) – Optional <a class="reference internal" href="#ar4-package-package-swcalibrationaccess"><span class="std std-ref">calibration access</span></a></p></li>
+<li><p><strong>category</strong> (<em>None</em><em>, </em><em>str</em>) – Optional category string.</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="datatype/application_array_data_type.html#ar4-datatype-applicationarraydatatype"><span class="std std-ref">ApplicationArrayDataType</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createapplicationprimitivedatatype">
+<span id="ar4-package-package-createapplicationprimitivedatatype"></span><h3>createApplicationPrimitiveDataType<a class="headerlink" href="#createapplicationprimitivedatatype" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createApplicationPrimitiveDataType">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createApplicationPrimitiveDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">dataConstraint</span> <span class="pre">=</span> <span class="pre">&quot;&quot;</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">compuMethod</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">unit</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swCalibrationAccess</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createApplicationPrimitiveDataType" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new ApplicationPrimitiveDataType and appends it to this package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new datatype</p></li>
+<li><p><strong>dataConstraint</strong> (<em>str</em>) – Optional name or reference to a DataConstraint object. Empty string means that an automatic data constraint will be created. Set to None to disable.</p></li>
+<li><p><strong>compuMethod</strong> (<em>str</em>) – Optional name or reference to a CompuMethod object</p></li>
+<li><p><strong>unit</strong> (<em>str</em>) – Optional name or reference to a Unit object</p></li>
+<li><p><strong>swCalibrationAccess</strong> (<em>None</em><em>, </em><em>str</em>) – Optional <a class="reference internal" href="#ar4-package-package-swcalibrationaccess"><span class="std std-ref">calibration access</span></a></p></li>
+<li><p><strong>category</strong> (<em>None</em><em>, </em><em>str</em>) – Category string.</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>) – AdminData</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ApplicationPrimitiveDataType</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createapplicationrecorddatatype">
+<span id="ar4-package-package-createapplicationrecorddatatype"></span><h3>createApplicationRecordDataType<a class="headerlink" href="#createapplicationrecorddatatype" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createApplicationRecordDataType">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createApplicationRecordDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">elements</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swCalibrationAccess</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category</span> <span class="pre">=</span> <span class="pre">&quot;STRUCTURE&quot;</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createApplicationRecordDataType" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new ApplicationRecordDataType and appends it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName.</p></li>
+<li><p><strong>elements</strong> – List containing tuples. First tuple element is the record name (string), second tuple element is a type reference (string).</p></li>
+<li><p><strong>swCalibrationAccess</strong> (<em>None</em><em>, </em><em>str</em>) – Optional <a class="reference internal" href="#ar4-package-package-swcalibrationaccess"><span class="std std-ref">calibration access</span></a></p></li>
+<li><p><strong>category</strong> (<em>None</em><em>, </em><em>str</em>) – Category string.</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>) – AdminData</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>ApplicationRecordDataType</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createbasetype">
+<span id="ar4-package-package-createbasetype"></span><h3>createBaseType<a class="headerlink" href="#createbasetype" title="Permalink to this headline"></a></h3>
+<p>Alias for <a class="reference internal" href="#ar4-package-package-createswbasetype"><span class="std std-ref">createSwBaseType</span></a>.</p>
+</section>
+<section id="createimplementationarraydatatype">
+<span id="ar4-package-package-createimplementationarraydatatype"></span><h3>createImplementationArrayDataType<a class="headerlink" href="#createimplementationarraydatatype" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createImplementationArrayDataType">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createImplementationArrayDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">implementationTypeRef</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">arraySize</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">elementName</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swCalibrationAccess</span> <span class="pre">=</span> <span class="pre">''</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">typeEmitter</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category</span> <span class="pre">=</span> <span class="pre">'ARRAY'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">targetCategory</span> <span class="pre">=</span> <span class="pre">'TYPE_REFERENCE'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createImplementationArrayDataType" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an implementation array data type and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new data type</p></li>
+<li><p><strong>implementationTypeRef</strong> (<em>str</em>) – Reference to (existing) <a class="reference internal" href="datatype/implementation_data_type.html#ar4-datatype-implementationdatatype"><span class="std std-ref">ImplementationDataType</span></a></p></li>
+<li><p><strong>arraySize</strong> (<em>int</em>) – Number of elements in array</p></li>
+<li><p><strong>elementName</strong> (<em>str</em>) – Optional (inner) element name.</p></li>
+<li><p><strong>swCalibrationAccess</strong> (<em>None</em><em>, </em><em>str</em>) – Optional <a class="reference internal" href="#ar4-package-package-swcalibrationaccess"><span class="std std-ref">calibration access</span></a></p></li>
+<li><p><strong>typeEmitter</strong> (<em>str</em>) – Optional type emitter</p></li>
+<li><p><strong>category</strong> (<em>None</em><em>, </em><em>str</em>) – Category for the (outer) array data type</p></li>
+<li><p><strong>targetCategory</strong> (<em>None</em><em>, </em><em>str</em>) – Category for the (inner) array element</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>) – AdminData</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="datatype/implementation_data_type.html#ar4-datatype-implementationdatatype"><span class="std std-ref">ImplementationDataType</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createimplementationdatatype">
+<span id="ar4-package-package-createimplementationdatatype"></span><h3>createImplementationDataType<a class="headerlink" href="#createimplementationdatatype" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createImplementationDataType">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createImplementationDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseTypeRef</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">lowerLimit</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">upperLimit</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">valueTable</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">bitmask</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">scaling</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">unit</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">forceFloat</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">dataConstraint</span> <span class="pre">=</span> <span class="pre">''</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swCalibrationAccess</span> <span class="pre">=</span> <span class="pre">''</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">typeEmitter</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">lowerLimitType</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">upperLimitType</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category='VALUE'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createImplementationDataType" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new implementation data type that is tied directly to a base type.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the datatype</p></li>
+<li><p><strong>baseTypeRef</strong> (<em>str</em>) – Reference to existing <a class="reference internal" href="datatype/sw_base_type.html#ar4-datatype-swbasetype"><span class="std std-ref">base type</span></a></p></li>
+<li><p><strong>lowerLimit</strong> (<em>int</em>) – Optional lower limit.</p></li>
+<li><p><strong>upperLimit</strong> (<em>int</em>) – Optional upper limit.</p></li>
+<li><p><strong>valueTable</strong> – Optional valueTable. See <a class="reference internal" href="#ar4-package-package-valuetable"><span class="std std-ref">valueTable</span></a> for details.</p></li>
+<li><p><strong>bitmask</strong> – Optional bitmask. See <a class="reference internal" href="#ar4-package-package-bitmask"><span class="std std-ref">bitmask</span></a> for details.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Optional offset (for CompuMethod). When this is used, scaling also has to be set.</p></li>
+<li><p><strong>scaling</strong> (<em>int</em><em> or </em><em>float</em>) – Optional scaling factor (for CompuMethod).</p></li>
+<li><p><strong>unit</strong> (<em>str</em>) – Optional unit.</p></li>
+<li><p><strong>forceFloat</strong> (<em>bool</em>) – When False it sets the scaling numerator/denominator to closest possible rational number. When True it forces numerator to float type and sets denominator to 1.</p></li>
+<li><p><strong>dataConstraint</strong> (<em>str</em>) – Optional name or reference to existing DataConstraint element. Value None prevents dataConstraint from being created while empty-string automatically attempts to create a DataConstraint element.</p></li>
+<li><p><strong>swCalibrationAccess</strong> (<em>str</em>) – Optional <a class="reference internal" href="#ar4-package-package-swcalibrationaccess"><span class="std std-ref">calibration access</span></a></p></li>
+<li><p><strong>typeEmitter</strong> (<em>str</em>) – Optional type emitter string.</p></li>
+<li><p><strong>lowerLimitType</strong> (<em>str</em>) – Selects lowerLimitType (“OPEN” or “CLOSED”) if lowerLimit is used. Value None defaults to “CLOSED”.</p></li>
+<li><p><strong>upperLimitType</strong> (<em>str</em>) – Selects upperLimitType (“OPEN” or “CLOSED”) if upperLimit is used. Value None defaults to “CLOSED”.</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – Category string.</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="datatype/implementation_data_type.html#ar4-datatype-implementationdatatype"><span class="std std-ref">ImplementationDataType</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="id3">
+<h4>Example<a class="headerlink" href="#id3" title="Permalink to this headline"></a></h4>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="c1">#Setup</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">=</span><span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+
+<span class="n">baseTypes</span><span class="o">=</span><span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint32&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint32&#39;</span><span class="p">)</span>
+
+<span class="n">implTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationTypes&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint8&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">65535</span><span class="p">,</span> <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint16&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint32&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">4294967295</span><span class="p">,</span> <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint32&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+
+<span class="c1">#Export as XML</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;DataTypes.arxml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="createimplementationdatatyperef">
+<span id="ar4-package-package-createimplementationdatatyperef"></span><h3>createImplementationDataTypeRef<a class="headerlink" href="#createimplementationdatatyperef" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createImplementationDataTypeRef">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createImplementationDataTypeRef</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">implementationTypeRef</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">lowerLimit</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">upperLimit</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">valueTable</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">bitmask</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">scaling</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">unit</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">forceFloat</span> <span class="pre">=</span> <span class="pre">False</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">dataConstraint</span> <span class="pre">=</span> <span class="pre">''</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swCalibrationAccess</span> <span class="pre">=</span> <span class="pre">''</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">typeEmitter</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">lowerLimitType</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">upperLimitType</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category</span> <span class="pre">=</span> <span class="pre">'TYPE_REFERENCE'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createImplementationDataTypeRef" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new implementation data type that is a reference to another implementation type.
+This is similar in concept to a typedef in the C programming language</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the datatype</p></li>
+<li><p><strong>implementationTypeRef</strong> (<em>str</em>) – Reference to existing <a class="reference internal" href="datatype/implementation_data_type.html#ar4-datatype-implementationdatatype"><span class="std std-ref">ImplementationDataType</span></a></p></li>
+<li><p><strong>lowerLimit</strong> (<em>int</em>) – Optional lower limit.</p></li>
+<li><p><strong>upperLimit</strong> (<em>int</em>) – Optional upper limit.</p></li>
+<li><p><strong>valueTable</strong> – Optional valueTable. See <a class="reference internal" href="#ar4-package-package-valuetable"><span class="std std-ref">valueTable</span></a> for details.</p></li>
+<li><p><strong>bitmask</strong> – Optional bitmask. See <a class="reference internal" href="#ar4-package-package-bitmask"><span class="std std-ref">bitmask</span></a> for details.</p></li>
+<li><p><strong>offset</strong> (<em>int</em>) – Optional offset (for CompuMethod). When this is used, scaling also has to be set.</p></li>
+<li><p><strong>scaling</strong> (<em>int</em><em> or </em><em>float</em>) – Optional scaling factor (for CompuMethod).</p></li>
+<li><p><strong>unit</strong> (<em>str</em>) – Optional unit.</p></li>
+<li><p><strong>forceFloat</strong> (<em>bool</em>) – When False it sets the scaling numerator/denominator to closest possible rational number. When True it forces numerator to float type and sets denominator to 1.</p></li>
+<li><p><strong>dataConstraint</strong> (<em>str</em>) – Optional name or reference to existing DataConstraint element. Value None prevents dataConstraint from being created while empty-string automatically attempts to create a DataConstraint element.</p></li>
+<li><p><strong>swCalibrationAccess</strong> (<em>str</em>) – Optional <a class="reference internal" href="#ar4-package-package-swcalibrationaccess"><span class="std std-ref">calibration access</span></a></p></li>
+<li><p><strong>typeEmitter</strong> (<em>str</em>) – Optional type emitter string.</p></li>
+<li><p><strong>lowerLimitType</strong> (<em>str</em>) – Selects lowerLimitType (“OPEN” or “CLOSED”) if lowerLimit is used. Value None defaults to “CLOSED”.</p></li>
+<li><p><strong>upperLimitType</strong> (<em>str</em>) – Selects upperLimitType (“OPEN” or “CLOSED”) if upperLimit is used. Value None defaults to “CLOSED”.</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – Category string.</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="datatype/implementation_data_type.html#ar4-datatype-implementationdatatype"><span class="std std-ref">ImplementationDataType</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="id4">
+<h4>Example<a class="headerlink" href="#id4" title="Permalink to this headline"></a></h4>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="c1">#Setup</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">=</span><span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">=</span><span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationTypes&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint8&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">65535</span><span class="p">,</span> <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint16&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+
+
+
+
+<span class="c1">#Create implementation data type with offset and scaling</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypeRef</span><span class="p">(</span><span class="s1">&#39;VehicleSpeed_T&#39;</span><span class="p">,</span>
+                                            <span class="n">implementationTypeRef</span> <span class="o">=</span> <span class="s1">&#39;/DataTypes/ImplementationTypes/uint16&#39;</span><span class="p">,</span>
+                                            <span class="n">lowerLimit</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                                            <span class="n">upperLimit</span> <span class="o">=</span> <span class="mi">65535</span><span class="p">,</span>
+                                            <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+                                            <span class="n">scaling</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">64</span><span class="p">,</span>
+                                            <span class="n">forceFloat</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1">#Create implementation data type with enumeration table (also known as value table)</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypeRef</span><span class="p">(</span><span class="s1">&#39;OffOn_T&#39;</span><span class="p">,</span> <span class="n">implementationTypeRef</span> <span class="o">=</span> <span class="s1">&#39;/DataTypes/ImplementationTypes/uint8&#39;</span><span class="p">,</span>
+                                          <span class="n">valueTable</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OffOn_Off&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;OffOn_On&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;OffOn_Error&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;OffOn_NotAvailable&#39;</span>
+                                                        <span class="p">])</span>
+
+<span class="c1">#Export as XML</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;DataTypes.arxml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="createimplementationdatatypeptr">
+<span id="ar4-package-package-createimplementationdatatypeptr"></span><h3>createImplementationDataTypePtr<a class="headerlink" href="#createimplementationdatatypeptr" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createImplementationDataTypePtr">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createImplementationDataTypePtr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">name,</span> <span class="pre">baseTypeRef,</span> <span class="pre">[swImplPolicy=None],</span> <span class="pre">[category='DATA_REFERENCE',</span> <span class="pre">[targetCategory=VALUE],</span> <span class="pre">[adminData=None]</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Package.createImplementationDataTypePtr" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new implementation data type that is a pointer to a base data type.
+This is similar to a pointer type definition in C.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the datatype.</p></li>
+<li><p><strong>baseTypeRef</strong> (<em>str</em>) – Reference to (existing) base type object.</p></li>
+<li><p><strong>swImplPolicy</strong> (<em>str</em>) – Optional swImplPolicy.</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – Optional category string (for the datatype)</p></li>
+<li><p><strong>targetCategory</strong> (<em>str</em>) – Optional category string for the inner target property.</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="datatype/implementation_data_type.html#ar4-datatype-implementationdatatype"><span class="std std-ref">ImplementationDataType</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="id5">
+<h4>Example<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h4>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="c1">#Setup</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">package</span><span class="o">=</span><span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">=</span><span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+<span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+<span class="n">implTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationTypes&#39;</span><span class="p">)</span>
+
+
+
+
+<span class="c1">#Create implementation data type that is a pointer to uint8</span>
+<span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypePtr</span><span class="p">(</span><span class="s1">&#39;ByteBuffer_T&#39;</span><span class="p">,</span> <span class="n">baseTypeRef</span> <span class="o">=</span> <span class="s1">&#39;/DataTypes/BaseTypes/uint8&#39;</span><span class="p">)</span>
+
+<span class="c1">#Export as XML</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;DataTypes.arxml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="createimplementationrecorddatatype">
+<span id="ar4-package-package-createimplementationrecorddatatype"></span><h3>createImplementationRecordDataType<a class="headerlink" href="#createimplementationrecorddatatype" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createImplementationRecordDataType">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createImplementationRecordDataType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elements</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">swCalibrationAccess</span> <span class="pre">=</span> <span class="pre">''</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category</span> <span class="pre">=</span> <span class="pre">'STRUCTURE'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createImplementationRecordDataType" title="Permalink to this definition"></a></dt>
+<dd><p>Creates an implementation record data type and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new data type</p></li>
+<li><p><strong>elements</strong> (<em>str</em>) – List containing tuples. First tuple element is the record name (string), second tuple element is a type reference (string).</p></li>
+<li><p><strong>swCalibrationAccess</strong> (<em>str</em>) – Optional <a class="reference internal" href="#ar4-package-package-swcalibrationaccess"><span class="std std-ref">calibration access</span></a></p></li>
+<li><p><strong>category</strong> (<em>str</em>) – Category for the (outer) array data type</p></li>
+<li><p><strong>targetCategory</strong> (<em>str</em>) – Category for the (inner) array element</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="datatype/implementation_data_type.html#ar4-datatype-implementationdatatype"><span class="std std-ref">ImplementationDataType</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createswbasetype">
+<span id="ar4-package-package-createswbasetype"></span><h3>createSwBaseType<a class="headerlink" href="#createswbasetype" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createSwBaseType">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createSwBaseType</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">size=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">encoding=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">nativeDeclaration=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category='FIXED_LENGTH'</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createSwBaseType" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new SwBaseType and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new datatype</p></li>
+<li><p><strong>size</strong> (<em>int</em>) – Size of type in bits</p></li>
+<li><p><strong>encoding</strong> (<em>str</em>) – Encoding string</p></li>
+<li><p><strong>nativeDeclaration</strong> (<em>str</em>) – Used to map this base type to one of the native types known to the RTE</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – Category string</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="id6">
+<h4>Example<a class="headerlink" href="#id6" title="Permalink to this headline"></a></h4>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">platform</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;AUTOSAR_Platform&#39;</span><span class="p">)</span>
+<span class="n">basetypes</span> <span class="o">=</span> <span class="n">platform</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+<span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;boolean&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;BOOLEAN&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;boolean&#39;</span><span class="p">)</span>
+<span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;IEEE754&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span> <span class="o">=</span> <span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+<span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;float64&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;IEEE754&#39;</span><span class="p">,</span> <span class="n">nativeDeclaration</span> <span class="o">=</span> <span class="s1">&#39;float64&#39;</span><span class="p">)</span>
+<span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;sint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;sint8&#39;</span><span class="p">)</span>
+<span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;sint16&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
+<span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;sint32&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;sint32&#39;</span><span class="p">)</span>
+<span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+<span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint16&#39;</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint16&#39;</span><span class="p">)</span>
+<span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint32&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint32&#39;</span><span class="p">)</span>
+
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;PlatformTypes_AR4.arxml&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="createmodedeclarationgroup">
+<span id="ar4-package-package-createmodedeclarationgroup"></span><h3>createModeDeclarationGroup<a class="headerlink" href="#createmodedeclarationgroup" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createModeDeclarationGroup">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createModeDeclarationGroup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">modeDeclarations=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">initialMode=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">category=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createModeDeclarationGroup" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="mode/mode_declaration_group.html#ar4-mode-modedeclarationgroup"><span class="std std-ref">ModeDeclarationGroup</span></a> and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the object</p></li>
+<li><p><strong>modeDeclarations</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – List of mode declaration names</p></li>
+<li><p><strong>initialMode</strong> (<em>str</em>) – Initial mode value (must be one of strings from modeDeclarations list)</p></li>
+<li><p><strong>category</strong> (<em>str</em>) – Optional category</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="mode/mode_declaration_group.html#ar4-mode-modedeclarationgroup"><span class="std std-ref">ModeDeclarationGroup</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createclientserverinterface">
+<span id="ar4-package-package-createclientserverinterface"></span><h3>createClientServerInterface<a class="headerlink" href="#createclientserverinterface" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createClientServerInterface">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createClientServerInterface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">operations</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">errors=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">isService=False</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">serviceKind</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createClientServerInterface" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="portinterface/client_server_interface.html#ar4-portinterface-clientserverinterface"><span class="std std-ref">ClientServerInterface</span></a> and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the port interface</p></li>
+<li><p><strong>operations</strong> (<em>list</em><em>(</em><em>str</em><em>)</em>) – List of names to be created as of <a class="reference internal" href="portinterface/operation.html#ar4-portinterface-operation"><span class="std std-ref">Operation</span></a></p></li>
+<li><p><strong>errors</strong> (<em>ApplicationError</em><em> or </em><em>list</em><em>(</em><em>ApplicationError</em><em>)</em>) – Possible errors that can be returned. Errors must be assigned here first, before you can use them in individual operations.</p></li>
+<li><p><strong>isService</strong> (<em>bool</em>) – Set this to True for service interfaces</p></li>
+<li><p><strong>serviceKind</strong> (<em>str</em>) – Optional serviceKind string</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="portinterface/client_server_interface.html#ar4-portinterface-clientserverinterface"><span class="std std-ref">ClientServerInterface</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="id7">
+<h4>Example<a class="headerlink" href="#id7" title="Permalink to this headline"></a></h4>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="k">def</span> <span class="nf">create_packages</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+
+    <span class="n">package</span><span class="o">=</span><span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+    <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;PortInterfaces&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s2">&quot;PortInterface&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">create_data_types</span><span class="p">(</span><span class="n">ws</span><span class="p">):</span>
+    <span class="n">basetypes</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/DataTypes/BaseTypes&#39;</span><span class="p">)</span>
+    <span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;boolean&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;BOOLEAN&#39;</span><span class="p">)</span>
+    <span class="n">basetypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint32&#39;</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint32&#39;</span><span class="p">)</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;boolean&#39;</span><span class="p">,</span> <span class="n">valueTable</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;FALSE&#39;</span><span class="p">,</span><span class="s1">&#39;TRUE&#39;</span><span class="p">],</span> <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/boolean&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint32&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">4294967295</span><span class="p">,</span> <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint32&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">setup_ws</span><span class="p">():</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s1">&#39;4.2.2&#39;</span><span class="p">)</span>
+    <span class="n">create_packages</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+    <span class="n">create_data_types</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ws</span>
+
+<span class="n">ws</span> <span class="o">=</span> <span class="n">setup_ws</span><span class="p">()</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/PortInterfaces&#39;</span><span class="p">)</span>
+
+<span class="c1">#Creates new port interface with two operations</span>
+<span class="n">portInterface</span><span class="o">=</span><span class="n">package</span><span class="o">.</span><span class="n">createClientServerInterface</span><span class="p">(</span><span class="s1">&#39;FreeRunningTimer_I&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;GetTime&#39;</span><span class="p">,</span> <span class="s1">&#39;IsTimerElapsed&#39;</span><span class="p">])</span>
+
+<span class="c1">#Individually create arguments for each operation using the returned object</span>
+<span class="n">portInterface</span><span class="p">[</span><span class="s1">&#39;GetTime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">createOutArgument</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="s1">&#39;/DataTypes/uint32&#39;</span><span class="p">)</span>
+<span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;IsTimerElapsed&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">createInArgument</span><span class="p">(</span><span class="s2">&quot;startTime&quot;</span><span class="p">,</span> <span class="s1">&#39;/DataTypes/uint32&#39;</span><span class="p">)</span>
+<span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;IsTimerElapsed&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">createInArgument</span><span class="p">(</span><span class="s2">&quot;duration&quot;</span><span class="p">,</span> <span class="s1">&#39;/DataTypes/uint32&#39;</span><span class="p">)</span>
+<span class="n">portInterface</span><span class="p">[</span><span class="s2">&quot;IsTimerElapsed&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">createOutArgument</span><span class="p">(</span><span class="s2">&quot;result&quot;</span><span class="p">,</span> <span class="s1">&#39;/DataTypes/boolean&#39;</span><span class="p">)</span>
+
+<span class="c1">#Save ARXML ...</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;PortInterfaces.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/PortInterfaces&#39;</span><span class="p">])</span>
+<span class="c1">#... or generate DaVinci project</span>
+<span class="n">autosar</span><span class="o">.</span><span class="n">util</span><span class="o">.</span><span class="n">createDcf</span><span class="p">(</span><span class="n">ws</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;davinci&#39;</span><span class="p">,</span> <span class="s1">&#39;Example&#39;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="createmodeswitchinterface">
+<span id="ar4-package-package-createmodeswitchinterface"></span><h3>createModeSwitchInterface<a class="headerlink" href="#createmodeswitchinterface" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createModeSwitchInterface">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createModeSwitchInterface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">modeGroup</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">isService=False</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createModeSwitchInterface" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="portinterface/mode_switch_interface.html#ar4-portinterface-modeswitchinterface"><span class="std std-ref">ModeSwitchInterface</span></a> and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the port interface</p></li>
+<li><p><strong>modeGroup</strong> (<a class="reference internal" href="mode/mode_group.html#ar4-mode-modegroup"><span class="std std-ref">ModeGroup</span></a>) – mode group object</p></li>
+<li><p><strong>isService</strong> (<em>bool</em>) – Set this to True for service interfaces</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="portinterface/mode_switch_interface.html#ar4-portinterface-modeswitchinterface"><span class="std std-ref">ModeSwitchInterface</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createnvdatainterface">
+<span id="ar4-package-package-createnvdatainterface"></span><h3>createNvDataInterface<a class="headerlink" href="#createnvdatainterface" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createNvDataInterface">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createNvDataInterface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">nvDatas=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">isService=False</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">serviceKind</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createNvDataInterface" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new NvDataInterface and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the port interface</p></li>
+<li><p><strong>nvDatas</strong> (<a class="reference internal" href="element/data_element.html#ar4-element-dataelement"><span class="std std-ref">DataElement</span></a> or list(<a class="reference internal" href="element/data_element.html#ar4-element-dataelement"><span class="std std-ref">DataElement</span></a>)) – data element(s)</p></li>
+<li><p><strong>isService</strong> (<em>bool</em>) – Set this to True for service interfaces</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>NvDataInterface</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createparameterinterface">
+<span id="ar4-package-package-createparameterinterface"></span><h3>createParameterInterface<a class="headerlink" href="#createparameterinterface" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createParameterInterface">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createParameterInterface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">parameters</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isService</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">adminData</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Package.createParameterInterface" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="portinterface/parameter_interface.html#ar4-portinterface-parameterinterface"><span class="std std-ref">ParameterInterface</span></a> and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the port interface</p></li>
+<li><p><strong>parameters</strong> (<a class="reference internal" href="element/parameter_data_prototype.html#ar4-element-parameterdataprototype"><span class="std std-ref">ParameterDataPrototype</span></a> or list(<a class="reference internal" href="element/parameter_data_prototype.html#ar4-element-parameterdataprototype"><span class="std std-ref">ParameterDataPrototype</span></a>)) – Parameter or parameters</p></li>
+<li><p><strong>isService</strong> (<em>bool</em>) – Enables the isService attribute</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="portinterface/parameter_interface.html#ar4-portinterface-parameterinterface"><span class="std std-ref">ParameterInterface</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createsenderreceiverinterface">
+<span id="ar4-package-package-createsenderreceiverinterface"></span><h3>createSenderReceiverInterface<a class="headerlink" href="#createsenderreceiverinterface" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createSenderReceiverInterface">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createSenderReceiverInterface</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">dataElements=None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">isService=False</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">serviceKind</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createSenderReceiverInterface" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="portinterface/sender_receiver_interface.html#ar4-portinterface-senderreceiverinterface"><span class="std std-ref">SenderReceiverInterface</span></a> and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the port interface</p></li>
+<li><p><strong>dataElements</strong> (<em>list</em><em>(</em><em>DataElement</em><em>) or </em><em>DataElement</em>) – Data element(s) in this port interface</p></li>
+<li><p><strong>isService</strong> (<em>bool</em>) – Sets the isService attribute</p></li>
+<li><p><strong>serviceKind</strong> (<em>str</em>) – Optional serviceKind string</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="portinterface/sender_receiver_interface.html#ar4-portinterface-senderreceiverinterface"><span class="std std-ref">SenderReceiverInterface</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline"></a></h4>
+<p><strong>Port interface with single data element</strong></p>
+<div class="code python3 highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+
+<span class="k">def</span> <span class="nf">create_workspace_and_datatypes</span><span class="p">():</span>
+    <span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="n">version</span><span class="o">=</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;CompuMethods&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;CompuMethod&#39;</span><span class="p">)</span>
+    <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;DataConstrs&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataConstraint&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+    <span class="n">baseTypes</span><span class="o">.</span><span class="n">createSwBaseType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="n">nativeDeclaration</span><span class="o">=</span><span class="s1">&#39;uint8&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span> <span class="o">=</span> <span class="n">package</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationTypes&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataType</span><span class="p">(</span><span class="s1">&#39;uint8&#39;</span><span class="p">,</span> <span class="n">lowerLimit</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">upperLimit</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span>
+                                                        <span class="n">baseTypeRef</span><span class="o">=</span><span class="s1">&#39;/DataTypes/BaseTypes/uint8&#39;</span><span class="p">,</span> <span class="n">typeEmitter</span><span class="o">=</span><span class="s1">&#39;Platform_Type&#39;</span><span class="p">)</span>
+    <span class="n">implTypes</span><span class="o">.</span><span class="n">createImplementationDataTypeRef</span><span class="p">(</span><span class="s1">&#39;OffOn_T&#39;</span><span class="p">,</span> <span class="n">implementationTypeRef</span> <span class="o">=</span> <span class="s1">&#39;/DataTypes/ImplementationTypes/uint8&#39;</span><span class="p">,</span>
+                                          <span class="n">valueTable</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;OffOn_Off&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;OffOn_On&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;OffOn_Error&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;OffOn_NotAvailable&#39;</span>
+                                                        <span class="p">])</span>
+    <span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;PortInterfaces&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;PortInterface&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ws</span>
+
+<span class="c1">#Create SenderReceiver interface with single data element</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">create_workspace_and_datatypes</span><span class="p">()</span>
+<span class="n">package</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;PortInterfaces&#39;</span><span class="p">)</span>
+
+<span class="n">package</span><span class="o">.</span><span class="n">createSenderReceiverInterface</span><span class="p">(</span><span class="s1">&#39;HeaterPwrStat_I&#39;</span><span class="p">,</span> <span class="n">autosar</span><span class="o">.</span><span class="n">element</span><span class="o">.</span><span class="n">DataElement</span><span class="p">(</span><span class="s1">&#39;HeaterPwrStat&#39;</span><span class="p">,</span> <span class="s1">&#39;/DataTypes/ImplementationTypes/OffOn_T&#39;</span><span class="p">))</span>
+
+<span class="c1">#Save only the port interfaces portion to XML</span>
+<span class="n">ws</span><span class="o">.</span><span class="n">saveXML</span><span class="p">(</span><span class="s1">&#39;PortInterfaces.arxml&#39;</span><span class="p">,</span> <span class="n">filters</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;/PortInterfaces&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="createsubpackage">
+<span id="ar4-package-package-createsubpackage"></span><h3>createSubPackage<a class="headerlink" href="#createsubpackage" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createPackage">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createPackage</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">role=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createPackage" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="#ar4-package-package"><span class="std std-ref">Package</span></a> and appends it to this <a class="reference internal" href="#ar4-package-package"><span class="std std-ref">Package</span></a> as a sub-package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new package</p></li>
+<li><p><strong>role</strong> (<em>str</em>) – Optional <a class="reference internal" href="#ar4-package-package-roles"><span class="std std-ref">package role</span></a></p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#ar4-package-package"><span class="std std-ref">Package</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<section id="id8">
+<h4>Example<a class="headerlink" href="#id8" title="Permalink to this headline"></a></h4>
+<div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">autosar</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="n">autosar</span><span class="o">.</span><span class="n">workspace</span><span class="p">(</span><span class="s2">&quot;4.2.2&quot;</span><span class="p">)</span>
+<span class="n">datatypes</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">createPackage</span><span class="p">(</span><span class="s1">&#39;DataTypes&#39;</span><span class="p">)</span>
+<span class="n">datatypes</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;BaseTypes&#39;</span><span class="p">)</span>
+<span class="n">datatypes</span><span class="o">.</span><span class="n">createSubPackage</span><span class="p">(</span><span class="s1">&#39;ImplementationTypes&#39;</span><span class="p">,</span> <span class="n">role</span><span class="o">=</span><span class="s1">&#39;DataType&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="createsoftwareaddressmethod">
+<span id="ar4-package-package-createsoftwareaddressmethod"></span><h3>createSoftwareAddressMethod<a class="headerlink" href="#createsoftwareaddressmethod" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createSoftwareAddressMethod">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createSoftwareAddressMethod</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#Package.createSoftwareAddressMethod" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="element/software_address_method.html#ar4-element-softwareaddressmethod"><span class="std std-ref">SoftwareAddressMethod</span></a> and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – ShortName of the address method</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="element/software_address_method.html#ar4-element-softwareaddressmethod"><span class="std std-ref">SoftwareAddressMethod</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createunit">
+<span id="ar4-package-package-createunit"></span><h3>createUnit<a class="headerlink" href="#createunit" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createUnit">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createUnit</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">shortName</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">displayName</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">offset</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">scaling</span> <span class="pre">=</span> <span class="pre">None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createUnit" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new <a class="reference internal" href="datatype/unit.html#ar4-datatype-unit"><span class="std std-ref">Unit</span></a> and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new unit.</p></li>
+<li><p><strong>displayName</strong> (<em>str</em>) – Optional Display name (Will default to shortName if not set)</p></li>
+<li><p><strong>offset</strong> (<em>None</em><em>, </em><em>int</em><em>, </em><em>float</em>) – Optional offset</p></li>
+<li><p><strong>factor</strong> (<em>None</em><em>, </em><em>int</em><em>, </em><em>float</em>) – Optional scaling factor</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="datatype/unit.html#ar4-datatype-unit"><span class="std std-ref">Unit</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="createdatatypemappingset">
+<span id="ar4-package-package-createdatatypemappingset"></span><h3>createDataTypeMappingSet<a class="headerlink" href="#createdatatypemappingset" title="Permalink to this headline"></a></h3>
+<dl class="py method">
+<dt class="sig sig-object py" id="Package.createDataTypeMappingSet">
+<span class="sig-prename descclassname"><span class="pre">Package.</span></span><span class="sig-name descname"><span class="pre">createDataTypeMappingSet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="optional">[</span>, <em class="sig-param"><span class="n"><span class="pre">adminData=None</span></span></em><span class="optional">]</span><span class="sig-paren">)</span><a class="headerlink" href="#Package.createDataTypeMappingSet" title="Permalink to this definition"></a></dt>
+<dd><p>Creates a new data type mapping set and adds it to the package.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>name</strong> (<em>str</em>) – ShortName of the new unit.</p></li>
+<li><p><strong>adminData</strong> (None, <a class="reference internal" href="base/admin_data.html#ar4-base-admindata"><span class="std std-ref">AdminData</span></a>.) – Optional AdminData.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="datatype/datatype_mapping_set.html#ar4-datatype-datatypemappingset"><span class="std std-ref">DataTypeMappingSet</span></a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+<section id="parameter-details">
+<h2>Parameter Details<a class="headerlink" href="#parameter-details" title="Permalink to this headline"></a></h2>
+<section id="swcalibrationaccess">
+<span id="ar4-package-package-swcalibrationaccess"></span><h3>swCalibrationAccess<a class="headerlink" href="#swcalibrationaccess" title="Permalink to this headline"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 24%" />
+<col style="width: 76%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">None</span></code></p></td>
+<td><p>No calibration access set</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code> (Empty string)</p></td>
+<td><p>Create default calibration access value
+as set by Workspace.profile.swCalibrationAccessDefault</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;NOT-ACCESSIBLE&quot;</span></code></p></td>
+<td><p>The element will not be accessible by external tools</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;READ-ONLY&quot;</span></code></p></td>
+<td><p>Read only access</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&quot;READ-WRITE&quot;</span></code></p></td>
+<td><p>Read-write access</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="valuetable">
+<span id="ar4-package-package-valuetable"></span><h3>valueTable<a class="headerlink" href="#valuetable" title="Permalink to this headline"></a></h3>
+<p>The valueTable parameter accepts three different formats:</p>
+<ol class="arabic simple">
+<li><p>List of strings</p></li>
+<li><p>List of 2-tuples</p></li>
+<li><p>List of 3-tuples</p></li>
+</ol>
+<section id="list-of-strings">
+<h4>List of strings<a class="headerlink" href="#list-of-strings" title="Permalink to this headline"></a></h4>
+<p>List of text values. LowerLimit starts at 0 and is automatically incremented by 1 for each element in the list.
+The UpperLimit follows LowerLimit for each element.</p>
+</section>
+<section id="list-of-2-tuples">
+<h4>List of 2-tuples<a class="headerlink" href="#list-of-2-tuples" title="Permalink to this headline"></a></h4>
+<p>The first element of the tuple is used as both lowerLimit and upperLimit (int). The second element is the text value (str).</p>
+</section>
+<section id="list-of-3-tuples">
+<h4>List of 3-tuples<a class="headerlink" href="#list-of-3-tuples" title="Permalink to this headline"></a></h4>
+<p>The first element of the tuple is lowerLimit (int). The Second element is the upperLimit (int). The third element is the text value (str).</p>
+</section>
+</section>
+<section id="bitmask">
+<span id="ar4-package-package-bitmask"></span><h3>bitmask<a class="headerlink" href="#bitmask" title="Permalink to this headline"></a></h3>
+<p>The bitmask parameter is a list of 2-tuples. The first element of the tuple is the bitmask (int). The second elementof is the symbol (str).</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2021, Conny Gustafsson.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
