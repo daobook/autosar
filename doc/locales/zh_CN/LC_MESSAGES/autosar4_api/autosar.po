@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/autosar.rst:2
+msgid "Package Root"
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:4
+msgid ""
+"The autosar package root only contains one method worth mentioning. It "
+"also defines the autosar.Template interface class which will be desribed "
+"in a future release."
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:8
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:10
+msgid ":ref:`ar4_autosar_workspace_method`"
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:13
+msgid "Method Details"
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:18
+msgid "workspace"
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:22
+msgid "AUTOSAR version."
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:24
+msgid "AUTOSAR patch version (deprecated argument)"
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:25
+msgid ""
+"Used to specify exact XML schema name to use instead of inferring it from"
+" *version* parameter."
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:27
+msgid ""
+"User-defined dictionary containing context-related data. The Workspace "
+"object just stores the value(s) for later."
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:29
+msgid ""
+"If False it disables all XML writing classes. Users can then register "
+"their own XML writers."
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst
+msgid "返回类型"
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:30
+msgid ":ref:`ar4_workspace`"
+msgstr ""
+
+#: ../../autosar4_api/autosar.rst:32
+msgid "Factory method for creating instances of :ref:`ar4_workspace` objects."
+msgstr ""
+

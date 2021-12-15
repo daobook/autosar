@@ -1,0 +1,1359 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/package.rst:4
+msgid "Package"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:10
+msgid "<AR-PACKAGE>"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:12
+msgid "autosar.package"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:17
+msgid ""
+"An AUTOSAR package is a container for elements. Elements are almost "
+"everything else that are not packages. In addition to elements each "
+"package can also contain zero or more sub-packages."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:22
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:32
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:38
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:38
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:38 ../../autosar4_api/package.rst:837
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:40
+msgid "**name**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:40 ../../autosar4_api/package.rst:46
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:40
+msgid "Name of the package"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:42
+msgid "**elements**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:42
+msgid "list[Elements]"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:42
+msgid "List of elements"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:44
+msgid "**subPackages**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:44
+msgid "list[Package]"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:44
+msgid "List of sub-packages"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:46
+msgid "**role**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:46
+msgid "Package role"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:52
+msgid "Package Roles"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:58
+msgid "*Constant*"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:58
+msgid "Main container for Constants"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:60
+msgid "*ComponentType*"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:60
+msgid "Main container for Components"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:62
+msgid "*CompuMethod*"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:62
+msgid "Main container for Computational Methods"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:64
+msgid "*DataConstraint*"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:64
+msgid "Main container for Data Constraints"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:66
+msgid "*DataType*"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:66
+msgid "Main container for Data Types"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:68
+msgid "*ModeDclrGroup*"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:68
+msgid "Main container for Mode Declaration Groups"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:70
+msgid "*PortInterface*"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:70
+msgid "Main container for Port Interfaces"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:72
+msgid "*Unit*"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:72
+msgid "Main container for Units"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:78
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:80
+msgid "**ComponentType**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:82
+msgid ":ref:`ar4_package_Package_createApplicationSoftwareComponent`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:83
+msgid ":ref:`ar4_package_Package_createComplexDeviceDriverComponent`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:84
+msgid ":ref:`ar4_package_Package_createCompositionComponent`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:85
+msgid ":ref:`ar4_package_Package_createNvBlockComponent`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:86
+msgid ":ref:`ar4_package_Package_createServiceComponent`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:88
+msgid "**CompuMethod**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:90
+msgid ":ref:`ar4_package_Package_createCompuMethodConst`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:91
+msgid ":ref:`ar4_package_Package_createCompuMethodLinear`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:92
+msgid ":ref:`ar4_package_Package_createCompuMethodRational`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:93
+msgid ":ref:`ar4_package_Package_createCompuMethodRationalPhys`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:95
+msgid "**Constant**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:97
+msgid ":ref:`ar4_package_Package_createApplicationValueConstant`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:98
+msgid ":ref:`ar4_package_Package_createConstant`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:99
+msgid ":ref:`ar4_package_Package_createNumericalValueConstant`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:101
+msgid "**DataConstraint**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:103
+msgid ":ref:`ar4_package_Package_createInternalDataConstraint`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:104
+msgid ":ref:`ar4_package_Package_createPhysicalDataConstraint`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:106
+msgid "**DataType**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:108
+msgid ":ref:`ar4_package_Package_createApplicationArrayDataType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:109
+msgid ":ref:`ar4_package_Package_createApplicationPrimitiveDataType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:110
+msgid ":ref:`ar4_package_Package_createApplicationRecordDataType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:111
+msgid ":ref:`ar4_package_Package_createBaseType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:112
+msgid ":ref:`ar4_package_Package_createImplementationArrayDataType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:113
+msgid ":ref:`ar4_package_Package_createImplementationDataType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:114
+msgid ":ref:`ar4_package_Package_createImplementationDataTypeRef`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:115
+msgid ":ref:`ar4_package_Package_createImplementationDataTypePtr`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:116
+msgid ":ref:`ar4_package_Package_createImplementationRecordDataType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:117
+msgid ":ref:`ar4_package_Package_createSwBaseType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:119
+msgid "**Mode**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:121
+msgid ":ref:`ar4_package_Package_createModeDeclarationGroup`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:123
+msgid "**PortInterface**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:125
+msgid ":ref:`ar4_package_Package_createClientServerInterface`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:126
+msgid ":ref:`ar4_package_Package_createModeSwitchInterface`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:127
+msgid ":ref:`ar4_package_Package_createNvDataInterface`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:128
+msgid ":ref:`ar4_package_Package_createParameterInterface`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:129
+msgid ":ref:`ar4_package_Package_createSenderReceiverInterface`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:131
+msgid "**SubPackage**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:133
+msgid ":ref:`ar4_package_Package_createSubPackage`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:135
+msgid "**SoftwareAddressMethod**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:137
+msgid ":ref:`ar4_package_Package_createSoftwareAddressMethod`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:139
+msgid "**Unit**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:141
+msgid ":ref:`ar4_package_Package_createUnit`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:143
+msgid "**DataTypeMapping**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:145
+msgid ":ref:`ar4_package_Package_createDataTypeMappingSet`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:148
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:153
+msgid "createApplicationSoftwareComponent"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:157
+msgid ""
+"Creates a new :ref:`ar4_component_ApplicationSoftwareComponent` and adds "
+"it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:159 ../../autosar4_api/package.rst:181
+#: ../../autosar4_api/package.rst:197 ../../autosar4_api/package.rst:217
+msgid "ShortName of the component type"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:160 ../../autosar4_api/package.rst:182
+#: ../../autosar4_api/package.rst:218 ../../autosar4_api/package.rst:234
+msgid ""
+"ShortName of the associated Behavior object. If not set an automatic name"
+" is selected."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:161 ../../autosar4_api/package.rst:183
+#: ../../autosar4_api/package.rst:219 ../../autosar4_api/package.rst:235
+msgid ""
+"ShortName of the associated Implementation object. If not set an "
+"automatic name is selected."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:162 ../../autosar4_api/package.rst:184
+#: ../../autosar4_api/package.rst:220
+msgid ""
+"Set to True if this component prototype needs to support multiple "
+"instances"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:163 ../../autosar4_api/package.rst:185
+#: ../../autosar4_api/package.rst:221 ../../autosar4_api/package.rst:237
+msgid "Set to True to automatically create port API options."
+msgstr ""
+
+#: ../../autosar4_api/package.rst
+msgid "返回类型"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:164
+msgid ":ref:`ar4_component_ApplicationSoftwareComponent`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:167 ../../autosar4_api/package.rst:203
+#: ../../autosar4_api/package.rst:241 ../../autosar4_api/package.rst:529
+#: ../../autosar4_api/package.rst:568 ../../autosar4_api/package.rst:594
+#: ../../autosar4_api/package.rst:637 ../../autosar4_api/package.rst:681
+#: ../../autosar4_api/package.rst:778
+msgid "Example"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:175
+msgid "createComplexDeviceDriverComponent"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:179
+msgid ""
+"Creates a new :ref:`ar4_component_ComplexDeviceDriverComponent` and adds "
+"it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:186
+msgid ":ref:`ar4_component_ComplexDeviceDriverComponent`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:191
+msgid "createCompositionComponent"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:195
+msgid ""
+"Creates a new :ref:`ar4_component_CompositionComponent` and adds it to "
+"the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:198 ../../autosar4_api/package.rst:260
+#: ../../autosar4_api/package.rst:298 ../../autosar4_api/package.rst:341
+#: ../../autosar4_api/package.rst:415 ../../autosar4_api/package.rst:524
+#: ../../autosar4_api/package.rst:562 ../../autosar4_api/package.rst:589
+#: ../../autosar4_api/package.rst:614 ../../autosar4_api/package.rst:633
+#: ../../autosar4_api/package.rst:656 ../../autosar4_api/package.rst:676
+#: ../../autosar4_api/package.rst:700 ../../autosar4_api/package.rst:717
+#: ../../autosar4_api/package.rst:734 ../../autosar4_api/package.rst:752
+#: ../../autosar4_api/package.rst:822
+msgid "Optional AdminData."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:200
+msgid ":ref:`ar4_component_CompositionComponent`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:211
+msgid "createNvBlockComponent"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:215
+msgid "Creates a new NvBlockComponent and adds it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:227
+msgid "createServiceComponent"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:231
+msgid ""
+"Creates a new :ref:`ar4_component_ServiceComponent` and adds it to the "
+"package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:233
+msgid "ShortName of the component type."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:236
+msgid ""
+"Set to True if this component prototype needs to support multiple "
+"instances."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:238
+msgid ":ref:`ar4_component_ServiceComponent`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:249
+msgid "createCompuMethodConst"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:253
+msgid ""
+"Creates a new CompuMethod based on a value-table (better known as "
+"enumeration) and adds it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:255
+msgid "shortName of the new CompuMethod."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:256
+msgid ""
+"List of strings containing enumeration values. See below for more "
+"advanced options."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:257 ../../autosar4_api/package.rst:290
+msgid ""
+"Optional unit name (requires :ref:`package role "
+"<ar4_package_Package_roles>` 'Unit' to be setup)."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:258 ../../autosar4_api/package.rst:291
+msgid "Optional default value."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:259 ../../autosar4_api/package.rst:297
+msgid "Category string used for the new CompuMethod."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:268
+msgid "createCompuMethodLinear"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:270
+msgid "Alias for :ref:`ar4_package_Package_createCompuMethodRational`."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:275
+msgid "createCompuMethodRational"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:279
+msgid ""
+"Creates a new CompuMethod containing a CompuScaleElement (offset+scaling)"
+" and adds it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:281
+msgid "ShortName of the new CompuMethod."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:282
+msgid "Offset."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:284
+msgid "Scaling factor."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:286
+msgid "Lower limit of the CompuScaleElement."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:287
+msgid "Upper limit of the CompuScaleElement."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:288
+msgid ""
+"Interval type of lowerLimit (\"OPEN\" or \"CLOSED\"). Only applies when "
+"lowerLimit is not None."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:289
+msgid ""
+"Interval type of upperLimit (\"OPEN\" or \"CLOSED\"). Only applies when "
+"upperLimit is not None."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:293
+msgid "Label of the CompuScaleElement"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:294
+msgid ""
+"When False it sets the scaling numerator/denominator to closest possible "
+"rational number. When True it forces numerator to float and sets "
+"denominator to 1."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:295
+msgid ""
+"When True, creates an internal to physical Computation. Cannot be True "
+"when usePhysToInt is also True."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:296
+msgid ""
+"When True, creates a physical to internal Computation. Cannot be True "
+"when useIntToPhys is also True."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:302
+msgid ""
+"This method by default creates an internal to physical computation, use "
+"the method :ref:`ar4_package_Package_createCompuMethodRationalPhys` to "
+"create a physical to internal computation. Some AUTOSAR toolchains does "
+"not work when numerator and denominator is a rational number. Use the "
+"option forceFloat to force the scaling factor to be stored as a floating "
+"point number."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:309
+msgid "createCompuMethodRationalPhys"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:311
+msgid ""
+"Convenience method that calls "
+":ref:`ar4_package_Package_createCompuMethodRational` but creates physical"
+" to internal computation instead."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:316
+msgid "createApplicationValueConstant"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:320
+msgid "Creates an application value constant and adds it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:322 ../../autosar4_api/package.rst:338
+#: ../../autosar4_api/package.rst:355
+msgid "ShortName of the new constant"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:323
+msgid "Value container"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:324
+msgid "Axis container"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:325
+msgid "Optional category for (inner) value"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:326
+msgid "Optional label for (inner) value"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:327 ../../autosar4_api/package.rst:343
+#: ../../autosar4_api/package.rst:358
+msgid ":ref:`ar4_constant_Constant`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:332
+msgid "createConstant"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:336
+msgid ""
+"Creates a new constant (based on a type reference) and adds it to the "
+"package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:339
+msgid "Reference to (existing) data type"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:340
+msgid "Init value (type depends on typeRef)"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:349
+msgid "createNumericalValueConstant"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:353
+msgid ""
+"Creates a new constant (based on a numerical value) and adds it to the "
+"package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:356 ../../autosar4_api/package.rst:837
+msgid "Value"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:364
+msgid "createInternalDataConstraint"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:368
+msgid "Creates a new internal data constraint and adds it the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:370 ../../autosar4_api/package.rst:389
+msgid "ShortName of the new DataConstraint."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:371 ../../autosar4_api/package.rst:390
+msgid "Lower limit."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:373 ../../autosar4_api/package.rst:392
+msgid "Upper limit."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:375 ../../autosar4_api/package.rst:394
+msgid "Interval type of lowerLimit (\"OPEN\"/\"CLOSED\")."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:376 ../../autosar4_api/package.rst:395
+msgid "Interval type of upperLimit (\"OPEN\"/\"CLOSED\")."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:377 ../../autosar4_api/package.rst:396
+msgid ":ref:`ar4_datatype_DataConstraint`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:383
+msgid "createPhysicalDataConstraint"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:387
+msgid "Creates a new physical data constraint and adds it the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:403
+msgid "createApplicationArrayDataType"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:407
+msgid "Creates a new ApplicationArrayDataType and appends it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:409 ../../autosar4_api/package.rst:431
+#: ../../autosar4_api/package.rst:628
+msgid "ShortName of the new datatype"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:410
+msgid "An ApplicationArrayElement object"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:411 ../../autosar4_api/package.rst:435
+#: ../../autosar4_api/package.rst:457 ../../autosar4_api/package.rst:486
+#: ../../autosar4_api/package.rst:519 ../../autosar4_api/package.rst:557
+#: ../../autosar4_api/package.rst:611
+msgid ""
+"Optional :ref:`calibration access "
+"<ar4_package_Package_swCalibrationAccess>`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:413
+msgid "Optional category string."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:417
+msgid ":ref:`ar4_datatype_ApplicationArrayDataType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:425
+msgid "createApplicationPrimitiveDataType"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:429
+msgid "Creates a new ApplicationPrimitiveDataType and appends it to this package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:432
+msgid ""
+"Optional name or reference to a DataConstraint object. Empty string means"
+" that an automatic data constraint will be created. Set to None to "
+"disable."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:433
+msgid "Optional name or reference to a CompuMethod object"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:434
+msgid "Optional name or reference to a Unit object"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:437 ../../autosar4_api/package.rst:459
+#: ../../autosar4_api/package.rst:523 ../../autosar4_api/package.rst:561
+msgid "Category string."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:439 ../../autosar4_api/package.rst:461
+#: ../../autosar4_api/package.rst:493
+msgid "AdminData"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:448
+msgid "createApplicationRecordDataType"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:452
+msgid "Creates a new ApplicationRecordDataType and appends it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:454
+msgid "ShortName."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:455 ../../autosar4_api/package.rst:610
+msgid ""
+"List containing tuples. First tuple element is the record name (string), "
+"second tuple element is a type reference (string)."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:468
+msgid "createBaseType"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:470
+msgid "Alias for :ref:`ar4_package_Package_createSwBaseType`."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:476
+msgid "createImplementationArrayDataType"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:480
+msgid "Creates an implementation array data type and adds it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:482 ../../autosar4_api/package.rst:609
+msgid "ShortName of the new data type"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:483
+msgid "Reference to (existing) :ref:`ar4_datatype_ImplementationDataType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:484
+msgid "Number of elements in array"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:485
+msgid "Optional (inner) element name."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:488
+msgid "Optional type emitter"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:489 ../../autosar4_api/package.rst:612
+msgid "Category for the (outer) array data type"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:491 ../../autosar4_api/package.rst:613
+msgid "Category for the (inner) array element"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:495 ../../autosar4_api/package.rst:526
+#: ../../autosar4_api/package.rst:564 ../../autosar4_api/package.rst:591
+#: ../../autosar4_api/package.rst:616
+msgid ":ref:`ar4_datatype_ImplementationDataType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:501
+msgid "createImplementationDataType"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:505
+msgid ""
+"Creates a new implementation data type that is tied directly to a base "
+"type."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:507 ../../autosar4_api/package.rst:545
+msgid "ShortName of the datatype"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:508
+msgid "Reference to existing :ref:`base type <ar4_datatype_SwBaseType>`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:509 ../../autosar4_api/package.rst:547
+msgid "Optional lower limit."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:510 ../../autosar4_api/package.rst:548
+msgid "Optional upper limit."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:511 ../../autosar4_api/package.rst:549
+msgid ""
+"Optional valueTable. See :ref:`ar4_package_Package_valueTable` for "
+"details."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:512 ../../autosar4_api/package.rst:550
+msgid "Optional bitmask. See :ref:`ar4_package_Package_bitmask` for details."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:513 ../../autosar4_api/package.rst:551
+msgid ""
+"Optional offset (for CompuMethod). When this is used, scaling also has to"
+" be set."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:514 ../../autosar4_api/package.rst:552
+msgid "Optional scaling factor (for CompuMethod)."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:516 ../../autosar4_api/package.rst:554
+msgid "Optional unit."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:517 ../../autosar4_api/package.rst:555
+msgid ""
+"When False it sets the scaling numerator/denominator to closest possible "
+"rational number. When True it forces numerator to float type and sets "
+"denominator to 1."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:518 ../../autosar4_api/package.rst:556
+msgid ""
+"Optional name or reference to existing DataConstraint element. Value None"
+" prevents dataConstraint from being created while empty-string "
+"automatically attempts to create a DataConstraint element."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:520 ../../autosar4_api/package.rst:558
+msgid "Optional type emitter string."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:521 ../../autosar4_api/package.rst:559
+msgid ""
+"Selects lowerLimitType (\"OPEN\" or \"CLOSED\") if lowerLimit is used. "
+"Value None defaults to \"CLOSED\"."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:522 ../../autosar4_api/package.rst:560
+msgid ""
+"Selects upperLimitType (\"OPEN\" or \"CLOSED\") if upperLimit is used. "
+"Value None defaults to \"CLOSED\"."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:538
+msgid "createImplementationDataTypeRef"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:542
+msgid ""
+"Creates a new implementation data type that is a reference to another "
+"implementation type. This is similar in concept to a typedef in the C "
+"programming language"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:546
+msgid "Reference to existing :ref:`ar4_datatype_ImplementationDataType`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:577
+msgid "createImplementationDataTypePtr"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:581
+msgid ""
+"Creates a new implementation data type that is a pointer to a base data "
+"type. This is similar to a pointer type definition in C."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:584
+msgid "ShortName of the datatype."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:585
+msgid "Reference to (existing) base type object."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:586
+msgid "Optional swImplPolicy."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:587
+msgid "Optional category string (for the datatype)"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:588
+msgid "Optional category string for the inner target property."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:603
+msgid "createImplementationRecordDataType"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:607
+msgid "Creates an implementation record data type and adds it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:622
+msgid "createSwBaseType"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:626
+msgid "Creates a new SwBaseType and adds it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:629
+msgid "Size of type in bits"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:630
+msgid "Encoding string"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:631
+msgid "Used to map this base type to one of the native types known to the RTE"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:632
+msgid "Category string"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:645
+msgid "createModeDeclarationGroup"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:649
+msgid ""
+"Creates a new :ref:`ar4_mode_ModeDeclarationGroup` and adds it to the "
+"package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:651
+msgid "ShortName of the object"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:652
+msgid "List of mode declaration names"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:654
+msgid "Initial mode value (must be one of strings from modeDeclarations list)"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:655
+msgid "Optional category"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:658
+msgid ":ref:`ar4_mode_ModeDeclarationGroup`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:663
+msgid "createClientServerInterface"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:667
+msgid ""
+"Creates a new :ref:`ar4_portinterface_clientServerInterface` and adds it "
+"to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:669 ../../autosar4_api/package.rst:696
+#: ../../autosar4_api/package.rst:713 ../../autosar4_api/package.rst:730
+#: ../../autosar4_api/package.rst:747
+msgid "ShortName of the port interface"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:670
+msgid "List of names to be created as of :ref:`ar4_portinterface_Operation`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:672
+msgid ""
+"Possible errors that can be returned. Errors must be assigned here first,"
+" before you can use them in individual operations."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:674 ../../autosar4_api/package.rst:699
+#: ../../autosar4_api/package.rst:716
+msgid "Set this to True for service interfaces"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:675 ../../autosar4_api/package.rst:751
+msgid "Optional serviceKind string"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:678
+msgid ":ref:`ar4_portinterface_clientServerInterface`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:690
+msgid "createModeSwitchInterface"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:694
+msgid ""
+"Creates a new :ref:`ar4_portinterface_ModeSwitchInterface` and adds it to"
+" the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:697
+msgid "mode group object"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:702
+msgid ":ref:`ar4_portinterface_ModeSwitchInterface`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:707
+msgid "createNvDataInterface"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:711
+msgid "Creates a new NvDataInterface and adds it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:714
+msgid "data element(s)"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:724
+msgid "createParameterInterface"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:728
+msgid ""
+"Creates a new :ref:`ar4_portinterface_ParameterInterface` and adds it to "
+"the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:731
+msgid "Parameter or parameters"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:733
+msgid "Enables the isService attribute"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:736
+msgid ":ref:`ar4_portinterface_ParameterInterface`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:741
+msgid "createSenderReceiverInterface"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:745
+msgid ""
+"Creates a new :ref:`ar4_portinterface_SenderReceiverInterface` and adds "
+"it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:748
+msgid "Data element(s) in this port interface"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:750
+msgid "Sets the isService attribute"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:754
+msgid ":ref:`ar4_portinterface_SenderReceiverInterface`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:757
+msgid "Examples"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:759
+msgid "**Port interface with single data element**"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:767
+msgid "createSubPackage"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:771
+msgid ""
+"Creates a new :ref:`ar4_package_Package` and appends it to this "
+":ref:`ar4_package_Package` as a sub-package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:773
+msgid "ShortName of the new package"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:774
+msgid "Optional :ref:`package role <ar4_package_Package_roles>`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:775
+msgid ":ref:`ar4_package_Package`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:786
+msgid "createSoftwareAddressMethod"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:790
+msgid ""
+"Creates a new :ref:`ar4_element_SoftwareAddressMethod` and adds it to the"
+" package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:792
+msgid "ShortName of the address method"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:793
+msgid ":ref:`ar4_element_SoftwareAddressMethod`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:798
+msgid "createUnit"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:802
+msgid "Creates a new :ref:`ar4_datatype_Unit` and adds it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:804 ../../autosar4_api/package.rst:821
+msgid "ShortName of the new unit."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:805
+msgid "Optional Display name (Will default to shortName if not set)"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:806
+msgid "Optional offset"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:808
+msgid "Optional scaling factor"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:810
+msgid ":ref:`ar4_datatype_Unit`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:815
+msgid "createDataTypeMappingSet"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:819
+msgid "Creates a new data type mapping set and adds it to the package."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:824
+msgid ":ref:`ar4_datatype_DataTypeMappingSet`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:827
+msgid "Parameter Details"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:832
+msgid "swCalibrationAccess"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:839
+msgid ":literal:`None`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:839
+msgid "No calibration access set"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:841
+msgid ":literal:`\"\"` (Empty string)"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:841
+msgid ""
+"Create default calibration access value as set by "
+"Workspace.profile.swCalibrationAccessDefault"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:844
+msgid ":literal:`\"NOT-ACCESSIBLE\"`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:844
+msgid "The element will not be accessible by external tools"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:846
+msgid ":literal:`\"READ-ONLY\"`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:846
+msgid "Read only access"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:848
+msgid ":literal:`\"READ-WRITE\"`"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:848
+msgid "Read-write access"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:854
+msgid "valueTable"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:856
+msgid "The valueTable parameter accepts three different formats:"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:858 ../../autosar4_api/package.rst:863
+msgid "List of strings"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:859 ../../autosar4_api/package.rst:869
+msgid "List of 2-tuples"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:860 ../../autosar4_api/package.rst:874
+msgid "List of 3-tuples"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:865
+msgid ""
+"List of text values. LowerLimit starts at 0 and is automatically "
+"incremented by 1 for each element in the list. The UpperLimit follows "
+"LowerLimit for each element."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:871
+msgid ""
+"The first element of the tuple is used as both lowerLimit and upperLimit "
+"(int). The second element is the text value (str)."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:876
+msgid ""
+"The first element of the tuple is lowerLimit (int). The Second element is"
+" the upperLimit (int). The third element is the text value (str)."
+msgstr ""
+
+#: ../../autosar4_api/package.rst:881
+msgid "bitmask"
+msgstr ""
+
+#: ../../autosar4_api/package.rst:883
+msgid ""
+"The bitmask parameter is a list of 2-tuples. The first element of the "
+"tuple is the bitmask (int). The second elementof is the symbol (str)."
+msgstr ""
+

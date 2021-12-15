@@ -1,0 +1,178 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:4
+msgid "ApplicationRecordDataType"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:10
+msgid "<APPLICATION-RECORD-DATA-TYPE>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:12
+msgid "autosar.datatype"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:14
+msgid ""
+":ref:`autosar.datatype.ApplicationDataType "
+"<ar4_datatype_ApplicationDataType>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:17
+msgid "Implementation of application record data type."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:20
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:26
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:28
+msgid ":ref:`ar4_package_Package_createApplicationRecordDataType`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:31
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:35
+msgid "ShortName."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:36
+msgid "List of record elements."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:38
+msgid "Additional type properties."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:40
+#: ../../autosar4_api/datatype/application_record_data_type.rst:93
+msgid "Category string."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:42
+msgid "Parent package."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:44
+msgid "AdminData."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:48
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:50
+msgid ""
+"For inherited attributes see :ref:`autosar.datatype.ApplicationDataType "
+"<ar4_datatype_ApplicationDataType>`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:56
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:56
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:56
+msgid "Tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:58
+msgid "**elements**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:58
+msgid "*list*                     | <ELEMENTS>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:62
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:64
+msgid ":ref:`ar4_datatype_ApplicationRecordDataType_append`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:65
+msgid ":ref:`ar4_datatype_ApplicationRecordDataType_createElement`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:68
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:73
+msgid "append"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:77
+msgid "Appends element to elements list."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:79
+msgid "element."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:85
+msgid "createElement"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:89
+msgid ""
+"Creates a new instance of :ref:`ar4_datatype_ApplicationRecordElement` "
+"and appends it to internal elements list."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:91
+msgid "Element name."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:92
+msgid "Type reference."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_record_data_type.rst:95
+msgid "Optional AdminData."
+msgstr ""
+

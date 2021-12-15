@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:4
+msgid "SenderReceiverInterface"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:10
+msgid "<SENDER-RECEIVER-INTERFACE>"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:12
+msgid "autosar.portinterface"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:14
+msgid ""
+":ref:`autosar.portinterface.PortInteface "
+"<ar4_portinterface_Portinterface>`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:17
+msgid ""
+"A sender receiver interface is the most common type of port interface. It"
+" contains a set of data elements that can be used to send and receive "
+"data"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:21
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:27
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:29
+msgid ""
+":ref:`Package.createSenderReceiverInterface "
+"<ar4_package_Package_createSenderReceiverInterface>`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:33
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:35
+msgid ""
+"For inherited attributes see :ref:`autosar.portinterface.PortInteface "
+"<ar4_portinterface_Portinterface>`."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:41
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:41
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:41
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:43
+msgid "**dataElements**"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:43
+msgid "*list(DataElement)*"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:43
+msgid "List of data elements"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:45
+msgid "**invalidationPolicies**"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:45
+msgid "*list(InvalidationPolicy)*"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:45
+msgid "List of invalidation policies"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:50
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:52
+msgid ":ref:`SenderReceiverInterface_append`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:56
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:61
+msgid "append"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:65
+msgid "Appends a child element to this port interface."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:67
+msgid "If the type of elem is DataElement it will be appended to dataElements"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:68
+msgid ""
+"If the type of elem is InvalidationPolicy it will be appended to "
+"invalidationPolicies"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/sender_receiver_interface.rst:70
+msgid "child element to be appended"
+msgstr ""
+

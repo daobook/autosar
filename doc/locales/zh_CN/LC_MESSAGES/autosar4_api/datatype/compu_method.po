@@ -1,0 +1,205 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/datatype/compu_method.rst:4
+msgid "CompuMethod"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:10
+msgid "<COMPU-METHOD>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:12
+msgid "autosar.datatype"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:17
+msgid ""
+"A CompuMethod or *computation method* is used to decorate other data "
+"types with additional information. The *compuMethodRef* attribute of the "
+":ref:`ar4_datatype_ApplicationDataType` or "
+":ref:`ar4_datatype_ImplementationDataType` is used to associate a data "
+"type with a certain CompuMethod."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:21
+msgid "Primary uses for CompuMethods are:"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:23
+msgid "Scaling (rational/linear)"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:24
+msgid "ValueTables/Enumerations"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:25
+msgid "Bit masks"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:28
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:34
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:36
+msgid ""
+"CompuMethods can be implictly created while creating "
+":ref:`ar4_datatype_ApplicationDataType` or "
+":ref:`ar4_datatype_ImplementationDataType` but they can also be "
+"explicitly created using the package API:"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:39
+msgid ""
+":ref:`Package.createCompuMethodConst "
+"<ar4_package_Package_createCompuMethodConst>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:40
+msgid ""
+":ref:`Package.createCompuMethodRational "
+"<ar4_package_Package_createCompuMethodRational>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:41
+msgid ""
+":ref:`Package.createCompuMethodRationalPhys "
+"<ar4_package_Package_createCompuMethodRationalPhys>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:43
+msgid ""
+"To allow Python to implictly create CompuMethods while creating data "
+"types you must first assign the *compuMethod* and the *unit* roles on "
+"packages or sub-packages in your workspace. For more information about "
+"package roles, see :ref:`ar4_Roles`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:47
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:51
+msgid "Short name."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:52
+msgid "Uses internal to physical computation (False, True)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:53
+msgid "Uses physical to internal computation (False, True)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:54
+msgid "Optional reference to :ref:`ar4_datatype_Unit`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:56
+msgid "Category string."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:58
+msgid "parent package."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:60
+msgid "Optional AdminData."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:65
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:67
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:73
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:73
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:73
+msgid "Tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:75
+msgid "**unitRef**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:75
+msgid "None or str"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:75
+msgid "<UNIT-REF>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:77
+msgid "**intToPhys**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:77
+#: ../../autosar4_api/datatype/compu_method.rst:79
+msgid "None or :ref:`ar4_datatype_Computation`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:77
+msgid "<COMPU-INTERNAL-TO-PHYS>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:79
+msgid "**physToInt**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_method.rst:79
+msgid "<COMPU-PHYS-TO-INTERNAL>"
+msgstr ""
+

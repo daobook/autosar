@@ -1,0 +1,397 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/behavior/behavior.rst:4
+msgid "SwcInternalBehavior"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:10
+msgid "<SWC-INTERNAL-BEHAVIOR>"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:12
+msgid "autosar.behavior"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:17
+msgid "This is the internal behavior class for AUTOSAR4 SWCs."
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:20
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:22
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:28
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:28
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:28
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:30
+msgid "**componentRef**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:30
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:30
+msgid "Reference to SWC prototype"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:32
+msgid "**events**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:32
+msgid "*list(Event)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:32
+msgid "Events"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:34
+msgid "**exclusiveAreas**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:34
+msgid "*list(ExclsiveArea)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:34
+msgid "Exclusive areas"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:36
+msgid "**multipleInstance**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:36
+msgid "bool"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:36
+msgid "Enables/disabled Multiple instances"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:38
+msgid "**perInstanceMemories**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:38
+msgid "*list(PerInstanceMemory)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:38
+msgid "PerInstanceMemory objects"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:40
+msgid "**portAPIOptions**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:40
+msgid "*list(PortAPIOption)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:40
+msgid "Port API options"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:42
+msgid "**runnables**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:42
+msgid "*list(Runnable)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:42
+msgid "Runnables"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:46
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:48
+#: ../../autosar4_api/behavior/behavior.rst:55
+msgid ":ref:`ar4_behavior_Behavior_createRunnable`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:49
+msgid ":ref:`ar4_behavior_Behavior_createModeSwitchEvent`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:50
+msgid ":ref:`ar4_behavior_Behavior_createTimerEvent`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:51
+msgid ":ref:`ar4_behavior_Behavior_createOperationInvokedEvent`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:52
+msgid ":ref:`ar4_behavior_Behavior_createDataReceivedEvent`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:53
+msgid ":ref:`ar4_behavior_Behavior_createExclusiveArea`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:54
+msgid ":ref:`ar4_behavior_Behavior_createInitEvent`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:59
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:64
+msgid "createRunnable"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:68
+msgid "ShortName of the runnable"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:69
+msgid "Select which ports this runnable will access"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:71
+msgid "Used to override the generated C symbol (default is to use the name)"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:72
+msgid "Selects if this runnable can run concurrently"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:73
+msgid "Select which exclusive areas this runnable will use"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:75
+msgid "Optional AdminData"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:80
+msgid "createModeSwitchEvent"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:84
+#: ../../autosar4_api/behavior/behavior.rst:106
+#: ../../autosar4_api/behavior/behavior.rst:121
+#: ../../autosar4_api/behavior/behavior.rst:138
+#: ../../autosar4_api/behavior/behavior.rst:175
+msgid "Name of (aldready existing) runnable to trigger when event occurs"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:85
+msgid "Mode reference"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:86
+msgid "Activation type"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:87
+#: ../../autosar4_api/behavior/behavior.rst:109
+#: ../../autosar4_api/behavior/behavior.rst:124
+#: ../../autosar4_api/behavior/behavior.rst:141
+#: ../../autosar4_api/behavior/behavior.rst:177
+msgid ""
+"Override of the shortName of this event. If left as None a (unique) "
+"default name will be generated."
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst
+msgid "返回类型"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:88
+msgid ":ref:`ar4_behavior_ModeSwitchEvent`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:90
+msgid ""
+"Creates a new :ref:`ar4_behavior_ModeSwitchEvent` object and appends it "
+"to this object."
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:92
+msgid "**activationType**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:94
+msgid "ENTRY (Will be automatically converted to \"ON-ENTRY\")"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:95
+msgid "EXIT  (Will be automatically converted to \"ON-EXIT\")"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:96
+msgid "ON-ENTRY"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:97
+msgid "ON-EXIT"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:102
+msgid "createTimerEvent"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:107
+msgid "Cycle time in milliseconds"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:108
+#: ../../autosar4_api/behavior/behavior.rst:123
+#: ../../autosar4_api/behavior/behavior.rst:140
+#: ../../autosar4_api/behavior/behavior.rst:176
+msgid "Optional mode disabling settings for this event"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:110
+msgid ":ref:`ar4_behavior_TimingEvent`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:112
+msgid ""
+"Creates a new :ref:`ar4_behavior_TimingEvent` object and appends it to "
+"this object."
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:117
+msgid "createOperationInvokedEvent"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:122
+msgid "Reference to operation"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:125
+msgid ":ref:`ar4_behavior_OperationInvokedEvent`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:127
+msgid ""
+"Creates a new :ref:`ar4_behavior_OperationInvokedEvent` object and "
+"appends it to this object."
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:134
+msgid "createDataReceivedEvent"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:139
+msgid "Reference to DataElement"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:142
+msgid ":ref:`ar4_behavior_DataReceivedEvent`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:144
+msgid ""
+"Creates a new :ref:`ar4_behavior_DataReceivedEvent` object and appends it"
+" to this object."
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:149
+msgid "createExclusiveArea"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:153
+msgid "ShortName of exclusive area"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:154
+msgid ":ref:`ar4_behavior_ExclusiveArea`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:156
+msgid ""
+"Creates a new :ref:`ar4_behavior_ExclusiveArea` object and appends it to "
+"this object."
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:160
+msgid "createPerInstanceMemory"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:163
+msgid "createSharedDataParameter"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:166
+msgid "createNvmBlock"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:171
+msgid "createInitEvent"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:178
+msgid ":ref:`ar4_behavior_InitEvent`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:180
+msgid "Creates a new :ref:`ar4_behavior_InitEvent` and appends it to this object."
+msgstr ""
+
+#: ../../autosar4_api/behavior/behavior.rst:183
+msgid "createModeSwitchAckEvent"
+msgstr ""
+

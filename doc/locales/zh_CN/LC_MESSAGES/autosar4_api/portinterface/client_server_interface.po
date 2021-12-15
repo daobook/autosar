@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:4
+msgid "ClientServerInterface"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:10
+msgid "<CLIENT-SERVER-INTERFACE>"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:12
+msgid "autosar.portinterface"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:14
+msgid ""
+":ref:`autosar.portinterface.PortInteface "
+"<ar4_portinterface_Portinterface>`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:17
+msgid ""
+"Client Server interfaces contains a set of callable operations. "
+"Operations are called by one or more client SWCs and are (usually) served"
+" by a single server SWC."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:21
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:27
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:29
+msgid ""
+":ref:`Package.createClientServerInterface "
+"<ar4_package_Package_createClientServerInterface>`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:33
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:35
+msgid ""
+"For inherited attributes see :ref:`autosar.portinterface.PortInteface "
+"<ar4_portinterface_Portinterface>`."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:41
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:41
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:41
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:43
+msgid "**operations**"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:43
+msgid "*list(Operation)*"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:43
+msgid "Operations in this interface"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:45
+msgid "**applicationErrors**"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:45
+msgid "*list(ApplicationError)*"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:45
+msgid "Application errors in this interface"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:50
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:52
+msgid ":ref:`ar4_portinterface_ClientServerInterface_append`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:56
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:61
+msgid "append"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:65
+msgid ""
+"Adds element to the self.operations or self.applicationErrors lists "
+"depending on type."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/client_server_interface.rst:67
+msgid "Element"
+msgstr ""
+

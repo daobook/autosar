@@ -1,0 +1,301 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/datatype/data_constraint.rst:4
+msgid "DataConstraint"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:10
+msgid "<DATA-CONSTR>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:12
+msgid "autosar.datatype"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:17
+msgid ""
+"A DataConstraint is used to decorate other data types with one or more "
+"constraints. Use the *dataConstraintRef* property of the "
+":ref:`ar4_datatype_ApplicationDataType` or "
+":ref:`ar4_datatype_ImplementationDataType` classes to access the "
+"reference string."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:21
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:27
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:30
+msgid "Implicit factory methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:32
+msgid ":ref:`ar4_package_Package_createImplementationDataType`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:33
+msgid ":ref:`ar4_package_Package_createImplementationDataTypeRef`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:36
+msgid "Explicit factory methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:38
+msgid ":ref:`ar4_package_Package_createInternalDataConstraint`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:39
+msgid ":ref:`ar4_package_Package_createPhysicalDataConstraint`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:43
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:47
+msgid "Short name."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:48
+msgid "Constraint rules"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:50
+msgid "Optional constraint level."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:52
+msgid "parent package."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:54
+msgid "Optional AdminData."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:58
+msgid ""
+"The rule parameter should either be a dictionary or a list of "
+"dictionaries. Each dictionary in *rules* is expected to have three keys:"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:61
+msgid "type: ('internalConstraint' or 'physicalConstraint')."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:62
+msgid "lowerLimit: Lower limit of the constraint (int, float)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:63
+msgid "upperLimit: Lower limit of the constraint (int, float)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:64
+msgid ""
+"lowerLimitType: Type of lower limit (:literal:`'OPEN'`, "
+":literal:`'CLOSED'`)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:65
+msgid ""
+"upperLimitType: Type of lower limit (:literal:`'OPEN'`, "
+":literal:`'CLOSED'`)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:69
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:71
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:77
+#: ../../autosar4_api/datatype/data_constraint.rst:93
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:77
+#: ../../autosar4_api/datatype/data_constraint.rst:93
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:77
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:79
+msgid "**level**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:79
+msgid "None, int"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:79
+msgid "<CONSTR-LEVEL>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:81
+msgid "**rules**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:81
+msgid "list of InternalConstraint or PhysicalConstraint"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:81
+msgid "<DATA-CONSTR-RULE>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:85
+msgid "Public Properties"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:87
+msgid ""
+"All properties are limited to situations where the constraint only has "
+"one internal rule. Multi-rule support will be added in a future release."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:93
+msgid "Access Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:95
+msgid "**constraintLevel**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:95
+msgid "int"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:95
+#: ../../autosar4_api/datatype/data_constraint.rst:97
+#: ../../autosar4_api/datatype/data_constraint.rst:99
+#: ../../autosar4_api/datatype/data_constraint.rst:101
+#: ../../autosar4_api/datatype/data_constraint.rst:103
+msgid "Get"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:97
+msgid "**lowerLimit**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:97
+#: ../../autosar4_api/datatype/data_constraint.rst:99
+msgid "int, float"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:99
+msgid "**upperLimit**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:101
+msgid "**lowerLimitType**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:101
+#: ../../autosar4_api/datatype/data_constraint.rst:103
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:103
+msgid "**upperLimitType**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:107
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:109
+msgid ""
+"Most methods are currently limited to situations where the constraint "
+"only has one internal rule. Multi-rule support will be added in a future "
+"release."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:111
+msgid ":ref:`ar4_datatype_DataConstraint_checkValue`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:112
+msgid ":ref:`ar4_datatype_DataConstraint_findByType`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:115
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:120
+msgid "checkValue"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:124
+msgid "Value."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:127
+msgid ""
+"Checks if value *v* is inside the limits of the data constraint. If the "
+"value is outside then a DataConstraintError will be raised."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:132
+msgid "findByType"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:136
+msgid ""
+"Constraint type (:literal:`'internalConstraint'`, "
+":literal:`'physicalConstraint'`)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_constraint.rst:138
+msgid "Returns the first constraint rule that matches given constraint type."
+msgstr ""
+

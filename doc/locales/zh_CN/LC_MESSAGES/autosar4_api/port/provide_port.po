@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/port/provide_port.rst:4
+msgid "ProvidePort"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:10
+msgid "<P-PORT-PROTOTYPE>"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:12
+msgid "autosar.port"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:14
+msgid ":ref:`autosar.port.Port <ar4_port_Port>`"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:18
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:20
+msgid ""
+":ref:`ComponentType.createProvidePort "
+"<ar4_component_ComponentType_createProvidePort>`"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:23
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:25
+msgid ":ref:`copy <ar4_port_ProvidePort_copy>`"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:26
+msgid ":ref:`mirror <ar4_port_ProvidePort_mirror>`"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:31
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:36
+msgid "copy"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:40
+msgid "Returns a new port that is a copy of itself."
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:45
+msgid "mirror"
+msgstr ""
+
+#: ../../autosar4_api/port/provide_port.rst:49
+msgid ""
+"Returns a :ref:`ar4_port_RequirePort` object based on attributes in this "
+"port."
+msgstr ""
+

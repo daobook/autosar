@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/component/component_prototype.rst:4
+msgid "ComponentPrototype"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:10
+msgid "<SW-COMPONENT-PROTOTYPE>"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:12
+msgid "autosar.submodule"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:17
+msgid ""
+"Component prototypes are used as child objects to "
+":ref:`ar4_component_CompositionComponent` objects."
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:20
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:22
+msgid ""
+":ref:`CompositionComponent.createComponentPrototype "
+"<ar4_component_CompositionComponent_createComponentPrototype>`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:25
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:27
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:33
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:33
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:33
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:35
+msgid "**typeRef**"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:35
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/component/component_prototype.rst:35
+msgid "Referenced component"
+msgstr ""
+

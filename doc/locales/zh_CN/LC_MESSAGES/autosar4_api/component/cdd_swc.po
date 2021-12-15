@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/component/cdd_swc.rst:4
+msgid "ComplexDeviceDriverComponent"
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:10
+msgid "<COMPLEX-DEVICE-DRIVER-SW-COMPONENT-TYPE>"
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:12
+msgid "autosar.component"
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:14
+msgid ""
+":ref:`autosar.component.AtomicSoftwareComponent "
+"<ar4_component_AtomicSoftwareComponent>`"
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:17
+msgid ""
+"This class represents Complex Device Driver (CDD) software component "
+"prototypes."
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:21
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:23
+msgid ""
+":ref:`Package.createComplexDeviceDriverComponent "
+"<ar4_package_Package_createComplexDeviceDriverComponent>`"
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:27
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:29
+msgid ""
+"For inherited attributes see "
+":ref:`autosar.component.AtomicSoftwareComponent "
+"<ar4_component_AtomicSoftwareComponent>`."
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:32
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/component/cdd_swc.rst:35
+msgid "Method Description"
+msgstr ""
+

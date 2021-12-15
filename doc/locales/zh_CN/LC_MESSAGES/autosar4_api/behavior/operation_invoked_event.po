@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:4
+msgid "OperationInvokedEvent"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:10
+msgid "<OPERATION-INVOKED-EVENT>"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:12
+msgid "autosar.behavior"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:14
+msgid ":ref:`autosar.behavior.Event <ar4_behavior_Event>`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:18
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:20
+msgid ""
+":ref:`SwcInternalBehavior.createOperationInvokedEvent "
+"<ar4_behavior_Behavior_createOperationInvokedEvent>`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:23
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:25
+msgid "For inherited attributes see :ref:`ar4_behavior_Event`."
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:31
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:31
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:31
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:33
+msgid "**operationInstanceRef**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:33
+msgid "*str*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/operation_invoked_event.rst:33
+msgid "Reference to OperationInstanceRef"
+msgstr ""
+

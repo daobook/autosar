@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/base/admin_data.rst:4
+msgid "AdminData"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:10
+msgid "<ADMIN-DATA>"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:12
+msgid "autosar.package.base"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:17
+msgid "AdminData class"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:20
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:22
+msgid "TBD"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:25
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:31
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:31
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:31
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:33
+msgid "**specialDataGroups**"
+msgstr ""
+
+#: ../../autosar4_api/base/admin_data.rst:33
+msgid "list"
+msgstr ""
+

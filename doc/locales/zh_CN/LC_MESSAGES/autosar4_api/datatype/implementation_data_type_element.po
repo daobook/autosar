@@ -1,0 +1,190 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:4
+msgid "ImplementationDataTypeElement"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:10
+msgid "<IMPLEMENTATION-DATA-TYPE-ELEMENT>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:12
+msgid "autosar.datatype"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:17
+msgid ""
+"Describes the element of an array, struct, or union data type. Used as "
+"sub-element to :ref:`ar4_datatype_ImplementationDataType`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:20
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:24
+msgid "Short name."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:25
+msgid "Category string."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:27
+msgid "Array size."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:29
+msgid "Array size semantics."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:31
+msgid "variant properties."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:33
+msgid "Parent package."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:35
+msgid "Admin data."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:39
+msgid "arraySizeSemantics"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:42
+msgid "Value"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:42
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:60
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:44
+msgid ":literal:`None`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:44
+msgid "Array size semantics not set"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:46
+msgid ":literal:`\"FIXED-SIZE\"`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:46
+msgid "The array has a fixed number of elements equal to the arraySize attribute"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:48
+msgid ":literal:`\"VARIABLE-SIZE\"`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:48
+msgid ""
+"The size of the array can vary at run-time. The arraySize attribute sets "
+"the upper bound."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:52
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:54
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:60
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:60
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:62
+msgid "**arraySize**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:62
+msgid "None, int"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:62
+msgid "<ARRAY-SIZE>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:64
+msgid "**arraySizeSemantics**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:64
+msgid "None, str"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:64
+msgid "<ARRAY-SIZE-SEMANTICS>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:66
+msgid "**variantProps**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:66
+msgid "list of :ref:`ar4_base_SwDataDefPropsConditional`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:66
+msgid "<SW-DATA-DEF-PROPS>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:71
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type_element.rst:73
+msgid "This class has no additional methods."
+msgstr ""
+

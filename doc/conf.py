@@ -67,8 +67,8 @@ release = '0.3.11'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = None
-
+language = 'zh_CN'
+gettext_compact = False  # optional.
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path

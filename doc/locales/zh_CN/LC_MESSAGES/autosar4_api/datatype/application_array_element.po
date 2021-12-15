@@ -1,0 +1,233 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/datatype/application_array_element.rst:4
+msgid "ApplicationArrayElement"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:10
+msgid "<ELEMENT>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:12
+msgid "autosar.datatype"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:17
+msgid ""
+"Describes the properties of the elements in an "
+":ref:`ar4_datatype_ApplicationArrayDataType`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:20
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:26
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:30
+msgid "ShortName."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:32
+msgid "Type reference."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:34
+msgid "Array size."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:36
+msgid "Size handling."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:38
+msgid "Size semantics."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:40
+msgid "Category."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:42
+msgid "Parent datatype."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:44
+msgid "Optional AdminData."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:50
+msgid "sizeHandling"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:54
+#: ../../autosar4_api/datatype/application_array_element.rst:71
+msgid "Value"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:54
+#: ../../autosar4_api/datatype/application_array_element.rst:71
+#: ../../autosar4_api/datatype/application_array_element.rst:89
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:56
+#: ../../autosar4_api/datatype/application_array_element.rst:73
+msgid ":literal:`None`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:56
+msgid "Size handling not set"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:58
+msgid ":literal:`\"ALL-INDICES-DIFFERENT-ARRAY-SIZE\\\"`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:58
+msgid "All elements of the variable size array may have different sizes."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:60
+msgid ":literal:`\"ALL-INDICES-SAME-ARRAY-SIZE\\\"`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:60
+msgid "All elements of the variable size array have the same size."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:62
+msgid ":literal:`\"INHERITED-FROM-ARRAY-ELEMENT-TYPE-SIZE\\\"`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:62
+msgid ""
+"The size of the variable size array is determined by the size of the "
+"contained array element."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:68
+msgid "sizeSemantics"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:73
+msgid "Size semantics not set"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:75
+msgid ":literal:`\"FIXED-SIZE\"`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:75
+msgid "The array has a fixed number of elements equal to the arraySize attribute"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:77
+msgid ":literal:`\"VARIABLE-SIZE\"`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:77
+msgid ""
+"The size of the array can vary at run-time. The arraySize attribute sets "
+"the upper bound."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:81
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:83
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:89
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:89
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:91
+msgid "**typeRef**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:91
+#: ../../autosar4_api/datatype/application_array_element.rst:95
+#: ../../autosar4_api/datatype/application_array_element.rst:97
+msgid "*None, str*"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:91
+msgid "Type reference"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:93
+msgid "**arraySize**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:93
+msgid "*None, int*"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:93
+msgid "<MAX-NUMBER-OF-ELEMENTS>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:95
+msgid "**sizeHandling**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:95
+msgid "<ARRAY-SIZE-HANDLING>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:97
+msgid "**sizeSemantics**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/application_array_element.rst:97
+msgid "<ARRAY-SIZE-SEMANTICS>"
+msgstr ""
+

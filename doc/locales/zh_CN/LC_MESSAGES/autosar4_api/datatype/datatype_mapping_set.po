@@ -1,0 +1,328 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:4
+msgid "DataTypeMappingSet"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:10
+msgid "<DATA-TYPE-MAPPING-SET>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:12
+msgid "autosar.datatype"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:17
+msgid ""
+"This class contains type mappings between ApplicationDataTypes and "
+"ImplementationDataTypes. In addition, it can contain type mappings "
+"between ModeDeclarationGroups and ImplementationDataTypes."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:21
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:27
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:29
+msgid ""
+":ref:`Package.createDataTypeMappingSet "
+"<ar4_package_Package_createDataTypeMappingSet>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:32
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:36
+msgid "Short name."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:37
+msgid "Parent package."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:39
+msgid "Admin data."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:43
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:45
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:51
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:51
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:51
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:53
+msgid "**applicationTypeMap**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:53
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:55
+msgid "dict"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:53
+msgid "Application data type mappings"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:55
+msgid "**modeRequestMap**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:55
+msgid "Mode request mappings"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:58
+msgid ""
+"The ARXML definition uses lists containing mappings while Python uses "
+"dictionaries. For the **applicationTypeMap** dictionary, each key is a "
+"reference to an application data type and each value is a reference to an"
+" implementation data type. Likewise for the *modeRequestMap* dictionary, "
+"each key is a reference to a mode declaration group and each value is a "
+"reference to an implementation data type."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:65
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:67
+msgid ":ref:`ar4_datatype_DataTypeMappingSet_createDataTypeMapping`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:68
+msgid ":ref:`ar4_datatype_DataTypeMappingSet_createModeRequestMapping`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:69
+msgid ":ref:`ar4_datatype_DataTypeMappingSet_add`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:70
+msgid ":ref:`ar4_datatype_DataTypeMappingSet_getDataTypeMapping`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:71
+msgid ":ref:`ar4_datatype_DataTypeMappingSet_getModeRequestMapping`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:72
+msgid ":ref:`ar4_datatype_DataTypeMappingSet_findMappedDataTypeRef`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:73
+msgid ":ref:`ar4_datatype_DataTypeMappingSet_findMappedModeRequestRef`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:74
+msgid ":ref:`ar4_datatype_DataTypeMappingSet_findMappedDataType`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:75
+msgid ":ref:`ar4_datatype_DataTypeMappingSet_findMappedModeRequest`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:78
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:83
+msgid "createDataTypeMapping"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:87
+msgid ""
+"Creates a new type mapping between an application type (reference) and "
+"implementation data type (reference). The created mapping is added to the"
+" internal applicationTypeMap dictionary."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:90
+msgid "Reference to :ref:`ar4_datatype_ApplicationDataType`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:91
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:104
+msgid "Reference to :ref:`ar4_datatype_ImplementationDataType`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:96
+msgid "createModeRequestMapping"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:100
+msgid ""
+"Creates a new type mapping between a mode declaration group (reference) "
+"and implementation data type (reference). The created mapping is added to"
+" the internal modeRequestMap dictionary."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:103
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:143
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:169
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:195
+msgid "Reference to :ref:`ar4_mode_ModeDeclarationGroup`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:109
+msgid "add"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:113
+msgid ""
+"Adds a user-created mapping to this mapping set. If the item is of type "
+":ref:`ar4_datatype_DataTypeMap` it gets inserted into to the "
+"applicationTypeMap dictionary. Likewise, if the item is of type "
+":ref:`ar4_datatype_ModeRequestTypeMap` it gets inserted into to the "
+"modeRequestMap dictionary."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:117
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:130
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:156
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:182
+msgid "Reference to :ref:`ar4_datatype_ApplicationDataType`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:123
+msgid "getDataTypeMapping"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:127
+msgid ""
+"Returns the mapping object that is currently associated with the given "
+"application data type reference. If the reference string is not found in "
+"the internal applicationTypeMap dictionary, None is returned."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst
+msgid "返回类型"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:131
+msgid ":ref:`ar4_datatype_DataTypeMap` or None"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:136
+msgid "getModeRequestMapping"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:140
+msgid ""
+"Returns the mapping object that is currently associated with the given "
+"mode declaration group reference. If the reference string is not found in"
+" the internal modeRequestMap dictionary, None is returned."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:144
+msgid ":ref:`ar4_datatype_ModeRequestTypeMap` or None"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:149
+msgid "findMappedDataTypeRef"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:153
+msgid ""
+"Same as :ref:`ar4_datatype_DataTypeMappingSet_getDataTypeMapping` but "
+"instead returns the reference to the mapped implementation data type. "
+"Returns None in case the application data type reference is not part of "
+"the internal applicationTypeMap dictionary."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:162
+msgid "findMappedModeRequestRef"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:166
+msgid ""
+"Same as :ref:`ar4_datatype_DataTypeMappingSet_getModeRequestMapping` but "
+"instead returns the reference to the mapped implementation data type. "
+"Returns None in case the mode declaration group reference is not part of "
+"the internal modeRequestMap dictionary."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:175
+msgid "findMappedDataType"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:179
+msgid ""
+"Same as :ref:`ar4_datatype_DataTypeMappingSet_findMappedDataTypeRef` but "
+"instead returns the referenced to "
+":ref:`ar4_datatype_ImplementationDataType` object."
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:183
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:196
+msgid ":ref:`ar4_datatype_ImplementationDataType`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:188
+msgid "findMappedModeRequest"
+msgstr ""
+
+#: ../../autosar4_api/datatype/datatype_mapping_set.rst:192
+msgid ""
+"Same as :ref:`ar4_datatype_DataTypeMappingSet_findMappedModeRequestRef` "
+"but instead returns the referenced to "
+":ref:`ar4_datatype_ImplementationDataType` object."
+msgstr ""
+

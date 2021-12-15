@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/portinterface/portinterface.rst:4
+msgid "PortInterface"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:10
+msgid "(Abstract class)"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:12
+msgid "autosar.portinterface"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:17
+msgid "Base class for AUTOSAR port interfaces."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:19
+msgid "**Derived Classes**:"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:21
+msgid ":ref:`ar4_portinterface_SenderReceiverInterface`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:22
+msgid ":ref:`ar4_portinterface_ClientServerInterface`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:23
+msgid ":ref:`ar4_portinterface_ModeSwitchInterface`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:27
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:30
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:36
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:36
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:36
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:38
+msgid "**isService**"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:38
+msgid "Boolean"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:38
+msgid "Is this a service interface?"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:40
+msgid "**serviceKind**"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:40
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/portinterface.rst:40
+msgid "Optional service kind string"
+msgstr ""
+

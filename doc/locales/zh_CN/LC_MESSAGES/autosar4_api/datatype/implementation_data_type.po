@@ -1,0 +1,340 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:4
+msgid "ImplementationDataType"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:10
+msgid "<IMPLEMENTATION-DATA-TYPE>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:12
+msgid "autosar.datatype"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:17
+msgid ""
+"Implementation Data Types is a very generic container and can define "
+"almost any data type."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:20
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:27
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:30
+msgid "Basic Implementation Types"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:32
+msgid ""
+"In its simplest form, an implementation data type is just a reference to "
+"a :ref:`ar4_datatype_SwBaseType` with optional data constraint and "
+"compuMethod. Use the :ref:`Package.createImplementationDataType "
+"<ar4_package_Package_createImplementationDataType>` method to create "
+"basic implementation types."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:36
+msgid "Type References"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:38
+msgid ""
+"You can also create an implementation data type that references another "
+"implementation data type. This is known as *typedef* in the C programming"
+" language. Use the :ref:`Package.createImplementationDataTypeRef "
+"<ar4_package_Package_createImplementationDataTypeRef>` method to create "
+"type references."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:42
+msgid "Pointer Types"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:44
+msgid ""
+"You can create data types that are pointers to base types. A future "
+"release should be able to support pointers to other implementation types."
+" Use the :ref:`Package.createImplementationDataTypePtr "
+"<ar4_package_Package_createImplementationDataTypePtr>` method to create "
+"pointer types."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:48
+msgid "Array Types"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:50
+msgid ""
+"You can create implementation data types that are arrays of other "
+"implementation data types. Use the "
+":ref:`ar4_package_Package_createImplementationArrayDataType` to create "
+"array data types."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:54
+msgid "Record Types"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:56
+msgid ""
+"You can create implementation data types that are records of other "
+"implementation data types. Use the "
+":ref:`ar4_package_Package_createImplementationRecordDataType` to create "
+"record data types."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:59
+msgid "Note: Record types are sometimes called structs or structure types."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:62
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:66
+#: ../../autosar4_api/datatype/implementation_data_type.rst:139
+msgid "Short name."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:67
+msgid "variant properties."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:69
+msgid "Dynamic array size profile."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:71
+msgid "Type emitter"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:73
+msgid "Category string."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:75
+msgid "Parent package."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:77
+msgid "Admin data."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:81
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:83
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:89
+#: ../../autosar4_api/datatype/implementation_data_type.rst:109
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:89
+#: ../../autosar4_api/datatype/implementation_data_type.rst:109
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:89
+#: ../../autosar4_api/datatype/implementation_data_type.rst:109
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:91
+msgid "**dynamicArraySizeProfile**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:91
+#: ../../autosar4_api/datatype/implementation_data_type.rst:97
+msgid "None, str"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:91
+msgid "<DYNAMIC-ARRAY-SIZE-PROFILE>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:93
+msgid "**subElements**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:93
+msgid "list of :ref:`ar4_datatype_ImplementationDataTypeElement`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:93
+msgid "<SUB-ELEMENTS>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:95
+msgid "**symbolProps**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:95
+msgid "None, :ref:`ar4_base_SymbolProps`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:95
+msgid "<SYMBOL-PROPS>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:97
+msgid "**typeEmitter**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:97
+msgid "<TYPE-EMITTER>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:99
+msgid "**variantProps**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:99
+msgid "list of :ref:`ar4_base_SwDataDefPropsConditional`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:99
+msgid "<SW-DATA-DEF-PROPS>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:103
+msgid "Properties"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:109
+msgid "Access Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:111
+msgid "**arraySize**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:111
+msgid "int"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:111
+#: ../../autosar4_api/datatype/implementation_data_type.rst:113
+#: ../../autosar4_api/datatype/implementation_data_type.rst:115
+#: ../../autosar4_api/datatype/implementation_data_type.rst:117
+#: ../../autosar4_api/datatype/implementation_data_type.rst:119
+msgid "Get"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:111
+msgid "Returns the array size of first *subElements* element"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:113
+msgid "**baseTypeRef**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:113
+#: ../../autosar4_api/datatype/implementation_data_type.rst:115
+#: ../../autosar4_api/datatype/implementation_data_type.rst:117
+#: ../../autosar4_api/datatype/implementation_data_type.rst:119
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:113
+msgid "Returns the base type reference of first *subElements* element"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:115
+msgid "**compuMethodRef**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:115
+msgid "Returns the CompuMethod reference of first *subElements* element"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:117
+msgid "**dataConstraintRef**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:117
+msgid "Returns the data constraint reference of first *subElements* element"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:119
+msgid "**implementationTypeRef**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:119
+msgid "Returns the implementation type reference of first *subElements* element"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:125
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:127
+msgid ":ref:`ar4_datatype_ImplementationDataType_setSymbolProps`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:130
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:135
+msgid "setSymbolProps"
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:141
+msgid "Symbol name."
+msgstr ""
+
+#: ../../autosar4_api/datatype/implementation_data_type.rst:144
+msgid ""
+"Assigns the symbolProps attribute by creating a new instance of "
+":ref:`ar4_base_SymbolProps`."
+msgstr ""
+

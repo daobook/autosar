@@ -1,0 +1,156 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_guide/roles.rst:4
+msgid "Package Roles"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:6
+msgid ""
+"Package roles are used as a hint to Python, telling it what AUTOSAR "
+"package contains what kind of element. Using this mechanism allows the "
+"AUTOSAR Python package to implictly find or create elements and place "
+"them into the right package. AUTOSAR package roles are not stored "
+"anywhere in the XML. You have to explicitly set them programmatically "
+"while either creating or loading AUTOSAR packages."
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:11
+msgid "Role Types"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:17
+msgid "Package Role Name"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:17
+msgid "Element Types"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:19
+msgid "DataType"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:19
+msgid "Data Types"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:21
+msgid "Constant"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:21
+msgid "Constants"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:23
+msgid "ComponentType"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:23
+msgid "Components (prototypes)"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:25
+msgid "ModeDclrGroup"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:25
+msgid "Mode Declaration Groups"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:27
+msgid "CompuMethod"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:27
+msgid "Computational Methods"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:29
+msgid "DataConstraint"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:29
+msgid "Data Constraints"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:33
+msgid "Examples"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:36
+msgid "Example 1 - Setting roles on package creation"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:38
+msgid ""
+"This example demonstrates how to assign a role when the package is "
+"created. By assigning both *CompuMethod* and *DataConstraint* allows the "
+":ref:`ar4_package_Package_createImplementationDataType` method to "
+"implictly create associated :ref:`ar4_datatype_CompuMethod` and "
+":ref:`ar4_datatype_DataConstraint` objects."
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:48
+msgid "Example 2 - Setting roles while loading ARXML"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:50
+msgid ""
+"This example uses the saved XML from previous example and reassigns the "
+"roles while the XML is loading."
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:57
+msgid "Example 3 - Pushing and popping roles on the roles stack"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:59
+msgid ""
+"When working in large scale scale projects it can sometimes be beneficial"
+" to temporarily overrride the currently selected roles while inside a "
+"Python function. For this purpose you can use the "
+":ref:`ar4_workspace_Workspace_pushRoles` and "
+":ref:`ar4_workspace_Workspace_popRoles` methods from the "
+":ref:`ar4_workspace` class."
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:62
+msgid "The next example has two functions:"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:64
+msgid "create_platform_types"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:65
+msgid "create_component_data_types"
+msgstr ""
+
+#: ../../autosar4_guide/roles.rst:67
+msgid ""
+"By calling *pushRoles* in the beginning and *popRoles* at the end of each"
+" function we prevent roles to still remain active after each function "
+"call. In this example, we use this mechanism to allow *AUTOSAR_Platform* "
+"and *DataTypes* to have independent CompuMethod and DataConstraint sub-"
+"packages while we are creating :ref:`ImplementationDataTypes "
+"<ar4_datatype_ImplementationDataType>`."
+msgstr ""
+

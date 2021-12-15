@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/element/software_address_method.rst:4
+msgid "SoftwareAddressMethod"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:10
+msgid "<SW-ADDR-METHOD>"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:12
+msgid "autosar.element"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:17
+msgid ""
+"Used to assign an addressing method (such as memory section) for various "
+"objects. Other objects will use their respective swAddressMethodRef "
+"attribute (or property) to reference instances of this class."
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:21
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:23
+msgid ":ref:`ar4_package_Package_createSoftwareAddressMethod`"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:26
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:30
+msgid "Short name."
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:31
+msgid "Parent package."
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:33
+msgid "Optional AdminData."
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:37
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/element/software_address_method.rst:39
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+

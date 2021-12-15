@@ -1,0 +1,115 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/component/atomic_swc.rst:4
+msgid "AtomicSoftwareComponent"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:10
+msgid "(abstract class)"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:12
+msgid "autosar.component"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:14
+msgid ":ref:`autosar.component.ComponentType <ar4_component_ComponentType>`"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:17
+msgid ""
+"Base class for all component type classes except "
+":ref:`ar4_component_CompositionComponent`."
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:20
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:26
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:26
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:26
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:28
+msgid "**behavior**"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:28
+msgid "autosar.behavior.SwcInternalBehavior"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:28
+msgid "InternalBehavior object"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:30
+msgid "**implementation**"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:30
+msgid "autosar.component.SwcImplementation"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:30
+msgid "Implementation object"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:34
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:36
+msgid ":ref:`find <component_atomic_swc_find>`"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:40
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:45
+msgid "find"
+msgstr ""
+
+#: ../../autosar4_api/component/atomic_swc.rst:49
+msgid ""
+"Similar to :ref:`ComponentType.find <ar4_component_ComponentType_find>` "
+"but also finds objects inside the behavior object."
+msgstr ""
+

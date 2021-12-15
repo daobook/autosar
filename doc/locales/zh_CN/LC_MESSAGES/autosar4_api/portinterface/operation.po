@@ -1,0 +1,224 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/portinterface/operation.rst:4
+msgid "Operation"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:10
+msgid "<CLIENT-SERVER-OPERATION>"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:12
+msgid "autosar.portinterface"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:17
+msgid "An operation of a client-server port interface."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:20
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:22
+msgid ""
+":ref:`Package.createClientServerInterface "
+"<ar4_package_Package_createClientServerInterface>`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:26
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:28
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:34
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:34
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:34
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:36
+msgid "**arguments**"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:36
+msgid "list(Arguments)"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:36
+msgid "List of operation arguments"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:38
+msgid "**errorRefs**"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:38
+msgid "list(str)"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:38
+msgid "References to ApplicationError objects that this operation can return"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:42
+msgid "Properties"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:45
+msgid "possibleErrors"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:47
+msgid ""
+"This is a convenience property setter for seclecting one or more error "
+"codes that this operation can possibly return. You can assign either a "
+"string or a list of strings to this property. The object will "
+"automatically validate if the name(s) are possible errors that have been "
+"previously assigned to the port interface (its parent object). The object"
+" will convert the names of the errors in to actual references by updating"
+" the self.errorRefs list"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:53
+msgid "Example"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:60
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:62
+msgid ":ref:`operation_createOutArgument`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:63
+msgid ":ref:`operation_createInOutArgument`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:64
+msgid ":ref:`operation_createInArgument`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:65
+msgid ":ref:`operation_append`"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:70
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:75
+msgid "createOutArgument"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:79
+msgid "Creates a new argument with direction set to 'OUT'."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:81
+#: ../../autosar4_api/portinterface/operation.rst:96
+#: ../../autosar4_api/portinterface/operation.rst:111
+msgid "Name of the new argument"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:82
+#: ../../autosar4_api/portinterface/operation.rst:97
+#: ../../autosar4_api/portinterface/operation.rst:112
+msgid "Reference to data type."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:83
+#: ../../autosar4_api/portinterface/operation.rst:98
+#: ../../autosar4_api/portinterface/operation.rst:113
+msgid "Optional swCalibrationAccess string."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:84
+#: ../../autosar4_api/portinterface/operation.rst:99
+#: ../../autosar4_api/portinterface/operation.rst:114
+msgid "Optional serverArgumentImplPolicy string."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst
+msgid "返回类型"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:90
+msgid "createInOutArgument"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:94
+msgid "Creates a new argument with direction set to 'INOUT'."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:105
+msgid "createInArgument"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:109
+msgid "Creates a new argument with direction set to 'IN'."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:120
+msgid "append"
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:124
+msgid ""
+"Adds element to either the self.arguments or self.errorRefs depending on "
+"its type."
+msgstr ""
+
+#: ../../autosar4_api/portinterface/operation.rst:126
+msgid "Element"
+msgstr ""
+

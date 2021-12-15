@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:4
+msgid "RunnableEntity"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:10
+msgid "<RUNNABLE-ENTITY>"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:12
+msgid "autosar.behavior"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:17
+msgid "AUTOSAR Runnable"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:20
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:22
+msgid ":ref:`ar4_behavior_Behavior_createRunnable`"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:25
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:27
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:33
+msgid "Name                      | Type"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:33
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:35
+msgid "**symbol**                | *str*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:35
+msgid "Target language symbol name"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:37
+msgid "**dataReceivePoints**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:37
+msgid "*list(DataReceivePoint)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:37
+#: ../../autosar4_api/behavior/runnable_entity.rst:39
+#: ../../autosar4_api/behavior/runnable_entity.rst:41
+#: ../../autosar4_api/behavior/runnable_entity.rst:45
+msgid "Used for port access"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:39
+msgid "**dataSendPoints**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:39
+msgid "*list(DataSendPoint)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:41
+msgid "**serverCallPoints**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:41
+msgid "*list(SyncServerCallPoint)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:43
+msgid "**exclusiveAreaRefs**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:43
+msgid "*list(str)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:43
+msgid "Used for exclusive area access"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:45
+msgid "**modeAccessPoints**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:45
+msgid "*list(ModeAccessPoint)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:47
+msgid "**modeSwitchPoints**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:47
+msgid "*list(ModeSwitchPoint)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:47
+msgid "Used for mode-switch event triggering"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:49
+msgid "**parameterAccessPoints**"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:49
+msgid "*list(ParameterAccessPoint)*"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:49
+msgid "Used for parameter access"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:54
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/behavior/runnable_entity.rst:57
+msgid "Method Description"
+msgstr ""
+

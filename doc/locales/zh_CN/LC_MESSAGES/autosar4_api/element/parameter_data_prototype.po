@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:4
+msgid "ParameterDataPrototype"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:10
+msgid "<PARAMETER-DATA-PROTOTYPE>"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:12
+msgid "autosar.element"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:17
+msgid "Represents a parameter data protoype."
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:21
+msgid ""
+"This class replaces autosar.portinterface.Parameter as well as "
+"autosar.behavior.ParameterDataPrototype"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:25
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:39
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:41
+msgid "autosar.ParameterDataPrototype"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:44
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:48
+msgid "ShortName identifer"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:49
+msgid "Type reference"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:50
+#: ../../autosar4_api/element/parameter_data_prototype.rst:87
+msgid "Reference to SoftwareAddressMethod"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:51
+msgid "Calibration access setting"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:52
+msgid "Optional init value (TBD)"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:53
+msgid "Internal use only (leave as None)"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:54
+msgid "Optional AdminData object"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:57
+msgid "swCalibrationAccess"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:60
+msgid "Value"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:60
+#: ../../autosar4_api/element/parameter_data_prototype.rst:83
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:62
+msgid ":literal:`None`"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:62
+msgid "No calibration access set"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:64
+msgid ":literal:`\"\"` (Empty string)"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:64
+msgid ""
+"Create default calibration access value as set by "
+"Workspace.profile.swCalibrationAccessDefault"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:67
+msgid ":literal:`\"NOT-ACCESSIBLE\"`"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:67
+msgid "The element will not be accessible by external tools"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:69
+msgid ":literal:`\"READ-ONLY\"`"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:69
+msgid "Read only access"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:71
+msgid ":literal:`\"READ-WRITE\"`"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:71
+msgid "Read-write access"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:75
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:77
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:83
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:83
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:85
+msgid "**typeRef**"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:85
+msgid "*str*"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:85
+msgid "Reference to datatype"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:87
+msgid "**swAddressMethodRef**"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:87
+#: ../../autosar4_api/element/parameter_data_prototype.rst:89
+msgid "*None or str*"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:89
+msgid "**swCalibrationAccess**"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:89
+#: ../../autosar4_api/element/parameter_data_prototype.rst:91
+msgid "Software calibration access"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:91
+msgid "**initValue**"
+msgstr ""
+
+#: ../../autosar4_api/element/parameter_data_prototype.rst:91
+msgid "*Object derived from autosar.value.ValueAR4*"
+msgstr ""
+

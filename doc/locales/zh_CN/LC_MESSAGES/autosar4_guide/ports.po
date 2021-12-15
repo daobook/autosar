@@ -1,0 +1,209 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_guide/ports.rst:2
+msgid "Ports"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:4
+msgid ""
+"A SoftwareComponent encapsulates a set of related functions and/or data. "
+"The component commmunicates with the outside world exclusively using "
+"*ports*. The ports are a part of the component and represents its "
+"interface. In AUTOSAR, this is called the :ref:`Port Interface "
+"<ar4_portinterface_Portinterface>`"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:7
+msgid "In general, there are two types of ports:"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:9
+msgid "Require Port (R-Port)"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:10
+msgid "Provide Port (P-Port)"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:12
+msgid ""
+"For the most part the they are the same, the main difference is the "
+"**direction** of the port."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:17
+msgid "Port Interfaces"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:19
+msgid "Ports are created from *port interfaces*. They come in different types."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:21 ../../autosar4_guide/ports.rst:28
+msgid "SenderReceiverPortInterface"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:22 ../../autosar4_guide/ports.rst:41
+msgid "ClientServerPortInterface"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:23 ../../autosar4_guide/ports.rst:53
+msgid "ParameterPortInterface"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:24 ../../autosar4_guide/ports.rst:63
+msgid "ModeSwitchPortInterface"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:25 ../../autosar4_guide/ports.rst:73
+msgid "NvDataPortInterface"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:30
+msgid ""
+"The SenderReceiverPortInterface is the traditional interface used for "
+"sending and receiving automotive *signals*. It integrates well with "
+"automotive buses such as CAN and LIN (which are primarily signal-based "
+"buses)."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:33 ../../autosar4_guide/ports.rst:46
+#: ../../autosar4_guide/ports.rst:58 ../../autosar4_guide/ports.rst:67
+msgid "The RTE function prefixes are:"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:35
+msgid "Rte_Write (P-Port, Non-Queued)"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:36
+msgid "Rte_Read  (R-Port, Non-Queued)"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:37
+msgid "Rte_Send  (P-Port, Queued)"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:38
+msgid "Rte_Receive (R-Port, Queued)"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:43
+msgid ""
+"ClientServer ports are used by SoftwareComponents when requesting "
+"services located in BSW (usually through service-mapping) or in another "
+"SoftwareComponent. The function call can be configured to be either "
+"synchronous or asynchronous through configuration."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:48
+msgid "Rte_Call (R-Port)"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:50
+msgid ""
+"For server ports (or P-Ports), the user can select any function name as "
+"long as it it's known by the RTE during generation (we will cover this "
+"later)."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:55
+msgid ""
+"Parameter ports are used for parameter data, sometimes known as "
+"calibration data. They are usually read-only data values which controls "
+"the behavior of SoftwareComponents."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:60
+msgid "Rte_Prm (R-Port)"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:65
+msgid "Mode ports are used to react to mode changes in the ECU."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:69
+msgid "Rte_Mode (R-Port)"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:70
+msgid "Rte_Switch (P-Port)"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:75
+msgid ""
+"The non-volatile data port interface is used exclusively by the NvBlock "
+"SoftwareComponent."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:78
+msgid "ComSpec"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:80
+msgid ""
+"The Communication Specification (ComSpec) is used to describe specific "
+"communication needs of a port. This can include information such as init-"
+"values or queue-length."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:83
+msgid ""
+"For more details about which ComSpecs are supported from Python see the "
+":ref:`ComponentType API <ar4_component_ComponentType>`."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:86
+msgid "Port Creation Examples"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:89
+msgid "Example 1: SenderReceiver ports with single data element"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:91
+msgid ""
+"Create components with a single port which contains one data element. "
+"Here you can give the ComSpec arguments directly to the port creation "
+"function call. Use keyword **initValueRef** instead of **initValue** if "
+"you intend to use constants as port initialier."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:100
+msgid "Example 2: SenderReceiver ports with multiple data elements"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:102
+msgid ""
+"Create components with a single port which contains two data elements. "
+"Here you have to explicitly give a **comspec** argument containing a list"
+" of dictionaries."
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:110
+msgid "Example 3: ClientServer port"
+msgstr ""
+
+#: ../../autosar4_guide/ports.rst:112
+msgid ""
+"Create an NVM-related client-server interface and use it as both client "
+"and server ports."
+msgstr ""
+

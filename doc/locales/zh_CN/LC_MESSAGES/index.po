@@ -1,0 +1,49 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../index.rst:3
+msgid "The Python AUTOSAR package"
+msgstr "Python AUTOSAR 软件包"
+
+#: ../../index.rst:6
+msgid "Table of Contents"
+msgstr "目录"
+
+#: ../../index.rst:18
+msgid "Supported AUTOSAR Versions"
+msgstr "所支持的 AUTOSAR 版本"
+
+#: ../../index.rst:20
+msgid "These are the AUTOSAR versions that this module is known to work with:"
+msgstr "这些是该模块已知可使用的 AUTOSAR 版本："
+
+#: ../../index.rst:22
+msgid "AUTOSAR 3.0"
+msgstr ""
+
+#: ../../index.rst:23
+msgid "AUTOSAR 4.2"
+msgstr ""
+
+#: ../../index.rst:25
+msgid ""
+"Other versions might work for you but they have not been tested by the "
+"author of this module."
+msgstr ""
+"其他版本可能对你有用，但它们没有经过本模块作者的测试。"

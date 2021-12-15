@@ -1,0 +1,354 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:4
+msgid "CompuScaleElement"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:10
+msgid "<COMPU-SCALE>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:12
+msgid "autosar.datatype"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:17
+msgid "Contains the properties for one computation."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:20
+msgid "Computation Variants"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:22
+msgid "Attributes in use for all variants:"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:24
+msgid "label"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:25
+msgid "adminData"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:28
+msgid "ValueTable"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:30
+msgid "ValueTable is also known as enumeration."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:32
+msgid ""
+"Factory Method: :ref:`Computation.createValueTable "
+"<ar4_datatype_Computation_createValueTable>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:34
+#: ../../autosar4_api/datatype/compu_scale_element.rst:51
+#: ../../autosar4_api/datatype/compu_scale_element.rst:66
+msgid "Attributes in use:"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:36
+msgid "lowerLimit (int)"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:37
+msgid "upperLimit (int)"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:38
+msgid "textValue (str)"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:40
+msgid ""
+"For basic enumerations the value of lowerLimit and upperLimit are equal "
+"to each other. You can also set lowerLimit and upperLimit to different "
+"values to denote an interval where the textValue applies."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:45
+msgid "Rational Scaling"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:47
+msgid "Rational scaling, also known as linear scaling."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:49
+msgid ""
+"Factory Method: :ref:`Computation.createRationalScaling "
+"<ar4_datatype_Computation_createRationalScaling>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:53
+msgid "lowerLimit"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:54
+msgid "upperLimit"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:55
+msgid "lowerLimitType"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:56
+msgid "upperLimitType"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:57
+msgid "numerator"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:58
+msgid "denominator"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:59
+msgid "offset"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:62
+msgid "BitMask"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:64
+msgid ""
+"Factory method: :ref:`Computation.createBitMask "
+"<ar4_datatype_Computation_createBitMask>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:68
+msgid "mask"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:69
+msgid "symbol"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:72
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:76
+msgid "lower limit."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:78
+msgid "upper limit."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:80
+msgid "lower limit type (:literal:`'OPEN'`, :literal:`'CLOSED'`)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:81
+msgid "upper limit type (:literal:`'OPEN'`, :literal:`'CLOSED'`)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:82
+msgid "Optional label (used instead of name attribute)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:84
+msgid "Optional symbol name."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:86
+msgid "Optional text value (used for enumration)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:88
+msgid "Optional numerator (used for scaling)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:90
+msgid "Optional denominator (used for scaling)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:92
+msgid "Optional offset (used for scaling)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:94
+msgid "mask (used for bit masks)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:96
+msgid "AdminData."
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:100
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:106
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:106
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:106
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:108
+msgid "**lowerLimit**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:108
+#: ../../autosar4_api/datatype/compu_scale_element.rst:110
+msgid "int"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:108
+msgid "<LOWER-LIMIT>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:110
+msgid "**upperLimit**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:110
+msgid "<UPPER-LIMIT>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:112
+msgid "**lowerLimitType**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:112
+#: ../../autosar4_api/datatype/compu_scale_element.rst:114
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:112
+#: ../../autosar4_api/datatype/compu_scale_element.rst:114
+msgid "INTERVAL-TYPE (:literal:`'OPEN'`, :literal:`'CLOSED'`)"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:114
+msgid "**upperLimitType**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:116
+msgid "**label**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:116
+#: ../../autosar4_api/datatype/compu_scale_element.rst:118
+#: ../../autosar4_api/datatype/compu_scale_element.rst:120
+msgid "None, str"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:116
+msgid "<SHORT-LABEL> (used as alternative to name attribute)"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:118
+msgid "**symbol**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:118
+msgid "<SYMBOL>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:120
+msgid "**textValue**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:120
+msgid "<VT> (used for value table)"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:122
+msgid "**numerator**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:122
+#: ../../autosar4_api/datatype/compu_scale_element.rst:124
+#: ../../autosar4_api/datatype/compu_scale_element.rst:126
+msgid "None, int, float"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:122
+#: ../../autosar4_api/datatype/compu_scale_element.rst:126
+msgid "<COMPU-NUMERATOR><V> (used for scaling)"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:124
+msgid "**denominator**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:124
+msgid "<COMPU-DENOMINATOR><V> (used for scaling)"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:126
+msgid "**offset**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:128
+msgid "**mask**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:128
+msgid "None, int"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:128
+msgid "<MASK> (used for bit masks)"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:130
+msgid "**adminData**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:130
+msgid "None, :ref:`ar4_base_AdminData`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/compu_scale_element.rst:130
+msgid "<ADMIN-DATA>"
+msgstr ""
+

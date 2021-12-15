@@ -1,0 +1,236 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/component/composition_swc.rst:4
+msgid "CompositionComponent"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:10
+msgid "<COMPOSITION-SW-COMPONENT-TYPE>"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:12
+msgid "autosar.component"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:14
+msgid ":ref:`autosar.component.ComponentType <ar4_component_ComponentType>`"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:17
+msgid ""
+"The CompositionComponent class is used to instantiate inner components "
+"inside a new component boundary as a means of abstraction."
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:20
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:22
+msgid ""
+":ref:`Package.createCompositionComponent "
+"<ar4_package_Package_createCompositionComponent>`"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:25
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:27
+msgid ""
+"For inherited attributes see :ref:`autosar.component.ComponentType "
+"<ar4_component_ComponentType>`."
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:33
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:33
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:33
+#: ../../autosar4_api/component/composition_swc.rst:87
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:35
+msgid "**components**"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:35
+msgid "list(:ref:`ar4_component_ComponentType`)"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:35
+msgid "List of internal components"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:37
+msgid "**assemblyConnectors**"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:37
+msgid "list(AssemblyConnector)"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:37
+msgid "List of connectors between internal components"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:39
+msgid "**delegationConnectors**"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:39
+msgid "list(DelegationConnector)"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:39
+msgid "List of connectors between inner components and composition boundary"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:44
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:46
+msgid ":ref:`ar4_component_CompositionComponent_createComponentPrototype`"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:47
+msgid ":ref:`ar4_component_CompositionComponent_createConnector`"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:50
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:55
+msgid "createComponentPrototype"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:59
+msgid "Reference to an object derived from :ref:`ar4_component_ComponentType`"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:60
+msgid ""
+"Optional name of the inner component. If left unset it will copy the name"
+" from the referenced component."
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst
+msgid "返回类型"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:61
+msgid ":ref:`ar4_component_ComponentPrototype`"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:63
+msgid ""
+"Creates an inner component prototype and appends it to the components "
+"list."
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:66
+#: ../../autosar4_api/component/composition_swc.rst:87
+#: ../../autosar4_api/component/composition_swc.rst:97
+msgid "Example"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:75
+msgid "createConnector"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:79
+msgid "Reference to first port"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:80
+msgid "Reference to second port"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:82
+msgid "Creates a connector between two ports."
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:84
+msgid "**Valid Port reference formats**:"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:87
+msgid "Format"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:89
+msgid "**portName**"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:89
+msgid "\\\\\"VehicleSpeed\\\\\""
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:89
+msgid "Name of port on the composition"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:91
+msgid "**componentName/portName**"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:91
+msgid "\\\\\"Swc1/VehicleSpeed\\\\\""
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:91
+msgid "Name of port on an inner component"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:93
+msgid "**portRef**"
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:93
+msgid "\\\\\"/ComponentTypes/Swc1/VehicleSpeed\\\\\""
+msgstr ""
+
+#: ../../autosar4_api/component/composition_swc.rst:93
+msgid "Full port reference"
+msgstr ""
+

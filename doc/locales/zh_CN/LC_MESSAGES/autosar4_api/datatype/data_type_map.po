@@ -1,0 +1,128 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/datatype/data_type_map.rst:4
+msgid "DataTypeMap"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:10
+msgid "<DATA-TYPE-MAP>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:12
+msgid "autosar.datatype"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:17
+msgid "Mapping from ApplicationDataType to ImplementationDataType."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:20
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:22
+msgid ""
+":ref:`DataTypeMappingSet.createDataTypeMapping "
+"<ar4_datatype_DataTypeMappingSet_createDataTypeMapping>`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:25
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:29
+msgid "Reference to :ref:`ar4_datatype_ApplicationDataType`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:30
+msgid "Reference to :ref:`ar4_datatype_ImplementationDataType`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:33
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:35
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:41
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:41
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:41
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:43
+msgid "**applicationDataTypeRef**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:43
+#: ../../autosar4_api/datatype/data_type_map.rst:45
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:43
+msgid "<APPLICATION-DATA-TYPE-REF>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:45
+msgid "**implementationDataTypeRef**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:45
+msgid "<IMPLEMENTATION-DATA-TYPE-REF>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:49
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/data_type_map.rst:51
+msgid "This class does not have any additional methods."
+msgstr ""
+

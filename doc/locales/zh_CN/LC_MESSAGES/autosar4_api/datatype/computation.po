@@ -1,0 +1,288 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/datatype/computation.rst:4
+msgid "Computation"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:10
+msgid "<COMPU-INTERNAL-TO-PHYS> or <COMPU-PHYS-TO-INTERNAL>"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:12
+msgid "autosar.datatype"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:17
+msgid ""
+"Represents one computation (internal to physical, physical to internal). "
+"Contains a list of CompuScaleElement objects as well as an optional "
+"default value. Instances of this class are used as internal objects of "
+":ref:`ar4_datatype_CompuMethod`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:23
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:25
+msgid "See :ref:`ar4_datatype_CompuMethod`."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:28
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:32
+msgid "Optional default value."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:36
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:42
+#: ../../autosar4_api/datatype/computation.rst:56
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:42
+#: ../../autosar4_api/datatype/computation.rst:56
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:42
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:44
+msgid "**elements**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:44
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:44
+msgid "List of :ref:`ar4_datatype_CompuScaleElement`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:46
+msgid "**defaultValue**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:46
+msgid "None, str, int, float"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:46
+msgid "Optional default value"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:50
+msgid "Public Properties"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:56
+msgid "Access Type"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:58
+msgid "**lowerLimit**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:58
+#: ../../autosar4_api/datatype/computation.rst:60
+msgid "int, float"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:58
+#: ../../autosar4_api/datatype/computation.rst:60
+msgid "Get"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:60
+msgid "**upperLimit**"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:64
+msgid "lowerLimit"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:66
+msgid ""
+"Returns lowerLimit of first element. Raises KeyError if *elements* list "
+"is empty."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:69
+msgid "upperLimit"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:71
+msgid ""
+"Returns upperLimit of first element. Raises KeyError if *elements* list "
+"is empty."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:74
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:76
+msgid ":ref:`ar4_datatype_Computation_createValueTable`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:77
+msgid ":ref:`ar4_datatype_Computation_createRationalScaling`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:78
+msgid ":ref:`ar4_datatype_Computation_createBitMask`"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:81
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:86
+msgid "createValueTable"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:90
+msgid "Elements of new value table."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:91
+#: ../../autosar4_api/datatype/computation.rst:142
+msgid "Automatically create <SHORT-LABEL> for each element."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:93
+#: ../../autosar4_api/datatype/computation.rst:144
+msgid ""
+"Creates a list of :ref:`CompuScaleElements "
+"<ar4_datatype_CompuScaleElement>` with text values."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:95
+msgid "When *elements* is a list of strings:"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:97
+msgid ""
+"Creates one :ref:`ar4_datatype_CompuScaleElement` per list item and "
+"automatically calculates lower and upper limits."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:99
+msgid "When *elements* is a list of tuples:"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:101
+#: ../../autosar4_api/datatype/computation.rst:148
+msgid ""
+"If 2-tuple: First element is both lowerLimit and upperLimit, second "
+"element is textValue."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:103
+msgid ""
+"If 3-tuple: First element is lowerLimit, second element is upperLimit, "
+"third element is textValue."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:109
+msgid "createRationalScaling"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:113
+msgid "Scaling offset."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:115
+msgid "Scaling numerator."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:117
+msgid "Scaling denominator."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:119
+msgid "lower limit."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:121
+msgid "upper limit."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:123
+msgid "lower limit type (:literal:`'OPEN'`, :literal:`'CLOSED'`)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:124
+msgid "upper limit type (:literal:`'OPEN'`, :literal:`'CLOSED'`)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:125
+msgid "Optional label (used instead of name attribute)."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:127
+msgid "Optional symbol name."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:129
+msgid "AdminData."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:132
+msgid ""
+"Creates :ref:`ar4_datatype_CompuScaleElement` with it rational scaling "
+"properties."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:137
+msgid "createBitMask"
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:141
+msgid "list of 2-tuples."
+msgstr ""
+
+#: ../../autosar4_api/datatype/computation.rst:146
+msgid "The *element* parameter is expected to be a list tubles."
+msgstr ""
+

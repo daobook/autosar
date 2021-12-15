@@ -1,0 +1,493 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/component/component_type.rst:4
+msgid "ComponentType"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:10
+msgid "(abstract class)"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:12
+msgid "autosar.component"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:17
+msgid ""
+"The ComponentType class is the base class for "
+":ref:`ar4_component_AtomicSoftwareComponent` and "
+":ref:`ar4_component_CompositionComponent`."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:20
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:26
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:26
+#: ../../autosar4_api/component/component_type.rst:92
+#: ../../autosar4_api/component/component_type.rst:134
+#: ../../autosar4_api/component/component_type.rst:158
+#: ../../autosar4_api/component/component_type.rst:178
+#: ../../autosar4_api/component/component_type.rst:197
+#: ../../autosar4_api/component/component_type.rst:217
+#: ../../autosar4_api/component/component_type.rst:240
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:26
+#: ../../autosar4_api/component/component_type.rst:92
+#: ../../autosar4_api/component/component_type.rst:134
+#: ../../autosar4_api/component/component_type.rst:158
+#: ../../autosar4_api/component/component_type.rst:178
+#: ../../autosar4_api/component/component_type.rst:197
+#: ../../autosar4_api/component/component_type.rst:217
+#: ../../autosar4_api/component/component_type.rst:240
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:28
+msgid "**providePorts**"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:28
+msgid "*list(:ref:`ar4_port_ProvidePort`)*"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:28
+msgid "Provide ports in this component"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:30
+msgid "**requirePorts**"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:30
+msgid "*list(:ref:`ar4_port_RequirePort`)*"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:30
+msgid "Require ports in this componen"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:34
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:36
+msgid ":ref:`ar4_component_ComponentType_find`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:37
+msgid ":ref:`ar4_component_ComponentType_createProvidePort`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:38
+msgid ":ref:`ar4_component_ComponentType_createRequirePort`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:42
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:47
+msgid "find"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:51
+msgid "Find port based in info in reference string."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:53
+msgid "Reference string"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:59
+msgid "createProvidePort"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:63
+msgid "Creates new ProvidePort on this component."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:65
+#: ../../autosar4_api/component/component_type.rst:79
+msgid "ShortName for the new port"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:66
+#: ../../autosar4_api/component/component_type.rst:80
+msgid "Reference to port interface"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:67
+#: ../../autosar4_api/component/component_type.rst:81
+msgid "Additional arguments depending on port interface type (see below)"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst
+msgid "返回类型"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:68
+msgid ":ref:`RequirePort <ar4_port_ProvidePort>`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:73
+msgid "createRequirePort"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:77
+msgid "Creates new RequirePort on this component."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:82
+msgid ":ref:`RequirePort <ar4_port_RequirePort>`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:86
+msgid ""
+"Additional arguments for :ref:`SenderReceiverInterface "
+"<ar4_portinterface_SenderReceiverInterface>`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:92
+#: ../../autosar4_api/component/component_type.rst:134
+#: ../../autosar4_api/component/component_type.rst:158
+#: ../../autosar4_api/component/component_type.rst:178
+#: ../../autosar4_api/component/component_type.rst:197
+#: ../../autosar4_api/component/component_type.rst:217
+#: ../../autosar4_api/component/component_type.rst:240
+msgid "Parameter name"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:94
+#: ../../autosar4_api/component/component_type.rst:136
+#: ../../autosar4_api/component/component_type.rst:160
+#: ../../autosar4_api/component/component_type.rst:180
+#: ../../autosar4_api/component/component_type.rst:199
+#: ../../autosar4_api/component/component_type.rst:219
+#: ../../autosar4_api/component/component_type.rst:242
+msgid "comspec"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:94
+#: ../../autosar4_api/component/component_type.rst:136
+#: ../../autosar4_api/component/component_type.rst:160
+#: ../../autosar4_api/component/component_type.rst:180
+#: ../../autosar4_api/component/component_type.rst:199
+#: ../../autosar4_api/component/component_type.rst:219
+#: ../../autosar4_api/component/component_type.rst:242
+msgid "dict, list(dict)"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:94
+msgid "Used primarily when port interface has multiple data elements"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:96
+msgid "dataElement"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:96
+#: ../../autosar4_api/component/component_type.rst:103
+#: ../../autosar4_api/component/component_type.rst:162
+#: ../../autosar4_api/component/component_type.rst:182
+#: ../../autosar4_api/component/component_type.rst:201
+#: ../../autosar4_api/component/component_type.rst:221
+#: ../../autosar4_api/component/component_type.rst:227
+#: ../../autosar4_api/component/component_type.rst:231
+#: ../../autosar4_api/component/component_type.rst:244
+#: ../../autosar4_api/component/component_type.rst:250
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:96
+msgid "Name of the data element this ComSpec refers to."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:98
+msgid "For single-element port interfaces this parameter is not required"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:100
+#: ../../autosar4_api/component/component_type.rst:166
+msgid "initValue"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:100
+#: ../../autosar4_api/component/component_type.rst:138
+#: ../../autosar4_api/component/component_type.rst:166
+#: ../../autosar4_api/component/component_type.rst:225
+#: ../../autosar4_api/component/component_type.rst:229
+#: ../../autosar4_api/component/component_type.rst:248
+msgid "int, float, str"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:100
+#: ../../autosar4_api/component/component_type.rst:138
+msgid "Used to set an init value literal. Mutually exclusive to initValueRef."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:103
+msgid "initValueRef"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:103
+msgid ""
+"Reference to existing constant specification Mutually exclusive to "
+"initValue."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:106
+msgid "aliveTimeout"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:106
+#: ../../autosar4_api/component/component_type.rst:108
+#: ../../autosar4_api/component/component_type.rst:141
+#: ../../autosar4_api/component/component_type.rst:186
+#: ../../autosar4_api/component/component_type.rst:188
+msgid "int"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:106
+msgid "Alive timeout setting (in seconds)."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:108
+#: ../../autosar4_api/component/component_type.rst:141
+#: ../../autosar4_api/component/component_type.rst:186
+msgid "queueLength"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:108
+msgid "Length of queue (only applicable for queued port interfaces"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:112
+msgid "Examples — SenderReceiverInterface"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:115
+msgid "Port interface with single data element"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:121
+msgid "Port interface with multiple data elements"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:128
+msgid ""
+"Additional arguments for :ref:`ClientServerInterface "
+"<ar4_portinterface_ClientServerInterface>`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:136
+msgid "Used primarily when port interface has multiple operations"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:138
+msgid "operation"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:141
+msgid "Length of queue"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:146
+msgid "Examples — ClientServerInterface"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:152
+msgid ""
+"Additional arguments for :ref:`ParameterInterface "
+"<ar4_portinterface_ParameterInterface>`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:160
+#: ../../autosar4_api/component/component_type.rst:180
+#: ../../autosar4_api/component/component_type.rst:199
+#: ../../autosar4_api/component/component_type.rst:219
+#: ../../autosar4_api/component/component_type.rst:242
+msgid "Used primarily when port interface has multiple parameters"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:162
+msgid "parameter"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:162
+msgid "Specifices which parameter this ComSpec is for."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:164
+msgid "Not required when port interface has a single parameter."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:166
+msgid "Used to set an init value literal."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:170
+msgid ""
+"Additional arguments for :ref:`ModeSwitchInterface "
+"<ar4_portinterface_ModeSwitchInterface>`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:172
+#: ../../autosar4_api/component/component_type.rst:211
+msgid "**Provide Ports:**"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:182
+#: ../../autosar4_api/component/component_type.rst:201
+msgid "modeGroup"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:182
+#: ../../autosar4_api/component/component_type.rst:201
+msgid "Specifices the mode group name"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:184
+#: ../../autosar4_api/component/component_type.rst:203
+msgid "enhancedMode"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:184
+#: ../../autosar4_api/component/component_type.rst:203
+#: ../../autosar4_api/component/component_type.rst:205
+msgid "bool"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:184
+#: ../../autosar4_api/component/component_type.rst:203
+msgid "Enhanced mode enable/disable"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:186
+msgid "Queue length"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:188
+msgid "modeSwitchAckTimeout"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:188
+msgid "Acknowledgement timeout in milliseconds"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:191
+#: ../../autosar4_api/component/component_type.rst:234
+msgid "**Require Ports:**"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:205
+msgid "supportAsync"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:205
+msgid "Asynchronous support enable/disable"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:209
+msgid ""
+"Additional arguments for :ref:`NvDataInterface "
+"<ar4_portinterface_NvDataInterface>`"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:221
+#: ../../autosar4_api/component/component_type.rst:244
+msgid "nvData"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:221
+#: ../../autosar4_api/component/component_type.rst:244
+msgid "Specifices the name of the data element."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:223
+#: ../../autosar4_api/component/component_type.rst:246
+msgid "Not required when port interface only has one element."
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:225
+msgid "ramBlockInitValue"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:225
+#: ../../autosar4_api/component/component_type.rst:248
+msgid "Init value literal for RAM block"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:227
+msgid "ramBlockInitValueRef"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:227
+#: ../../autosar4_api/component/component_type.rst:231
+#: ../../autosar4_api/component/component_type.rst:250
+msgid "Used when you want an existing constant as init value"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:229
+msgid "romBlockInitValue"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:229
+msgid "Init value literal for ROM block"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:231
+msgid "romBlockInitValueRef"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:248
+msgid "InitValue"
+msgstr ""
+
+#: ../../autosar4_api/component/component_type.rst:250
+msgid "InittValueRef"
+msgstr ""
+

@@ -1,0 +1,346 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/element/data_element.rst:4
+msgid "DataElement"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:10
+msgid "<DATA-ELEMENT>"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:12
+msgid "autosar.element"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:14
+msgid ":ref:`autosar.element.Element <ar4_element_Element>`"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:17
+msgid ""
+"DataElements are commonly used in "
+":ref:`ar4_portinterface_SenderReceiverInterface` but they sometimes are "
+"used for other purposes."
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:20
+msgid "Constructor"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:24
+msgid "Short-name identifer"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:25
+msgid "Type reference"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:26
+msgid "Queued property"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:27
+msgid "Reference to SoftwareAddressMethod"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:28
+msgid "Calibration access setting"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:29
+msgid "Implementation policy"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:30
+msgid "Category string"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:31
+msgid "Only used internally (leave as None)"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:32
+msgid "Optional AdminData object"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:35
+#: ../../autosar4_api/element/data_element.rst:137
+msgid "swCalibrationAccess"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:40
+#: ../../autosar4_api/element/data_element.rst:60
+msgid "Value"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:40
+#: ../../autosar4_api/element/data_element.rst:60
+#: ../../autosar4_api/element/data_element.rst:84
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:42
+#: ../../autosar4_api/element/data_element.rst:62
+msgid ":literal:`None`"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:42
+msgid "No calibration access set"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:44
+msgid ":literal:`\"\"` (Empty string)"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:44
+msgid ""
+"Create default calibration access value as set by "
+"Workspace.profile.swCalibrationAccessDefault"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:47
+msgid ":literal:`\"NOT-ACCESSIBLE\"`"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:47
+msgid "The element will not be accessible by external tools"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:49
+msgid ":literal:`\"READ-ONLY\"`"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:49
+msgid "Read only access"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:51
+msgid ":literal:`\"READ-WRITE\"`"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:51
+msgid "Read-write access"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:55
+#: ../../autosar4_api/element/data_element.rst:138
+msgid "swImplPolicy"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:62
+msgid "No policy set"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:64
+msgid ":literal:`\"CONST\"`"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:64
+msgid ""
+"Prevent implementation to modify the memory. Uses the \"const\" modifier "
+"in C."
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:66
+msgid ":literal:`\"FIXED\"`"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:66
+msgid ""
+"Data element is fixed and might be implemented as in place data such as a"
+" #define."
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:68
+msgid ":literal:`\"MEASUREMENT-POINT\"`"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:68
+msgid "Data element is created for measurement purposes only."
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:70
+msgid ":literal:`\"QUEUED\"`"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:70
+msgid ""
+"Data element is queued and has event semantics. Data is processed in FIFO"
+" order."
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:72
+msgid ":literal:`\"STANDARD\"`"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:72
+msgid "Data element is non-queued and uses the \"last is best\" semantics"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:76
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:78
+msgid ""
+"For inherited attributes see :ref:`autosar.element.Element "
+"<ar4_element_Element>`."
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:84
+#: ../../autosar4_api/element/data_element.rst:110
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:84
+#: ../../autosar4_api/element/data_element.rst:110
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:86
+msgid "**dataConstraintRef**"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:86
+#: ../../autosar4_api/element/data_element.rst:90
+#: ../../autosar4_api/element/data_element.rst:92
+#: ../../autosar4_api/element/data_element.rst:112
+msgid "None or str"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:86
+msgid "<DATA-CONSTR-REF>"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:88
+msgid "**isQueued**"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:88
+msgid "bool"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:88
+msgid "<IS-QUEUED>"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:90
+msgid "**swAddressMethodRef**"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:90
+msgid "<SW-DATA-DEF-PROPS><SW-ADDR-METHOD-REF>"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:92
+msgid "**swCalibrationAccess**"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:92
+msgid "<SW-DATA-DEF-PROPS><SW-CALIBRATION-ACCESS>"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:94
+msgid "**typeRef**"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:94
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:94
+msgid "<TYPE-TREF>"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:99
+msgid ""
+"It might be better idea to change DataElement to have a single instance "
+"of autosar.base.SwDataDefPropsConditional. This will remove some "
+"duplicated attributes found in this class."
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:104
+msgid "Properties"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:110
+msgid "Access Type | Description"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:112
+msgid "**swImplPolicy**"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:112
+msgid "Get, Set"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:112
+msgid "<SW-DATA-DEF-PROPS><SW-IMPL-POLICY>"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:116
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:118
+msgid ":ref:`ar4_element_DataElement_setProps`"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:121
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:126
+msgid "setProps"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:130
+msgid "Properties object"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:133
+msgid "Updates the following attributes/properties from the given props object"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:135
+msgid "dataConstraintRef"
+msgstr ""
+
+#: ../../autosar4_api/element/data_element.rst:136
+msgid "swAddressMethodRef"
+msgstr ""
+

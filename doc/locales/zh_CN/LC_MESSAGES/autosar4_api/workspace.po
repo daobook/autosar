@@ -1,0 +1,518 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_api/workspace.rst:4
+msgid "Workspace"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:10
+msgid "<AUTOSAR>"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:12 ../../autosar4_api/workspace.rst:31
+msgid "autosar.workspace"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:17
+msgid "The autosar workspace class."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:20
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:29
+msgid "Factory Methods"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:34
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:40 ../../autosar4_api/workspace.rst:58
+msgid "Name"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:40 ../../autosar4_api/workspace.rst:58
+msgid "Type"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:40 ../../autosar4_api/workspace.rst:58
+msgid "Description"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:42
+msgid "**packages**"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:42
+msgid "*list*"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:42
+msgid "List of packages"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:44
+msgid "**version**"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:44
+msgid "*float*"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:44
+msgid "AUTOSAR version using major.minor format"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:46
+msgid "**patch**"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:46
+msgid "*int*"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:46
+msgid "AUTOSAR patch version"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:48
+msgid "**profile**"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:48
+msgid ":ref:`ar4_workspace_Profile`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:48
+msgid "Workspace profile"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:52
+msgid "Public Properties"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:58
+msgid "Access Type"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:60
+msgid "**version_str**"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:60
+msgid "str"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:60
+msgid "Get"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:60
+msgid "Full version string using the major.minor.patch format"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:66
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:68
+msgid ":ref:`ar4_workspace_Workspace_loadXML`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:69
+msgid ":ref:`ar4_workspace_Workspace_openXML`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:70
+msgid ":ref:`ar4_workspace_Workspace_loadPackage`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:71
+msgid ":ref:`ar4_workspace_Workspace_listPackages`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:72
+msgid ":ref:`ar4_workspace_Workspace_saveXML`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:73
+msgid ":ref:`ar4_workspace_Workspace_toXML`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:74
+msgid ":ref:`ar4_workspace_Workspace_createPackage`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:75
+msgid ":ref:`ar4_workspace_Workspace_find`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:76
+msgid ":ref:`ar4_workspace_Workspace_findall`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:77
+msgid ":ref:`ar4_workspace_Workspace_findRolePackage`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:78
+msgid ":ref:`ar4_workspace_Workspace_getRole`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:79
+msgid ":ref:`ar4_workspace_Workspace_setRole`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:80
+msgid ":ref:`ar4_workspace_Workspace_setRoles`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:81
+msgid ":ref:`ar4_workspace_Workspace_pushRoles`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:82
+msgid ":ref:`ar4_workspace_Workspace_popRoles`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:87
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:92
+msgid "loadXML"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst
+msgid "param str filename"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:96 ../../autosar4_api/workspace.rst:127
+#: ../../autosar4_api/workspace.rst:150
+msgid "Path to ARXML file to parse"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst
+msgid "param dict roles"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:97
+msgid "Roles dictionary."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:99
+msgid ""
+"Automatically opens and loads (imports) all packages found in *filename*."
+" Filename must be a valid .arxml file. Roles is an optional dictionary "
+"object with roles as key-value pairs where key is the reference of the "
+"package and the value is the (package) role name."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:103 ../../autosar4_api/workspace.rst:304
+msgid "Examples"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:123
+msgid "openXML"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:129
+msgid ""
+"Opens an ARXML file but does not automatically import any packages into "
+"the workspace. Use the loadPackage method to customize which packages you"
+" want to load."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:133 ../../autosar4_api/workspace.rst:158
+#: ../../autosar4_api/workspace.rst:181 ../../autosar4_api/workspace.rst:211
+#: ../../autosar4_api/workspace.rst:277 ../../autosar4_api/workspace.rst:351
+msgid "Example"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:145
+msgid "loadPackage"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:149
+msgid "Name of the package in the ARXML file"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:152
+msgid ""
+"Manually import a package into your current workspace. Use the "
+":ref:`ar4_workspace_Workspace_openXML` method before this call to open a "
+"file. The loadPackage method can be callled more than once on an opened "
+"file."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:155
+msgid ""
+"The role argument is optionally used to tell what role the package has in"
+" the workspace."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:174
+msgid "listPackages"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:178
+msgid ""
+"Returns a list of strings containing the top-level packages of the opened"
+" ARXML."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:194
+msgid "saveXML"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:198
+msgid "Name of the file to write"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:199 ../../autosar4_api/workspace.rst:255
+msgid "Selects what packages, sub-packages or elements to export"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:201
+msgid "Deprecated (might be removed later)"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:204
+msgid ""
+"Exports the workspace in ARXML file format. It tries to use the "
+"Workspace.version attribute to determine what schema to use. Note that "
+"the version handling mechanism is currently flawed and does not work "
+"correctly for AUTOSAR v4.3, v4.4 (will be implemented later)."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:207
+msgid ""
+"By default this method saves all packages found in the workspace and "
+"writes them to the same file. You can however split your workspace into "
+"multiple ARXML files by using the filters option."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:226
+msgid "Using filters"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:228
+msgid "Filters allows you to use reference strings to select what to export."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:230
+msgid "**Save top-level packages into separate files**"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:243
+msgid "**Save each software component to its own file**"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:251
+msgid "toXML"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:257
+msgid "Deprecated (Might be removed)"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:260
+msgid ""
+"This method works exactly like :ref:`ar4_workspace_Workspace_saveXML` but"
+" returns a string instead of writing to a file."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:266
+msgid "createPackage"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:270
+msgid "ShortName of the new package"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:271
+msgid "Optional :ref:`package role <ar4_package_Package_roles>`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst
+msgid "返回类型"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:272
+msgid ":ref:`ar4_package_Package`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:274
+msgid "creates a new package and appends it to the internal list of packages"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:293
+msgid "find"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:297
+msgid "Reference to package or element"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:298
+msgid "Optional role name"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:300
+msgid ""
+"By using the reference string, this methods attempts to find and return "
+"the referenced object from the internal model. If no object is found "
+"(invalid reference) the value None is returned."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:320
+msgid ""
+"You can also use the role argument in the find method. This allows you to"
+" just give the name of the element you want to find without caring about "
+"the full reference string."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:327
+msgid ""
+"An alternative to using the find method directly is to treat the "
+"Workspace object as a dictionary. This allows easier syntax when chaining"
+" together method calls."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:340
+msgid "findall"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:344
+msgid "Reference string"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:347
+msgid ""
+"Experimental find-method that has rudimentary support for wild cards "
+"(a.k.a) globs. This method returns a list of items it finds."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:368
+msgid "findRolePackage"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:372 ../../autosar4_api/workspace.rst:384
+#: ../../autosar4_api/workspace.rst:397
+msgid ":ref:`Role <ar4_package_Package_roles>` name"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:373
+msgid ":ref:`autosar.package.Package <ar4_package_Package>`"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:375
+msgid ""
+"Finds and returns package instance currently associated with given role "
+"name."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:380
+msgid "getRole"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:387
+msgid ""
+"Returns reference to package currently mapped to the given role. Returns "
+"None if role has not been set."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:392
+msgid "setRole"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:396 ../../autosar4_api/workspace.rst:408
+msgid "Package reference"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:399
+msgid "Assigns package role to the package referenced by ref."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:404
+msgid "setRoles"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:409
+msgid "list of 2-tuples"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:411
+msgid ""
+"Same as setRole but caller gives a list of tuples where the first tuple "
+"item is the package reference, and second is the role name."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:416
+msgid "pushRoles"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:420
+msgid "Saves current package role settings to internal role stack."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:425
+msgid "popRoles"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:429
+msgid "Restores last saved package role settings from internal role stack."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:435
+msgid "WorkspaceProfile"
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:437
+msgid ""
+"The WorkspaceProfile is an internal class of the Workspace. It's intented"
+" to be used as a set of properties that describes the default behavior of"
+" an AUTOSAR toolchain."
+msgstr ""
+
+#: ../../autosar4_api/workspace.rst:440
+msgid ""
+"As of now this class is just an embryo and will have to grow signifcantly"
+" in order to support more than one toolchain. The current default profile"
+" is set to match DaVinci Developer."
+msgstr ""
+

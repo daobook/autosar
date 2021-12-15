@@ -1,0 +1,267 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar3_api/package.rst:4
+msgid "Package"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:10
+msgid "XML tag"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:10
+msgid "<AR-PACKAGE>"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:12
+msgid "Module"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:12
+msgid "autosar.package"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:14
+msgid "Inherits"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:17
+msgid ""
+"An AUTOSAR package is a container for elements. Elements can be basically"
+" anything that are not packages."
+msgstr ""
+
+#: ../../autosar3_api/package.rst:20
+msgid "Usage"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:30
+msgid "Attributes"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:36
+msgid "Name"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:36
+msgid "Type"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:36
+msgid "Description"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:38
+msgid "**name**"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:38 ../../autosar3_api/package.rst:44
+msgid "str"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:38
+msgid "Name of the package"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:40
+msgid "**elements**"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:40
+msgid "list[Elements]"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:40
+msgid "List of elements"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:42
+msgid "**subPackages**"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:42
+msgid "list[Package]"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:42
+msgid "List of sub-packages"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:44
+msgid "**role**"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:44
+msgid "Package role"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:48
+msgid "Package Roles"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:54
+msgid "*Constant*"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:54
+msgid "Main container for Constants"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:56
+msgid "*ComponentType*"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:56
+msgid "Main container for Components"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:58
+msgid "*CompuMethod*"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:58
+msgid "Main Container for Computational Methods"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:60
+msgid "*DataType*"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:60
+msgid "Main container for Data Types"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:62
+msgid "*ModeDclrGroup*"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:62
+msgid "Main Container for Mode Declaration Groups"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:64
+msgid "*PortInterface*"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:64
+msgid "Main Container for Port Interfaces"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:66
+msgid "*Unit*"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:66
+msgid "Main Container for Units"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:71
+msgid "Public Methods"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:73
+msgid "**Data Types**:"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:75
+msgid ":ref:`ar3_package_createIntegerDataType`"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:76
+msgid ":ref:`ar3_package_createArrayDataType`"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:77
+msgid ":ref:`ar3_package_createRecordDataType`"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:82
+msgid "Method Description"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:87
+msgid "createIntegerDataType"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:91
+msgid "Creates a new IntegerDataType object add appends it to this package."
+msgstr ""
+
+#: ../../autosar3_api/package.rst
+msgid "参数"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:93 ../../autosar3_api/package.rst:114
+#: ../../autosar3_api/package.rst:128
+msgid "(short)Name of new datatype"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:94
+msgid "Lower limit"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:95
+msgid "Upper limit"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:96
+msgid "Value table"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:97
+msgid "Scaling offset"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:99
+msgid "Scaling factor"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:101
+msgid "Unit name"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:102 ../../autosar3_api/package.rst:117
+#: ../../autosar3_api/package.rst:130
+msgid "Optional AdminData"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:108
+msgid "createArrayDataType"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:112 ../../autosar3_api/package.rst:126
+msgid "Creates a new array data type and appends it to current package"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:115
+msgid "Reference to data type (used as the type for array element)"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:116
+msgid "Number of elements in the array"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:122
+msgid "createRecordDataType"
+msgstr ""
+
+#: ../../autosar3_api/package.rst:129
+msgid "Elements in the record"
+msgstr ""
+

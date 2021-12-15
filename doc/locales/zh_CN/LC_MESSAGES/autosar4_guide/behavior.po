@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2019-2021, Conny Gustafsson
+# This file is distributed under the same license as the AUTOSAR package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: AUTOSAR 0.3\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-12-15 11:11+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.9.1\n"
+
+#: ../../autosar4_guide/behavior.rst:2
+msgid "SWC Behavior"
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:4
+msgid ""
+"The behavior object is a container for runnables, events and other "
+"objects. All SWCs has its own behavior object, except for compositions."
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:6
+msgid ""
+"In AUTOSAR4, the behavior object is an instance of the "
+"SwcInternalBehavior class and it is created automatically when you create"
+" SWCs using these helper methods:"
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:8
+msgid "Package.createApplicationSoftwareComponent"
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:9
+msgid "Package.createServiceComponent"
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:10
+msgid "Package.createComplexDeviceDriverComponent"
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:13
+msgid "Runnables"
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:15
+msgid ""
+"Runnables are execution points. They are implemented as C functions and "
+"are triggered by events."
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:17 ../../autosar4_guide/behavior.rst:42
+msgid "Examples:"
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:33
+msgid "Port Access"
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:35
+msgid ""
+"Port access is a list of intent. This is where you list which SWC data "
+"elements (sender-receiver interface) or operations (client-server "
+"interface) that you intend to call from this runnable. It is important "
+"that you correctly fill in the port access list since it is used by the "
+"RTE generator."
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:39
+msgid ""
+"In those cases where your port only as a single data element it is enough"
+" to just give the name of the port (as a string). If you want to declare "
+"a specific data-element or operation use a front-slash as a seprator"
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:56
+msgid "Timer Events"
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:61
+msgid "Mode Switch Events"
+msgstr ""
+
+#: ../../autosar4_guide/behavior.rst:64
+msgid "Data Events"
+msgstr ""
+
