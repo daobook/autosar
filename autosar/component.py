@@ -22,10 +22,7 @@ class ComponentType(Element):
         for port in self.requirePorts:
             if port.name == ref[0]:
                 return port
-        for port in self.providePorts:
-            if port.name == ref[0]:
-                return port
-        return None
+        return next((port for port in self.providePorts if port.name == ref[0]), None)
 
     def append(self, elem):
         if isinstance(elem,autosar.port.RequirePort):
@@ -35,7 +32,7 @@ class ComponentType(Element):
             self.providePorts.append(elem)
             elem.parent=self
         else:
-            raise ValueError("unexpected type:" + str(type(elem)))
+            raise ValueError(f'unexpected type:{str(type(elem))}')
 
     def __getitem__(self,key):
         return self.find(key)
@@ -74,15 +71,14 @@ class ComponentType(Element):
         """
 
         comspec = kwargs.get('comspec', None)
-        if comspec is not None:
-            if isinstance(comspec, collections.Mapping):
-                comspecList = [comspec]
-            elif isinstance(comspec, collections.Iterable):
-                comspecList = list(comspec)
-            else:
-                raise ValueError('comspec argument must be of type dict or list')
-        else:
+        if comspec is None:
             comspecList = None
+        elif isinstance(comspec, collections.Mapping):
+            comspecList = [comspec]
+        elif isinstance(comspec, collections.Iterable):
+            comspecList = list(comspec)
+        else:
+            raise ValueError('comspec argument must be of type dict or list')
         assert (self.ref is not None)
         ws = self.rootWS()
         assert(ws is not None)
@@ -127,10 +123,7 @@ class ComponentType(Element):
         - initValueRef (str): Used when you want an existing constant specification as your initValue.
         """
         comspec = kwargs.get('comspec', None)
-        if comspec is not None:
-            comspecList = comspec
-        else:
-            comspecList = None
+        comspecList = comspec if comspec is not None else None
         assert (self.ref is not None)
         ws = self.rootWS()
         assert(ws is not None)
@@ -187,12 +180,13 @@ class AtomicSoftwareComponent(ComponentType):
         for port in self.providePorts:
             if port.name == ref[0]:
                 return port
-        if (ws is not None) and (ws.version >= 4.0) and (self.behavior is not None):
-            if self.behavior.name == ref[0]:
-                if len(ref[2])>0:
-                    return self.behavior.find(ref[2])
-                else:
-                    return self.behavior
+        if (
+            (ws is not None)
+            and (ws.version >= 4.0)
+            and (self.behavior is not None)
+            and self.behavior.name == ref[0]
+        ):
+            return self.behavior.find(ref[2]) if len(ref[2])>0 else self.behavior
         return None
 
 
@@ -249,10 +243,7 @@ class NvBlockComponent(AtomicSoftwareComponent):
         parts=ref.partition('/')
         for elem in self.nvBlockDescriptors:
             if elem.name == parts[0]:
-                if len(parts[2]) > 0:
-                    return elem.find(parts[2])
-                else:
-                    return elem
+                return elem.find(parts[2]) if len(parts[2]) > 0 else elem
         return super().find(ref)
 
 class CompositionComponent(ComponentType):
@@ -295,7 +286,7 @@ class CompositionComponent(ComponentType):
         ws = self.rootWS()
         component = ws.find(componentRef, role='ComponentType')
         if component is None:
-            raise ValueError('invalid reference: '+componentRef)
+            raise ValueError(f'invalid reference: {componentRef}')
         if name is None:
             name = component.name
         elem = ComponentPrototype(name, component.ref, self)
@@ -414,7 +405,7 @@ class CompositionComponent(ComponentType):
         for innerComponent in self.components:
             actualComponent = ws.find(innerComponent.typeRef)
             if actualComponent is None:
-                raise ValueError('invalid reference: '+innerComponent.typeRef)
+                raise ValueError(f'invalid reference: {innerComponent.typeRef}')
             for innerPort in actualComponent.requirePorts:
                 if innerPort.name not in require_ports:
                     require_ports[innerPort.name] = []
@@ -456,44 +447,54 @@ class CompositionComponent(ComponentType):
         unconnected = []
         inner_require_port_map, inner_provide_port_map = self._buildInnerPortMap(ws)
         for name in sorted(inner_provide_port_map.keys()):
-            for (innerComponent, providePort) in inner_provide_port_map[name]:
-                if self._isUnconnectedPortInner(ws, providePort):
-                    unconnected.append(providePort)
+            unconnected.extend(
+                providePort
+                for (innerComponent, providePort) in inner_provide_port_map[name]
+                if self._isUnconnectedPortInner(ws, providePort)
+            )
+
         for name in sorted(inner_require_port_map.keys()):
-            for (innerComponent, requirePort) in inner_require_port_map[name]:
-                if self._isUnconnectedPortInner(ws, requirePort):
-                    unconnected.append(requirePort)
-        for port in sorted(self.providePorts,key=lambda x: x.name)+sorted(self.requirePorts,key=lambda x: x.name):
-            if self._isUnconnectedPortOuter(ws, port):
-                unconnected.append(port)
+            unconnected.extend(
+                requirePort
+                for (innerComponent, requirePort) in inner_require_port_map[name]
+                if self._isUnconnectedPortInner(ws, requirePort)
+            )
+
+        unconnected.extend(
+            port
+            for port in sorted(self.providePorts, key=lambda x: x.name)
+            + sorted(self.requirePorts, key=lambda x: x.name)
+            if self._isUnconnectedPortOuter(ws, port)
+        )
+
         return unconnected
 
     def _isUnconnectedPortInner(self, ws, innerPort):
         innerPortRef = innerPort.ref
         portInterface = ws.find(innerPort.portInterfaceRef)
         if portInterface is None:
-            raise ValueError('invalid reference: '+innerPort.portInterfaceRef)
+            raise ValueError(f'invalid reference: {innerPort.portInterfaceRef}')
         if not isinstance(portInterface, autosar.portinterface.SenderReceiverInterface):
             return False
         for connector in self.assemblyConnectors:
             if (connector.providerInstanceRef.portRef == innerPortRef) or (connector.requesterInstanceRef.portRef == innerPortRef):
                 return False
-        for connector in self.delegationConnectors:
-            if connector.innerPortInstanceRef.portRef == innerPortRef:
-                return False
-        return True
+        return all(
+            connector.innerPortInstanceRef.portRef != innerPortRef
+            for connector in self.delegationConnectors
+        )
 
     def _isUnconnectedPortOuter(self, ws, outerPort):
         outerPortRef = outerPort.ref
         portInterface = ws.find(outerPort.portInterfaceRef)
         if portInterface is None:
-            raise ValueError('invalid reference: '+outerPort.portInterfaceRef)
+            raise ValueError(f'invalid reference: {outerPort.portInterfaceRef}')
         if not isinstance(portInterface, autosar.portinterface.SenderReceiverInterface):
             return False
-        for connector in self.delegationConnectors:
-            if connector.outerPortRef.portRef == outerPortRef:
-                return False
-        return True
+        return all(
+            connector.outerPortRef.portRef != outerPortRef
+            for connector in self.delegationConnectors
+        )
 
     def findMappedDataTypeRef(self, applicationDataTypeRef):
         """
@@ -505,14 +506,13 @@ class CompositionComponent(ComponentType):
         for mappingRef in self.dataTypeMappingRefs:
             if mappingRef in alreadyProcessed:
                 continue
-            else:
-                alreadyProcessed.add(mappingRef)
-                mappingSet = ws.find(mappingRef)
-                if mappingSet is None:
-                    raise autosar.base.InvalidMappingRef()
-                typeRef = mappingSet.findMappedDataTypeRef(applicationDataTypeRef)
-                if typeRef is not None:
-                    return typeRef
+            alreadyProcessed.add(mappingRef)
+            mappingSet = ws.find(mappingRef)
+            if mappingSet is None:
+                raise autosar.base.InvalidMappingRef()
+            typeRef = mappingSet.findMappedDataTypeRef(applicationDataTypeRef)
+            if typeRef is not None:
+                return typeRef
         return None
 
 class ComponentPrototype(Element):

@@ -19,13 +19,12 @@ class RecordTypeElement(Element):
 
     def __eq__(self,other):
         if self is other: return True
-        if type(self) == type(other):
-            if self.name == other.name:
-                lhs = None if self.typeRef is None else self.rootWS().find(self.typeRef)
-                rhs = None if other.typeRef is None else other.rootWS().find(other.typeRef)
-                if lhs != rhs:
-                    print(self.name,self.typeRef)
-                return lhs==rhs
+        if type(self) == type(other) and self.name == other.name:
+            lhs = None if self.typeRef is None else self.rootWS().find(self.typeRef)
+            rhs = None if other.typeRef is None else other.rootWS().find(other.typeRef)
+            if lhs != rhs:
+                print(self.name,self.typeRef)
+            return lhs==rhs
         return False
 
 class CompuScaleElement:
@@ -62,10 +61,14 @@ class Unit(Element):
         self.offset = offset       #only supported in AUTOSAR 4 and above
     def __eq__(self,other):
         if self is other: return True
-        if type(self) is type(other):
-            if (self.name==other.name) and (self.displayName == other.displayName) and (
-               self.factor == other.factor) and (self.offset == other.offset):
-                return True
+        if (
+            type(self) is type(other)
+            and (self.name == other.name)
+            and (self.displayName == other.displayName)
+            and (self.factor == other.factor)
+            and (self.offset == other.offset)
+        ):
+            return True
         return False
 
 class DataType(Element):
@@ -77,7 +80,7 @@ class DataType(Element):
 
     @property
     def isComplexType(self):
-        return True if isinstance(self, (RecordDataType, ArrayDataType)) else False
+        return isinstance(self, (RecordDataType, ArrayDataType))
 
 
 class IntegerDataType(DataType):
@@ -103,7 +106,7 @@ class IntegerDataType(DataType):
         return self._minValType
     @minValType.setter
     def minValueType(self, value):
-        if (value != "CLOSED") and (value != "OPEN"):
+        if value not in ["CLOSED", "OPEN"]:
             raise ValueError('value must be either "CLOSED" or "OPEN"')
         self._minValType=value
 
@@ -112,19 +115,23 @@ class IntegerDataType(DataType):
         return self._maxValType
     @maxValType.setter
     def maxValueType(self, value):
-        if (value != "CLOSED") and (value != "OPEN"):
+        if value not in ["CLOSED", "OPEN"]:
             raise ValueError('value must be either "CLOSED" or "OPEN"')
         self._minValType=value
 
 
     def __eq__(self,other):
         if self is other: return True
-        if type(other) is type(self):
-            if (self.name==other.name) and (self.minVal == other.minVal) and (self.maxVal==other.maxVal):
-                if (self.compuMethodRef is not None) and (other.compuMethodRef is not None):
-                    return self.rootWS().find(self.compuMethodRef) == other.rootWS().find(other.compuMethodRef)
-                elif (self.compuMethodRef is None) and (other.compuMethodRef is None):
-                    return True
+        if (
+            type(other) is type(self)
+            and (self.name == other.name)
+            and (self.minVal == other.minVal)
+            and (self.maxVal == other.maxVal)
+        ):
+            if (self.compuMethodRef is not None) and (other.compuMethodRef is not None):
+                return self.rootWS().find(self.compuMethodRef) == other.rootWS().find(other.compuMethodRef)
+            elif (self.compuMethodRef is None) and (other.compuMethodRef is None):
+                return True
 
     def __deepcopy__(self,memo):
         obj=type(self)(self.name,self.minVal,self.maxVal,self.compuMethodRef)
@@ -149,9 +156,11 @@ class RecordDataType(DataType):
     def __eq__(self, other):
         if self is other: return True
         if (self.name == other.name) and (len(self.elements)==len(other.elements)):
-            for i in range(len(self.elements)):
-                if self.elements[i] != other.elements[i]: return False
-            return True
+            return all(
+                self.elements[i] == other.elements[i]
+                for i in range(len(self.elements))
+            )
+
         return False
 
     def __deepcopy__(self,memo):
@@ -196,18 +205,25 @@ class StringDataType(DataType):
         self.length=length
         self.encoding=encoding
     def asdict(self):
-        data={'type': self.__class__.__name__,'name':self.name,'encoding':self.encoding,'length':self.length}
-        return data
+        return {
+            'type': self.__class__.__name__,
+            'name': self.name,
+            'encoding': self.encoding,
+            'length': self.length,
+        }
     def __eq__(self,other):
         if self is other: return False
-        if type(self) == type(other):
-            if (self.name==other.name) and (self.length == other.length) and (self.encoding == other.encoding):
-                return True
+        if (
+            type(self) == type(other)
+            and (self.name == other.name)
+            and (self.length == other.length)
+            and (self.encoding == other.encoding)
+        ):
+            return True
         return False
 
     def __deepcopy__(self,memo):
-        obj=type(self)(self.name,self.length,self.encoding)
-        return obj
+        return type(self)(self.name,self.length,self.encoding)
 
 
 class RealDataType(DataType):
@@ -301,14 +317,12 @@ class Computation:
         """
         lowerLimitType, upperLimitType = 'CLOSED', 'CLOSED'
         for elem in elements:
-            if isinstance(elem, tuple):
-                if len(elem) == 2:
-                    (mask, symbol) = elem
-                    (lowerLimit, upperLimit) = (mask, mask)
-                else:
-                    raise ValueError('invalid length: %d'%len(elem))
-            else:
+            if not isinstance(elem, tuple):
                 raise ValueError('type not supported:%s'%str(type(elem)))
+            if len(elem) != 2:
+                raise ValueError('invalid length: %d'%len(elem))
+            (mask, symbol) = elem
+            (lowerLimit, upperLimit) = (mask, mask)
             label = symbol if autoLabel else None
             self.elements.append(CompuScaleElement(lowerLimit, upperLimit, lowerLimitType, upperLimitType, symbol = symbol, label = label, mask = mask))
 
@@ -332,17 +346,17 @@ class ConstraintBase:
     def __init__(self, lowerLimit, upperLimit, lowerLimitType, upperLimitType):
         if lowerLimit is not None:
             if isinstance(lowerLimit, str) and lowerLimit != '-INF':
-                raise ValueError('Unknown lowerLimit: '+lowerLimit)
+                raise ValueError(f'Unknown lowerLimit: {lowerLimit}')
             self.lowerLimit = lowerLimit
         if upperLimit is not None:
             if isinstance(upperLimit, str) and upperLimit != 'INF':
-                raise ValueError('Unknown upperLimit: '+upperLimit)
+                raise ValueError(f'Unknown upperLimit: {upperLimit}')
             self.upperLimit = upperLimit
-        if lowerLimitType == 'CLOSED' or lowerLimitType == 'OPEN':
+        if lowerLimitType in ['CLOSED', 'OPEN']:
             self.lowerLimitType = lowerLimitType
         else:
             raise ValueError(lowerLimitType)
-        if upperLimitType == 'CLOSED' or upperLimitType == 'OPEN':
+        if upperLimitType in ['CLOSED', 'OPEN']:
             self.upperLimitType = upperLimitType
         else:
             raise ValueError(upperLimitType)
@@ -380,7 +394,7 @@ class DataConstraint(Element):
         if self.level is None or isinstance(self.level, int):
             return self.level
         else:
-            raise ValueError('Unknown constraintLevel: '+str(self.level))
+            raise ValueError(f'Unknown constraintLevel: {str(self.level)}')
 
     @property
     def lowerLimit(self):
@@ -457,10 +471,7 @@ class ImplementationDataType(Element):
 
     @property
     def arraySize(self):
-        if len(self.subElements)>0:
-            return self.subElements[0].arraySize
-        else:
-            return None
+        return self.subElements[0].arraySize if len(self.subElements)>0 else None
 
     @property
     def implementationTypeRef(self):
@@ -515,13 +526,12 @@ class ImplementationDataTypeElement(Element):
         super().__init__(name, parent, adminData, category)
         self.arraySize = arraySize
         self.variantProps = []
-        if arraySize is not None:
-            if arraySizeSemantics is not None:
-                self.arraySizeSemantics = arraySizeSemantics
-            else:
-                self.arraySizeSemantics = 'FIXED-SIZE'
-        else:
+        if arraySize is None:
             self.arraySizeSemantics = None
+        elif arraySizeSemantics is not None:
+            self.arraySizeSemantics = arraySizeSemantics
+        else:
+            self.arraySizeSemantics = 'FIXED-SIZE'
         if variantProps is not None:
             if isinstance(variantProps, (autosar.base.SwDataDefPropsConditional, autosar.base.SwPointerTargetProps)):
                 self.variantProps.append(variantProps)
@@ -634,10 +644,7 @@ class ApplicationRecordDataType(ApplicationDataType):
 
     def __init__(self, name, elements = None, variantProps = None, category = None, parent = None, adminData = None):
         super().__init__(name, variantProps, category, parent, adminData)
-        if elements is None:
-            self.elements = []
-        else:
-            self.elements = list(elements)
+        self.elements = [] if elements is None else list(elements)
 
     def append(self, element):
         """

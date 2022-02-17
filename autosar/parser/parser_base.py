@@ -154,7 +154,7 @@ class BaseParser:
         return retval
 
     def hasAdminData(self, xmlRoot):
-        return True if xmlRoot.find('ADMIN-DATA') is not None else False
+        return xmlRoot.find('ADMIN-DATA') is not None
 
     def parseAdminDataNode(self, xmlRoot):
         if xmlRoot is None: return None
@@ -166,15 +166,14 @@ class BaseParser:
                 SDG_GID=xmlElem.attrib['GID']
                 specialDataGroup = SpecialDataGroup(SDG_GID)
                 for xmlChild in xmlElem.findall('./*'):
-                    if xmlChild.tag == 'SD':
-                        SD_GID = None
-                        TEXT=xmlChild.text
-                        try:
-                            SD_GID=xmlChild.attrib['GID']
-                        except KeyError: pass
-                        specialDataGroup.SD.append(SpecialData(TEXT, SD_GID))
-                    else:
+                    if xmlChild.tag != 'SD':
                         raise NotImplementedError(xmlChild.tag)
+                    SD_GID = None
+                    TEXT=xmlChild.text
+                    try:
+                        SD_GID=xmlChild.attrib['GID']
+                    except KeyError: pass
+                    specialDataGroup.SD.append(SpecialData(TEXT, SD_GID))
                 adminData.specialDataGroups.append(specialDataGroup)
         return adminData
 
@@ -182,17 +181,15 @@ class BaseParser:
         assert (xmlRoot.tag == 'SW-DATA-DEF-PROPS')
         variants = []
         for itemXML in xmlRoot.findall('./*'):
-            if itemXML.tag == 'SW-DATA-DEF-PROPS-VARIANTS':
-                for subItemXML in itemXML.findall('./*'):
-                    if subItemXML.tag == 'SW-DATA-DEF-PROPS-CONDITIONAL':
-                        variant = self.parseSwDataDefPropsConditional(subItemXML)
-                        assert(variant is not None)
-                        variants.append(variant)
-                    else:
-                        raise NotImplementedError(subItemXML.tag)
-            else:
+            if itemXML.tag != 'SW-DATA-DEF-PROPS-VARIANTS':
                 raise NotImplementedError(itemXML.tag)
-        return variants if len(variants)>0 else None
+            for subItemXML in itemXML.findall('./*'):
+                if subItemXML.tag != 'SW-DATA-DEF-PROPS-CONDITIONAL':
+                    raise NotImplementedError(subItemXML.tag)
+                variant = self.parseSwDataDefPropsConditional(subItemXML)
+                assert(variant is not None)
+                variants.append(variant)
+        return variants or None
 
     def parseSwDataDefPropsConditional(self, xmlRoot):
         assert (xmlRoot.tag == 'SW-DATA-DEF-PROPS-CONDITIONAL')
@@ -221,14 +218,11 @@ class BaseParser:
                 pass #implement later
             elif xmlItem.tag == 'SW-CALPRM-AXIS-SET':
                 print("[BaseParser] unhandled: %s"%xmlItem.tag)
-                pass #implement later
                 print("[BaseParser] unhandled: %s"%xmlItem.tag)
             elif xmlItem.tag == 'SW-RECORD-LAYOUT-REF':
                 print("[BaseParser] unhandled: %s"%xmlItem.tag)
-                pass #implement later
             elif xmlItem.tag == 'INVALID-VALUE':
                 print("[BaseParser] unhandled: %s"%xmlItem.tag)
-                pass #implement later
             else:
                 raise NotImplementedError(xmlItem.tag)
         variant = SwDataDefPropsConditional(baseTypeRef, implementationTypeRef, swAddressMethodRef, swCalibrationAccess, swImplPolicy, None, compuMethodRef, dataConstraintRef, unitRef)

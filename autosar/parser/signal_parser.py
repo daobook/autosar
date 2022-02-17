@@ -19,10 +19,7 @@ class SignalParser(ElementParser):
 
     def parseElement(self, xmlElement, parent = None):
         parseFunc = self.switcher.get(xmlElement.tag)
-        if parseFunc is not None:
-            return parseFunc(xmlElement,parent)
-        else:
-            return None
+        return parseFunc(xmlElement,parent) if parseFunc is not None else None
 
     def parseSystemSignal(self,xmlRoot,parent=None):
         """

@@ -28,10 +28,11 @@ class BehaviorParser(ElementParser):
         assert(xmlRoot.tag == 'INTERNAL-BEHAVIOR')
         name = self.parseTextNode(xmlRoot.find('SHORT-NAME'))
         componentRef = self.parseTextNode(xmlRoot.find('COMPONENT-REF'))
-        multipleInstance = False
         xmlSupportMultipleInst = xmlRoot.find('SUPPORTS-MULTIPLE-INSTANTIATION')
-        if (xmlSupportMultipleInst is not None) and (xmlSupportMultipleInst.text == 'true'):
-            multipleInstance = True
+        multipleInstance = (xmlSupportMultipleInst is not None) and (
+            xmlSupportMultipleInst.text == 'true'
+        )
+
         ws = parent.rootWS()
         assert(ws is not None)
         if (name is not None) and (componentRef is not None):
@@ -40,7 +41,11 @@ class BehaviorParser(ElementParser):
             if swc is not None:
                 swc.behavior=internalBehavior
             for xmlNode in xmlRoot.findall('./*'):
-                if (xmlNode.tag == 'SHORT-NAME') or (xmlNode.tag == 'COMPONENT-REF') or (xmlNode.tag == 'SUPPORTS-MULTIPLE-INSTANTIATION'):
+                if xmlNode.tag in [
+                    'SHORT-NAME',
+                    'COMPONENT-REF',
+                    'SUPPORTS-MULTIPLE-INSTANTIATION',
+                ]:
                     continue
                 if xmlNode.tag == 'EVENTS':
                     for xmlEvent in xmlNode.findall('./*'):
@@ -74,26 +79,23 @@ class BehaviorParser(ElementParser):
                         if perInstanceMemory is not None: internalBehavior.perInstanceMemories.append(perInstanceMemory)
                 elif xmlNode.tag == 'SERVICE-NEEDSS':
                     for xmlElem in xmlNode.findall('./*'):
-                        if xmlElem.tag=='SWC-NV-BLOCK-NEEDS':
-                            swcNvBlockNeeds=self.parseSwcNvBlockNeeds(xmlElem)
-                            if swcNvBlockNeeds is not None: internalBehavior.swcNvBlockNeeds.append(swcNvBlockNeeds)
-                        else:
+                        if xmlElem.tag != 'SWC-NV-BLOCK-NEEDS':
                             raise NotImplementedError(xmlElem.tag)
+                        swcNvBlockNeeds=self.parseSwcNvBlockNeeds(xmlElem)
+                        if swcNvBlockNeeds is not None: internalBehavior.swcNvBlockNeeds.append(swcNvBlockNeeds)
                 elif xmlNode.tag == 'SHARED-CALPRMS':
                     for xmlElem in xmlNode.findall('./*'):
-                        if xmlElem.tag=='CALPRM-ELEMENT-PROTOTYPE':
-                            calPrmElemPrototype=self.parseCalPrmElemPrototype(xmlElem, internalBehavior)
-                            assert(calPrmElemPrototype is not None)
-                            internalBehavior.sharedCalParams.append(calPrmElemPrototype)
-                        else:
+                        if xmlElem.tag != 'CALPRM-ELEMENT-PROTOTYPE':
                             raise NotImplementedError(xmlElem.tag)
+                        calPrmElemPrototype=self.parseCalPrmElemPrototype(xmlElem, internalBehavior)
+                        assert(calPrmElemPrototype is not None)
+                        internalBehavior.sharedCalParams.append(calPrmElemPrototype)
                 elif xmlNode.tag == 'EXCLUSIVE-AREAS':
                     for xmlElem in xmlNode.findall('./*'):
-                        if xmlElem.tag=='EXCLUSIVE-AREA':
-                            exclusiveArea=autosar.behavior.ExclusiveArea(self.parseTextNode(xmlElem.find('SHORT-NAME')), internalBehavior)
-                            internalBehavior.exclusiveAreas.append(exclusiveArea)
-                        else:
+                        if xmlElem.tag != 'EXCLUSIVE-AREA':
                             raise NotImplementedError(xmlElem.tag)
+                        exclusiveArea=autosar.behavior.ExclusiveArea(self.parseTextNode(xmlElem.find('SHORT-NAME')), internalBehavior)
+                        internalBehavior.exclusiveAreas.append(exclusiveArea)
                 else:
                     raise NotImplementedError(xmlNode.tag)
             return internalBehavior
@@ -114,8 +116,8 @@ class BehaviorParser(ElementParser):
             internalBehavior = autosar.behavior.SwcInternalBehavior(name, parent.ref, multipleInstance, parent)
             for xmlElem in xmlRoot.findall('./*'):
                 if xmlElem.tag in handledXML:
-                    pass
-                elif xmlElem.tag == 'DATA-TYPE-MAPPING-REFS':
+                    continue
+                if xmlElem.tag == 'DATA-TYPE-MAPPING-REFS':
                     for xmlChild in xmlElem.findall('./*'):
                         if xmlChild.tag == 'DATA-TYPE-MAPPING-REF':
                             tmp = self.parseTextNode(xmlChild)
@@ -136,10 +138,7 @@ class BehaviorParser(ElementParser):
                             event = self.parseOperationInvokedEvent(xmlEvent, internalBehavior)
                         elif xmlEvent.tag == 'MODE-SWITCHED-ACK-EVENT':
                             event = self.parseModeSwitchedAckEvent(xmlEvent, internalBehavior)
-                        elif xmlEvent.tag == 'DATA-RECEIVE-ERROR-EVENT':
-                            #TODO: Implement later
-                            pass
-                        else:
+                        elif xmlEvent.tag != 'DATA-RECEIVE-ERROR-EVENT':
                             raise NotImplementedError(xmlEvent.tag)
                         if event is not None:
                             internalBehavior.events.append(event)
@@ -154,42 +153,36 @@ class BehaviorParser(ElementParser):
                             internalBehavior.runnables.append(runnableEntity)
                 elif xmlElem.tag == 'AR-TYPED-PER-INSTANCE-MEMORYS':
                     for xmlChild in xmlElem.findall('./*'):
-                        if xmlChild.tag == 'VARIABLE-DATA-PROTOTYPE':
-                            dataElement = self.parseVariableDataPrototype(xmlChild, internalBehavior)
-                            internalBehavior.perInstanceMemories.append(dataElement)
-                        else:
+                        if xmlChild.tag != 'VARIABLE-DATA-PROTOTYPE':
                             raise NotImplementedError(xmlChild.tag)
+                        dataElement = self.parseVariableDataPrototype(xmlChild, internalBehavior)
+                        internalBehavior.perInstanceMemories.append(dataElement)
                 elif xmlElem.tag == 'SERVICE-DEPENDENCYS':
                     for xmlChildElem in xmlElem.findall('./*'):
-                        if xmlChildElem.tag == 'SWC-SERVICE-DEPENDENCY':
-                            swcServiceDependency = self.parseSwcServiceDependency(xmlChildElem, internalBehavior)
-                            internalBehavior.serviceDependencies.append(swcServiceDependency)
-                        else:
+                        if xmlChildElem.tag != 'SWC-SERVICE-DEPENDENCY':
                             raise NotImplementedError(xmlChildElem.tag)
+                        swcServiceDependency = self.parseSwcServiceDependency(xmlChildElem, internalBehavior)
+                        internalBehavior.serviceDependencies.append(swcServiceDependency)
                 elif xmlElem.tag == 'SHARED-PARAMETERS':
                     for xmlChildElem in xmlElem.findall('./*'):
-                        if xmlChildElem.tag == 'PARAMETER-DATA-PROTOTYPE':
-                            tmp = self.parseParameterDataPrototype(xmlChildElem, internalBehavior)
-                            if tmp is not None:
-                                internalBehavior.parameterDataPrototype.append(tmp)
-                        else:
+                        if xmlChildElem.tag != 'PARAMETER-DATA-PROTOTYPE':
                             raise NotImplementedError(xmlChildElem.tag)
+                        tmp = self.parseParameterDataPrototype(xmlChildElem, internalBehavior)
+                        if tmp is not None:
+                            internalBehavior.parameterDataPrototype.append(tmp)
                 elif xmlElem.tag == 'EXCLUSIVE-AREAS':
                     for xmlChild in xmlElem.findall('./*'):
-                        if xmlChild.tag=='EXCLUSIVE-AREA':
-                            exclusiveArea=autosar.behavior.ExclusiveArea(self.parseTextNode(xmlChild.find('SHORT-NAME')), internalBehavior)
-                            internalBehavior.exclusiveAreas.append(exclusiveArea)
-                        else:
+                        if xmlChild.tag != 'EXCLUSIVE-AREA':
                             raise NotImplementedError(xmlChild.tag)
+                        exclusiveArea=autosar.behavior.ExclusiveArea(self.parseTextNode(xmlChild.find('SHORT-NAME')), internalBehavior)
+                        internalBehavior.exclusiveAreas.append(exclusiveArea)
                 elif xmlElem.tag == 'PER-INSTANCE-PARAMETERS':
                     pass #implement later
                 elif xmlElem.tag == 'EXPLICIT-INTER-RUNNABLE-VARIABLES':
                     pass #implement later
                 elif xmlElem.tag == 'HANDLE-TERMINATION-AND-RESTART':
                     pass #implement later
-                elif xmlElem.tag == 'STATIC-MEMORYS':
-                    pass #implement later
-                else:
+                elif xmlElem.tag != 'STATIC-MEMORYS':
                     raise NotImplementedError(xmlElem.tag)
             return internalBehavior
 

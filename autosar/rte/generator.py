@@ -8,11 +8,11 @@ import autosar.bsw.com
 innerIndentDefault=3 #default indendation (number of spaces)
 
 def _genCommentHeader(comment):
-   lines = []
-   lines.append('/*********************************************************************************************************************')
-   lines.append('* %s'%comment)
-   lines.append('*********************************************************************************************************************/')
-   return lines
+   return [
+       '/*********************************************************************************************************************',
+       '* %s' % comment,
+       '*********************************************************************************************************************/',
+   ]
 
 def _genCommentHeader2(comment):
    """
@@ -56,79 +56,68 @@ class TypeGenerator:
          first=True
          for ref in sorted(basicTypes)+sorted(complexTypes):
             dataType = ws.find(ref)
-            if dataType is not None:
-               typedef = None
-               if first:
-                  first=False
-               else:
-                  hfile.code.append(C.blank())
-               hfile.code.append('#define Rte_TypeDef_%s'%dataType.name)
-               if isinstance(dataType,autosar.datatype.BooleanDataType):
-                  typedef = C.typedef('boolean', dataType.name)
-                  hfile.code.append(C.statement(typedef))
-               elif isinstance(dataType,autosar.datatype.IntegerDataType):
-                  valrange = dataType.maxVal-dataType.minVal
-                  bitcount = valrange.bit_length()
-                  typename = dataType.name
-                  basetype = self._typename(bitcount,dataType.minVal)
-                  typedef = C.typedef(basetype, typename)
-                  hfile.code.append(C.statement(typedef))
-                  isUnsigned = True if basetype in ('uint8','uint16','uint32') else False
-                  if isUnsigned:
-                     minval=str(dataType.minVal)+'u'
-                     maxval=str(dataType.maxVal)+'u'
-                  else:
-                     minval=str(dataType.minVal)
-                     maxval=str(dataType.maxVal)
-                  hfile.code.append('#define %s_LowerLimit ((%s)%s)'%(typename,typename,minval))
-                  hfile.code.append('#define %s_UpperLimit ((%s)%s)'%(typename,typename,maxval))
-                  if dataType.compuMethodRef is not None:
-                     compuMethod = ws.find(dataType.compuMethodRef)
-                     if compuMethod is not None:
-                        lines1=[]
-                        lines2=[]
-                        if isinstance(compuMethod,autosar.datatype.CompuMethodConst):
-                           for elem in compuMethod.elements:
-                              if isUnsigned:
-                                 value = str(elem.upperLimit)+'u'
-                              else:
-                                 value = str(elem.upperLimit)
-                              lines1.append('#define RTE_CONST_%s (%s)'%(elem.textValue,value))
-                              lines2.append('#define %s ((%s)%s)'%(elem.textValue,typename,value))
-                        if len(lines2)>0:
-                           tmp=lines1+[C.blank()]+lines2
-                        else:
-                           tmp=lines1
-                        for line in tmp:
-                           hfile.code.append(line)
-                     else:
-                        raise ValueError(dataType.compuMethodRef)
-               elif isinstance(dataType, autosar.datatype.RecordDataType):
-                  body = C.block(innerIndent=innerIndentDefault)
-                  for elem in dataType.elements:
-                     childType = ws.find(elem.typeRef, role='DataType')
-                     body.append(C.statement(C.variable(elem.name, childType.name)))
-                  struct = C.struct(None,body, typedef=dataType.name)
-                  hfile.code.append(C.statement(struct))
-               elif isinstance(dataType, autosar.datatype.StringDataType):
-                  hfile.code.append('typedef uint8 %s[%d];'%(dataType.name, dataType.length+1))
-               elif isinstance(dataType, autosar.datatype.ArrayDataType):
-                  childType = ws.find(dataType.typeRef, role='DataType')
-                  if childType is None:
-                     raise ValueError('invalid type reference: '+dataType.typeRef)
-                  hfile.code.append('typedef %s %s[%d];'%(childType.name, dataType.name, dataType.length))
-               elif isinstance(dataType, autosar.datatype.RealDataType):
-                  if dataType.encoding == 'DOUBLE':
-                     platform_typename = 'float64'
-                  else:
-                     platform_typename = 'float32'
-                  hfile.code.append('typedef %s %s;'%(platform_typename, dataType.name))
-               else:
-                  raise NotImplementedError(type(dataType))
-                  #sys.stderr.write('not implemented: %s\n'%str(type(dataType)))
-            else:
+            if dataType is None:
                raise ValueError(ref)
 
+            typedef = None
+            if first:
+               first=False
+            else:
+               hfile.code.append(C.blank())
+            hfile.code.append('#define Rte_TypeDef_%s'%dataType.name)
+            if isinstance(dataType,autosar.datatype.BooleanDataType):
+               typedef = C.typedef('boolean', dataType.name)
+               hfile.code.append(C.statement(typedef))
+            elif isinstance(dataType,autosar.datatype.IntegerDataType):
+               valrange = dataType.maxVal-dataType.minVal
+               bitcount = valrange.bit_length()
+               typename = dataType.name
+               basetype = self._typename(bitcount,dataType.minVal)
+               typedef = C.typedef(basetype, typename)
+               hfile.code.append(C.statement(typedef))
+               isUnsigned = basetype in ('uint8','uint16','uint32')
+               if isUnsigned:
+                  minval = f'{str(dataType.minVal)}u'
+                  maxval = f'{str(dataType.maxVal)}u'
+               else:
+                  minval=str(dataType.minVal)
+                  maxval=str(dataType.maxVal)
+               hfile.code.append('#define %s_LowerLimit ((%s)%s)'%(typename,typename,minval))
+               hfile.code.append('#define %s_UpperLimit ((%s)%s)'%(typename,typename,maxval))
+               if dataType.compuMethodRef is not None:
+                  compuMethod = ws.find(dataType.compuMethodRef)
+                  if compuMethod is None:
+                     raise ValueError(dataType.compuMethodRef)
+                  lines1=[]
+                  lines2=[]
+                  if isinstance(compuMethod,autosar.datatype.CompuMethodConst):
+                     for elem in compuMethod.elements:
+                        value = f'{str(elem.upperLimit)}u' if isUnsigned else str(elem.upperLimit)
+                        lines1.append('#define RTE_CONST_%s (%s)'%(elem.textValue,value))
+                        lines2.append('#define %s ((%s)%s)'%(elem.textValue,typename,value))
+                  tmp = lines1+[C.blank()]+lines2 if lines2 else lines1
+                  for line in tmp:
+                     hfile.code.append(line)
+            elif isinstance(dataType, autosar.datatype.RecordDataType):
+               body = C.block(innerIndent=innerIndentDefault)
+               for elem in dataType.elements:
+                  childType = ws.find(elem.typeRef, role='DataType')
+                  body.append(C.statement(C.variable(elem.name, childType.name)))
+               struct = C.struct(None,body, typedef=dataType.name)
+               hfile.code.append(C.statement(struct))
+            elif isinstance(dataType, autosar.datatype.StringDataType):
+               hfile.code.append('typedef uint8 %s[%d];'%(dataType.name, dataType.length+1))
+            elif isinstance(dataType, autosar.datatype.ArrayDataType):
+               childType = ws.find(dataType.typeRef, role='DataType')
+               if childType is None:
+                  raise ValueError('invalid type reference: '+dataType.typeRef)
+               hfile.code.append('typedef %s %s[%d];'%(childType.name, dataType.name, dataType.length))
+            elif isinstance(dataType, autosar.datatype.RealDataType):
+               platform_typename = 'float64' if dataType.encoding == 'DOUBLE' else 'float32'
+               hfile.code.append('typedef %s %s;'%(platform_typename, dataType.name))
+            else:
+               raise NotImplementedError(type(dataType))
+               #sys.stderr.write('not implemented: %s\n'%str(type(dataType)))
          if len(modeTypes)>0:
             lines=_genCommentHeader('Mode Types')
             tmp=[]
@@ -142,10 +131,11 @@ class TypeGenerator:
                modeType = ws.find(ref)
                hfile.code.append(C.statement(C.typedef('uint8', 'Rte_ModeType_'+modeType.name)))
 
-               for i,elem in enumerate(modeType.modeDeclarations):
-                  # define RTE_MODE_EcuM_Mode_POST_RUN ((Rte_ModeType_EcuM_Mode)0)
-                  tmp.append(C.define('RTE_MODE_%s_%s'%(modeType.name,elem.name),'((Rte_ModeType_EcuM_Mode)%d)'%i))
-
+               tmp.extend(
+                   C.define(
+                       'RTE_MODE_%s_%s' % (modeType.name, elem.name),
+                       '((Rte_ModeType_EcuM_Mode)%d)' % i,
+                   ) for i, elem in enumerate(modeType.modeDeclarations))
             hfile.code.append(C.blank())
             hfile.code.extend(tmp)
          if len(unusedDefaultTypes)>0:
@@ -176,7 +166,7 @@ class TypeGenerator:
       for ref in typerefs:
          dataType = ws.find(ref)
          if dataType is None:
-            raise ValueError('invalid type reference: '+ref)
+            raise ValueError(f'invalid type reference: {ref}')
          usedTypeNames.add(dataType.name)
       return defaultTypeNames-usedTypeNames
 
@@ -214,7 +204,7 @@ class RteGenerator:
       #self.com_access = {'receive': {}, 'send': {}}
       if include is not None:
          for elem in include:
-            if isinstance(elem, str) or isinstance(elem, tuple):
+            if isinstance(elem, (str, tuple)):
                self.includes.append(elem)
             else:
                raise ValueError("include items must be of type str or tuple(str,boolean)")
@@ -263,7 +253,7 @@ class RteGenerator:
       for include in self.includes:
          code.append(C.include(*include))
       if self.com_component is not None:
-         code.append(C.include(self.com_component.name+'.h'))
+         code.append(C.include(f'{self.com_component.name}.h'))
       if self.os_enable:
          code.append(C.include('os.h'))
       fp.write('\n'.join(code.lines())+'\n\n')
@@ -306,7 +296,7 @@ class RteGenerator:
          self._genFunctionBodies(fp, [self.extra_public_functions[key] for key in sorted(self.extra_public_functions.keys())])
 
    def _write_rte_start(self, fp):
-      func = C.function(self.prefix+'_Start', 'void')
+      func = C.function(f'{self.prefix}_Start', 'void')
       body = C.block(innerIndent=innerIndentDefault)
       self._write_init_values(body)
       if len(self.extra_rte_start)>0:

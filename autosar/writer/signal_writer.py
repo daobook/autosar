@@ -22,9 +22,11 @@ class SignalWriter(ElementWriter):
 
     def writeSignalXML(self,elem):
         assert isinstance(elem,autosar.signal.SystemSignal)
-        lines = []
-        lines.append('<SYSTEM-SIGNAL>')
-        lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
+        lines = [
+            '<SYSTEM-SIGNAL>',
+            self.indent('<SHORT-NAME>%s</SHORT-NAME>' % elem.name, 1),
+        ]
+
         if elem.desc is not None:
             tmp = self.writeDescXML(elem)
             if tmp is not None: lines.extend(self.indent(tmp,1))

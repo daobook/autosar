@@ -244,9 +244,7 @@ class ARXML4ComponentTest(ARXMLTestClass):
 
         swc.behavior.dataTypeMappingRefs.append(mappingSet.ref)
 
-        comspecList = []
-        comspecList.append({'nvData': 'SettinNo1'})
-        comspecList.append({'nvData': 'SettinNo2'})
+        comspecList = [{'nvData': 'SettinNo1'}, {'nvData': 'SettinNo2'}]
         swc.createRequirePort('UserSetting_NvR', 'UserSetting_NvI', comspec=comspecList)
         swc.behavior.createRunnable('run', minStartInterval=None)
         Run_Event = swc.behavior.createTimingEvent('run', 20) #execute the run function every 20ms in all modes
@@ -375,9 +373,11 @@ class ARXML4ComponentTest(ARXMLTestClass):
         _init_ws(ws)
         package = ws.find('/ComponentTypes')
         swc = package.createApplicationSoftwareComponent('MyApplication')
-        comspecList = []
-        comspecList.append({'dataElement': 'EcuU', 'initValueRef': 'EcuU_IV'})
-        comspecList.append({'dataElement': 'RebootCount', 'initValueRef': 'RebootCount_IV'})
+        comspecList = [
+            {'dataElement': 'EcuU', 'initValueRef': 'EcuU_IV'},
+            {'dataElement': 'RebootCount', 'initValueRef': 'RebootCount_IV'},
+        ]
+
         swc.createRequirePort('EcuStatus', 'EcuStatus_I', comspec=comspecList)
         swc.createRequirePort('VehicleSpeed', 'VehicleSpeed_I', initValueRef = 'VehicleSpeed_IV')
         swc.createRequirePort('AmbientT', 'AmbientT_I', initValueRef = 'AmbientT_IV')

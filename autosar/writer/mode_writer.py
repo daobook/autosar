@@ -22,12 +22,16 @@ class XMLModeWriter(ElementWriter):
 
     def writeModeDeclarationGroupXML(self, modeDeclGroup):
         assert(isinstance(modeDeclGroup,autosar.mode.ModeDeclarationGroup))
-        lines=[]
         ws = modeDeclGroup.rootWS()
         assert(ws is not None)
 
-        lines.append('<%s>'%modeDeclGroup.tag(self.version))
-        lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%modeDeclGroup.name,1))
+        lines = list(
+            (
+                '<%s>' % modeDeclGroup.tag(self.version),
+                self.indent('<SHORT-NAME>%s</SHORT-NAME>' % modeDeclGroup.name, 1),
+            )
+        )
+
         if modeDeclGroup.category is not None:
             lines.append(self.indent('<CATEGORY>%s</CATEGORY>'%modeDeclGroup.category,1))
         if modeDeclGroup.adminData is not None:
@@ -41,8 +45,13 @@ class XMLModeWriter(ElementWriter):
         if len(modeDeclGroup.modeDeclarations)>0:
             lines.append(self.indent('<MODE-DECLARATIONS>',1))
             for elem in modeDeclGroup.modeDeclarations:
-                lines.append(self.indent('<%s>'%elem.tag(self.version),2))
-                lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,3))
+                lines.extend(
+                    (
+                        self.indent('<%s>' % elem.tag(self.version), 2),
+                        self.indent('<SHORT-NAME>%s</SHORT-NAME>' % elem.name, 3),
+                    )
+                )
+
                 if elem.value is not None:
                     lines.append(self.indent('<VALUE>{:d}</VALUE>'.format(elem.value),3))
                 lines.append(self.indent('</%s>'%elem.tag(self.version),2))

@@ -13,11 +13,7 @@ class BaseWriter:
         d = Decimal(float(version))
         self.major=int(d.quantize(1))
         self.minor=int(((d%1)*10).quantize(1))
-        if patch is None:
-            self.patch = 0
-        else:
-            self.patch = int(patch)
-
+        self.patch = 0 if patch is None else int(patch)
         if (self.version >= 3.0) and (self.version < 4.0):
             self.indentChar='\t'
         else:
@@ -33,24 +29,17 @@ class BaseWriter:
 
 
     def beginPackage(self, name,indent=None):
-        lines = []
-        lines.append('<AR-PACKAGE>')
-        lines.append(self.indentChar+'<SHORT-NAME>%s</SHORT-NAME>'%name)
-        return lines
+        return ['<AR-PACKAGE>', self.indentChar + '<SHORT-NAME>%s</SHORT-NAME>'%name]
 
     def endPackage(self,indent=None):
-        lines = []
-        lines.append('</AR-PACKAGE>')
-        return lines
+        return ['</AR-PACKAGE>']
 
     def toBooleanStr(self,value):
-        if value: return 'true'
-        return 'false'
+        return 'true' if value else 'false'
 
     def writeAdminDataXML(self,elem):
         assert(isinstance(elem,autosar.base.AdminData))
-        lines = []
-        lines.append('<ADMIN-DATA>')
+        lines = ['<ADMIN-DATA>']
         if len(elem.specialDataGroups)>0:
             lines.append(self.indent('<SDGS>',1))
             for sdg in elem.specialDataGroups:
@@ -63,7 +52,7 @@ class BaseWriter:
                         lines.append(self.indent('<SD GID="%s">%s</SD>'%(sd.GID, sd.TEXT),3))
                     elif (sd.TEXT is None) and (sd.GID is not None):
                         lines.append(self.indent('<SD GID="%s"></SD>'%(sd.GID),3))
-                    elif (sd.TEXT is not None) and (sd.GID is None):
+                    elif sd.TEXT is not None:
                         lines.append(self.indent('<SD>%s</SD>'%(sd.TEXT),3))
                 lines.append(self.indent('</SDG>',2))
             lines.append(self.indent('</SDGS>',1))
@@ -73,36 +62,31 @@ class BaseWriter:
         return lines
 
     def writeDescXML(self,elem):
-        if hasattr(elem,'desc'):
-            if hasattr(elem,'descAttr'):
-                descAttr=elem.descAttr
-            else:
-                descAttr='FOR-ALL'
-            lines = []
-            lines.append('<DESC>')
-            if elem.desc is None or len(elem.desc)==0:
-                lines.append(self.indent('<L-2 L="%s" />'%(descAttr),1))
-            else:
-                lines.append(self.indent('<L-2 L="%s">%s</L-2>'%(descAttr,xml.sax.saxutils.escape(elem.desc)),1))
-            lines.append('</DESC>')
-            return lines
-        return None
+        if not hasattr(elem, 'desc'):
+            return None
+        descAttr = elem.descAttr if hasattr(elem,'descAttr') else 'FOR-ALL'
+        lines = ['<DESC>']
+        if elem.desc is None or len(elem.desc)==0:
+            lines.append(self.indent('<L-2 L="%s" />'%(descAttr),1))
+        else:
+            lines.append(self.indent('<L-2 L="%s">%s</L-2>'%(descAttr,xml.sax.saxutils.escape(elem.desc)),1))
+        lines.append('</DESC>')
+        return lines
 
     def writeLongNameXML(self,elem):
-        if hasattr(elem,'longName'):
-            if hasattr(elem,'longNameAttr'):
-                longNameAttr=elem.longNameAttr
-            else:
-                longNameAttr='FOR-ALL'
-            lines = []
-            lines.append('<LONG-NAME>')
-            if elem.longName is None or len(elem.longName)==0:
-                lines.append(self.indent('<L-4 L="%s" />'%(longNameAttr),1))
-            else:
-                lines.append(self.indent('<L-4 L="%s">%s</L-4>'%(longNameAttr,xml.sax.saxutils.escape(elem.longName)),1))
-            lines.append('</LONG-NAME>')
-            return lines
-        return None
+        if not hasattr(elem, 'longName'):
+            return None
+        if hasattr(elem,'longNameAttr'):
+            longNameAttr=elem.longNameAttr
+        else:
+            longNameAttr='FOR-ALL'
+        lines = ['<LONG-NAME>']
+        if elem.longName is None or len(elem.longName)==0:
+            lines.append(self.indent('<L-4 L="%s" />'%(longNameAttr),1))
+        else:
+            lines.append(self.indent('<L-4 L="%s">%s</L-4>'%(longNameAttr,xml.sax.saxutils.escape(elem.longName)),1))
+        lines.append('</LONG-NAME>')
+        return lines
 
     def writeDescCode(self, elem):
         if hasattr(elem,'desc'):
@@ -155,7 +139,7 @@ class BaseWriter:
                 if sdg.SD[0].GID is not None: data['SD_GID']=sdg.SD[0].GID
                 if sdg.SD[0].TEXT is not None: data['SD']=sdg.SD[0].TEXT
             items.append(data)
-        if len(items)==0:
+        if not items:
             raise ValueError("adminData doesn't seem to contain any SpecialDataGroups")
         elif len(items)==1:
             return json.dumps(items[0])
@@ -163,8 +147,7 @@ class BaseWriter:
             return json.dumps(items)
 
     def writeSwDataDefPropsVariantsXML(self, ws, variants):
-        lines = []
-        lines.append(self.indent("<SW-DATA-DEF-PROPS-VARIANTS>", 0))
+        lines = [self.indent("<SW-DATA-DEF-PROPS-VARIANTS>", 0)]
         for variant in variants:
             if isinstance(variant, autosar.base.SwDataDefPropsConditional):
                 lines.extend(self.indent(self.writeSwDataDefPropsConditionalXML(ws, variant), 1))
@@ -176,12 +159,11 @@ class BaseWriter:
     def writeSwDataDefPropsConditionalXML(self, ws, elem):
         assert(isinstance(elem, autosar.base.SwDataDefPropsConditional))
 
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         if elem.baseTypeRef is not None:
             baseType=ws.find(elem.baseTypeRef)
             if baseType is None:
-                raise ValueError('invalid reference: '+elem.baseTypeRef)
+                raise ValueError(f'invalid reference: {elem.baseTypeRef}')
             lines.append(self.indent('<BASE-TYPE-REF DEST="%s">%s</BASE-TYPE-REF>'%(baseType.tag(self.version), baseType.ref),1))
         if elem.swAddressMethodRef is not None:
             swAddressMethod = ws.find(elem.swAddressMethodRef)
@@ -195,7 +177,7 @@ class BaseWriter:
         if elem.dataConstraintRef is not None:
             dataConstraint = ws.find(elem.dataConstraintRef)
             if dataConstraint is None:
-                raise ValueError('invalid reference: '+ elem.dataConstraintRef)
+                raise ValueError(f'invalid reference: {elem.dataConstraintRef}')
             lines.append(self.indent('<DATA-CONSTR-REF DEST="%s">%s</DATA-CONSTR-REF>'%(dataConstraint.tag(self.version), dataConstraint.ref),1))
         if elem.swImplPolicy is not None:
             lines.append(self.indent('<SW-IMPL-POLICY>%s</SW-IMPL-POLICY>'%(elem.swImplPolicy),1))
@@ -209,7 +191,7 @@ class BaseWriter:
         if elem.unitRef is not None:
             unit=ws.find(elem.unitRef)
             if unit is None:
-                raise ValueError('invalid reference: '+elem.unitRef)
+                raise ValueError(f'invalid reference: {elem.unitRef}')
             lines.append(self.indent('<UNIT-REF DEST="UNIT">%s</UNIT-REF>'%(unit.ref),1))
         lines.append("</%s>"%elem.tag(self.version))
         return lines
@@ -236,15 +218,11 @@ class BaseWriter:
         assert(ws is not None)
         element = ws.find(ref)
         if element is None:
-            raise ValueError('invalid reference: '+ref)
-        if ws.roles[role] is not None:
-            return element.name #use name only
-        else:
-            return element.ref #use full reference
+            raise ValueError(f'invalid reference: {ref}')
+        return element.name if ws.roles[role] is not None else element.ref
 
     def writeValueSpecificationXML(self, value):
-        lines=[]
-        lines.append('<%s>'%value.tag(self.version))
+        lines = ['<%s>' % value.tag(self.version)]
         if isinstance(value, autosar.constant.TextValue):
             lines.extend(self.indent(self._writeSimpleValueSpecificationXML(value), 1))
         elif isinstance(value, autosar.constant.NumericalValue):
@@ -300,9 +278,7 @@ class BaseWriter:
         return lines
 
     def _writeSwAxisContXML(self, ws, elem):
-        lines = []
-        lines.append('<SW-AXIS-CONTS>')
-        lines.append(self.indent('<%s>'%elem.tag(self.version), 1))
+        lines = ['<SW-AXIS-CONTS>', self.indent('<%s>'%elem.tag(self.version), 1)]
         if elem.unitRef is not None:
             unitObj = ws.find(elem.unitRef)
             if unitObj is None:
@@ -310,20 +286,17 @@ class BaseWriter:
             lines.append(self.indent('<UNIT-REF DEST="{0}">{1}</UNIT-REF>'.format(unitObj.tag(self.version), unitObj.ref), 2))
         if elem.values is not None:
             lines.append(self.indent('<SW-VALUES-PHYS>', 2))
-            if not isinstance(elem.values, list):
-                valueList = [elem.values]
-            else:
-                valueList = elem.values
-            for v in valueList:
-                lines.append(self.indent('<V>{}</V>'.format(str(v)), 3))
+            valueList = [elem.values] if not isinstance(elem.values, list) else elem.values
+            lines.extend(self.indent('<V>{}</V>'.format(str(v)), 3) for v in valueList)
             lines.append(self.indent('</SW-VALUES-PHYS>', 2))
-        lines.append(self.indent('</%s>'%elem.tag(self.version), 1))
-        lines.append('</SW-AXIS-CONTS>')
+        lines.extend(
+            (self.indent('</%s>' % elem.tag(self.version), 1), '</SW-AXIS-CONTS>')
+        )
+
         return lines
 
     def _writeSwValueContXML(self, ws, elem):
-        lines = []
-        lines.append('<%s>'%elem.tag(self.version))
+        lines = ['<%s>' % elem.tag(self.version)]
         if elem.unitRef is not None:
             unitObj = ws.find(elem.unitRef)
             if unitObj is None:
@@ -331,10 +304,7 @@ class BaseWriter:
             lines.append(self.indent('<UNIT-REF DEST="{0}">{1}</UNIT-REF>'.format(unitObj.tag(self.version), unitObj.ref), 1))
         if elem.values is not None:
             lines.append(self.indent('<SW-VALUES-PHYS>', 1))
-            if not isinstance(elem.values, list):
-                valueList = [elem.values]
-            else:
-                valueList = elem.values
+            valueList = [elem.values] if not isinstance(elem.values, list) else elem.values
             for v in valueList:
                 if isinstance(v, (float, int)):
                     lines.append(self.indent('<V>{}</V>'.format(self._numberToString(v)), 2))
@@ -346,10 +316,14 @@ class BaseWriter:
 
     def writeDataElementXML(self, elem):
         assert(isinstance(elem,DataElement))
-        lines=[]
         ws = elem.rootWS()
-        lines.append('<%s>'%elem.tag(self.version))
-        lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
+        lines = list(
+            (
+                '<%s>' % elem.tag(self.version),
+                self.indent('<SHORT-NAME>%s</SHORT-NAME>' % elem.name, 1),
+            )
+        )
+
         descLines = self.writeDescXML(elem)
         if descLines is not None:
             lines.extend(self.indent(descLines,1))
@@ -358,7 +332,7 @@ class BaseWriter:
             variant = autosar.base.SwDataDefPropsConditional(swAddressMethodRef = elem.swAddressMethodRef, swCalibrationAccess = elem.swCalibrationAccess, swImplPolicy = elem.swImplPolicy)
             if variant.hasAnyProp():
                 variantList.append(variant)
-            if len(variantList) > 0:
+            if variantList:
                 lines.append(self.indent('<SW-DATA-DEF-PROPS>',1))
                 variant.dataConstraintRef = elem.dataConstraintRef
                 lines.extend(self.indent(self.writeSwDataDefPropsVariantsXML(ws, variantList),2))
@@ -376,8 +350,7 @@ class BaseWriter:
 
     def writeSymbolPropsXML(self, elem):
         assert(isinstance(elem, autosar.base.SymbolProps))
-        lines=[]
-        lines.append('<%s>'%elem.tag(self.version))
+        lines = ['<%s>' % elem.tag(self.version)]
         if elem.name is not None:
             lines.append(self.indent('<SHORT-NAME>{}</SHORT-NAME>'.format(elem.name),1))
         if elem.symbol is not None:

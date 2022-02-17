@@ -65,7 +65,7 @@ class ConstantParser(ElementParser):
                 typeRef = xmlValue.find('./TYPE-TREF').text
                 innerValue = xmlValue.find('./VALUE').text
                 constantValue = autosar.constant.BooleanValue(name, typeRef, innerValue, parent)
-            elif xmlValue.tag == 'RECORD-SPECIFICATION' or xmlValue.tag == 'ARRAY-SPECIFICATION':
+            elif xmlValue.tag in ['RECORD-SPECIFICATION', 'ARRAY-SPECIFICATION']:
                 typeRef = xmlValue.find('./TYPE-TREF').text
                 if xmlValue.tag == 'RECORD-SPECIFICATION':
                     constantValue=autosar.constant.RecordValue(name, typeRef, parent=parent)
@@ -194,8 +194,13 @@ class ConstantParser(ElementParser):
                     swAxisCont = self._parseSwAxisCont(xmlChild)
             else:
                 raise NotImplementedError(xmlElem.tag)
-        value = autosar.constant.ApplicationValue(label, swValueCont = swValueCont, swAxisCont = swAxisCont, category = category, parent = parent)
-        return value
+        return autosar.constant.ApplicationValue(
+            label,
+            swValueCont=swValueCont,
+            swAxisCont=swAxisCont,
+            category=category,
+            parent=parent,
+        )
 
     def _parseSwValueCont(self, xmlRoot):
         unitRef = None
@@ -205,7 +210,7 @@ class ConstantParser(ElementParser):
                 unitRef = self.parseTextNode(xmlElem)
             elif xmlElem.tag == 'SW-VALUES-PHYS':
                 for xmlChild in xmlElem.findall('./*'):
-                    if (xmlChild.tag == 'V') or (xmlChild.tag == 'VF'):
+                    if xmlChild.tag in ['V', 'VF']:
                         valueList.append(self.parseNumberNode(xmlChild))
                     elif xmlChild.tag == 'VT':
                         valueList.append(self.parseTextNode(xmlChild))
@@ -213,7 +218,7 @@ class ConstantParser(ElementParser):
                         raise NotImplementedError(xmlChild.tag)
             else:
                 raise NotImplementedError(xmlElem.tag)
-        if len(valueList)==0:
+        if not valueList:
             valueList = None
         return autosar.constant.SwValueCont(valueList, unitRef)
 
@@ -231,6 +236,6 @@ class ConstantParser(ElementParser):
                         raise NotImplementedError(xmlChild.tag)
             else:
                 raise NotImplementedError(xmlElem.tag)
-        if len(valueList)==0:
+        if not valueList:
             valueList = None
         return autosar.constant.SwAxisCont(valueList, unitRef)

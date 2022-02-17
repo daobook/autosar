@@ -41,10 +41,7 @@ class XMLDataTypeWriter(ElementWriter):
 
     def writeElementXML(self, elem):
         xmlWriteFunc = self.switcher.get(type(elem).__name__)
-        if xmlWriteFunc is not None:
-            return xmlWriteFunc(elem)
-        else:
-            return None
+        return xmlWriteFunc(elem) if xmlWriteFunc is not None else None
 
     def writeElementCode(self, elem, localvars):
         raise NotImplementedError('writeElementCode')
@@ -68,8 +65,7 @@ class XMLDataTypeWriter(ElementWriter):
         assert(isinstance(elem,autosar.datatype.RecordDataType))
         ws=elem.rootWS()
         assert(isinstance(ws,autosar.Workspace))
-        lines=[]
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
         tmp = self.writeDescXML(elem)
         if tmp is not None: lines.extend(self.indent(tmp,1))
@@ -79,7 +75,7 @@ class XMLDataTypeWriter(ElementWriter):
             lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%childElem.name,3))
             dataType=ws.find(childElem.typeRef, role='DataType')
             if dataType is None:
-                raise ValueError('invalid reference: '+childElem.typeRef)
+                raise ValueError(f'invalid reference: {childElem.typeRef}')
             lines.append(self.indent('<TYPE-TREF DEST="%s">%s</TYPE-TREF>'%(dataType.tag(self.version),dataType.ref),3))
             lines.append(self.indent('</RECORD-ELEMENT>',2))
 
@@ -91,8 +87,7 @@ class XMLDataTypeWriter(ElementWriter):
         assert(isinstance(elem, autosar.datatype.CompuMethod))
         ws=elem.rootWS()
         assert(isinstance(ws,autosar.Workspace))
-        lines=[]
-        lines.append('<{}>'.format(elem.tag(self.version)))
+        lines = ['<{}>'.format(elem.tag(self.version))]
         lines.append(self.indent('<SHORT-NAME>{}</SHORT-NAME>'.format(elem.name),1))
         if elem.category is not None:
             lines.append(self.indent('<CATEGORY>{}</CATEGORY>'.format(elem.category),1))
@@ -114,9 +109,7 @@ class XMLDataTypeWriter(ElementWriter):
 
     def _writeComputationXML(self, ws, computation, tag):
         assert(isinstance(computation, autosar.datatype.Computation))
-        lines=[]
-        lines.append('<{}>'.format(tag))
-        lines.append(self.indent('<COMPU-SCALES>',1))
+        lines = ['<{}>'.format(tag), self.indent('<COMPU-SCALES>', 1)]
         for compuScale in computation.elements:
             lines.extend(self.indent(self._writeCompuScaleXML(ws, compuScale), 2))
         lines.append(self.indent('</COMPU-SCALES>',1))
@@ -131,8 +124,7 @@ class XMLDataTypeWriter(ElementWriter):
         return lines
 
     def _writeCompuScaleXML(self, ws, elem):
-        lines = []
-        lines.append('<{}>'.format(elem.tag(self.version)))
+        lines = ['<{}>'.format(elem.tag(self.version))]
         if elem.label is not None:
             lines.append(self.indent('<SHORT-LABEL>%s</SHORT-LABEL>'%elem.label, 1))
         if elem.symbol is not None:
@@ -155,28 +147,27 @@ class XMLDataTypeWriter(ElementWriter):
         return lines
 
     def _writeCompuRationalXML(self, elem):
-        lines = []
-        lines.append('<COMPU-RATIONAL-COEFFS>')
-        lines.append(self.indent('<COMPU-NUMERATOR>', 1))
+        lines = ['<COMPU-RATIONAL-COEFFS>', self.indent('<COMPU-NUMERATOR>', 1)]
         lines.append(self.indent('<V>{}</V>'.format(elem.offset), 2))
         lines.append(self.indent('<V>{}</V>'.format(elem.numerator), 2))
         lines.append(self.indent('</COMPU-NUMERATOR>', 1))
         lines.append(self.indent('<COMPU-DENOMINATOR>',1))
         lines.append(self.indent('<V>{}</V>'.format(elem.denominator),2))
-        lines.append(self.indent('</COMPU-DENOMINATOR>', 1))
-        lines.append('</COMPU-RATIONAL-COEFFS>')
+        lines.extend(
+            (self.indent('</COMPU-DENOMINATOR>', 1), '</COMPU-RATIONAL-COEFFS>')
+        )
+
         return lines
 
     def _writeCompuConstXML(self, elem):
-        lines = []
-        lines.append('<COMPU-CONST>')
-        lines.append(self.indent('<VT>{0}</VT>'.format(elem.textValue), 1))
-        lines.append('</COMPU-CONST>')
-        return lines
+        return [
+            '<COMPU-CONST>',
+            self.indent('<VT>{0}</VT>'.format(elem.textValue), 1),
+            '</COMPU-CONST>',
+        ]
 
     def writeUnitXML(self, elem):
-        lines=[]
-        lines.append('<{}>'.format(elem.tag(self.version)))
+        lines = ['<{}>'.format(elem.tag(self.version))]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
         if elem.displayName is not None:
             lines.append(self.indent('<DISPLAY-NAME>%s</DISPLAY-NAME>'%elem.displayName,1))
@@ -193,8 +184,7 @@ class XMLDataTypeWriter(ElementWriter):
         ws=elem.rootWS()
         assert(isinstance(ws,autosar.Workspace))
 
-        lines=[]
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
         tmp = self.writeDescXML(elem)
         if tmp is not None: lines.extend(self.indent(tmp,1))
@@ -210,8 +200,7 @@ class XMLDataTypeWriter(ElementWriter):
 
     def writeBooleanDataTypeXML(self, elem):
         assert(isinstance(elem,autosar.datatype.BooleanDataType))
-        lines=[]
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
         tmp = self.writeDescXML(elem)
         if tmp is not None: lines.extend(self.indent(tmp,1))
@@ -220,25 +209,22 @@ class XMLDataTypeWriter(ElementWriter):
 
     def writeRealDataTypeXML(self, elem):
         assert(isinstance(elem,autosar.datatype.RealDataType))
-        lines=[]
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
         tmp = self.writeDescXML(elem)
         if tmp is not None: lines.extend(self.indent(tmp,1))
         if elem.minValType=="INFINITE":
             lines.append(self.indent('<LOWER-LIMIT INTERVAL-TYPE="INFINITE"></LOWER-LIMIT>',1))
+        elif isinstance(elem.minVal, str):
+            lines.append(self.indent('<LOWER-LIMIT INTERVAL-TYPE="{0.minValType}">{0.minVal}</LOWER-LIMIT>'.format(elem),1))
         else:
-            if isinstance(elem.minVal, str):
-                lines.append(self.indent('<LOWER-LIMIT INTERVAL-TYPE="{0.minValType}">{0.minVal}</LOWER-LIMIT>'.format(elem),1))
-            else:
-                lines.append(self.indent('<LOWER-LIMIT INTERVAL-TYPE="{0.minValType}">{0.minVal:f}</LOWER-LIMIT>'.format(elem),1))
+            lines.append(self.indent('<LOWER-LIMIT INTERVAL-TYPE="{0.minValType}">{0.minVal:f}</LOWER-LIMIT>'.format(elem),1))
         if elem.maxValType=="INFINITE":
             lines.append(self.indent('<UPPER-LIMIT INTERVAL-TYPE="INFINITE"></UPPER-LIMIT>',1))
+        elif isinstance(elem.maxVal, str):
+            lines.append(self.indent('<UPPER-LIMIT INTERVAL-TYPE="{0.maxValType}">{0.maxVal}</UPPER-LIMIT>'.format(elem),1))
         else:
-            if isinstance(elem.maxVal, str):
-                lines.append(self.indent('<UPPER-LIMIT INTERVAL-TYPE="{0.maxValType}">{0.maxVal}</UPPER-LIMIT>'.format(elem),1))
-            else:
-                lines.append(self.indent('<UPPER-LIMIT INTERVAL-TYPE="{0.maxValType}">{0.maxVal:f}</UPPER-LIMIT>'.format(elem),1))
+            lines.append(self.indent('<UPPER-LIMIT INTERVAL-TYPE="{0.maxValType}">{0.maxVal:f}</UPPER-LIMIT>'.format(elem),1))
         lines.append(self.indent('<ALLOW-NAN>%s</ALLOW-NAN>'%('true' if elem.hasNaN else 'false'),1))
         lines.append(self.indent('<ENCODING>%s</ENCODING>'%elem.encoding,1))
         lines.append("</%s>"%elem.tag(self.version))
@@ -246,8 +232,7 @@ class XMLDataTypeWriter(ElementWriter):
 
     def writeStringTypeXML(self, elem):
         assert(isinstance(elem,autosar.datatype.StringDataType))
-        lines=[]
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
         tmp = self.writeDescXML(elem)
         if tmp is not None: lines.extend(self.indent(tmp,1))
@@ -261,8 +246,7 @@ class XMLDataTypeWriter(ElementWriter):
         ws=elem.rootWS()
         assert(isinstance(ws,autosar.Workspace))
 
-        lines=[]
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
         if elem.adminData is not None:
             lines.extend(self.indent(self.writeAdminDataXML(elem.adminData),1))
@@ -274,8 +258,7 @@ class XMLDataTypeWriter(ElementWriter):
         return lines
 
     def writeDataConstraintRuleXML(self, rule, constraintLevel):
-        lines = []
-        lines.append("<DATA-CONSTR-RULE>")
+        lines = ['<DATA-CONSTR-RULE>']
         if isinstance(constraintLevel, int):
             lines.append(self.indent('<{0}>{1}</{0}>'.format('CONSTR-LEVEL', str(constraintLevel)), 1))
         if isinstance(rule, autosar.datatype.InternalConstraint):
@@ -288,18 +271,32 @@ class XMLDataTypeWriter(ElementWriter):
         lowerLimit = self._numberToString(rule.lowerLimit)
         upperLimit = self._numberToString(rule.upperLimit)
 
-        lines.append(self.indent('<LOWER-LIMIT INTERVAL-TYPE="{0}">{1}</LOWER-LIMIT>'.format(rule.lowerLimitType, lowerLimit), 2))
-        lines.append(self.indent('<UPPER-LIMIT INTERVAL-TYPE="{0}">{1}</UPPER-LIMIT>'.format(rule.lowerLimitType, upperLimit), 2))
-        lines.append(self.indent('</{}>'.format(tag_name), 1))
-        lines.append("</DATA-CONSTR-RULE>")
+        lines.extend(
+            (
+                self.indent(
+                    '<LOWER-LIMIT INTERVAL-TYPE="{0}">{1}</LOWER-LIMIT>'.format(
+                        rule.lowerLimitType, lowerLimit
+                    ),
+                    2,
+                ),
+                self.indent(
+                    '<UPPER-LIMIT INTERVAL-TYPE="{0}">{1}</UPPER-LIMIT>'.format(
+                        rule.lowerLimitType, upperLimit
+                    ),
+                    2,
+                ),
+                self.indent('</{}>'.format(tag_name), 1),
+                "</DATA-CONSTR-RULE>",
+            )
+        )
+
         return lines
 
     def writeImplementationDataTypeXML(self, elem):
         assert(isinstance(elem, autosar.datatype.ImplementationDataType))
         ws=elem.rootWS()
         assert(ws is not None)
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         lines.append(self.indent("<SHORT-NAME>%s</SHORT-NAME>"%elem.name, 1))
         tmp = self.writeDescXML(elem)
         if tmp is not None: lines.extend(self.indent(tmp,1))
@@ -326,8 +323,7 @@ class XMLDataTypeWriter(ElementWriter):
 
     def writeSwPointerTargetPropsXML(self, ws, elem):
         assert(isinstance(elem, autosar.base.SwPointerTargetProps))
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         if elem.targetCategory is not None:
             lines.append(self.indent('<TARGET-CATEGORY>%s</TARGET-CATEGORY>'%(elem.targetCategory),1))
         lines.append(self.indent("<SW-DATA-DEF-PROPS>", 1))
@@ -341,8 +337,7 @@ class XMLDataTypeWriter(ElementWriter):
         assert(isinstance(elem, autosar.datatype.SwBaseType))
         ws = elem.rootWS()
         assert(ws is not None)
-        lines = []
-        lines.append("<{}>".format(elem.tag(self.version)))
+        lines = ["<{}>".format(elem.tag(self.version))]
         lines.append(self.indent('<SHORT-NAME>{}</SHORT-NAME>'.format(elem.name),1))
         tmp = self.writeDescXML(elem)
         if tmp is not None: lines.extend(self.indent(tmp,1))
@@ -363,8 +358,7 @@ class XMLDataTypeWriter(ElementWriter):
 
     def writeImplementationDataElementXML(self, ws, elem):
         assert(isinstance(elem, autosar.datatype.ImplementationDataTypeElement))
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
         tmp = self.writeDescXML(elem)
         if tmp is not None: lines.extend(self.indent(tmp,1))
@@ -388,21 +382,24 @@ class XMLDataTypeWriter(ElementWriter):
         ws=elem.rootWS()
         assert(ws is not None)
 
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
-        dataTypeMappings = []
-        modeRequestMappings = []
-        for key in sorted(elem.applicationTypeMap.keys()):
-            dataTypeMappings.append(elem.getDataTypeMapping(key))
-        for key in sorted(elem.modeRequestMap.keys()):
-            modeRequestMappings.append(elem.getModeRequestMapping(key))
-        if len(dataTypeMappings) > 0:
+        dataTypeMappings = [
+            elem.getDataTypeMapping(key)
+            for key in sorted(elem.applicationTypeMap.keys())
+        ]
+
+        modeRequestMappings = [
+            elem.getModeRequestMapping(key)
+            for key in sorted(elem.modeRequestMap.keys())
+        ]
+
+        if dataTypeMappings:
             lines.append(self.indent('<DATA-TYPE-MAPS>',1))
             for dataTypeMapping in dataTypeMappings:
                 lines.extend(self.indent(self.writeDataTypeMapXML(ws, dataTypeMapping),2))
             lines.append(self.indent('</DATA-TYPE-MAPS>',1))
-        if len(modeRequestMappings) > 0:
+        if modeRequestMappings:
             lines.append(self.indent('<MODE-REQUEST-TYPE-MAPS>',1))
             for modeRequestMapping in modeRequestMappings:
                 lines.extend(self.indent(self.writeModeRequestMapXML(ws, modeRequestMapping),2))
@@ -411,8 +408,7 @@ class XMLDataTypeWriter(ElementWriter):
         return lines
 
     def writeDataTypeMapXML(self, ws, elem):
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         applicationDataType = ws.find(elem.applicationDataTypeRef)
         if applicationDataType is None:
             raise ValueError('Invalid type reference:' + elem.applicationDataTypeRef)
@@ -425,8 +421,7 @@ class XMLDataTypeWriter(ElementWriter):
         return lines
 
     def writeModeRequestMapXML(self, ws, elem):
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         modeDeclarationGroup = ws.find(elem.modeDeclarationGroupRef)
         if modeDeclarationGroup is None:
             raise ValueError('Invalid type reference:' + elem.implementationDataTypeRef)
@@ -443,8 +438,7 @@ class XMLDataTypeWriter(ElementWriter):
         ws=elem.rootWS()
         assert(ws is not None)
 
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
         tmp = self.writeDescXML(elem)
         if tmp is not None:
@@ -463,8 +457,7 @@ class XMLDataTypeWriter(ElementWriter):
         ws=elem.rootWS()
         assert(ws is not None)
 
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
         tmp = self.writeDescXML(elem)
         if tmp is not None:
@@ -482,8 +475,7 @@ class XMLDataTypeWriter(ElementWriter):
     def writeApplicationArrayDataElementXml(self, ws, elem):
         assert(isinstance(elem, autosar.datatype.ApplicationArrayElement))
 
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         if elem.name is not None:
             lines.append(self.indent('<SHORT-NAME>{}</SHORT-NAME>'.format(elem.name),1))
         if elem.category is not None:
@@ -507,8 +499,7 @@ class XMLDataTypeWriter(ElementWriter):
         ws=elem.rootWS()
         assert(ws is not None)
 
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         if elem.name is not None:
             lines.append(self.indent('<SHORT-NAME>{}</SHORT-NAME>'.format(elem.name),1))
         if elem.category is not None:
@@ -523,8 +514,7 @@ class XMLDataTypeWriter(ElementWriter):
     def _ApplicationRecordElementXML(self, ws, elem):
         assert(isinstance(elem, autosar.datatype.ApplicationRecordElement))
 
-        lines = []
-        lines.append("<%s>"%elem.tag(self.version))
+        lines = ["<%s>" % elem.tag(self.version)]
         if elem.name is not None:
             lines.append(self.indent('<SHORT-NAME>{}</SHORT-NAME>'.format(elem.name), 1))
         if elem.category is not None:
@@ -571,10 +561,7 @@ class CodeDataTypeWriter(ElementWriter):
 
     def writeElementCode(self, elem, localvars):
         codeWriteFunc = self.switcher.get(type(elem).__name__)
-        if codeWriteFunc is not None:
-            return codeWriteFunc(elem, localvars)
-        else:
-            return None
+        return codeWriteFunc(elem, localvars) if codeWriteFunc is not None else None
 
     def writeArrayDataTypeCode(self, dataType, localvars):
         assert(isinstance(dataType,autosar.datatype.ArrayDataType))
@@ -583,7 +570,7 @@ class CodeDataTypeWriter(ElementWriter):
         params=[repr(dataType.name)]
         childType = ws.find(dataType.typeRef)
         if childType is None:
-            raise ValueError('invalid reference: '+dataType.typeRef)
+            raise ValueError(f'invalid reference: {dataType.typeRef}')
         if ws.roles['DataType'] is not None:
             params.append(repr(childType.name))
         else:
@@ -593,10 +580,16 @@ class CodeDataTypeWriter(ElementWriter):
         if dataType.adminData is not None:
             param = self.writeAdminDataCode(dataType.adminData, localvars)
             assert(len(param)>0)
-            params.append('adminData='+param)
+            params.append(f'adminData={param}')
         if hasattr(dataType, 'desc'):
-            lines.append('dataType=package.createArrayDataType(%s)'%(', '.join(params)))
-            lines.append('dataType.desc = """%s"""'%dataType.desc)
+            lines.extend(
+                (
+                    'dataType=package.createArrayDataType(%s)'
+                    % (', '.join(params)),
+                    'dataType.desc = """%s"""' % dataType.desc,
+                )
+            )
+
         else:
             lines.append('package.createArrayDataType(%s)'%(', '.join(params)))
         return lines
@@ -607,8 +600,14 @@ class CodeDataTypeWriter(ElementWriter):
         #name
         params=[repr(dataType.name)]
         if hasattr(dataType, 'desc'):
-            lines.append('dataType=package.createBooleanDataType(%s)'%(', '.join(params)))
-            lines.append('dataType.desc = """%s"""'%dataType.desc)
+            lines.extend(
+                (
+                    'dataType=package.createBooleanDataType(%s)'
+                    % (', '.join(params)),
+                    'dataType.desc = """%s"""' % dataType.desc,
+                )
+            )
+
         else:
             lines.append('package.createBooleanDataType(%s)'%(', '.join(params)))
         return lines
@@ -621,7 +620,7 @@ class CodeDataTypeWriter(ElementWriter):
         if dataType.compuMethodRef is not None:
             compuMethod = ws.find(dataType.compuMethodRef)
             if compuMethod is None:
-                raise ValueError('invalid reference: '+dataType.compuMethodRef)
+                raise ValueError(f'invalid reference: {dataType.compuMethodRef}')
             if isinstance(compuMethod, autosar.datatype.CompuMethodConst):
                 isUnconventionalType=False
                 if (dataType.minVal != 0) or (dataType.maxVal != (len(compuMethod.elements)-1)):
@@ -630,46 +629,46 @@ class CodeDataTypeWriter(ElementWriter):
                     params2=[]
                     index=0
                     for element in compuMethod.elements:
-                        if isinstance(element, autosar.datatype.CompuConstElement):
-                            if (element.lowerLimit==index) and (element.upperLimit==index):
-                                params2.append(repr(element.textValue))
-                            else:
-                                isUnconventionalType=True
-                                break
-                        else:
+                        if not isinstance(
+                            element, autosar.datatype.CompuConstElement
+                        ):
                             raise ValueError('unsupported value found of type: '+str(type(element)))
+                        if (element.lowerLimit==index) and (element.upperLimit==index):
+                            params2.append(repr(element.textValue))
+                        else:
+                            isUnconventionalType=True
+                            break
                         index+=1
                 if isUnconventionalType:
-                    params.append(str(dataType.minVal))
-                    params.append(str(dataType.maxVal))
+                    params.extend((str(dataType.minVal), str(dataType.maxVal)))
                     params2=[]
                     for element in compuMethod.elements:
-                        if isinstance(element, autosar.datatype.CompuConstElement):
-                            if element.lowerLimit==element.upperLimit:
-                                params2.append('(%d, %s)'%(element.lowerLimit, repr(element.textValue)))
-                            else:
-                                params2.append('(%d, %d, %s)'%(element.lowerLimit, element.upperLimit, repr(element.textValue)))
-                        else:
+                        if not isinstance(
+                            element, autosar.datatype.CompuConstElement
+                        ):
                             raise ValueError('unsupported value found of type: '+str(type(element)))
+                        if element.lowerLimit==element.upperLimit:
+                            params2.append('(%d, %s)'%(element.lowerLimit, repr(element.textValue)))
+                        else:
+                            params2.append('(%d, %d, %s)'%(element.lowerLimit, element.upperLimit, repr(element.textValue)))
                 text='['+','.join(params2)+']'
                 if len(text)>200:
                     #this line is way too long, split it
                     lines.extend(self.writeListCode('valueTableList',params2))
                     params.append('valueTable=valueTableList')
                 else:
-                    params.append('valueTable='+text)
+                    params.append(f'valueTable={text}')
             elif isinstance(compuMethod, autosar.datatype.CompuMethodRational):
-                params.append(str(dataType.minVal))
-                params.append(str(dataType.maxVal))
+                params.extend((str(dataType.minVal), str(dataType.maxVal)))
                 if len(compuMethod.elements)>1:
                     raise NotImplementedError('CompuMethodRational with multiple elements not implemented')
                 elif len(compuMethod.elements)==1:
                     elem =compuMethod.elements[0]
                     #offset
-                    params.append('offset='+str(elem.offset))
+                    params.append(f'offset={str(elem.offset)}')
                     #scaling
                     if elem.denominator=="1":
-                        params.append("scaling="+elem.numerator)
+                        params.append(f'scaling={elem.numerator}')
                     else:
                         params.append("scaling=%s/%s"%(elem.numerator,elem.numerator))
                     #for now, force float for all scaling factors
@@ -679,23 +678,25 @@ class CodeDataTypeWriter(ElementWriter):
                     unit = ws.find(compuMethod.unitRef, role="Unit")
                     if unit is None:
                         raise ValueError('invalid reference: '+compuMethod.unitRef)
-                    if ws.roles['Unit'] is not None:
-                        ref = unit.name #use name only
-                    else:
-                        ref = unit.ref #use full reference
-                    params.append('unit='+repr(ref))
+                    ref = unit.name if ws.roles['Unit'] is not None else unit.ref
+                    params.append(f'unit={repr(ref)}')
             else:
-                raise ValueError('unknown type:'+str(type(compuMethod)))
+                raise ValueError(f'unknown type:{str(type(compuMethod))}')
         else:
-            params.append(str(dataType.minVal))
-            params.append(str(dataType.maxVal))
+            params.extend((str(dataType.minVal), str(dataType.maxVal)))
         if dataType.adminData is not None:
             param = self.writeAdminDataCode(dataType.adminData, localvars)
             assert(len(param)>0)
-            params.append('adminData='+param)
+            params.append(f'adminData={param}')
         if hasattr(dataType, 'desc'):
-            lines.append('dataType=package.createIntegerDataType(%s)'%(', '.join(params)))
-            lines.append('dataType.desc = """%s"""'%dataType.desc)
+            lines.extend(
+                (
+                    'dataType=package.createIntegerDataType(%s)'
+                    % (', '.join(params)),
+                    'dataType.desc = """%s"""' % dataType.desc,
+                )
+            )
+
         else:
             lines.append('package.createIntegerDataType(%s)'%(', '.join(params)))
         return lines
@@ -717,24 +718,30 @@ class CodeDataTypeWriter(ElementWriter):
             params.append('decimal.Decimal("%s")'%(str(dataType.maxVal)))
         #minValType
         if dataType.minValType != 'CLOSED':
-            params.append('minValType='+repr(dataType.minValType))
+            params.append(f'minValType={repr(dataType.minValType)}')
         #maxValType
         if dataType.maxValType != 'CLOSED':
-            params.append('maxValType='+repr(dataType.maxValType))
+            params.append(f'maxValType={repr(dataType.maxValType)}')
         #hasNan
         if dataType.hasNaN:
             params.append('hasNaN=True')
         #encoding
         if dataType.encoding != 'SINGLE':
-            params.append('encoding='+repr(dataType.encoding))
+            params.append(f'encoding={repr(dataType.encoding)}')
         #adminData
         if dataType.adminData is not None:
             param = self.writeAdminDataCode(dataType.adminData, localvars)
             assert(len(param)>0)
-            params.append('adminData='+param)
+            params.append(f'adminData={param}')
         if hasattr(dataType, 'desc'):
-            lines.append('dataType=package.createRealDataType(%s)'%(', '.join(params)))
-            lines.append('dataType.desc = """{0}"""'.format(dataType.desc))
+            lines.extend(
+                (
+                    'dataType=package.createRealDataType(%s)'
+                    % (', '.join(params)),
+                    'dataType.desc = """{0}"""'.format(dataType.desc),
+                )
+            )
+
         else:
             lines.append('package.createRealDataType(%s)'%(', '.join(params)))
         return lines
@@ -747,11 +754,8 @@ class CodeDataTypeWriter(ElementWriter):
         for elem in dataType.elements:
             childType=ws.find(elem.typeRef)
             if childType is None:
-                raise ValueError('invalid reference: '+dataType.typeRef)
-            if ws.roles['DataType'] is not None:
-                ref = childType.name #use only the name
-            else:
-                ref = childType.ref #use full reference
+                raise ValueError(f'invalid reference: {dataType.typeRef}')
+            ref = childType.name if ws.roles['DataType'] is not None else childType.ref
             params2.append('(%s,%s)'%(repr(elem.name), repr(ref))) #we use the tuple option since this is most convenient
         if len(dataType.elements)>4:
             lines.extend(self.writeListCode('elementList',params2))
@@ -759,8 +763,14 @@ class CodeDataTypeWriter(ElementWriter):
         else:
             params.append('['+', '.join(params2)+']')
         if hasattr(dataType, 'desc'):
-            lines.append('dataType=package.createRecordDataType(%s)'%(', '.join(params)))
-            lines.append('dataType.desc = """%s"""'%dataType.desc)
+            lines.extend(
+                (
+                    'dataType=package.createRecordDataType(%s)'
+                    % (', '.join(params)),
+                    'dataType.desc = """%s"""' % dataType.desc,
+                )
+            )
+
         else:
             lines.append('package.createRecordDataType(%s)'%(', '.join(params)))
         return lines
@@ -769,38 +779,37 @@ class CodeDataTypeWriter(ElementWriter):
         lines=[]
         ws=localvars['ws']
         #name
-        params=[repr(dataType.name)]
-        #length
-        params.append(str(dataType.length))
+        params = [repr(dataType.name), str(dataType.length)]
         #encoding
         if dataType.encoding != 'ISO-8859-1':
-            params.append('encoding='+repr(dataType.encoding))
+            params.append(f'encoding={repr(dataType.encoding)}')
         if hasattr(dataType, 'desc'):
-            lines.append('dataType=package.createStringDataType(%s)'%(', '.join(params)))
-            lines.append('dataType.desc = """%s"""'%dataType.desc) #the r will force a raw string to be created
+            lines.extend(
+                (
+                    'dataType=package.createStringDataType(%s)'
+                    % (', '.join(params)),
+                    'dataType.desc = """%s"""' % dataType.desc,
+                )
+            )
+
         else:
             lines.append('package.createStringDataType(%s)'%(', '.join(params)))
         return lines
 
     def writeCompuMethodCode(self, dataType, localvars):
-        lines=[]
         ws=localvars['ws']
-        return lines
+        return []
 
     def CompuMethodRational(self, dataType, localvars):
-        lines=[]
         ws=localvars['ws']
-        return lines
+        return []
 
     def writeDataTypeUnitElementCode(self, dataType, localvars):
-        lines=[]
         ws=localvars['ws']
-        return lines
+        return []
 
     def writeImplementationDataTypeCode(self, dataType, localvars):
-        lines = []
-        return lines
+        return []
 
     def writeDataConstraintCode(self, dataType, localvars):
-        lines = []
-        return lines
+        return []

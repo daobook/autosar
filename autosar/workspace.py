@@ -101,7 +101,7 @@ class Workspace:
         if self.patch is None:
             return str(self._version)
         else:
-            return str(self._version)+'.'+str(self.patch)
+            return f'{str(self._version)}.{str(self.patch)}'
 
     def __getitem__(self,key):
         if isinstance(key,str):
@@ -122,13 +122,13 @@ class Workspace:
 
     def setRole(self, ref, role):
         if (role is not None) and (role not in _validWSRoles):
-            raise ValueError('Invalid role name: '+role)
+            raise ValueError(f'Invalid role name: {role}')
         if ref is None:
             self.roles[role]=None
         else:
             package = self.find(ref)
             if package is None:
-                raise ValueError('Invalid reference: '+ref)
+                raise ValueError(f'Invalid reference: {ref}')
             if not isinstance(package, autosar.package.Package):
                 raise ValueError('Invalid type "%s"for reference "%s", expected Package type'%(str(type(package)),ref))
             package.role=role
@@ -203,8 +203,8 @@ class Workspace:
 
         else:
             raise NotImplementedError('Version %s of ARXML not supported'%self.version)
-        if found==False and packagename != '*':
-            raise KeyError('package not found: '+packagename)
+        if not found and packagename != '*':
+            raise KeyError(f'package not found: {packagename}')
 
         if (self.unhandledParser):
             print("[PackageParser] unhandled: %s" % (", ".join(self.unhandledParser)))
@@ -213,7 +213,7 @@ class Workspace:
     def _loadPackageInternal(self, result, xmlPackage, packagename, role):
         name = xmlPackage.find("./SHORT-NAME").text
         found = False
-        if packagename=='*' or packagename==name:
+        if packagename in ['*', name]:
             found=True
             package = self.find(name)
             if package is None:
@@ -223,8 +223,8 @@ class Workspace:
                 self.map['packages'][name] = package
             self.packageParser.loadXML(package,xmlPackage)
             self.unhandledParser = self.unhandledParser.union(package.unhandledParser)
-            if (packagename==name) and (role is not None):
-                self.setRole(package.ref, role)
+        if (packagename==name) and (role is not None):
+            self.setRole(package.ref, role)
         return found
 
     def find(self, ref, role=None):
@@ -232,9 +232,9 @@ class Workspace:
         if ref is None: return None
         if (role is not None) and ( ref[0] != '/'):
             if role not in _validWSRoles:
-                raise ValueError("unknown role name: "+role)
+                raise ValueError(f'unknown role name: {role}')
             if self.roles[role] is not None:
-                ref=self.roles[role]+'/'+ref #appends the role packet name in front of ref
+                ref = f'{self.roles[role]}/{ref}'
 
         if ref[0]=='/': ref=ref[1:] #removes initial '/' if it exists
         ref = ref.partition('/')
@@ -279,28 +279,26 @@ class Workspace:
         return None
 
     def createPackage(self,name,role=None):
-        if name not in self.map['packages']:
-            package = autosar.package.Package(name,self)
-            self.packages.append(package)
-            self.map['packages'][name] = package
-            if role is not None:
-                self.setRole(package.ref, role)
-            return package
-        else:
+        if name in self.map['packages']:
             return self.map['packages'][name]
+        package = autosar.package.Package(name,self)
+        self.packages.append(package)
+        self.map['packages'][name] = package
+        if role is not None:
+            self.setRole(package.ref, role)
+        return package
 
     def dir(self,ref=None,_prefix='/'):
         if ref is None:
             return [x.name for x in self.packages]
+        if ref[0]=='/':
+            ref=ref[1:]
+        ref = ref.partition('/')
+        result=self.find(ref[0])
+        if result is not None:
+            return result.dir(ref[2] if len(ref[2])>0 else None,_prefix+ref[0]+'/')
         else:
-            if ref[0]=='/':
-                ref=ref[1:]
-            ref = ref.partition('/')
-            result=self.find(ref[0])
-            if result is not None:
-                return result.dir(ref[2] if len(ref[2])>0 else None,_prefix+ref[0]+'/')
-            else:
-                return None
+            return None
 
     def findWS(self):
         return self
@@ -358,9 +356,9 @@ class Workspace:
                 filters = []
             for package in packages:
                 if package[-1]=='/':
-                    filters.append(package+'*')
+                    filters.append(f'{package}*')
                 else:
-                    filters.append(package+'/*')
+                    filters.append(f'{package}/*')
         if filters is not None:
             filters = [prepareFilter(x) for x in filters]
         return writer.toCode(self, filters ,str(header), ws.noDefault)
@@ -386,9 +384,9 @@ class Workspace:
                 filters = []
             for package in packages:
                 if package[-1]=='/':
-                    filters.append(package+'*')
+                    filters.append(f'{package}*')
                 else:
-                    filters.append(package+'/*')
+                    filters.append(f'{package}/*')
         if filters is not None:
             filters = [prepareFilter(x) for x in filters]
 
@@ -407,12 +405,22 @@ class Workspace:
             raise ValueError("xmlroot is None, did you call loadXML() or openXML()?")
         if self.version >= 3.0 and self.version < 4.0:
             if self.xmlroot.find('TOP-LEVEL-PACKAGES'):
-                for xmlPackage in self.xmlroot.findall('./TOP-LEVEL-PACKAGES/AR-PACKAGE'):
-                    packageList.append(xmlPackage.find("./SHORT-NAME").text)
+                packageList.extend(
+                    xmlPackage.find("./SHORT-NAME").text
+                    for xmlPackage in self.xmlroot.findall(
+                        './TOP-LEVEL-PACKAGES/AR-PACKAGE'
+                    )
+                )
+
         elif self.version>=4.0:
             if self.xmlroot.find('AR-PACKAGES'):
-                for xmlPackage in self.xmlroot.findall('.AR-PACKAGES/AR-PACKAGE'):
-                    packageList.append(xmlPackage.find("./SHORT-NAME").text)
+                packageList.extend(
+                    xmlPackage.find("./SHORT-NAME").text
+                    for xmlPackage in self.xmlroot.findall(
+                        '.AR-PACKAGES/AR-PACKAGE'
+                    )
+                )
+
         else:
             raise NotImplementedError('Version %s of ARXML not supported'%self.version)
         return packageList
@@ -425,10 +433,9 @@ class Workspace:
             if pkg.name == ref[0]:
                 if len(ref[2])>0:
                     return pkg.delete(ref[2])
-                else:
-                    del self.packages[i]
-                    del self.map['packages'][ref[0]]
-                    break
+                del self.packages[i]
+                del self.map['packages'][ref[0]]
+                break
 
     def createAdminData(self, data):
         return autosar.base.createAdminData(data)

@@ -64,26 +64,16 @@ class ComponentAPI:
          self.final['setReadResult']=[self.setReadResult[k] for k in sorted(self.setReadResult.keys())]
 
    def get_all(self):
-      for func in self.final['read']:
-         yield func
-      for func in self.final['write']:
-         yield func
-      for func in self.final['receive']:
-         yield func
-      for func in self.final['send']:
-         yield func
-      for func in self.final['mode']:
-         yield func
-      for func in self.final['call']:
-         yield func
-      for func in self.final['calprm']:
-         yield func
-      for func in self.final['get']:
-         yield func
-      for func in self.final['setReadData']:
-         yield func
-      for func in self.final['setReadResult']:
-         yield func
+      yield from self.final['read']
+      yield from self.final['write']
+      yield from self.final['receive']
+      yield from self.final['send']
+      yield from self.final['mode']
+      yield from self.final['call']
+      yield from self.final['calprm']
+      yield from self.final['get']
+      yield from self.final['setReadData']
+      yield from self.final['setReadResult']
 
    def update(self, other):
       self.read.update(other.read)
@@ -147,49 +137,50 @@ class Component:
    def find_require_port(self, name):
       for port in self.requirePorts:
          if port.name == name: return port
-      raise KeyError("No port found with name "+name)
+      raise KeyError(f'No port found with name {name}')
 
    def find_provide_port(self, name):
       for port in self.providePorts:
          if port.name == name: return port
-      raise KeyError("No port found with name "+name)
+      raise KeyError(f'No port found with name {name}')
 
    def add_event(self, rte_event):
       self.rte_events.append(rte_event)
 
    def _process_runnables(self, ws):
-      if self.inner.behavior is not None:
-         for ar_runnable in self.inner.behavior.runnables:
-            runnable = Runnable(self, ar_runnable)
-            self.runnables.append(runnable)
-            for dataPoint in ar_runnable.dataReceivePoints+ar_runnable.dataSendPoints:
-               ar_port=ws.find(dataPoint.portRef)
-               if ar_port is None:
-                  raise ValueError('Error: Invalid port reference: '+dataPoint.dataPoint.portRef)
-               ar_data_element = ws.find(dataPoint.dataElemRef)
-               if ar_data_element is None:
-                  raise ValueError('Error: Invalid data element reference: '+dataPoint.dataElemRef)
-               if isinstance(dataPoint, autosar.behavior.DataSendPoint):
-                  port = self.find_provide_port(ar_port.name)
-               else:
-                  port = self.find_require_port(ar_port.name)
-               data_element = port.find_data_element(ar_data_element.name)
-               runnable.data_element_access.append(data_element)
-               port.create_data_access_api(ws, data_element)               
-               self.data_element_port_access['%s/%s'%(port.name, data_element.name)]=autosar.rte.base.DataElementPortAccess(port, data_element, runnable)
+      if self.inner.behavior is None:
+         return
+      for ar_runnable in self.inner.behavior.runnables:
+         runnable = Runnable(self, ar_runnable)
+         self.runnables.append(runnable)
+         for dataPoint in ar_runnable.dataReceivePoints+ar_runnable.dataSendPoints:
+            ar_port=ws.find(dataPoint.portRef)
+            if ar_port is None:
+               raise ValueError('Error: Invalid port reference: '+dataPoint.dataPoint.portRef)
+            ar_data_element = ws.find(dataPoint.dataElemRef)
+            if ar_data_element is None:
+               raise ValueError('Error: Invalid data element reference: '+dataPoint.dataElemRef)
+            if isinstance(dataPoint, autosar.behavior.DataSendPoint):
+               port = self.find_provide_port(ar_port.name)
+            else:
+               port = self.find_require_port(ar_port.name)
+            data_element = port.find_data_element(ar_data_element.name)
+            runnable.data_element_access.append(data_element)
+            port.create_data_access_api(ws, data_element)               
+            self.data_element_port_access['%s/%s'%(port.name, data_element.name)]=autosar.rte.base.DataElementPortAccess(port, data_element, runnable)
 
-            for callPoint in ar_runnable.serverCallPoints:
-               for instanceRef in callPoint.operationInstanceRefs:
-                  ar_port = ws.find(instanceRef.portRef)
-                  if ar_port is None:
-                     raise ValueError('Error: Invalid port reference: '+instanceRef.portRef)
-                  ar_operation = ws.find(instanceRef.operationRef)
-                  if ar_operation is None:
-                     raise ValueError('Error: Invalid operation reference: '+instanceRef.operationRef)
-                  port = self.find_require_port(ar_port.name)
-                  operation = port.find_operation(ar_operation.name)
-                  runnable.operation_access.append(operation)                  
-                  self.operation_port_access['%s/%s'%(port.name, operation.name)]=autosar.rte.base.OperationPortAccess(port, operation, runnable)
+         for callPoint in ar_runnable.serverCallPoints:
+            for instanceRef in callPoint.operationInstanceRefs:
+               ar_port = ws.find(instanceRef.portRef)
+               if ar_port is None:
+                  raise ValueError('Error: Invalid port reference: '+instanceRef.portRef)
+               ar_operation = ws.find(instanceRef.operationRef)
+               if ar_operation is None:
+                  raise ValueError('Error: Invalid operation reference: '+instanceRef.operationRef)
+               port = self.find_require_port(ar_port.name)
+               operation = port.find_operation(ar_operation.name)
+               runnable.operation_access.append(operation)                  
+               self.operation_port_access['%s/%s'%(port.name, operation.name)]=autosar.rte.base.OperationPortAccess(port, operation, runnable)
 
    def _process_events(self, ws):
       if self.inner.behavior is None:
@@ -290,13 +281,12 @@ class Partition:
          assert(ws is not None)
          if self.ws is None:
             self.ws = ws
-         else:
-            if self.ws is not ws:
-               raise ValueError('Cannot add components from different workspaces!')
+         elif self.ws is not ws:
+            raise ValueError('Cannot add components from different workspaces!')
          component = Component(swc, self)
          self.components.append(component)
       else:
-         print("Unsupported component type: "+str(type(swc)), file=sys.stderr)
+         print(f'Unsupported component type: {str(type(swc))}', file=sys.stderr)
 
 
    def finalize(self):
@@ -341,11 +331,8 @@ class Partition:
       require_port_list = [] #list of RequirePort
       provide_port_list = [] #list of ProvidePort
       for rte_comp in self.components:
-         for rte_port in rte_comp.requirePorts:
-            require_port_list.append(rte_port)
-         for rte_port in rte_comp.providePorts:
-            provide_port_list.append(rte_port)
-
+         require_port_list.extend(iter(rte_comp.requirePorts))
+         provide_port_list.extend(iter(rte_comp.providePorts))
       for require_port in require_port_list:
          provide_port = self._findCompatibleProvidePort(require_port, provide_port_list)
          if provide_port is not None:
@@ -429,16 +416,16 @@ class Partition:
             for port in component.requirePorts:
                for remote_port in port.connectors:
                   for data_element in remote_port.data_elements:
-                     isPointer = True if data_element.dataType.isComplexType else False
+                     isPointer = bool(data_element.dataType.isComplexType)
                      proto = C.function(
                      "%s_Send_%s_%s"%(component.inner.name, remote_port.name, data_element.name),
                      'Std_ReturnType',
                      args = [C.variable('value', data_element.dataType.name, pointer=isPointer)])
                      data_element.com_access['Send'] = proto
                      component.inner.addSendInterface(proto, port, data_element)
+            isPointer = True
             for port in component.providePorts:
                for data_element in port.data_elements:
-                  isPointer = True
                   proto = C.function(
                   "%s_Receive_%s_%s"%(component.inner.name, remote_port.name, data_element.name),
                   'Std_ReturnType',
@@ -460,10 +447,9 @@ class Partition:
                if func.static_var not in self.static_vars:
                   self.static_vars[func.static_var.name] = func.static_var
             function_name = "_".join(['os', 'task', event.activationType, event.mode, event.modeDeclaration])
-            if function_name not in self.mode_switch_functions[event.mode].calls:
-               if (event.activationType == 'OnEntry'):
-                  self.mode_switch_functions[event.mode].generate_on_entry_code(event, function_name)
-               else:
-                  self.mode_switch_functions[event.mode].generate_on_exit_code(event, function_name)
-            else:
+            if function_name in self.mode_switch_functions[event.mode].calls:
                self.mode_switch_functions[event.mode].add_event_to_call(event, function_name)
+            elif (event.activationType == 'OnEntry'):
+               self.mode_switch_functions[event.mode].generate_on_entry_code(event, function_name)
+            else:
+               self.mode_switch_functions[event.mode].generate_on_exit_code(event, function_name)

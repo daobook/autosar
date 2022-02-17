@@ -39,16 +39,28 @@ class PackageWriter(BaseWriter):
             lines.append(self.indent("<ELEMENTS>",1))
             for elem in package.elements:
                 elemRef = elem.ref
-                ignoreElem=True if (isinstance(ignore, collections.abc.Iterable) and elemRef in ignore) else False
+                ignoreElem = (
+                    isinstance(ignore, collections.abc.Iterable)
+                    and elemRef in ignore
+                )
+
                 #if SWC was ignored by user, also ignore its InternalBehavior and SwcImplementation elements in case they are in the same package
-                if not ignoreElem and isinstance(elem, autosar.behavior.InternalBehavior):
-                    if (isinstance(ignore, collections.abc.Iterable) and elem.componentRef in ignore):
-                        ignoreElem = True
+                if (
+                    not ignoreElem
+                    and isinstance(elem, autosar.behavior.InternalBehavior)
+                    and (
+                        isinstance(ignore, collections.abc.Iterable)
+                        and elem.componentRef in ignore
+                    )
+                ):
+                    ignoreElem = True
                 if not ignoreElem and isinstance(elem, autosar.component.SwcImplementation):
                     behavior = package.rootWS().find(elem.behaviorRef)
-                    if behavior is not None:
-                        if (isinstance(ignore, collections.abc.Iterable) and behavior.componentRef in ignore):
-                            ignoreElem = True
+                    if behavior is not None and (
+                        isinstance(ignore, collections.abc.Iterable)
+                        and behavior.componentRef in ignore
+                    ):
+                        ignoreElem = True
                 if not ignoreElem and applyFilter(elemRef, filters):
                     elementName = elem.__class__.__name__
                     elementWriter = self.xmlSwitcher.get(elementName)
@@ -62,9 +74,8 @@ class PackageWriter(BaseWriter):
                     else:
                         package.unhandledWriter.add(elementName)
             lines.append(self.indent("</ELEMENTS>",1))
-        else:
-            if self.version<4.0:
-                lines.append(self.indent("<ELEMENTS/>",1))
+        elif self.version<4.0:
+            lines.append(self.indent("<ELEMENTS/>",1))
         if len(package.subPackages)>0:
             numPackets = 0
             if self.version >= 3.0 and self.version < 4.0:
@@ -103,15 +114,34 @@ class PackageWriter(BaseWriter):
                     lines.append('package.createSubPackage("%s")'%(subPackage.name))
         for elem in package.elements:
             elemRef = elem.ref
-            ignoreElem=True if (isinstance(ignore, str) and ignore==elemRef) or (isinstance(ignore, collections.abc.Iterable) and elemRef in ignore) else False
+            ignoreElem = (isinstance(ignore, str) and ignore == elemRef) or (
+                isinstance(ignore, collections.abc.Iterable) and elemRef in ignore
+            )
+
 
             #if SWC was ignored by user, also ignore its InternalBehavior and SwcImplementation elements in case they are in the same package
-            if not ignoreElem and isinstance(elem, autosar.behavior.InternalBehavior):
-                if (isinstance(ignore, str) and ignore==elem.componentRef) or (isinstance(ignore, collections.abc.Iterable) and elem.componentRef in ignore): ignoreElem = True
+            if (
+                not ignoreElem
+                and isinstance(elem, autosar.behavior.InternalBehavior)
+                and (
+                    (isinstance(ignore, str) and ignore == elem.componentRef)
+                    or (
+                        isinstance(ignore, collections.abc.Iterable)
+                        and elem.componentRef in ignore
+                    )
+                )
+            ):
+                ignoreElem = True
             if not ignoreElem and isinstance(elem, autosar.component.SwcImplementation):
                 behavior = package.rootWS().find(elem.behaviorRef)
-                if behavior is not None:
-                    if (isinstance(ignore, str) and ignore==behavior.componentRef) or (isinstance(ignore, collections.abc.Iterable) and behavior.componentRef in ignore): ignoreElem = True
+                if behavior is not None and (
+                    (isinstance(ignore, str) and ignore == behavior.componentRef)
+                    or (
+                        isinstance(ignore, collections.abc.Iterable)
+                        and behavior.componentRef in ignore
+                    )
+                ):
+                    ignoreElem = True
             if not ignoreElem and applyFilter(elemRef, filters):
                 elementName = elem.__class__.__name__
                 elementWriter = self.codeSwitcher.get(elementName)
@@ -124,6 +154,4 @@ class PackageWriter(BaseWriter):
                         lines.extend(result)
                 else:
                     package.unhandledWriter.add(elementName)
-            else:
-                pass
         return lines

@@ -104,7 +104,11 @@ class SwcImplementationParser(ElementParser):
         code = autosar.component.SwcImplementationCodeDescriptor(name, parent=parent)
         self.push()
         for xmlElem in xmlElement.findall('./*'):
-            if xmlElem.tag   == 'SHORT-NAME':
+            if (
+                xmlElem.tag == 'SHORT-NAME'
+                or xmlElem.tag != 'ARTIFACT-DESCRIPTORS'
+                and xmlElem.tag == 'CALLBACK-HEADER-REFS'
+            ):
                 continue
             elif xmlElem.tag == 'ARTIFACT-DESCRIPTORS':
                 code.artifactDescriptors = []
@@ -117,16 +121,15 @@ class SwcImplementationParser(ElementParser):
                             elif elem.tag  == 'CATEGORY':
                                 engineeringObject.category = self.parseTextNode(elem)
                             elif elem.tag == 'REVISION-LABELS':
-                                engineeringObject.revisionLabels = []
-                                for labelElem in elem.findall('./*'):
-                                    if labelElem.tag  == 'REVISION-LABEL':
-                                        engineeringObject.revisionLabels.append(self.parseTextNode(labelElem))
+                                engineeringObject.revisionLabels = [
+                                    self.parseTextNode(labelElem)
+                                    for labelElem in elem.findall('./*')
+                                    if labelElem.tag == 'REVISION-LABEL'
+                                ]
+
                             elif elem.tag  == 'DOMAIN':
                                 engineeringObject.domain = self.parseTextNode(elem)
                         code.artifactDescriptors.append(engineeringObject)
-            elif xmlElem.tag == 'CALLBACK-HEADER-REFS':
-                #TODO: Implement later
-                continue
             elif xmlElem.tag == 'TYPE':
                 # Only valid in Autosar 3.
                 code.type = self.parseTextNode(xmlElem)
@@ -154,9 +157,11 @@ class SwcImplementationParser(ElementParser):
                 #TODO: Implement later
                 continue
             elif xmlElem.tag == 'MEMORY-SECTIONS':
-                res.memorySections = []
-                for xmlSection in xmlElem.findall('./*'):
-                    res.memorySections.append(self.parseMemorySection(xmlSection, res))
+                res.memorySections = [
+                    self.parseMemorySection(xmlSection, res)
+                    for xmlSection in xmlElem.findall('./*')
+                ]
+
             elif xmlElem.tag == 'SECTION-NAME-PREFIXS':
                 #TODO: Implement later
                 continue
@@ -188,9 +193,11 @@ class SwcImplementationParser(ElementParser):
             elif xmlElem.tag == 'MEM-CLASS-SYMBOL':
                 section.memClassSymbol = self.parseTextNode(xmlElem)
             elif xmlElem.tag == 'OPTIONS':
-                section.options = []
-                for xmlOption in xmlElem.findall('./*'):
-                    section.options.append(self.parseTextNode(xmlOption))
+                section.options = [
+                    self.parseTextNode(xmlOption)
+                    for xmlOption in xmlElem.findall('./*')
+                ]
+
             elif xmlElem.tag == 'PREFIX-REF':
                 #TODO: Implement later
                 continue

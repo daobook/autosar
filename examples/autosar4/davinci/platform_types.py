@@ -1,5 +1,4 @@
-dev_mode = False
-if dev_mode:
+if dev_mode := False:
     import os, sys
     sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../../..')))
 import autosar

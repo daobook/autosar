@@ -22,10 +22,7 @@ class Element:
             return None
 
     def rootWS(self):
-        if self.parent is None:
-            return None
-        else:
-            return self.parent.rootWS()
+        return None if self.parent is None else self.parent.rootWS()
 
     def __deepcopy__(self,memo):
         raise NotImplementedError(type(self))
@@ -52,10 +49,7 @@ class LabelElement:
             return None
 
     def rootWS(self):
-        if self.parent is None:
-            return None
-        else:
-            return self.parent.rootWS()
+        return None if self.parent is None else self.parent.rootWS()
 
 
 class DataElement(Element):
@@ -87,12 +81,11 @@ class DataElement(Element):
         else:
             ucvalue=str(value).upper()
             enum_values = ["CONST", "FIXED", "MEASUREMENT-POINT", "QUEUED", "STANDARD"]
-            if ucvalue in enum_values:
-                self._swImplPolicy = ucvalue
-                if ucvalue == 'QUEUED':
-                    self.isQueued = True
-            else:
-                raise ValueError('invalid swImplPolicy value: ' +  value)
+            if ucvalue not in enum_values:
+                raise ValueError(f'invalid swImplPolicy value: {value}')
+            self._swImplPolicy = ucvalue
+            if ucvalue == 'QUEUED':
+                self.isQueued = True
 
     def setProps(self, props):
         if isinstance(props, autosar.base.SwDataDefPropsConditional):

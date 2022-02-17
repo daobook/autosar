@@ -44,8 +44,7 @@ class SignalDataElementInstanceRef:
         self.componentPrototypeRef=[]       #minOccurs=0, maxOccurs=unbounded
         self.portPrototypeRef=None          #minOccurs=0, maxOccurs=1
     def asdict(self):
-        data={'type': self.__class__.__name__,'dataElemRef':self.dataElemRef}
-        return data
+        return {'type': self.__class__.__name__,'dataElemRef':self.dataElemRef}
 
 class SenderReceiverToSignalGroupMapping:
     """

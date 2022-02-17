@@ -14,10 +14,11 @@ class AdminData:
 
     def __eq__(self, other):
         if isinstance(other, self.__class__) and len(self.specialDataGroups) == len(other.specialDataGroups):
-            for i,elem in enumerate(self.specialDataGroups):
-                if elem != other.specialDataGroups[i]:
-                    return False
-            return True
+            return all(
+                elem == other.specialDataGroups[i]
+                for i, elem in enumerate(self.specialDataGroups)
+            )
+
         return False
 
     def __ne__(self, other): return not (self == other)
@@ -37,13 +38,12 @@ class SpecialDataGroup(object):
     #    return data
 
     def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.SDG_GID == other.SDG_GID:
-                for i,SD in enumerate(self.SD):
-                    other_SD = other.SD[i]
-                    if SD.TEXT != other_SD.TEXT or SD.GID != other_SD.GID:
-                        return False
-                return True
+        if isinstance(other, self.__class__) and self.SDG_GID == other.SDG_GID:
+            for i,SD in enumerate(self.SD):
+                other_SD = other.SD[i]
+                if SD.TEXT != other_SD.TEXT or SD.GID != other_SD.GID:
+                    return False
+            return True
         return False
 
     def __ne__(self, other): return not (self == other)
@@ -76,12 +76,11 @@ def getXMLNamespace(element):
 def splitRef(ref):
     """splits an autosar url string into an array"""
     if isinstance(ref,str):
-        if ref[0]=='/': return ref[1:].split('/')
-        else: return ref.split('/')
+        return ref[1:].split('/') if ref[0]=='/' else ref.split('/')
     return None
 
 def hasAdminData(xmlRoot):
-    return True if xmlRoot.find('ADMIN-DATA') is not None else False
+    return xmlRoot.find('ADMIN-DATA') is not None
 
 def parseAdminDataNode(xmlRoot):
     if xmlRoot is None: return None
@@ -160,24 +159,19 @@ def parseAutosarVersionAndSchema(xmlRoot):
             #Retreive the schema file
             result = re.search(r'(^[ ]+\.xsd)', value)
             tmp = value.partition(' ')
-            if len(tmp[2])>0:
-                schemaFile = tmp[2]
-            else:
-                schemaFile = None
+            schemaFile = tmp[2] if len(tmp[2])>0 else None
             #Is this AUTOSAR 3?
             result = re.search(r'(\d)\.(\d)\.(\d)', value)
             if result is not None:
                 return (int(result.group(1)), int(result.group(2)), int(result.group(3)), None,  schemaFile)
-            else:
-                #Is this AUTOSAR 4.0 to 4.3?
-                result = re.search(r'(\d)-(\d)-(\d).*\.xsd', value)
-                if result is not None:
-                    return (int(result.group(1)),int(result.group(2)),int(result.group(3)), None, schemaFile)
-                else:
-                    #Is this AUTOSAR 4.4 or above?
-                    result = re.search(r'r(\d+)\.(\d+)\s+AUTOSAR_(\d+).xsd', value)
-                    if result is not None:
-                        return (int(result.group(1)),int(result.group(2)),None, int(result.group(3)), schemaFile)
+            #Is this AUTOSAR 4.0 to 4.3?
+            result = re.search(r'(\d)-(\d)-(\d).*\.xsd', value)
+            if result is not None:
+                return (int(result.group(1)),int(result.group(2)),int(result.group(3)), None, schemaFile)
+            #Is this AUTOSAR 4.4 or above?
+            result = re.search(r'r(\d+)\.(\d+)\s+AUTOSAR_(\d+).xsd', value)
+            if result is not None:
+                return (int(result.group(1)),int(result.group(2)),None, int(result.group(3)), schemaFile)
 
     return (None, None, None, None, None)
 
@@ -225,7 +219,7 @@ def findUniqueNameInList(elementList, baseName):
     foundElem = None
     highestIndex = 0
     hasIndex = False
-    p0 = re.compile(baseName+r'_(\d+)')
+    p0 = re.compile(f'{baseName}_(\\d+)')
     for elem in elementList:
         result = p0.match(elem.name)
         if result is not None:
@@ -272,14 +266,13 @@ class SwDataDefPropsConditional:
             if ucvalue in enum_values:
                 self._swImplPolicy = ucvalue
             else:
-                raise ValueError('invalid swImplPolicy value: ' +  value)
+                raise ValueError(f'invalid swImplPolicy value: {value}')
 
     def hasAnyProp(self):
         """
         Returns True if any internal attribute is not None, else False.
         The check excludes the parent attribute.
         """
-        retval = False
         attr_names = ['baseTypeRef',
                       'swCalibrationAccess',
                       'swAddressMethodRef',
@@ -290,11 +283,7 @@ class SwDataDefPropsConditional:
                       'unitRef',
                       'swImplPolicy'
                       ]
-        for name in attr_names:
-            if getattr(self, name) is not None:
-                retval = True
-                break
-        return retval
+        return any(getattr(self, name) is not None for name in attr_names)
 
 class SwPointerTargetProps:
     """
@@ -306,11 +295,10 @@ class SwPointerTargetProps:
         self.targetCategory = targetCategory
         if variants is None:
             self.variants = []
+        elif isinstance(variants, SwDataDefPropsConditional):
+            self.variants = [variants]
         else:
-            if isinstance(variants, SwDataDefPropsConditional):
-                self.variants = [variants]
-            else:
-                self.variants = list(variants)
+            self.variants = list(variants)
 
 class SymbolProps:
     """

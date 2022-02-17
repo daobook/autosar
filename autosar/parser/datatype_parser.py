@@ -29,27 +29,26 @@ class DataTypeParser(ElementParser):
 
     def parseElement(self, xmlElement, parent = None):
         parseFunc = self.switcher.get(xmlElement.tag)
-        if parseFunc is not None:
-            return parseFunc(xmlElement,parent)
-        else:
-            return None
+        return parseFunc(xmlElement,parent) if parseFunc is not None else None
 
 
     def parseIntegerType(self,root,parent=None):
-        if self.version>=3.0:
-            name=root.find("./SHORT-NAME").text
-            minval = int(root.find("./LOWER-LIMIT").text)
-            maxval = int(root.find("./UPPER-LIMIT").text)
-            dataDefXML = root.find('./SW-DATA-DEF-PROPS')
-            dataType = autosar.datatype.IntegerDataType(name,minval,maxval)
-            self.parseDesc(root,dataType)
-            if dataDefXML is not None:
-                for elem in dataDefXML.findall('./*'):
-                    if elem.tag=='COMPU-METHOD-REF':
-                        dataType.compuMethodRef=self.parseTextNode(elem)
-                    else:
-                        raise NotImplementedError(elem.tag)
-            return dataType
+        if self.version < 3.0:
+            return
+
+        name=root.find("./SHORT-NAME").text
+        minval = int(root.find("./LOWER-LIMIT").text)
+        maxval = int(root.find("./UPPER-LIMIT").text)
+        dataDefXML = root.find('./SW-DATA-DEF-PROPS')
+        dataType = autosar.datatype.IntegerDataType(name,minval,maxval)
+        self.parseDesc(root,dataType)
+        if dataDefXML is not None:
+            for elem in dataDefXML.findall('./*'):
+                if elem.tag=='COMPU-METHOD-REF':
+                    dataType.compuMethodRef=self.parseTextNode(elem)
+                else:
+                    raise NotImplementedError(elem.tag)
+        return dataType
 
     def parseRecordType(self,root,parent=None):
         if self.version>=3.0:
@@ -90,23 +89,25 @@ class DataTypeParser(ElementParser):
             return dataType
 
     def parseRealType(self,root,parent=None):
-        if self.version>=3.0:
-            name=root.find("./SHORT-NAME").text
+        if self.version < 3.0:
+            return
 
-            elem = root.find("./LOWER-LIMIT")
-            if elem is not None:
-                minval = elem.text
-                minvalType = elem.attrib['INTERVAL-TYPE']
-            elem = root.find("./UPPER-LIMIT")
-            if elem is not None:
-                maxval = elem.text
-                maxvalType = elem.attrib['INTERVAL-TYPE']
-            hasNaNText = self.parseTextNode(root.find("./ALLOW-NAN"))
-            hasNaN = True if (hasNaNText is not None and hasNaNText == 'true') else False
-            encoding = self.parseTextNode(root.find("./ENCODING"))
-            dataType=autosar.datatype.RealDataType(name,minval,maxval,minvalType,maxvalType,hasNaN,encoding)
-            self.parseDesc(root,dataType)
-            return dataType
+        name=root.find("./SHORT-NAME").text
+
+        elem = root.find("./LOWER-LIMIT")
+        if elem is not None:
+            minval = elem.text
+            minvalType = elem.attrib['INTERVAL-TYPE']
+        elem = root.find("./UPPER-LIMIT")
+        if elem is not None:
+            maxval = elem.text
+            maxvalType = elem.attrib['INTERVAL-TYPE']
+        hasNaNText = self.parseTextNode(root.find("./ALLOW-NAN"))
+        hasNaN = (hasNaNText is not None and hasNaNText == 'true')
+        encoding = self.parseTextNode(root.find("./ENCODING"))
+        dataType=autosar.datatype.RealDataType(name,minval,maxval,minvalType,maxvalType,hasNaN,encoding)
+        self.parseDesc(root,dataType)
+        return dataType
 
     def parseDataConstraint(self, xmlRoot, parent=None):
         assert (xmlRoot.tag == 'DATA-CONSTR')
@@ -205,9 +206,7 @@ class DataTypeParser(ElementParser):
                 arraySize = self.parseTextNode(xmlElem)
             elif xmlElem.tag == 'ARRAY-SIZE-SEMANTICS':
                 arraySizeSemantics = self.parseTextNode(xmlElem)
-            elif xmlElem.tag == 'SUB-ELEMENTS':
-                pass #implement later
-            else:
+            elif xmlElem.tag != 'SUB-ELEMENTS':
                 self.defaultHandler(xmlElem)
         elem = autosar.datatype.ImplementationDataTypeElement(self.name, self.category, arraySize, arraySizeSemantics, variants, parent, self.adminData)
         self.pop(elem)
@@ -219,17 +218,15 @@ class DataTypeParser(ElementParser):
         baseTypeSize, baseTypeEncoding, nativeDeclaration = None, None, None
         self.push()
         for xmlElem in xmlRoot.findall('./*'):
+            if xmlElem.tag == 'BYTE-ORDER':
+                continue
             if xmlElem.tag == 'BASE-TYPE-SIZE':
                 baseTypeSize = self.parseTextNode(xmlElem)
             elif xmlElem.tag == 'BASE-TYPE-ENCODING':
                 baseTypeEncoding = self.parseTextNode(xmlElem)
             elif xmlElem.tag == 'NATIVE-DECLARATION':
                 nativeDeclaration = self.parseTextNode(xmlElem)
-            elif xmlElem.tag == 'MEM-ALIGNMENT':
-                pass #implement later
-            elif xmlElem.tag == 'BYTE-ORDER':
-                pass #implement later
-            else:
+            elif xmlElem.tag != 'MEM-ALIGNMENT':
                 self.defaultHandler(xmlElem)
         elem = autosar.datatype.SwBaseType(self.name, baseTypeSize, baseTypeEncoding, nativeDeclaration, self.category, parent, self.adminData)
         self.pop(elem)
@@ -247,20 +244,18 @@ class DataTypeParser(ElementParser):
                 name = self.parseTextNode(xmlElem)
             elif xmlElem.tag == 'DATA-TYPE-MAPS':
                 for xmlChild in xmlElem.findall('./*'):
-                    if xmlChild.tag == 'DATA-TYPE-MAP':
-                        dataTypeMap = self._parseDataTypeMapXML(xmlChild)
-                        assert(dataTypeMap is not None)
-                        dataTypeMaps.append(dataTypeMap)
-                    else:
+                    if xmlChild.tag != 'DATA-TYPE-MAP':
                         raise NotImplementedError(xmlElem.tag)
+                    dataTypeMap = self._parseDataTypeMapXML(xmlChild)
+                    assert(dataTypeMap is not None)
+                    dataTypeMaps.append(dataTypeMap)
             elif xmlElem.tag == 'MODE-REQUEST-TYPE-MAPS':
                 for xmlChild in xmlElem.findall('./*'):
-                    if xmlChild.tag == 'MODE-REQUEST-TYPE-MAP':
-                        modeRequestTypeMap = self._parseModeRequestTypeMapXML(xmlChild)
-                        assert(modeRequestTypeMap is not None)
-                        modeRequestTypeMaps.append(modeRequestTypeMap)
-                    else:
+                    if xmlChild.tag != 'MODE-REQUEST-TYPE-MAP':
                         raise NotImplementedError(xmlElem.tag)
+                    modeRequestTypeMap = self._parseModeRequestTypeMapXML(xmlChild)
+                    assert(modeRequestTypeMap is not None)
+                    modeRequestTypeMaps.append(modeRequestTypeMap)
             else:
                 raise NotImplementedError(xmlElem.tag)
         if (name is None):
@@ -294,9 +289,7 @@ class DataTypeParser(ElementParser):
                 element = self.parseApplicationArrayElement(xmlElem)
             elif xmlElem.tag == 'SW-DATA-DEF-PROPS':
                 variantProps = self.parseSwDataDefProps(xmlElem)
-            elif xmlElem.tag == 'DYNAMIC-ARRAY-SIZE-PROFILE':
-                pass #implement later
-            else:
+            elif xmlElem.tag != 'DYNAMIC-ARRAY-SIZE-PROFILE':
                 self.defaultHandler(xmlElem)
         if element is None:
             raise RuntimeError('No <ELEMENT> object found')
@@ -422,7 +415,7 @@ class DataTypeSemanticsParser(ElementParser):
         return compuMethod
 
     def _parseComputationXML(self, xmlRoot):
-        assert (xmlRoot.tag == 'COMPU-INTERNAL-TO-PHYS') or (xmlRoot.tag == 'COMPU-PHYS-TO-INTERNAL')
+        assert xmlRoot.tag in ['COMPU-INTERNAL-TO-PHYS', 'COMPU-PHYS-TO-INTERNAL']
         computation = autosar.datatype.Computation()
         for xmlElem in xmlRoot.findall('./*'):
             if xmlElem.tag == 'COMPU-SCALES':
@@ -431,14 +424,15 @@ class DataTypeSemanticsParser(ElementParser):
                     computation.elements.append(compuScale)
             elif xmlElem.tag == 'COMPU-DEFAULT-VALUE':
                 for xmlChild in xmlElem.findall('./*'):
-                    if xmlChild.tag == 'V':
+                    if (
+                        xmlChild.tag == 'V'
+                        or xmlChild.tag != 'VT'
+                        and xmlChild.tag == 'VF'
+                    ):
                         computation.defaultValue = self.parseNumberNode(xmlChild)
                         break
                     elif xmlChild.tag == 'VT':
                         computation.defaultValue = self.parseTextNode(xmlChild)
-                        break
-                    elif xmlChild.tag == 'VF':
-                        computation.defaultValue = self.parseNumberNode(xmlChild)
                         break
                     else:
                         raise NotImplementedError(xmlChild.tag)

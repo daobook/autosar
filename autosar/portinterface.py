@@ -49,15 +49,17 @@ class SenderReceiverInterface(PortInterface):
         return iter(self.dataElements)
 
     def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.name == other.name and self.isService == other.isService and \
-            self.adminData == other.adminData and len(self.dataElements) == len(other.dataElements):
-                if (self.modeGroups is not None) and (other.modeGroups is not None) and len(self.modeGroups) == len(other.modeGroups):
-                    for i,elem in enumerate(self.modeGroups):
-                        if elem != other.modeGroups[i]: return False
-                return True
-                for i,elem in enumerate(self.dataElements):
-                    if elem != other.dataElements[i]: return False
+        if (
+            isinstance(other, self.__class__)
+            and self.name == other.name
+            and self.isService == other.isService
+            and self.adminData == other.adminData
+            and len(self.dataElements) == len(other.dataElements)
+        ):
+            if (self.modeGroups is not None) and (other.modeGroups is not None) and len(self.modeGroups) == len(other.modeGroups):
+                for i,elem in enumerate(self.modeGroups):
+                    if elem != other.modeGroups[i]: return False
+            return True
         return False
 
     def __ne__(self, other):
@@ -72,10 +74,7 @@ class SenderReceiverInterface(PortInterface):
         for elem in self.dataElements:
             if elem.name==name:
                 return elem
-        for elem in self.modeGroups:
-            if elem.name==name:
-                return elem
-        return None
+        return next((elem for elem in self.modeGroups if elem.name==name), None)
 
     def append(self,elem):
         """
@@ -93,10 +92,7 @@ class SenderReceiverInterface(PortInterface):
 
 class ParameterInterface(PortInterface):
     def tag(self,version=None):
-        if version>=4.0:
-            return 'PARAMETER-INTERFACE'
-        else:
-            return 'CALPRM-INTERFACE'
+        return 'PARAMETER-INTERFACE' if version>=4.0 else 'CALPRM-INTERFACE'
 
     def __init__(self, name, isService=False, serviceKind = None, parent=None, adminData=None):
         super().__init__(name, isService, serviceKind, parent, adminData)
@@ -128,14 +124,25 @@ class ClientServerInterface(PortInterface):
         return 'CLIENT-SERVER-INTERFACE'
 
     def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.name == other.name and self.adminData == other.adminData and len(self.operations) == len(other.operations) and \
-            len(self.applicationErrors) == len(other.applicationErrors):
-                for i,operation in enumerate(self.operations):
-                    if operation != other.operations[i]: return False
-                for i,applicationError in enumerate(self.applicationErrors):
-                    if applicationError != other.applicationErrors[i]: return False
-                return True
+        if (
+            isinstance(other, self.__class__)
+            and self.name == other.name
+            and self.adminData == other.adminData
+            and len(self.operations) == len(other.operations)
+            and len(self.applicationErrors) == len(other.applicationErrors)
+        ):
+            return next(
+                (
+                    False
+                    for i, operation in enumerate(self.operations)
+                    if operation != other.operations[i]
+                ),
+                all(
+                    applicationError == other.applicationErrors[i]
+                    for i, applicationError in enumerate(self.applicationErrors)
+                ),
+            )
+
         return False
 
     def __ne__(self, other):
@@ -147,10 +154,7 @@ class ClientServerInterface(PortInterface):
         for elem in self.operations:
             if elem.name==name:
                 return elem
-        for elem in self.applicationErrors:
-            if elem.name==name:
-                return elem
-        return None
+        return next((elem for elem in self.applicationErrors if elem.name==name), None)
 
     def append(self,elem):
         """
@@ -175,14 +179,25 @@ class Operation(Element):
 
 
     def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.name == other.name and self.adminData == other.adminData and len(self.arguments) == len(other.arguments) and \
-            (len(self.errorRefs) == len(other.errorRefs)):
-                for i,argument in enumerate(self.arguments):
-                    if argument != other.arguments[i]: return False
-                for i,errorRef in enumerate(self.errorRefs):
-                    if errorRef != other.errorRefs[i]: return False
-                return True
+        if (
+            isinstance(other, self.__class__)
+            and self.name == other.name
+            and self.adminData == other.adminData
+            and len(self.arguments) == len(other.arguments)
+            and (len(self.errorRefs) == len(other.errorRefs))
+        ):
+            return next(
+                (
+                    False
+                    for i, argument in enumerate(self.arguments)
+                    if argument != other.arguments[i]
+                ),
+                all(
+                    errorRef == other.errorRefs[i]
+                    for i, errorRef in enumerate(self.errorRefs)
+                ),
+            )
+
         return False
 
     def __ne__(self, other):
@@ -193,7 +208,7 @@ class Operation(Element):
         assert(ws is not None)
         dataType = ws.find(typeRef, role='DataType')
         if dataType is None:
-            raise ValueError("invalid name or reference: "+typeRef)
+            raise ValueError(f'invalid name or reference: {typeRef}')
         argument=Argument(name, dataType.ref, 'OUT', swCalibrationAccess, serverArgumentImplPolicy, parent=self)
         self.arguments.append(argument)
         return argument
@@ -203,7 +218,7 @@ class Operation(Element):
         assert(ws is not None)
         dataType = ws.find(typeRef, role='DataType')
         if dataType is None:
-            raise ValueError("invalid name or reference: "+typeRef)
+            raise ValueError(f'invalid name or reference: {typeRef}')
         argument=Argument(name, dataType.ref, 'INOUT', swCalibrationAccess, serverArgumentImplPolicy)
         self.arguments.append(argument)
         return argument
@@ -213,7 +228,7 @@ class Operation(Element):
         assert(ws is not None)
         dataType = ws.find(typeRef, role='DataType')
         if dataType is None:
-            raise ValueError("invalid name or reference: "+typeRef)
+            raise ValueError(f'invalid name or reference: {typeRef}')
         argument=Argument(name, dataType.ref, 'IN', swCalibrationAccess, serverArgumentImplPolicy)
         self.arguments.append(argument)
         return argument
@@ -242,19 +257,18 @@ class Operation(Element):
         if isinstance(values, str):
             values=[values]
 
-        if isinstance(values, collections.Iterable):
-            del self.errorRefs[:]
-            for name in values:
-                found=False
-                for error in self.parent.applicationErrors:
-                    if error.name == name:
-                        self.errorRefs.append(error.ref)
-                        found=True
-                        break
-                if found==False:
-                    raise ValueError('invalid error name: "%s"'%name)
-        else:
+        if not isinstance(values, collections.Iterable):
             raise ValueError("input argument must be string or iterrable")
+        del self.errorRefs[:]
+        for name in values:
+            found=False
+            for error in self.parent.applicationErrors:
+                if error.name == name:
+                    self.errorRefs.append(error.ref)
+                    found=True
+                    break
+            if not found:
+                raise ValueError('invalid error name: "%s"'%name)
 
 
 class Argument(Element):
@@ -274,7 +288,7 @@ class Argument(Element):
 
     @direction.setter
     def direction(self, value):
-        if (value != 'IN') and (value != 'OUT') and (value != 'INOUT'):
+        if value not in ['IN', 'OUT', 'INOUT']:
             raise ValueError('invalid value :%s'%value)
         self._direction=value
 
@@ -292,12 +306,18 @@ class Argument(Element):
         if self.direction != other.direction: return False
         if (self.swCalibrationAccess is None and other.swCalibrationAccess is not None) or (self.swCalibrationAccess is not None and other.swCalibrationAccess is None):
              return False
-        if self.swCalibrationAccess is not None and other.swCalibrationAccess is not None:
-            if self.swCalibrationAccess != other.swCalibrationAccess: return False
+        if (
+            self.swCalibrationAccess is not None
+            and self.swCalibrationAccess != other.swCalibrationAccess
+        ):
+            return False
         if (self.serverArgumentImplPolicy is None and other.serverArgumentImplPolicy is not None) or (self.serverArgumentImplPolicy is not None and other.serverArgumentImplPolicy is None):
             return False
-        if self.serverArgumentImplPolicy is not None and other.serverArgumentImplPolicy is not None:
-            if self.serverArgumentImplPolicy != other.serverArgumentImplPolicy: return False
+        if (
+            self.serverArgumentImplPolicy is not None
+            and self.serverArgumentImplPolicy != other.serverArgumentImplPolicy
+        ):
+            return False
         return left_type == right_type
 
     def __ne__(self, other):

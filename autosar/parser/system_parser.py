@@ -81,18 +81,14 @@ class SystemParser(ElementParser):
         """parses <SW-IMPL-MAPPINGS>"""
         assert(xmlRoot.tag=='SW-IMPL-MAPPINGS')
         for xmlElem in xmlRoot.findall('./*'):
-            if xmlElem.tag=='SWC-TO-IMPL-MAPPING':
-                pass
-            else:
+            if xmlElem.tag != 'SWC-TO-IMPL-MAPPING':
                 raise NotImplementedError(xmlElem.tag)
 
     def parseSwMapping(self,xmlRoot,mapping):
         """parses <SW-MAPPINGS>"""
         assert(xmlRoot.tag=='SW-MAPPINGS')
         for xmlElem in xmlRoot.findall('./*'):
-            if xmlElem.tag=='SWC-TO-ECU-MAPPING':
-                pass
-            else:
+            if xmlElem.tag != 'SWC-TO-ECU-MAPPING':
                 raise NotImplementedError(xmlElem.tag)
 
     def parseSoftwareComposition(self,xmlRoot,system):
@@ -100,11 +96,7 @@ class SystemParser(ElementParser):
         assert(xmlRoot.tag=='SOFTWARE-COMPOSITION')
         name=parseTextNode(xmlRoot.find('SHORT-NAME'))
         for xmlElem in xmlRoot.findall('./*'):
-            if xmlElem.tag=='SHORT-NAME':
-                pass
-            elif xmlElem.tag=='SOFTWARE-COMPOSITION-TREF':
-                pass
-            else:
+            if xmlElem.tag not in ['SHORT-NAME', 'SOFTWARE-COMPOSITION-TREF']:
                 raise NotImplementedError(xmlElem.tag)
 
     def parseSenderReceiverToSignalMapping(self,xmlRoot):

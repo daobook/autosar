@@ -21,10 +21,14 @@ class XMLConstantWriter(ElementWriter):
         raise NotImplementedError('writeElementCode')
 
     def writeConstantXML(self,elem):
-        lines = []
         assert(isinstance(elem,autosar.constant.Constant))
-        lines.append('<CONSTANT-SPECIFICATION>')
-        lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
+        lines = list(
+            (
+                '<CONSTANT-SPECIFICATION>',
+                self.indent('<SHORT-NAME>%s</SHORT-NAME>' % elem.name, 1),
+            )
+        )
+
         if elem.adminData is not None:
             lines.extend(self.indent(self.writeAdminDataXML(elem.adminData),1))
         if self.version>=4.0:
@@ -35,8 +39,7 @@ class XMLConstantWriter(ElementWriter):
         return lines
 
     def _writeValueXMLV3(self,elem):
-        lines=[]
-        lines.append('<VALUE>')
+        lines = ['<VALUE>']
         lines.extend(self.indent(self._writeLiteralValueXML(elem),1))
         lines.append('</VALUE>')
         return lines
@@ -57,20 +60,29 @@ class XMLConstantWriter(ElementWriter):
 
     def _writeIntegerLiteralXML(self,elem):
         assert(isinstance(elem,autosar.constant.IntegerValue))
-        lines=[]
-        lines.append('<INTEGER-LITERAL>')
-        lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
+        lines = [
+            '<INTEGER-LITERAL>',
+            self.indent('<SHORT-NAME>%s</SHORT-NAME>' % elem.name, 1),
+        ]
+
         tag = elem.rootWS().find(elem.typeRef).tag(self.version)
         lines.append(self.indent('<TYPE-TREF DEST="%s">%s</TYPE-TREF>'%(tag,elem.typeRef),1))
-        lines.append(self.indent('<VALUE>%d</VALUE>'%elem.value,1))
-        lines.append('</INTEGER-LITERAL>')
+        lines.extend(
+            (
+                self.indent('<VALUE>%d</VALUE>' % elem.value, 1),
+                '</INTEGER-LITERAL>',
+            )
+        )
+
         return lines
 
     def _writeRecordSpecificationXML(self,elem):
         assert(isinstance(elem,autosar.constant.RecordValue))
-        lines=[]
-        lines.append('<RECORD-SPECIFICATION>')
-        lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
+        lines = [
+            '<RECORD-SPECIFICATION>',
+            self.indent('<SHORT-NAME>%s</SHORT-NAME>' % elem.name, 1),
+        ]
+
         tag = elem.rootWS().find(elem.typeRef).tag(self.version)
         lines.append(self.indent('<TYPE-TREF DEST="%s">%s</TYPE-TREF>'%(tag,elem.typeRef),1))
         if len(elem.elements)==0: lines.append('<ELEMENTS/>')
@@ -84,31 +96,48 @@ class XMLConstantWriter(ElementWriter):
 
     def _writeStringLiteralXML(self,elem):
         assert(isinstance(elem,autosar.constant.StringValue))
-        lines=[]
-        lines.append('<STRING-LITERAL>')
-        lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
+        lines = [
+            '<STRING-LITERAL>',
+            self.indent('<SHORT-NAME>%s</SHORT-NAME>' % elem.name, 1),
+        ]
+
         tag = elem.rootWS().find(elem.typeRef).tag(self.version)
         lines.append(self.indent('<TYPE-TREF DEST="%s">%s</TYPE-TREF>'%(tag,elem.typeRef),1))
-        lines.append(self.indent('<VALUE>%s</VALUE>'%elem.value,1))
-        lines.append('</STRING-LITERAL>')
+        lines.extend(
+            (self.indent('<VALUE>%s</VALUE>' % elem.value, 1), '</STRING-LITERAL>')
+        )
+
         return lines
 
     def _writeBooleanLiteralXML(self,elem):
         assert(isinstance(elem,autosar.constant.BooleanValue))
-        lines=[]
-        lines.append('<BOOLEAN-LITERAL>')
-        lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
+        lines = [
+            '<BOOLEAN-LITERAL>',
+            self.indent('<SHORT-NAME>%s</SHORT-NAME>' % elem.name, 1),
+        ]
+
         tag = elem.rootWS().find(elem.typeRef).tag(self.version)
         lines.append(self.indent('<TYPE-TREF DEST="%s">%s</TYPE-TREF>'%(tag,elem.typeRef),1))
-        lines.append(self.indent('<VALUE>%s</VALUE>'%('true' if elem.value is True else 'false'),1))
-        lines.append('</BOOLEAN-LITERAL>')
+        lines.extend(
+            (
+                self.indent(
+                    '<VALUE>%s</VALUE>'
+                    % ('true' if elem.value is True else 'false'),
+                    1,
+                ),
+                '</BOOLEAN-LITERAL>',
+            )
+        )
+
         return lines
 
     def _writeArraySpecificationXML(self,elem):
         assert(isinstance(elem,autosar.constant.ArrayValue))
-        lines=[]
-        lines.append('<ARRAY-SPECIFICATION>')
-        lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%elem.name,1))
+        lines = [
+            '<ARRAY-SPECIFICATION>',
+            self.indent('<SHORT-NAME>%s</SHORT-NAME>' % elem.name, 1),
+        ]
+
         tag = elem.rootWS().find(elem.typeRef).tag(self.version)
         lines.append(self.indent('<TYPE-TREF DEST="%s">%s</TYPE-TREF>'%(tag,elem.typeRef),1))
         if len(elem.elements)==0: lines.append('<ELEMENTS/>')
@@ -122,8 +151,7 @@ class XMLConstantWriter(ElementWriter):
         return lines
 
     def _writeValueXMLV4(self, value):
-        lines=[]
-        lines.append('<VALUE-SPEC>')
+        lines = ['<VALUE-SPEC>']
         lines.extend(self.indent(self.writeValueSpecificationXML(value),1))
         lines.append('</VALUE-SPEC>')
         return lines
@@ -156,7 +184,7 @@ class CodeConstantWriter(ElementWriter):
             dataType = ws.find(constant.value.typeRef, role='DataType')
             constructor=None
             if dataType is None:
-                raise ValueError('invalid reference: '+constant.value.typeRef)
+                raise ValueError(f'invalid reference: {constant.value.typeRef}')
             if isinstance(constant.value, autosar.constant.ArrayValue):
                 initValue = self._writeArrayValueConstantCode(constant.value, localvars)
             elif isinstance(constant.value, autosar.constant.IntegerValue):
@@ -168,24 +196,23 @@ class CodeConstantWriter(ElementWriter):
             elif isinstance(constant.value, autosar.constant.RecordValue):
                 initValue = self._writeRecordValueConstantCode(constant.value, localvars)
             else:
-                raise ValueError('unknown value type: '+type(constant.value))
+                raise ValueError(f'unknown value type: {type(constant.value)}')
             params=[repr(constant.name)]
             if ws.roles['DataType'] is not None:
                 params.append(repr(dataType.name)) #use name only
             else:
                 params.append(repr(dataType.ref)) #use full reference
-            if initValue is not None:
-                if isinstance(initValue, list):
-                    lines.extend(self.writeDictCode('initValue', initValue))
-                    params.append('initValue')
-                else:
-                    params.append(initValue)
-            else:
+            if initValue is None:
                 print(constant.name)
+            elif isinstance(initValue, list):
+                lines.extend(self.writeDictCode('initValue', initValue))
+                params.append('initValue')
+            else:
+                params.append(initValue)
             if constant.adminData is not None:
                 param = self.writeAdminDataCode(constant.adminData, localvars)
                 assert(len(param)>0)
-                params.append('adminData='+param)
+                params.append(f'adminData={param}')
             lines.append("package.createConstant(%s)"%(', '.join(params)))
         return lines
 
@@ -206,9 +233,9 @@ class CodeConstantWriter(ElementWriter):
                 initValue = self._writeRecordValueConstantCode(elem, localvars)
                 if isinstance(initValue, list): initValue="{%s}"%(', '.join(initValue)) #join any inner record init values
             else:
-                raise ValueError('unknown value type: '+type(elem.value))
+                raise ValueError(f'unknown value type: {type(elem.value)}')
             params.append(initValue)
-        if len(params)>0:
+        if params:
             return "[%s]"%(', '.join(params))
         return None
 
@@ -238,12 +265,9 @@ class CodeConstantWriter(ElementWriter):
                 initValue = self._writeRecordValueConstantCode(elem, localvars)
                 if isinstance(initValue, list): initValue="{%s}"%(', '.join(initValue)) #join any inner record init values
             else:
-                raise ValueError('unknown value type: '+type(elem.value))
+                raise ValueError(f'unknown value type: {type(elem.value)}')
             params.append('"%s": %s'%(elem.name, initValue))
-        if len(params)>0:
+        if params:
             text = "{%s}"%(', '.join(params))
-            if len(text)>200: #line will be way too long
-                return params
-            else:
-                return text
+            return params if len(text)>200 else text
         return None

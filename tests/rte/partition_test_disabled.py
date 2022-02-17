@@ -19,7 +19,7 @@ def apply_test_data(ws):
    package.createRealDataType('Float', None, None, minValType='INFINITE', maxValType='INFINITE')
    package.createRealDataType('Double', None, None, minValType='INFINITE', maxValType='INFINITE', hasNaN=True, encoding='DOUBLE')
    package.createIntegerDataType('ButtonStatus_T', valueTable=['ButtonStatus_Released','ButtonStatus_Pressed','ButtonStatus_Error','ButtonStatus_NotAvailable'])
-   
+
    valueTableList = [
                        'VehicleModeInternal_Off',
                        'VehicleModeInternal_Accessory',
@@ -31,7 +31,15 @@ def apply_test_data(ws):
                        'VehicleModeInternal_NotAvailable'
                     ]
    package.createIntegerDataType('VehicleModeInternal_T', valueTable=valueTableList)
-   package.createIntegerDataType('BspApi_DigitalId_T', 0, 255, offset=0, scaling=1/1, forceFloatScaling=True, unit='Id')
+   package.createIntegerDataType(
+       'BspApi_DigitalId_T',
+       0,
+       255,
+       offset=0,
+       scaling=1,
+       forceFloatScaling=True,
+       unit='Id',
+   )
    package.createIntegerDataType('BspApi_DigitalState_T', valueTable=['BspApi_DigitalState_Inactive','BspApi_DigitalState_Active','BspApi_DigitalState_Error','BspApi_DigitalState_NotAvailable'])
    package=ws.createPackage("Constant", role="Constant")
    package.createConstant('ButtonStatus_IV', 'ButtonStatus_T', 3)
@@ -60,7 +68,7 @@ def apply_test_data(ws):
    swc.createRequirePort('EcuM_CurrentMode', 'EcuM_CurrentMode')
    swc.createRequirePort('VehicleModeInternal', 'VehicleModeInternal_I', initValueRef='VehicleModeInternal_IV')
    swc.createRequirePort('BspApi', 'BspApi_I')
-   
+
    portAccessList = [
                        'SWS_PushButtonStatus_Back',
                        'SWS_PushButtonStatus_Down',
@@ -71,7 +79,7 @@ def apply_test_data(ws):
                        'SWS_PushButtonStatus_Up'
                     ]
    swc.behavior.createRunnable('SteeringWheelButtonReader_Init', portAccess=portAccessList)
-   
+
    portAccessList = [
                        'SWS_PushButtonStatus_Back',
                        'SWS_PushButtonStatus_Down',
@@ -82,7 +90,7 @@ def apply_test_data(ws):
                        'SWS_PushButtonStatus_Up'
                     ]
    swc.behavior.createRunnable('SteeringWheelButtonReader_Exit', portAccess=portAccessList)
-   
+
    portAccessList = [
                        'VehicleModeInternal',
                        'SWS_PushButtonStatus_Back',

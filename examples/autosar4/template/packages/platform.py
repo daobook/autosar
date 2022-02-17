@@ -69,7 +69,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class dtRef_const_VOID(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -80,7 +81,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class dtRef_VOID(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -93,7 +95,8 @@ class AUTOSAR_Platform(autosar.Template):
         class boolean(autosar.Template):
 
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -104,7 +107,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class float32(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -115,7 +119,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class float64(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -126,7 +131,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class sint8(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -137,7 +143,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class sint16(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -148,7 +155,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class sint32(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -159,7 +167,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class sint64(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -172,7 +181,8 @@ class AUTOSAR_Platform(autosar.Template):
         class uint8(autosar.Template):
 
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -184,7 +194,8 @@ class AUTOSAR_Platform(autosar.Template):
         class uint16(autosar.Template):
 
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -196,7 +207,8 @@ class AUTOSAR_Platform(autosar.Template):
         class uint32(autosar.Template):
 
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -208,7 +220,8 @@ class AUTOSAR_Platform(autosar.Template):
         class uint64(autosar.Template):
 
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.BaseTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.BaseTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -225,7 +238,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class dtRef_const_VOID(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -236,7 +250,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class dtRef_VOID(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -247,7 +262,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class boolean(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -261,7 +277,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class float32(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -275,7 +292,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class float64(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -289,7 +307,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class sint8(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -303,7 +322,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class sint16(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -317,7 +337,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class sint32(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -331,7 +352,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class sint64(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -345,7 +367,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class uint8(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -359,7 +382,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class uint16(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -373,7 +397,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class uint32(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):
@@ -387,7 +412,8 @@ class AUTOSAR_Platform(autosar.Template):
 
         class uint64(autosar.Template):
             @classmethod
-            def ref(cls): return AUTOSAR_Platform.ImplementationDataTypes.ref() + '/' + cls.__name__
+            def ref(cls):
+                return f'{AUTOSAR_Platform.ImplementationDataTypes.ref()}/{cls.__name__}'
 
             @classmethod
             def apply(cls, ws):

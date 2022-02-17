@@ -40,7 +40,7 @@ class Task:
                self.timer_events.append(event)
          runnables_string = ", ".join([event.runnable.symbol for event in event_list])
          self.event_masks.append(C.define(event_mask, str('((uint32) 0x%08X)'%bit_mask)+' '+str(C.linecomment(runnables_string)), align=80))
-         bit_mask=bit_mask<<1
+         bit_mask <<= 1
 
 
 class OsConfig:

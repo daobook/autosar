@@ -17,9 +17,8 @@ class XMLWriterSimple:
         self.indentChar='\t'
 
     def make_dirs(self, dest_dir):
-        if dest_dir != '.' and dest_dir != '..':
-            if not os.path.exists(dest_dir):
-                os.makedirs(dest_dir)
+        if dest_dir not in ['.', '..'] and not os.path.exists(dest_dir):
+            os.makedirs(dest_dir)
 
     def indent(self, lines, amount):
         if isinstance(lines, str):
@@ -112,9 +111,12 @@ class DcfProfile(XMLWriterSimple):
     def save(self, dest_dir, force = True):
         dest_file = os.path.join(dest_dir, 'ProfileSettings.xml')
         if force or not os.path.isfile(dest_file):
-            lines = ['<?xml version="1.0" encoding="utf-8"?>']
-            lines.append('<PROFILE>')
-            lines.append(self.indent('<Version>1.0</Version>',1))
+            lines = [
+                '<?xml version="1.0" encoding="utf-8"?>',
+                '<PROFILE>',
+                self.indent('<Version>1.0</Version>', 1),
+            ]
+
             lines.extend(self.indent(self.gen_sections_all(),1))
             lines.append('</PROFILE>')
             with open(dest_file, 'w') as fp:
@@ -129,13 +131,12 @@ class DcfProfile(XMLWriterSimple):
                 value = getattr(self, key, None)
                 if value is not None:
                     section_values[key]=value
-            if len(section_values)>0: #prevent generating empty sections
+            if section_values: #prevent generating empty sections
                 lines.extend(self.gen_section(name, section_values))
         return lines
 
     def gen_section(self, name, section_values):
-        lines = []
-        lines.append('<SECTION NAME="{}">'.format(name))
+        lines = ['<SECTION NAME="{}">'.format(name)]
         for key in sorted(section_values.keys()):
             value = section_values[key]
             if isinstance(value, bool):
@@ -202,7 +203,7 @@ class Dcf(XMLWriterSimple):
                         child_dcf = parser.parse(child_path)
                         child_dcf.loadReferences(ws)
                 else:
-                    print("No such file: "+child_path, file=sys.stderr)
+                    print(f'No such file: {child_path}', file=sys.stderr)
         return ws
 
     def save(self, dest_dir, dcf_name, file_map = None, comp_dir = None, force = False, single_file = None):
@@ -232,9 +233,8 @@ class Dcf(XMLWriterSimple):
         self.make_dirs(dest_dir)
         if single_file:
             file_map = self._create_single_file_map(single_file)
-        else:
-            if file_map is None:
-                file_map = self.create_default_file_map()
+        elif file_map is None:
+            file_map = self.create_default_file_map()
         self.save_xml_from_file_map(dest_dir, file_map, force)
         self.profile.save(dest_dir, force)
         self.save_dcf(dest_dir, dcf_name, file_map, force = force)
@@ -279,16 +279,23 @@ class Dcf(XMLWriterSimple):
         file_ext = '' if dcf_name.lower().endswith('.dcf') else '.dcf'
         dest_file = os.path.join(dest_dir, dcf_name+file_ext)
         if force or not os.path.isfile(dest_file):
-            lines=['<?xml version="1.0" encoding="utf-8"?>']
             if schema is None:
                 #TODO: Below line needs to be improved
                 schema_string = "{0}{1}_DEV".format(str(self.ws.version).replace('.',''), self.ws.patch)
             else:
                 schema_string = schema
-            lines.append('<DCF ARSCHEMA="{}">'.format(schema_string))
-            lines.append(self.indent('<Version>1.0</Version>',1))
-            lines.append(self.indent('<NAME>{}</NAME>'.format(dcf_name),1))
-            lines.append(self.indent('<PROFILESETTINGS>ProfileSettings.xml</PROFILESETTINGS>',1))
+            lines = [
+                '<?xml version="1.0" encoding="utf-8"?>',
+                *(
+                    '<DCF ARSCHEMA="{}">'.format(schema_string),
+                    self.indent('<Version>1.0</Version>', 1),
+                    self.indent('<NAME>{}</NAME>'.format(dcf_name), 1),
+                    self.indent(
+                        '<PROFILESETTINGS>ProfileSettings.xml</PROFILESETTINGS>', 1
+                    ),
+                ),
+            ]
+
             for key in xml_file_map.keys():
                 elem = xml_file_map[key]
                 extension = '' if key.lower().endswith('.arxml') else '.arxml'
@@ -300,10 +307,23 @@ class Dcf(XMLWriterSimple):
                 fp.write('\n')
 
     def _component_file_ref(self, component_name):
-        lines = ['<FILEREF>']
-        lines.append(self.indent('<ARXML ROOTITEM="COMPONENTTYPE" TYPE="">{}.arxml</ARXML>'.format(component_name),1))
-        lines.append(self.indent('<DVG>{}.dvg</DVG>'.format(component_name),1))
-        lines.append('</FILEREF>')
+        lines = [
+            '<FILEREF>',
+            self.indent(
+                '<ARXML ROOTITEM="COMPONENTTYPE" TYPE="">{}.arxml</ARXML>'.format(
+                    component_name
+                ),
+                1,
+            ),
+        ]
+
+        lines.extend(
+            (
+                self.indent('<DVG>{}.dvg</DVG>'.format(component_name), 1),
+                '</FILEREF>',
+            )
+        )
+
         return lines
 
     def _single_file_ref(self, file_name, directory=None):
@@ -311,10 +331,11 @@ class Dcf(XMLWriterSimple):
             file_path = os.path.join(directory, file_name)
         else:
             file_path = file_name
-        lines = ['<FILEREF>']
-        lines.append(self.indent('<ARXML>{}</ARXML>'.format(file_path),1))
-        lines.append('</FILEREF>')
-        return lines
+        return [
+            '<FILEREF>',
+            self.indent('<ARXML>{}</ARXML>'.format(file_path), 1),
+            '</FILEREF>',
+        ]
 
 class DcfParser:
     """
@@ -335,8 +356,7 @@ class DcfParser:
     def _open_xml(self, filename):
         xmltree = ElementTree.ElementTree()
         xmltree.parse(filename)
-        xmlroot = xmltree.getroot();
-        return xmlroot
+        return xmltree.getroot()
 
     def _process_xml(self,xmlroot):
        dcf = Dcf()

@@ -19,12 +19,12 @@ class ModeSwitchEvent(Event):
         super().__init__(name, startOnEventRef, parent)
         self.modeInstRef=None
         if version < 4.0:
-            if (activationType!='ENTRY') and (activationType != 'EXIT'):
+            if activationType not in ['ENTRY', 'EXIT']:
                 raise ValueError('activationType argument must be either "ENTRY" or "EXIT"')
-        elif version >= 4.0:
+        else:
             if (activationType=='ENTRY'): activationType='ON-ENTRY'
             if (activationType=='EXIT'): activationType='ON-EXIT'
-            if (activationType!='ON-ENTRY') and (activationType != 'ON-EXIT'):
+            if activationType not in ['ON-ENTRY', 'ON-EXIT']:
                 raise ValueError('activationType argument must be either "ON-ENTRY" or "ON-EXIT"')
         self.activationType = activationType
 
@@ -88,10 +88,10 @@ class ModeDependency(object):
         if len(data['modeInstanceRefs'])==0: del data['modeInstanceRefs']
 
     def append(self, item):
-        if isinstance(item, ModeInstanceRef) or isinstance(item, ModeDependencyRef):
+        if isinstance(item, (ModeInstanceRef, ModeDependencyRef)):
             self.modeInstanceRefs.append(item)
         else:
-            raise ValueError('invalid type: '+str(type(item)))
+            raise ValueError(f'invalid type: {str(type(item))}')
 
 class ModeInstanceRef:
     """
@@ -158,13 +158,12 @@ class RequireModeGroupInstanceRef(ModeGroupInstanceRef):
     def tag(self, version):
         if self.parent is None:
             raise RuntimeError("self.parent cannot be None")
-        if version >= 4.0:
-            if isinstance(self.parent, ModeAccessPoint):
-                return 'R-MODE-GROUP-IN-ATOMIC-SWC-INSTANCE-REF'
-            else:
-                return 'MODE-GROUP-IREF'
-        else:
+        if version < 4.0:
             raise RuntimeError('Not supported in v%.1f'%version)
+        if isinstance(self.parent, ModeAccessPoint):
+            return 'R-MODE-GROUP-IN-ATOMIC-SWC-INSTANCE-REF'
+        else:
+            return 'MODE-GROUP-IREF'
 
 class ProvideModeGroupInstanceRef(ModeGroupInstanceRef):
     def __init__(self, providePortRef, modeGroupRef):
@@ -174,13 +173,12 @@ class ProvideModeGroupInstanceRef(ModeGroupInstanceRef):
     def tag(self, version):
         if self.parent is None:
             raise RuntimeError("self.parent cannot be None")
-        if version >= 4.0:
-            if isinstance(self.parent, ModeAccessPoint):
-                return 'P-MODE-GROUP-IN-ATOMIC-SWC-INSTANCE-REF'
-            else:
-                return 'MODE-GROUP-IREF'
-        else:
+        if version < 4.0:
             raise RuntimeError('Not supported in v%.1f'%version)
+        if isinstance(self.parent, ModeAccessPoint):
+            return 'P-MODE-GROUP-IN-ATOMIC-SWC-INSTANCE-REF'
+        else:
+            return 'MODE-GROUP-IREF'
 
 class PortAPIOption():
     def __init__(self,portRef,takeAddress=False,indirectAPI=False):
@@ -188,8 +186,12 @@ class PortAPIOption():
         self.takeAddress = bool(takeAddress)
         self.indirectAPI = bool(indirectAPI)
     def asdict(self):
-        data={'type': self.__class__.__name__,'takeAddress':self.takeAddress, 'indirectAPI':self.indirectAPI, 'portRef':self.portRef}
-        return data
+        return {
+            'type': self.__class__.__name__,
+            'takeAddress': self.takeAddress,
+            'indirectAPI': self.indirectAPI,
+            'portRef': self.portRef,
+        }
 
     def tag(self,version=None): return "PORT-API-OPTION"
 
@@ -216,10 +218,7 @@ class RunnableEntity(Element):
         super().__init__(name,parent,adminData)
         self.invokeConcurrently = invokeConcurrently
         self.minStartInterval = None
-        if symbol is None:
-            self.symbol=name
-        else:
-            self.symbol = symbol
+        self.symbol = name if symbol is None else symbol
         self.dataReceivePoints=[]
         self.dataSendPoints=[]
         self.serverCallPoints=[]
@@ -236,16 +235,19 @@ class RunnableEntity(Element):
         if ref[0]=='/': ref=ref[1:] #removes initial '/' if it exists
         ref=ref.partition('/')
         name=ref[0]
-        foundElem = None
-        for elem in self.modeAccessPoints + self.modeSwitchPoints + self.parameterAccessPoints:
-            if elem.name == name:
-                foundElem = elem
-                break
+        foundElem = next(
+            (
+                elem
+                for elem in self.modeAccessPoints
+                + self.modeSwitchPoints
+                + self.parameterAccessPoints
+                if elem.name == name
+            ),
+            None,
+        )
+
         if foundElem is not None:
-            if len(ref[2])>0:
-                return foundElem.find(ref[2])
-            else:
-                return foundElem
+            return foundElem.find(ref[2]) if len(ref[2])>0 else foundElem
         return None
 
 
@@ -267,23 +269,22 @@ class RunnableEntity(Element):
         assert(dataReceivePoint.portRef is not None)
         if isinstance(dataReceivePoint.portRef,autosar.port.Port):
             dataReceivePoint.portRef=dataReceivePoint.portRef.ref
-        if isinstance(dataReceivePoint.portRef,str):
-            port=ws.find(dataReceivePoint.portRef)
-            if dataReceivePoint.dataElemRef is None:
-                #default rule: set dataElemRef to ref of first dataElement in the portinterface
-                portInterface=ws.find(port.portInterfaceRef)
-                assert(portInterface is not None)
-                if isinstance(portInterface,(autosar.portinterface.SenderReceiverInterface,autosar.portinterface.ParameterInterface)):
-                    dataReceivePoint.dataElemRef=portInterface.dataElements[0].ref
-                else:
-                    raise ValueError('invalid interface type:%s'%(str(type(portInterface))))
-            assert(isinstance(dataReceivePoint.dataElemRef,str))
-            dataElement = ws.find(dataReceivePoint.dataElemRef)
-            if dataReceivePoint.name is None:
-                #default rule: set the name to REC_<port.name>_<dataElement.name>
-                dataReceivePoint.name="REC_{0.name}_{1.name}".format(port,dataElement)
-        else:
+        if not isinstance(dataReceivePoint.portRef, str):
             raise ValueError('%s: portRef must be of type string'%self.ref)
+        port=ws.find(dataReceivePoint.portRef)
+        if dataReceivePoint.dataElemRef is None:
+            #default rule: set dataElemRef to ref of first dataElement in the portinterface
+            portInterface=ws.find(port.portInterfaceRef)
+            assert(portInterface is not None)
+            if isinstance(portInterface,(autosar.portinterface.SenderReceiverInterface,autosar.portinterface.ParameterInterface)):
+                dataReceivePoint.dataElemRef=portInterface.dataElements[0].ref
+            else:
+                raise ValueError('invalid interface type:%s'%(str(type(portInterface))))
+        assert(isinstance(dataReceivePoint.dataElemRef,str))
+        dataElement = ws.find(dataReceivePoint.dataElemRef)
+        if dataReceivePoint.name is None:
+            #default rule: set the name to REC_<port.name>_<dataElement.name>
+            dataReceivePoint.name="REC_{0.name}_{1.name}".format(port,dataElement)
         return dataReceivePoint
 
     def _verifyDataSendPoint(self,dataSendPoint):
@@ -292,23 +293,22 @@ class RunnableEntity(Element):
         assert(dataSendPoint.portRef is not None)
         if isinstance(dataSendPoint.portRef,autosar.port.Port):
             dataSendPoint.portRef=dataSendPoint.portRef.ref
-        if isinstance(dataSendPoint.portRef,str):
-            port=ws.find(dataSendPoint.portRef)
-            if dataSendPoint.dataElemRef is None:
-                #default rule: set dataElemRef to ref of first dataElement in the portinterface
-                portInterface=ws.find(port.portInterfaceRef)
-                assert(portInterface is not None)
-                if isinstance(portInterface,(autosar.portinterface.SenderReceiverInterface,autosar.portinterface.ParameterInterface)):
-                    dataSendPoint.dataElemRef=portInterface.dataElements[0].ref
-                else:
-                    raise ValueError('invalid interface type:%s'%(str(type(portInterface))))
-            assert(isinstance(dataSendPoint.dataElemRef,str))
-            dataElement = ws.find(dataSendPoint.dataElemRef)
-            if dataSendPoint.name is None:
-                #default rule: set the name to SEND_<port.name>_<dataElement.name>
-                dataSendPoint.name="SEND_{0.name}_{1.name}".format(port,dataElement)
-        else:
+        if not isinstance(dataSendPoint.portRef, str):
             raise ValueError('%s: portRef must be of type string'%self.ref)
+        port=ws.find(dataSendPoint.portRef)
+        if dataSendPoint.dataElemRef is None:
+            #default rule: set dataElemRef to ref of first dataElement in the portinterface
+            portInterface=ws.find(port.portInterfaceRef)
+            assert(portInterface is not None)
+            if isinstance(portInterface,(autosar.portinterface.SenderReceiverInterface,autosar.portinterface.ParameterInterface)):
+                dataSendPoint.dataElemRef=portInterface.dataElements[0].ref
+            else:
+                raise ValueError('invalid interface type:%s'%(str(type(portInterface))))
+        assert(isinstance(dataSendPoint.dataElemRef,str))
+        dataElement = ws.find(dataSendPoint.dataElemRef)
+        if dataSendPoint.name is None:
+            #default rule: set the name to SEND_<port.name>_<dataElement.name>
+            dataSendPoint.name="SEND_{0.name}_{1.name}".format(port,dataElement)
         return dataSendPoint
 
 
@@ -335,8 +335,11 @@ class DataElementInstanceRef(object):
         self.portRef = portRef
         self.dataElemRef = dataElemRef
     def asdict(self):
-        data={'type': self.__class__.__name__,'portRef':self.portRef, 'dataElemRef':self.dataElemRef}
-        return data
+        return {
+            'type': self.__class__.__name__,
+            'portRef': self.portRef,
+            'dataElemRef': self.dataElemRef,
+        }
     def tag(self, version=None):
         return 'DATA-ELEMENT-IREF'
 
@@ -351,8 +354,11 @@ class DataInstanceRef(object):
         self.portRef = portRef
         self.dataElemRef = dataElemRef
     def asdict(self):
-        data={'type': self.__class__.__name__,'portRef':self.portRef, 'dataElemRef':self.dataElemRef}
-        return data
+        return {
+            'type': self.__class__.__name__,
+            'portRef': self.portRef,
+            'dataElemRef': self.dataElemRef,
+        }
 
     def tag(self, version=None):
         return 'DATA-IREF'
@@ -367,8 +373,11 @@ class OperationInstanceRef(object):
         self.operationRef = operationRef
 
     def asdict(self):
-        data={'type': self.__class__.__name__,'portRef':self.portRef, 'operationRef':self.operationRef}
-        return data
+        return {
+            'type': self.__class__.__name__,
+            'portRef': self.portRef,
+            'operationRef': self.operationRef,
+        }
 
     def tag(self, version=None):
         return 'OPERATION-IREF'
@@ -386,8 +395,11 @@ class PerInstanceMemory(Element):
         super().__init__(name, parent)
         self.typeRef=typeRef
     def asdict(self):
-        data={'type': self.__class__.__name__,'name':self.name, 'typeRef':self.typeRef}
-        return data
+        return {
+            'type': self.__class__.__name__,
+            'name': self.name,
+            'typeRef': self.typeRef,
+        }
 
     def tag(self, version = None):
         return 'PER-INSTANCE-MEMORY'
@@ -419,9 +431,7 @@ class SwcNvBlockNeeds(object):
     def asdict(self):
         data={'type': self.__class__.__name__,'serviceCallPorts':[]}
         for key, value in self.__dict__.items():
-            if 'key'=='serviceCallPorts':
-                pass
-            else:
+            if 'key' != 'serviceCallPorts':
                 data[key]=value
         if len(data['serviceCallPorts'])==0: del data['serviceCallPorts']
         return data
@@ -604,8 +614,7 @@ class ExclusiveArea(Element):
         super().__init__(name,parent,adminData)
 
     def asdict(self):
-        data={'type': self.__class__.__name__,'name':self.name}
-        return data
+        return {'type': self.__class__.__name__,'name':self.name}
 
     def tag(self, version=None):
         return 'EXCLUSIVE-AREA'
@@ -622,8 +631,15 @@ class SyncServerCallPoint(object):
         self.operationInstanceRefs=[]
 
     def asdict(self):
-        data={'type': self.__class__.__name__,'name':self.name,'timeout':self.timeout}
-        data['operationInstanceRefs'] = [x.asdict() for x in self.operationInstanceRefs]
+        data = {
+            'type': self.__class__.__name__,
+            'name': self.name,
+            'timeout': self.timeout,
+            'operationInstanceRefs': [
+                x.asdict() for x in self.operationInstanceRefs
+            ],
+        }
+
         if len(data['operationInstanceRefs'])==0: del data['operationInstanceRefs']
         return data
 
@@ -633,9 +649,8 @@ class InternalBehaviorCommon(Element):
     """
     def __init__(self, name, componentRef, multipleInstance=False, parent=None, adminData=None):
         super().__init__(name, parent, adminData)
-        if not isinstance(componentRef,str): #this is a helper, in case the user called the function with obj instead of obj.ref
-            if hasattr(componentRef,'ref'):
-                componentRef=componentRef.ref
+        if not isinstance(componentRef, str) and hasattr(componentRef, 'ref'):
+            componentRef=componentRef.ref
         if (componentRef is None) or (not isinstance(componentRef,str)):
             raise ValueError('componentRef: invalid reference')
         self.componentRef=str(componentRef)
@@ -654,8 +669,10 @@ class InternalBehaviorCommon(Element):
         self._initSWC()
         ws = self.rootWS()
         tmp = self.swc.providePorts+self.swc.requirePorts
-        for port in sorted(tmp,key=lambda x: x.name.lower()):
-            self.portAPIOptions.append(PortAPIOption(port.ref))
+        self.portAPIOptions.extend(
+            PortAPIOption(port.ref)
+            for port in sorted(tmp, key=lambda x: x.name.lower())
+        )
 
     def _initSWC(self):
         """
@@ -672,16 +689,20 @@ class InternalBehaviorCommon(Element):
         if ref[0]=='/': ref=ref[1:] #removes initial '/' if it exists
         ref=ref.partition('/')
         name=ref[0]
-        foundElem = None
-        for elem in self.runnables + self.perInstanceMemories + self.exclusiveAreas + self.events:
-            if elem.name == name:
-                foundElem = elem
-                break
+        foundElem = next(
+            (
+                elem
+                for elem in self.runnables
+                + self.perInstanceMemories
+                + self.exclusiveAreas
+                + self.events
+                if elem.name == name
+            ),
+            None,
+        )
+
         if foundElem is not None:
-            if len(ref[2])>0:
-                return foundElem.find(ref[2])
-            else:
-                return foundElem
+            return foundElem.find(ref[2]) if len(ref[2])>0 else foundElem
         return None
 
     def createRunnable(self, name, portAccess=None, symbol=None, concurrent=False, exclusiveAreas=None, modeSwitchPoint = None, minStartInterval = 0, adminData=None):
@@ -715,7 +736,7 @@ class InternalBehaviorCommon(Element):
                     # i.e. no ambiguity as to what data element is meant
                     port = self.swc.find(ref[0])
                     if port is None:
-                        raise ValueError('invalid port reference: '+str(elem))
+                        raise ValueError(f'invalid port reference: {str(elem)}')
                     portInterface = ws.find(port.portInterfaceRef, role='PortInterface')
                     if portInterface is None:
                         raise ValueError('invalid portinterface reference: '+str(port.portInterfaceRef))
@@ -736,7 +757,7 @@ class InternalBehaviorCommon(Element):
                     #this section is for portAccess where both port name and dataelement is represented as "portName/dataElementName"
                     port = self.swc.find(ref[0])
                     if port is None:
-                        raise ValueError('invalid port reference: '+str(elem))
+                        raise ValueError(f'invalid port reference: {str(elem)}')
                     portInterface = ws.find(port.portInterfaceRef)
                     if portInterface is None:
                         raise ValueError('invalid portinterface reference: '+str(port.portInterfaceRef))
@@ -755,18 +776,17 @@ class InternalBehaviorCommon(Element):
         if exclusiveAreas is not None:
             if isinstance(exclusiveAreas, str):
                 exclusiveAreas =[exclusiveAreas]
-            if isinstance(exclusiveAreas, collections.Iterable):
-                for exclusiveAreaName in exclusiveAreas:
-                    found = False
-                    for exclusiveArea in self.exclusiveAreas:
-                        if exclusiveArea.name == exclusiveAreaName:
-                            found = True
-                            runnable.exclusiveAreaRefs.append(exclusiveArea.ref)
-                            break
-                    if not found:
-                        raise ValueError('invalid exclusive area name: '+exclusiveAreaName)
-            else:
+            if not isinstance(exclusiveAreas, collections.Iterable):
                 raise ValueError('exclusiveAreas must be either string or list')
+            for exclusiveAreaName in exclusiveAreas:
+                found = False
+                for exclusiveArea in self.exclusiveAreas:
+                    if exclusiveArea.name == exclusiveAreaName:
+                        found = True
+                        runnable.exclusiveAreaRefs.append(exclusiveArea.ref)
+                        break
+                if not found:
+                    raise ValueError('invalid exclusive area name: '+exclusiveAreaName)
         if modeSwitchPoint is not None:
             if isinstance(modeSwitchPoint, str):
                 modeSwitchPoint = [modeSwitchPoint]
@@ -774,15 +794,16 @@ class InternalBehaviorCommon(Element):
             for portName in modeSwitchPoint:
                 port = self.swc.find(portName)
                 if port is None:
-                    raise ValueError('invalid port reference: '+str(portName))
+                    raise ValueError(f'invalid port reference: {str(portName)}')
                 portInterface = ws.find(port.portInterfaceRef, role='PortInterface')
                 if portInterface is None:
                     raise ValueError('invalid portinterface reference: '+str(port.portInterfaceRef))
-                if isinstance(portInterface, autosar.portinterface.ModeSwitchInterface):
-                    modeGroup = portInterface.modeGroup
-                    self._createModeSwitchPoint(port, modeGroup, runnable)
-                else:
+                if not isinstance(
+                    portInterface, autosar.portinterface.ModeSwitchInterface
+                ):
                     raise NotImplementedError(str(type(portInterface)))
+                modeGroup = portInterface.modeGroup
+                self._createModeSwitchPoint(port, modeGroup, runnable)
         return runnable
 
     def _createSendReceivePoint(self,port,dataElement,runnable):
@@ -797,7 +818,7 @@ class InternalBehaviorCommon(Element):
             sendPoint=DataSendPoint(port.ref,dataElement.ref,'SEND_{0.name}_{1.name}'.format(port,dataElement),runnable)
             runnable.dataSendPoints.append(sendPoint)
         else:
-            raise ValueError('unexpected type: '+str(type(port)))
+            raise ValueError(f'unexpected type: {str(type(port))}')
 
     def _createSyncServerCallPoint(self,port,operation,runnable):
         """
@@ -809,7 +830,7 @@ class InternalBehaviorCommon(Element):
             callPoint.operationInstanceRefs.append(OperationInstanceRef(port.ref, operation.ref))
             runnable.serverCallPoints.append(callPoint)
         else:
-            raise ValueError('unexpected type: '+str(type(port)))
+            raise ValueError(f'unexpected type: {str(type(port))}')
 
     def _calcModeInstanceComponentsForRequirePort(self, portName, modeValue):
         self._initSWC()
@@ -871,12 +892,12 @@ class InternalBehaviorCommon(Element):
         ws = self.rootWS()
         runnable=self.find(runnableName)
         if runnable is None:
-            raise ValueError('invalid runnable name: '+runnableName)
+            raise ValueError(f'invalid runnable name: {runnableName}')
         assert(isinstance(runnable, autosar.behavior.RunnableEntity))
 
         eventName=name
         if eventName is None:
-            baseName = "MST_"+runnable.name
+            baseName = f'MST_{runnable.name}'
             eventName = self._findEventName(baseName)
 
         result = modeRef.partition('/')
@@ -897,12 +918,12 @@ class InternalBehaviorCommon(Element):
 
         runnable=self.find(runnableName)
         if runnable is None:
-            raise ValueError('invalid runnable name: '+runnableName)
+            raise ValueError(f'invalid runnable name: {runnableName}')
         assert(isinstance(runnable, autosar.behavior.RunnableEntity))
         eventName=name
         if eventName is None:
             #try to find a suitable name for the event
-            baseName = "TMT_"+runnable.name
+            baseName = f'TMT_{runnable.name}'
             eventName = self._findEventName(baseName)
 
         event = autosar.behavior.TimingEvent(eventName,runnable.ref,period,self)
@@ -930,7 +951,7 @@ class InternalBehaviorCommon(Element):
 
         runnable=self.find(runnableName)
         if runnable is None:
-            raise ValueError('invalid runnable name: '+runnableName)
+            raise ValueError(f'invalid runnable name: {runnableName}')
         assert(isinstance(runnable, autosar.behavior.RunnableEntity))
 
         if not isinstance(operationRef, str):
@@ -942,15 +963,15 @@ class InternalBehaviorCommon(Element):
         eventName=name
         port = self.swc.find(portName)
         if (port is None) or not isinstance(port, autosar.port.Port):
-            raise ValueError('invalid port name: '+portName)
+            raise ValueError(f'invalid port name: {portName}')
         portInterface = ws.find(port.portInterfaceRef)
         if portInterface is None:
-            raise ValueError('invalid reference: '+port.portInterface)
+            raise ValueError(f'invalid reference: {port.portInterface}')
         if not isinstance(portInterface, autosar.portinterface.ClientServerInterface):
             raise ValueError('The referenced port "%s" does not have a ClientServerInterface'%(port.name))
         operation = portInterface.find(operationName)
         if (operation is None) or not isinstance(operation, autosar.portinterface.Operation):
-            raise ValueError('invalid operation name: '+operationName)
+            raise ValueError(f'invalid operation name: {operationName}')
         if eventName is None:
             eventName=self._findEventName('OIT_%s_%s_%s'%(runnable.name, port.name, operation.name))
         event = OperationInvokedEvent(eventName, runnable.ref, self)
@@ -1045,12 +1066,11 @@ class InternalBehaviorCommon(Element):
     def _processModeDependency(self, event, modeDependencyList, version):
         for dependency in list(modeDependencyList):
             result = dependency.partition('/')
-            if result[1]=='/':
-                portName=result[0]
-                modeValue=result[2]
-                (modeDeclarationRef,modeDeclarationGroupPrototypeRef,portRef) = self._calcModeInstanceComponentsForRequirePort(portName,modeValue)
-            else:
+            if result[1] != '/':
                 raise ValueError('invalid modeRef, expected "portName/modeValue", got "%s"'%dependency)
+            portName=result[0]
+            modeValue=result[2]
+            (modeDeclarationRef,modeDeclarationGroupPrototypeRef,portRef) = self._calcModeInstanceComponentsForRequirePort(portName,modeValue)
             if version >= 4.0:
                 if event.disabledInModes is None:
                     event.disabledInModes = []
@@ -1092,15 +1112,12 @@ class InternalBehavior(InternalBehaviorCommon):
     def find(self, ref):
         if ref is None: return None
         result = super().find(ref)
-        if result is None:
-            if ref[0]=='/': ref=ref[1:] #removes initial '/' if it exists
-            ref=ref.partition('/')
-            name=ref[0]
-            for elem in self.sharedCalParams:
-                if elem.name == name: return elem
-        else:
+        if result is not None:
             return result
-        return None
+        if ref[0]=='/': ref=ref[1:] #removes initial '/' if it exists
+        ref=ref.partition('/')
+        name=ref[0]
+        return next((elem for elem in self.sharedCalParams if elem.name == name), None)
 
 
 
@@ -1118,7 +1135,7 @@ class InternalBehavior(InternalBehaviorCommon):
         ws = self.rootWS()
         dataType = ws.find(typeRef, role='DataType')
         if dataType is None:
-            raise ValueError('invalid reference: '+typeRef)
+            raise ValueError(f'invalid reference: {typeRef}')
         perInstanceMemory = PerInstanceMemory(name, dataType.ref, self)
         self.perInstanceMemories.append(perInstanceMemory)
         return perInstanceMemory
@@ -1128,7 +1145,7 @@ class InternalBehavior(InternalBehaviorCommon):
         ws = self.rootWS()
         dataType = ws.find(typeRef, role='DataType')
         if dataType is None:
-            raise ValueError('invalid reference: '+typeRef)
+            raise ValueError(f'invalid reference: {typeRef}')
         elem = CalPrmElemPrototype(name, dataType.ref, self, adminData)
         elem.swDataDefsProps.append(SwAddrMethodRef)
         self.sharedCalParams.append(elem)

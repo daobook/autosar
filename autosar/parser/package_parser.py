@@ -28,7 +28,7 @@ class PackageParser:
         """
         assert(self.switcher is not None)
         if xmlRoot.find('ELEMENTS'):
-            elementNames = set([x.name for x in package.elements])
+            elementNames = {x.name for x in package.elements}
             for xmlElement in xmlRoot.findall('./ELEMENTS/*'):
                 parserObject = self.switcher.get(xmlElement.tag)
                 if parserObject is not None:
@@ -37,14 +37,13 @@ class PackageParser:
                         print("[PackageParser] No return value: %s"%xmlElement.tag)
                         continue
                     element.parent=package
-                    if isinstance(element,autosar.element.Element):
-                        if element.name not in elementNames:
-                            #ignore duplicated items
-                            package.append(element)
-                            elementNames.add(element.name)
-                    else:
+                    if not isinstance(element, autosar.element.Element):
                         #raise ValueError("parse error: %s"%type(element))
                         raise ValueError("parse error: %s"%xmlElement.tag)
+                    if element.name not in elementNames:
+                        #ignore duplicated items
+                        package.append(element)
+                        elementNames.add(element.name)
                 else:
                     package.unhandledParser.add(xmlElement.tag)
 

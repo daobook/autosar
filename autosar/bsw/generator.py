@@ -19,21 +19,36 @@ class AlarmVariable:
       self.body = C.block(innerIndent=innerIndentDefault)
       self.body.append(C.linecomment('OS Task,       Event ID,                     Init Delay (ms),  Period (ms)'))
       for event in task.timer_events:
-         self.body.append(C.line('{'+'{0: >10},{1: >50},{2: >5},{3: >5}'.format(
-            '&m_os_task_'+task.name, 'EVENT_MASK_%s_%s'%(task.name,event.name), init_delay, event.inner.period)+'},'))
+         self.body.append(
+             C.line((('{' + '{0: >10},{1: >50},{2: >5},{3: >5}'.format(
+                 f'&m_os_task_{task.name}',
+                 'EVENT_MASK_%s_%s' % (task.name, event.name),
+                 init_delay,
+                 event.inner.period,
+             )) + '},')))
 
 class OsTaskCfgVar:
    def __init__(self, tasks):
       self.decl = C.variable('os_task_cfg', 'os_task_elem_t', static=True, const=True, array='OS_NUM_TASKS')
       self.body = C.block(innerIndent=innerIndentDefault)
+      fmt='{0: >25},{1: >15},{2: >30},{3: >30}'
       for task in tasks:
-         fmt='{0: >25},{1: >15},{2: >30},{3: >30}'
          if len(task.timer_events)>0:
-            self.body.append(C.line('{'+fmt.format(
-               '&m_os_task_'+task.name, task.name, '&os_alarm_cfg_%s[0]'%task.name, 'OS_NUM_ALARMS_%s'%task.name)+'},'))
+            self.body.append(
+                C.line((('{' + fmt.format(
+                    f'&m_os_task_{task.name}',
+                    task.name,
+                    '&os_alarm_cfg_%s[0]' % task.name,
+                    'OS_NUM_ALARMS_%s' % task.name,
+                )) + '},')))
          else:
-            self.body.append(C.line('{'+fmt.format(
-               '&m_os_task_'+task.name, task.name, '(os_alarm_cfg_t*) 0', '0')+'},'))
+            self.body.append(
+                C.line((('{' + fmt.format(
+                    f'&m_os_task_{task.name}',
+                    task.name,
+                    '(os_alarm_cfg_t*) 0',
+                    '0',
+                )) + '},')))
 
 class OsConfigGenerator:
    def __init__(self, cfg):
@@ -53,7 +68,7 @@ class OsConfigGenerator:
    
    def _create_static_vars(self):
       for os_task in self.cfg.tasks:
-         static_var = C.variable('m_os_task_'+os_task.name, 'os_task_t', static=True)
+         static_var = C.variable(f'm_os_task_{os_task.name}', 'os_task_t', static=True)
          self.static_vars[static_var.name]=static_var
          if len(os_task.timer_events)>0:
             self.alarm_vars.append(AlarmVariable(os_task))
@@ -82,7 +97,7 @@ class OsConfigGenerator:
       code.append(C.include('os_task.h'))
       code.append('')
       code.extend(_genCommentHeader('PUBLIC CONSTANTS AND DATA TYPES'))
-      code.append(C.define('OS_NUM_TASKS',str(len(self.cfg.tasks))+'u'))
+      code.append(C.define('OS_NUM_TASKS', f'{len(self.cfg.tasks)}u'))
       code.append('')
       code.extend(_genCommentHeader('PUBLIC VARIABLES'))
       code.append(C.statement('extern os_cfg_t g_os_cfg'))
@@ -109,9 +124,9 @@ class OsConfigGenerator:
          code.append(C.statement(static_var))
       code.append('')
       for alarm_var in self.alarm_vars:
-         code.append(C.line(str(alarm_var.decl)+' ='))
+         code.append(C.line(f'{str(alarm_var.decl)} ='))
          code.append(C.statement(alarm_var.body))
-      code.append(C.line(str(self.os_task_var.decl)+' ='))
+      code.append(C.line(f'{str(self.os_task_var.decl)} ='))
       code.append(C.statement(self.os_task_var.body))
       code.append('')
       code.extend(_genCommentHeader('PUBLIC VARIABLES'))
@@ -140,9 +155,8 @@ class OsConfigGenerator:
       block = C.block(innerIndent = innerIndentDefault)
       for event in events:
          task = self.cfg.find_os_task_by_runnable(event.runnable)
-         if task is not None:
-            if (task.name, event.name) not in generated:               
-               block.append(C.statement(C.fcall('os_task_setEvent', params=['&m_os_task_%s'%task.name, 'EVENT_MASK_%s_%s'%(task.name, event.name)])))
-               generated.add((task.name, event.name))
+         if task is not None and (task.name, event.name) not in generated:
+            block.append(C.statement(C.fcall('os_task_setEvent', params=['&m_os_task_%s'%task.name, 'EVENT_MASK_%s_%s'%(task.name, event.name)])))
+            generated.add((task.name, event.name))
       code.append(block)
       return code

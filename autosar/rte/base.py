@@ -27,12 +27,12 @@ class Port:
       if port_interface is None:
          raise ValueError("Error: invalid port interface reference: "+ar_port.portInterfaceRef)
       if isinstance(port_interface, autosar.portinterface.SenderReceiverInterface):
+         queueLength = None
          for data_element in port_interface.dataElements:
             data_type=ws.find(data_element.typeRef)
             if data_type is None:
                raise ValueError('Error: Invalid data type reference: %s'%data_element.typeRef)
             initValue = None
-            queueLength = None
             if len(ar_port.comspec)>0:
                for comspec in ar_port.comspec:
                   if (comspec.name == data_element.name) and (comspec.initValueRef is not None):
@@ -44,7 +44,7 @@ class Port:
                if data_type is None:
                   raise ValueError('Error: Invalid data type reference: %s'%group.typeRef)
                self.mode_groups.append(ModeGroup(group.name, self, data_type))
-               
+
       elif isinstance(port_interface, autosar.portinterface.ClientServerInterface):
          for operation in port_interface.operations:
             arguments = []
@@ -52,21 +52,21 @@ class Port:
                dataType = ws.find(argument.typeRef)
                if dataType is None:
                   raise ValueError('Error: Invalid type reference: '+argument.typeRef)
-               isPointer = False
-               if dataType.isComplexType or (argument.direction == 'OUT') or (argument.direction == 'INOUT'):
-                  isPointer = True
+               isPointer = bool(
+                   dataType.isComplexType or (argument.direction == 'OUT')
+                   or (argument.direction == 'INOUT'))
                arguments.append(C.variable(argument.name, dataType.name, pointer=isPointer))
             self.operations.append(Operation(operation.name, self, arguments, operation))
 
    def find_data_element(self, name):
       for data_element in self.data_elements:
          if data_element.name == name: return data_element
-      raise KeyError("No data element with name "+name)
+      raise KeyError(f'No data element with name {name}')
 
    def find_operation(self, name):
       for operation in self.operations:
          if operation.name == name: return operation
-      raise KeyError("No operation with name "+name)
+      raise KeyError(f'No operation with name {name}')
 
    def process_types(self, ws, type_manager):
       for data_element in self.data_elements:
@@ -75,7 +75,7 @@ class Port:
          for argument in operation.inner.arguments:
             data_type = ws.find(argument.typeRef)
             if data_type is None:
-               raise ValueError('Invalid Type Reference: '+argument.typeRef)
+               raise ValueError(f'Invalid Type Reference: {argument.typeRef}')
             type_manager.processType(ws, data_type)
       for group in self.mode_groups:
          type_manager.processType(ws,  group.data_type)
@@ -110,12 +110,9 @@ class ProvidePort(Port):
       super().__init__(ws, ar_port, parent)
 
    def create_data_access_api(self, ws, rte_data_element):
-      if rte_data_element.isQueued:
-         call_type='Send'
-      else:
-         call_type='Write'
+      call_type = 'Send' if rte_data_element.isQueued else 'Write'
       data_type = rte_data_element.dataType
-      pointer=True if data_type.isComplexType else False
+      pointer = bool(data_type.isComplexType)
       fname='_'.join([self.parent.rte_prefix, call_type, self.parent.name, self.name, rte_data_element.name])
       shortname='_'.join([self.parent.rte_prefix, call_type, self.name, rte_data_element.name])
       type_arg=type2arg(data_type,pointer)
@@ -147,10 +144,7 @@ class RequirePort(Port):
       super().__init__(ws, ar_port, parent)
 
    def create_data_access_api(self, ws, rte_data_element):
-      if rte_data_element.isQueued:
-         call_type='Receive'
-      else:
-         call_type='Read'
+      call_type = 'Receive' if rte_data_element.isQueued else 'Read'
       pointer=True
       fname='_'.join([self.parent.rte_prefix, call_type, self.parent.name, self.name, rte_data_element.name])
       shortname='_'.join([self.parent.rte_prefix, call_type, self.name, rte_data_element.name])
@@ -203,22 +197,20 @@ class RteTypeManager:
       self.typeMap = {}
 
    def processType(self, ws, dataType):
-      if dataType.ref not in self.typeMap:
-         if isinstance(dataType, autosar.datatype.RecordDataType):
-            for elem in dataType.elements:
-               childType = ws.find(elem.typeRef, role='DataType')
-               if childType is None:
-                  raise ValueError('invalid reference: ' + elem.typeRef)
-               self.processType(ws, childType)
-            self.typeMap[dataType.ref]=dataType
-         elif isinstance(dataType, autosar.datatype.ArrayDataType):
-               childType = ws.find(dataType.typeRef, role='DataType')
-               if childType is None:
-                  raise ValueError('invalid reference: ' + elem.typeRef)
-               self.processType(ws, childType)
-               self.typeMap[dataType.ref]=dataType
-         else:
-            self.typeMap[dataType.ref]=dataType
+      if dataType.ref in self.typeMap:
+         return
+      if isinstance(dataType, autosar.datatype.RecordDataType):
+         for elem in dataType.elements:
+            childType = ws.find(elem.typeRef, role='DataType')
+            if childType is None:
+               raise ValueError(f'invalid reference: {elem.typeRef}')
+            self.processType(ws, childType)
+      elif isinstance(dataType, autosar.datatype.ArrayDataType):
+         childType = ws.find(dataType.typeRef, role='DataType')
+         if childType is None:
+            raise ValueError(f'invalid reference: {elem.typeRef}')
+         self.processType(ws, childType)
+      self.typeMap[dataType.ref]=dataType
 
    def getTypes(self):
       basicTypes=set()
@@ -226,7 +218,10 @@ class RteTypeManager:
       modeTypes=set()
 
       for dataType in self.typeMap.values():
-         if isinstance(dataType, autosar.datatype.RecordDataType) or isinstance(dataType, autosar.datatype.ArrayDataType):
+         if isinstance(
+             dataType,
+             (autosar.datatype.RecordDataType, autosar.datatype.ArrayDataType),
+         ):
             complexTypes.add(dataType.ref)
          elif isinstance(dataType, autosar.portinterface.ModeDeclarationGroup):
             modeTypes.add(dataType.ref)
@@ -353,10 +348,7 @@ class DataElement:
       self.isQueued = isQueued
       self.queueLength = queueLength
       self.com_access = {'Send': None, 'Receive': None}
-      if initValue is not None:
-         self.initValue = initValue
-      else:
-         self.initValue = None
+      self.initValue = initValue if initValue is not None else None
 
 class Operation:
    """
@@ -420,7 +412,9 @@ class ModeSwitchEvent(Event):
       if modeDeclaration is None:
          raise ValueError("Error: invalid reference: %s"+ar_event.modeInstRef.modeDeclarationRef)
       mode = modeDeclaration.parent
-      self.activationType = 'OnEntry' if (ar_event.activationType == 'ON-ENTRY' or ar_event.activationType == 'ENTRY')  else 'OnExit'
+      self.activationType = ('OnEntry' if ar_event.activationType in [
+          'ON-ENTRY', 'ENTRY'
+      ] else 'OnExit')
       self.name = "%s_%s_%s"%(self.activationType, mode.name, modeDeclaration.name)
       self.mode=mode.name
       self.modeDeclaration=modeDeclaration.name
@@ -438,9 +432,13 @@ class ModeSwitchFunction:
    def __init__(self, event):      
       self.body = C.block(innerIndent = innerIndentDefault)
       self.calls = {}
-      self.typename = 'Rte_ModeType_'+event.mode
-      self.proto = C.function('Rte_SetMode_'+event.mode, 'void', args = [C.variable('newMode', self.typename)])
-      self.static_var = C.variable('m_'+event.mode, self.typename, static=True)
+      self.typename = f'Rte_ModeType_{event.mode}'
+      self.proto = C.function(
+          f'Rte_SetMode_{event.mode}',
+          'void',
+          args=[C.variable('newMode', self.typename)],
+      )
+      self.static_var = C.variable(f'm_{event.mode}', self.typename, static=True)
       self._init_body(event)
    
    def _init_body(self, event):

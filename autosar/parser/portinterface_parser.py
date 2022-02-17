@@ -28,10 +28,7 @@ class PortInterfacePackageParser(ElementParser):
 
     def parseElement(self, xmlElement, parent = None):
         parseFunc = self.switcher.get(xmlElement.tag)
-        if parseFunc is not None:
-            return parseFunc(xmlElement,parent)
-        else:
-            return None
+        return parseFunc(xmlElement,parent) if parseFunc is not None else None
 
 
 
@@ -81,12 +78,11 @@ class PortInterfacePackageParser(ElementParser):
             parseMethod = self._parseDataElementPrototype
             dataElemTag = 'DATA-ELEMENT-PROTOTYPE'
         for xmlElem in xmlRoot.findall('./*'):
-            if xmlElem.tag == dataElemTag:
-                dataElem = parseMethod(xmlElem)
-                if dataElem is not None:
-                    dataElements.append(dataElem)
-            else:
+            if xmlElem.tag != dataElemTag:
                 raise NotImplementedError(xmlElem.tag)
+            dataElem = parseMethod(xmlElem)
+            if dataElem is not None:
+                dataElements.append(dataElem)
         return dataElements
 
     def _parseModeGroups(self, xmlRoot):
@@ -94,31 +90,29 @@ class PortInterfacePackageParser(ElementParser):
         modeGroups = []
 
         for xmlElem in xmlRoot.findall('./*'):
-            if xmlElem.tag == 'MODE-DECLARATION-GROUP-PROTOTYPE':
-                self.push()
-                for xmlChild in xmlElem.findall('./*'):
-                    typeRef = None
-                    if xmlChild.tag == 'TYPE-TREF':
-                        typeRef = self.parseTextNode(xmlChild)
-                    else:
-                        self.defaultHandler(xmlChild)
-                if self.name is not None and typeRef is not None:
-                    modeGroups.append(autosar.portinterface.ModeGroup(self.name, typeRef))
-                self.pop()
-            else:
+            if xmlElem.tag != 'MODE-DECLARATION-GROUP-PROTOTYPE':
                 raise NotImplementedError(xmlElem.tag)
+            self.push()
+            for xmlChild in xmlElem.findall('./*'):
+                typeRef = None
+                if xmlChild.tag == 'TYPE-TREF':
+                    typeRef = self.parseTextNode(xmlChild)
+                else:
+                    self.defaultHandler(xmlChild)
+            if self.name is not None and typeRef is not None:
+                modeGroups.append(autosar.portinterface.ModeGroup(self.name, typeRef))
+            self.pop()
         return modeGroups
 
     def _parseInvalidationPolicys(self, xmlRoot):
         assert(xmlRoot.tag == 'INVALIDATION-POLICYS')
         policyList = []
         for xmlChild in xmlRoot.findall('./*'):
-            if xmlChild.tag == 'INVALIDATION-POLICY':
-                invalidationPolicy = self._parseInvalidationPolicy(xmlChild)
-                if invalidationPolicy is not None:
-                    policyList.append(invalidationPolicy)
-            else:
+            if xmlChild.tag != 'INVALIDATION-POLICY':
                 raise NotImplementedError(xmlChild.tag)
+            invalidationPolicy = self._parseInvalidationPolicy(xmlChild)
+            if invalidationPolicy is not None:
+                policyList.append(invalidationPolicy)
         return policyList
 
     def _parseDataElementPrototype(self, xmlRoot):
@@ -129,7 +123,7 @@ class PortInterfacePackageParser(ElementParser):
             if xmlElem.tag == 'TYPE-TREF':
                 typeRef = self.parseTextNode(xmlElem)
             elif xmlElem.tag == 'IS-QUEUED':
-                isQueued = True if self.parseTextNode(xmlElem) == 'true' else False
+                isQueued = self.parseTextNode(xmlElem) == 'true'
             else:
                 self.defaultHandler(xmlElem)
         if (self.name is not None) and (typeRef is not None):
@@ -183,18 +177,23 @@ class PortInterfacePackageParser(ElementParser):
             for xmlElem in xmlRoot.findall('./*'):
                 if xmlElem.tag == 'DESC':
                     pass #implement later
-                elif (xmlElem.tag == 'SHORT-NAME') or (xmlElem.tag == 'ADMIN-DATA'):
+                elif xmlElem.tag in ['SHORT-NAME', 'ADMIN-DATA']:
                     continue
                 elif xmlElem.tag == 'IS-SERVICE':
                     if self.parseTextNode(xmlElem) == 'true':
                         portInterface.isService = True
                 elif xmlElem.tag == 'OPERATIONS':
                     for xmlChildItem in xmlElem.findall('./*'):
-                        if (self.version < 4.0 and xmlChildItem.tag == 'OPERATION-PROTOTYPE') or (self.version >= 4.0 and xmlChildItem.tag == 'CLIENT-SERVER-OPERATION'):
-                            operation = self._parseOperationPrototype(xmlChildItem, portInterface)
-                            portInterface.operations.append(operation)
-                        else:
+                        if (
+                            self.version >= 4.0
+                            or xmlChildItem.tag != 'OPERATION-PROTOTYPE'
+                        ) and (
+                            self.version < 4.0
+                            or xmlChildItem.tag != 'CLIENT-SERVER-OPERATION'
+                        ):
                             raise NotImplementedError(xmlChildItem.tag)
+                        operation = self._parseOperationPrototype(xmlChildItem, portInterface)
+                        portInterface.operations.append(operation)
                 elif xmlElem.tag == 'POSSIBLE-ERRORS':
                     for xmlError in xmlElem.findall('APPLICATION-ERROR'):
                         applicationError = self._parseApplicationError(xmlError, portInterface)
@@ -223,11 +222,10 @@ class PortInterfacePackageParser(ElementParser):
         if (name is not None) and (xmlParameters is not None):
             portInterface = autosar.portinterface.ParameterInterface(name, isService, parent, adminData)
             for xmlChild in xmlParameters.findall('./*'):
-                if xmlChild.tag == 'PARAMETER-DATA-PROTOTYPE':
-                    parameter = self._parseParameterDataPrototype(xmlChild, portInterface)
-                    portInterface.append(parameter)
-                else:
+                if xmlChild.tag != 'PARAMETER-DATA-PROTOTYPE':
                     raise NotImplementedError(xmlChild.tag)
+                parameter = self._parseParameterDataPrototype(xmlChild, portInterface)
+                portInterface.append(parameter)
             return portInterface
 
 
@@ -283,15 +281,14 @@ class PortInterfacePackageParser(ElementParser):
                 self.parseDesc(xmlOperation,operation)
             if xmlArguments is not None:
                 for xmlChild in xmlArguments.findall('./*'):
-                    if xmlChild.tag == argumentTag:
-                        if self.version >= 4.0:
-                            argument = self._parseOperationArgumentV4(xmlChild, operation)
-                        else:
-                            argument = self._parseOperationArgumentV3(xmlChild, operation)
-                        operation.arguments.append(argument)
-                        argument.parent=operation
-                    else:
+                    if xmlChild.tag != argumentTag:
                         raise NotImplementedError(xmlChild.tag)
+                    if self.version >= 4.0:
+                        argument = self._parseOperationArgumentV4(xmlChild, operation)
+                    else:
+                        argument = self._parseOperationArgumentV3(xmlChild, operation)
+                    operation.arguments.append(argument)
+                    argument.parent=operation
             if xmlPossibleErrorRefs is not None:
                 for xmlChild in xmlPossibleErrorRefs.findall('./*'):
                     if xmlChild.tag == 'POSSIBLE-ERROR-REF':

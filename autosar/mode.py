@@ -15,15 +15,15 @@ class ModeGroup(Element):
         self.typeRef=typeRef
 
     def tag(self,version=None):
-        if version>=4.0:
-            return "MODE-GROUP"
-        else:
-            return "MODE-DECLARATION-GROUP-PROTOTYPE"
+        return "MODE-GROUP" if version>=4.0 else "MODE-DECLARATION-GROUP-PROTOTYPE"
 
     def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.name == other.name and self.adminData == other.adminData and self.typeRef == other.typeRef: return True
-        return False
+        return (
+            isinstance(other, self.__class__)
+            and self.name == other.name
+            and self.adminData == other.adminData
+            and self.typeRef == other.typeRef
+        )
 
     def __ne__(self, other):
         return not (self == other)
@@ -53,20 +53,21 @@ class ModeDeclarationGroup(Element):
     def find(self,ref):
         ref = ref.partition('/')
         name = ref[0]
-        for elem in self.modeDeclarations:
-            if elem.name==name:
-                return elem
-        return None
+        return next((elem for elem in self.modeDeclarations if elem.name==name), None)
 
     def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.name == other.name and self.initialModeRef == other.initialModeRef and \
-            len(self.modeDeclarations) == len(other.modeDeclarations) and self.adminData == other.adminData:
-                for i,left in enumerate(self.modeDeclarations):
-                    right = other.modeDeclarations[i]
-                    if left != right:
-                        return False
-                return True
+        if (
+            isinstance(other, self.__class__)
+            and self.name == other.name
+            and self.initialModeRef == other.initialModeRef
+            and len(self.modeDeclarations) == len(other.modeDeclarations)
+            and self.adminData == other.adminData
+        ):
+            for i,left in enumerate(self.modeDeclarations):
+                right = other.modeDeclarations[i]
+                if left != right:
+                    return False
+            return True
         return False
 
     def __ne__(self, other):
@@ -83,13 +84,12 @@ class ModeDeclaration(Element):
         self.value = int(value) if value is not None else None
 
     def __eq__(self, other):
-        if isinstance(other, self.__class__):
-            if self.name == other.name:
-                if self.value is None and other.value is None:
+        if isinstance(other, self.__class__) and self.name == other.name:
+            if self.value is None and other.value is None:
+                return True
+            elif (self.value is not None) and (other.value is not None):
+                if self.value == other.value:
                     return True
-                elif (self.value is not None) and (other.value is not None):
-                    if self.value == other.value:
-                        return True
         return False
 
     def __ne__(self, other): return not (self == other)

@@ -8,9 +8,7 @@ def initializer_string(constant):
     elif isinstance(constant, RecordValue):
         prolog = '{'
         epilog = '}'
-        values = []
-        for elem in constant.elements:
-            values.append(initializer_string(elem))
+        values = [initializer_string(elem) for elem in constant.elements]
         return prolog+', '.join(values) + epilog
     else:
         raise NotImplementedError(str(type(constant)))
@@ -41,10 +39,7 @@ class IntegerValue(Value):
 
     @value.setter
     def value(self,val):
-        if val is not None:
-            self._value=int(val)
-        else:
-            self._value=None
+        self._value = int(val) if val is not None else None
 
 
 class StringValue(Value):
@@ -66,10 +61,7 @@ class StringValue(Value):
 
     @value.setter
     def value(self,val):
-        if val is not None:
-            self._value=str(val)
-        else:
-            self._value=None
+        self._value = str(val) if val is not None else None
 
 
 class BooleanValue(Value):
@@ -88,10 +80,7 @@ class BooleanValue(Value):
     @value.setter
     def value(self,val):
         if val is not None:
-            if isinstance(val,str):
-                self._value = True if val=='true' else False
-            else:
-                self._value=bool(val)
+            self._value = val=='true' if isinstance(val,str) else bool(val)
         else:
             self._value=None
 
@@ -105,10 +94,7 @@ class RecordValue(Value):
     def __init__(self, name, typeRef=None, elements=None, parent=None):
         super().__init__(name, parent)
         self.typeRef=typeRef
-        if elements is None:
-            self.elements=[]
-        else:
-            self.elements = list(elements)
+        self.elements = [] if elements is None else list(elements)
 
 
 class ArrayValue(Value):
@@ -120,10 +106,7 @@ class ArrayValue(Value):
     def __init__(self, name=None, typeRef=None, elements=None, parent=None):
         super().__init__(name, parent)
         self.typeRef=typeRef
-        if elements is None:
-            self.elements=[]
-        else:
-            self.elements = list(elements)
+        self.elements = [] if elements is None else list(elements)
 
 
 #AUTOSAR 4 constant values
@@ -142,10 +125,7 @@ class TextValue(ValueAR4):
 
     @value.setter
     def value(self,val):
-        if val is not None:
-            self._value=str(val)
-        else:
-            self._value=None
+        self._value = str(val) if val is not None else None
 
 
 class NumericalValue(ValueAR4):
@@ -164,10 +144,7 @@ class NumericalValue(ValueAR4):
 
     @value.setter
     def value(self,val):
-        if val is not None:
-            self._value = str(val)
-        else:
-            self._value = None
+        self._value = str(val) if val is not None else None
 
 
 class ApplicationValue(ValueAR4):
@@ -204,10 +181,7 @@ class RecordValueAR4(ValueAR4):
     def __init__(self, label, typeRef=None, elements=None, category = None, parent = None, adminData = None):
         super().__init__(label, parent, adminData, category)
         self.typeRef=typeRef
-        if elements is None:
-            self.elements=[]
-        else:
-            self.elements = list(elements)
+        self.elements = [] if elements is None else list(elements)
 
 
 class ArrayValueAR4(ValueAR4):
@@ -216,10 +190,7 @@ class ArrayValueAR4(ValueAR4):
     def __init__(self, label=None, typeRef=None, elements=None, category = None, parent = None, adminData = None):
         super().__init__(label, parent, adminData, category)
         self.typeRef=typeRef
-        if elements is None:
-            self.elements=[]
-        else:
-            self.elements = list(elements)
+        self.elements = [] if elements is None else list(elements)
 
 #Common classes
 class Constant(Element):
@@ -233,9 +204,7 @@ class Constant(Element):
             value.parent=self
 
     def find(self,ref):
-        if self.value.name==ref:
-            return self.value
-        return None
+        return self.value if self.value.name==ref else None
 
 class SwValueCont:
     """
@@ -249,10 +218,7 @@ class SwValueCont:
         if values is None:
             self.values = None
         else:
-            if isinstance(values, list):
-                self.values = list(values)
-            else:
-                self.values = values
+            self.values = list(values) if isinstance(values, list) else values
         self.unitRef = unitRef
         self.unitDisplayName = unitDisplayName
         self.swArraySize = swArraySize
@@ -275,7 +241,4 @@ class SwAxisCont:
         if values is None:
             self.values = None
         else:
-            if isinstance(values, list):
-                self.values = list(values)
-            else:
-                self.values = values
+            self.values = list(values) if isinstance(values, list) else values

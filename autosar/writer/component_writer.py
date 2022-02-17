@@ -40,10 +40,7 @@ class XMLComponentTypeWriter(ElementWriter):
 
     def writeElementXML(self, elem):
         xmlWriteFunc = self.switcher.get(type(elem).__name__)
-        if xmlWriteFunc is not None:
-            return xmlWriteFunc(elem)
-        else:
-            return None
+        return xmlWriteFunc(elem) if xmlWriteFunc is not None else None
 
     def writeElementCode(self, elem, localvars):
         raise NotImplementedError('writeElementCode')
@@ -76,8 +73,7 @@ class XMLComponentTypeWriter(ElementWriter):
         lines=[]
         ws = swc.rootWS()
         assert(ws is not None)
-        lines=[]
-        lines.append('<%s>'%swc.tag(self.version))
+        lines = ['<%s>' % swc.tag(self.version)]
         lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%swc.name,1))
         if isinstance(swc, autosar.component.ServiceComponent):
             lines.append(self.indent('<CATEGORY>ServiceComponent</CATEGORY>',1))
@@ -105,26 +101,31 @@ class XMLComponentTypeWriter(ElementWriter):
                 if len(swc.delegationConnectors)>0:
                     lines.extend(self.indent(self._writeDelegationConnectorsXML(ws, swc.delegationConnectors),2))
                 lines.append(self.indent('</CONNECTORS>',1))
-        if isinstance(swc, autosar.component.NvBlockComponent):
-            if (len(swc.nvBlockDescriptors) > 0):
-                lines.append(self.indent('<NV-BLOCK-DESCRIPTORS>',1))
-                for desc in swc.nvBlockDescriptors:
-                    lines.extend(self.indent(self.behavior_writer.writeNvBlockDescriptorXML(desc),2))
-                lines.append(self.indent('</NV-BLOCK-DESCRIPTORS>',1))
+        if isinstance(swc, autosar.component.NvBlockComponent) and (
+            len(swc.nvBlockDescriptors) > 0
+        ):
+            lines.append(self.indent('<NV-BLOCK-DESCRIPTORS>',1))
+            for desc in swc.nvBlockDescriptors:
+                lines.extend(self.indent(self.behavior_writer.writeNvBlockDescriptorXML(desc),2))
+            lines.append(self.indent('</NV-BLOCK-DESCRIPTORS>',1))
         lines.append('</%s>'%swc.tag(self.version))
         return lines
 
 
     def _writeRequirePortXML(self, port):
-        lines=[]
         assert(port.ref is not None)
         ws=port.rootWS()
         assert(ws is not None)
         portInterface=ws.find(port.portInterfaceRef)
         if portInterface is None:
             raise autosar.base.InvalidPortInterfaceRef("{0.ref}: {0.portInterfaceRef}".format(port))
-        lines.append('<R-PORT-PROTOTYPE>')
-        lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%port.name,1))
+        lines = list(
+            (
+                '<R-PORT-PROTOTYPE>',
+                self.indent('<SHORT-NAME>%s</SHORT-NAME>' % port.name, 1),
+            )
+        )
+
         if port.adminData is not None:
             lines.extend(self.indent(self.writeAdminDataXML(port.adminData),1))
         if isinstance(portInterface, autosar.portinterface.ClientServerInterface) and isinstance(port.parent, autosar.component.CompositionComponent) or len(port.comspec)==0:
@@ -162,77 +163,124 @@ class XMLComponentTypeWriter(ElementWriter):
                         lines.extend(self.indent(self._writeNvDataRequireComSpecXML(port, ws, portInterface, comspec),2))
                     else:
                         raise NotImplementedError(str(type(portInterface)))
-                else:
-                    if isinstance(portInterface, autosar.portinterface.ClientServerInterface):
-                        operation=portInterface.find(comspec.name)
-                        if operation is None:
-                            raise ValueError("%s: invalid comspec name '%s'"%(port.ref,comspec.name))
-                        lines.extend(self.indent(self._writeOperationComSpec(operation),2))
-                    elif isinstance(portInterface, autosar.portinterface.ParameterInterface):
-                        pass #not supported in AUTOSAR 3
-                    else:
-                        dataElem=portInterface.find(comspec.name)
-                        if dataElem is None:
-                            raise ValueError("%s: invalid comspec name '%s'"%(port.ref, comspec.name))
-                        lines.extend(self.indent(self._writeDataReceiverComSpecXML(ws, dataElem, comspec),2))
+                elif isinstance(portInterface, autosar.portinterface.ClientServerInterface):
+                    operation=portInterface.find(comspec.name)
+                    if operation is None:
+                        raise ValueError("%s: invalid comspec name '%s'"%(port.ref,comspec.name))
+                    lines.extend(self.indent(self._writeOperationComSpec(operation),2))
+                elif not isinstance(
+                    portInterface, autosar.portinterface.ParameterInterface
+                ):
+                    dataElem=portInterface.find(comspec.name)
+                    if dataElem is None:
+                        raise ValueError("%s: invalid comspec name '%s'"%(port.ref, comspec.name))
+                    lines.extend(self.indent(self._writeDataReceiverComSpecXML(ws, dataElem, comspec),2))
             lines.append(self.indent('</REQUIRED-COM-SPECS>',1))
-        lines.append(self.indent('<REQUIRED-INTERFACE-TREF DEST="%s">%s</REQUIRED-INTERFACE-TREF>'%(portInterface.tag(self.version),portInterface.ref),1))
-        lines.append('</R-PORT-PROTOTYPE>')
+        lines.extend(
+            (
+                self.indent(
+                    '<REQUIRED-INTERFACE-TREF DEST="%s">%s</REQUIRED-INTERFACE-TREF>'
+                    % (portInterface.tag(self.version), portInterface.ref),
+                    1,
+                ),
+                '</R-PORT-PROTOTYPE>',
+            )
+        )
+
         return lines
 
     def _writeOperationComSpec(self, operation):
-        lines = []
-        lines.append('<CLIENT-COM-SPEC>')
-        lines.append(self.indent('<OPERATION-REF DEST="%s">%s</OPERATION-REF>'%(operation.tag(self.version),operation.ref),1))
-        lines.append('</CLIENT-COM-SPEC>')
-        return lines
+        return [
+            '<CLIENT-COM-SPEC>',
+            self.indent(
+                '<OPERATION-REF DEST="%s">%s</OPERATION-REF>'
+                % (operation.tag(self.version), operation.ref),
+                1,
+            ),
+            '</CLIENT-COM-SPEC>',
+        ]
 
     def _writeDataReceiverComSpecXML(self, ws, dataElem, comspec):
         assert(isinstance(dataElem, autosar.portinterface.DataElement))
         lines = []
-        if self.version<4.0:
-            if dataElem.isQueued:
-                lines.append('<QUEUED-RECEIVER-COM-SPEC>',)
-                lines.append(self.indent('<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'%(dataElem.tag(self.version),dataElem.ref),1))
-                lines.append(self.indent('<QUEUE-LENGTH>%d</QUEUE-LENGTH>'%(int(comspec.queueLength)),1))
-                lines.append('</QUEUED-RECEIVER-COM-SPEC>')
-            else:
-                lines.append('<UNQUEUED-RECEIVER-COM-SPEC>')
-                lines.append(self.indent('<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'%(dataElem.tag(self.version),dataElem.ref),1))
-                lines.append(self.indent('<ALIVE-TIMEOUT>%d</ALIVE-TIMEOUT>'%(comspec.aliveTimeout),1))
-                if comspec.initValueRef is not None:
-                    tag = ws.find(comspec.initValueRef).tag(self.version)
-                    lines.append(self.indent('<INIT-VALUE-REF DEST="%s">%s</INIT-VALUE-REF>'%(tag,comspec.initValueRef),1))
-                lines.append('</UNQUEUED-RECEIVER-COM-SPEC>')
-        else:
-            if dataElem.isQueued:
-                lines.append('<QUEUED-RECEIVER-COM-SPEC>')
-                lines.append(self.indent('<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'%(dataElem.tag(self.version),dataElem.ref),1))
-                lines.append(self.indent('<QUEUE-LENGTH>%d</QUEUE-LENGTH>'%(int(comspec.queueLength)),1))
-                lines.append('</QUEUED-RECEIVER-COM-SPEC>')
-            else:
-                lines.append('<NONQUEUED-RECEIVER-COM-SPEC>')
-                lines.append(self.indent('<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'%(dataElem.tag(self.version),dataElem.ref),1))
-                lines.append(self.indent('<USES-END-TO-END-PROTECTION>false</USES-END-TO-END-PROTECTION>',1))
+        if dataElem.isQueued:
+            lines.extend(
+                (
+                    '<QUEUED-RECEIVER-COM-SPEC>',
+                    self.indent(
+                        '<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'
+                        % (dataElem.tag(self.version), dataElem.ref),
+                        1,
+                    ),
+                    self.indent(
+                        '<QUEUE-LENGTH>%d</QUEUE-LENGTH>'
+                        % (int(comspec.queueLength)),
+                        1,
+                    ),
+                    '</QUEUED-RECEIVER-COM-SPEC>',
+                )
+            )
 
-                lines.append(self.indent('<ALIVE-TIMEOUT>%d</ALIVE-TIMEOUT>'%(comspec.aliveTimeout),1))
-                lines.append(self.indent('<ENABLE-UPDATE>false</ENABLE-UPDATE>',1))
-                lines.append(self.indent('<FILTER>',1))
-                lines.append(self.indent('<DATA-FILTER-TYPE>ALWAYS</DATA-FILTER-TYPE>',2))
-                lines.append(self.indent('</FILTER>',1))
-                lines.append(self.indent('<HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>',1))
-                if comspec.initValueRef is not None:
-                    lines.extend(self.indent(self._writeInitValueRefXML(ws, comspec.initValueRef),1))
-                if comspec.initValue is not None:
-                    lines.append(self.indent('<INIT-VALUE>',1))
-                    lines.extend(self.indent(self.writeValueSpecificationXML(comspec.initValue),2))
-                    lines.append(self.indent('</INIT-VALUE>',1))
-                lines.append('</NONQUEUED-RECEIVER-COM-SPEC>')
+        elif self.version<4.0:
+            lines.extend(
+                (
+                    '<UNQUEUED-RECEIVER-COM-SPEC>',
+                    self.indent(
+                        '<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'
+                        % (dataElem.tag(self.version), dataElem.ref),
+                        1,
+                    ),
+                    self.indent(
+                        '<ALIVE-TIMEOUT>%d</ALIVE-TIMEOUT>'
+                        % (comspec.aliveTimeout),
+                        1,
+                    ),
+                )
+            )
+
+            if comspec.initValueRef is not None:
+                tag = ws.find(comspec.initValueRef).tag(self.version)
+                lines.append(self.indent('<INIT-VALUE-REF DEST="%s">%s</INIT-VALUE-REF>'%(tag,comspec.initValueRef),1))
+            lines.append('</UNQUEUED-RECEIVER-COM-SPEC>')
+        else:
+            lines.extend(
+                (
+                    '<NONQUEUED-RECEIVER-COM-SPEC>',
+                    self.indent(
+                        '<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'
+                        % (dataElem.tag(self.version), dataElem.ref),
+                        1,
+                    ),
+                    self.indent(
+                        '<USES-END-TO-END-PROTECTION>false</USES-END-TO-END-PROTECTION>',
+                        1,
+                    ),
+                    self.indent(
+                        '<ALIVE-TIMEOUT>%d</ALIVE-TIMEOUT>'
+                        % (comspec.aliveTimeout),
+                        1,
+                    ),
+                    self.indent('<ENABLE-UPDATE>false</ENABLE-UPDATE>', 1),
+                    self.indent('<FILTER>', 1),
+                    self.indent('<DATA-FILTER-TYPE>ALWAYS</DATA-FILTER-TYPE>', 2),
+                    self.indent('</FILTER>', 1),
+                    self.indent(
+                        '<HANDLE-NEVER-RECEIVED>false</HANDLE-NEVER-RECEIVED>', 1
+                    ),
+                )
+            )
+
+            if comspec.initValueRef is not None:
+                lines.extend(self.indent(self._writeInitValueRefXML(ws, comspec.initValueRef),1))
+            if comspec.initValue is not None:
+                lines.append(self.indent('<INIT-VALUE>',1))
+                lines.extend(self.indent(self.writeValueSpecificationXML(comspec.initValue),2))
+                lines.append(self.indent('</INIT-VALUE>',1))
+            lines.append('</NONQUEUED-RECEIVER-COM-SPEC>')
         return lines
 
     def _writeModeSwitchReceiverComSpecXML(self, ws, portInterface, comspec, modeGroup):
-        lines = []
-        lines.append('<MODE-SWITCH-RECEIVER-COM-SPEC>')
+        lines = ['<MODE-SWITCH-RECEIVER-COM-SPEC>']
         if comspec.enhancedMode is not None:
             lines.append(self.indent('<ENHANCED-MODE-API>{}</ENHANCED-MODE-API>'.format(self.toBooleanStr(comspec.enhancedMode)),1))
         if modeGroup is not None:
@@ -247,48 +295,67 @@ class XMLComponentTypeWriter(ElementWriter):
         return lines
 
     def _writeParameterRequireComSpecXML(self, port, portInterface, comspec):
-        lines = []
         parameter = portInterface.find(comspec.name)
         if parameter is None:
             raise ValueError('%s: invalid parameter reference name: %s'%(port.ref, comspec.name))
-        lines.append('<PARAMETER-REQUIRE-COM-SPEC>')
+        lines = ['<PARAMETER-REQUIRE-COM-SPEC>']
         if comspec.initValue is not None:
             lines.append(self.indent('<INIT-VALUE>',1))
             lines.extend(self.indent(self.writeValueSpecificationXML(comspec.initValue),2))
             lines.append(self.indent('</INIT-VALUE>',1))
-        lines.append(self.indent('<PARAMETER-REF DEST="%s">%s</PARAMETER-REF>'%(parameter.tag(self.version), parameter.ref),1))
-        lines.append('</PARAMETER-REQUIRE-COM-SPEC>')
+        lines.extend(
+            (
+                self.indent(
+                    '<PARAMETER-REF DEST="%s">%s</PARAMETER-REF>'
+                    % (parameter.tag(self.version), parameter.ref),
+                    1,
+                ),
+                '</PARAMETER-REQUIRE-COM-SPEC>',
+            )
+        )
+
         return lines
 
     def _writeNvDataRequireComSpecXML(self, port, ws, portInterface, comspec):
-        lines = []
         if self.version<4.0:
             raise NotImplementedError('_writeNvDataRequireComSpecXML')
-        else:
-            nvData = portInterface.find(comspec.name)
-            if nvData is None:
-                raise ValueError('%s: invalid nvData reference name: %s'%(port.ref, comspec.name))
-            lines.append('<NV-REQUIRE-COM-SPEC>')
-            if comspec.initValueRef is not None:
-                lines.extend(self.indent(self._writeInitValueRefXML(ws, comspec.initValueRef),1))
-            if comspec.initValue is not None:
-                lines.append(self.indent('<INIT-VALUE>',1))
-                lines.extend(self.indent(self.writeValueSpecificationXML(comspec.initValue),2))
-                lines.append(self.indent('</INIT-VALUE>',1))
-            lines.append(self.indent('<VARIABLE-REF DEST="%s">%s</VARIABLE-REF>'%(nvData.tag(self.version), nvData.ref),1))
-            lines.append('</NV-REQUIRE-COM-SPEC>')
+        nvData = portInterface.find(comspec.name)
+        if nvData is None:
+            raise ValueError('%s: invalid nvData reference name: %s'%(port.ref, comspec.name))
+        lines = ['<NV-REQUIRE-COM-SPEC>']
+        if comspec.initValueRef is not None:
+            lines.extend(self.indent(self._writeInitValueRefXML(ws, comspec.initValueRef),1))
+        if comspec.initValue is not None:
+            lines.append(self.indent('<INIT-VALUE>',1))
+            lines.extend(self.indent(self.writeValueSpecificationXML(comspec.initValue),2))
+            lines.append(self.indent('</INIT-VALUE>',1))
+        lines.extend(
+            (
+                self.indent(
+                    '<VARIABLE-REF DEST="%s">%s</VARIABLE-REF>'
+                    % (nvData.tag(self.version), nvData.ref),
+                    1,
+                ),
+                '</NV-REQUIRE-COM-SPEC>',
+            )
+        )
+
         return lines
 
     def _writeProvidePortXML(self, port):
-        lines=[]
         assert(port.ref is not None)
         ws=port.rootWS()
         assert(ws is not None)
         portInterface=ws.find(port.portInterfaceRef)
         if portInterface is None:
             raise autosar.base.InvalidPortInterfaceRef("{0.ref}: {0.portInterfaceRef}".format(port))
-        lines.append('<%s>'%port.tag(self.version))
-        lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%port.name,1))
+        lines = list(
+            (
+                '<%s>' % port.tag(self.version),
+                self.indent('<SHORT-NAME>%s</SHORT-NAME>' % port.name, 1),
+            )
+        )
+
         if port.adminData is not None:
             lines.extend(self.indent(self.writeAdminDataXML(port.adminData),1))
         if isinstance(portInterface, autosar.portinterface.ClientServerInterface) and isinstance(port.parent, autosar.component.CompositionComponent) or len(port.comspec)==0:
@@ -333,15 +400,30 @@ class XMLComponentTypeWriter(ElementWriter):
                 else:
                     raise NotImplementedError(str(type(comspec)))
             lines.append(self.indent('</PROVIDED-COM-SPECS>',1))
-        lines.append(self.indent('<PROVIDED-INTERFACE-TREF DEST="%s">%s</PROVIDED-INTERFACE-TREF>'%(portInterface.tag(self.version),portInterface.ref),1))
-        lines.append('</%s>'%port.tag(self.version))
+        lines.extend(
+            (
+                self.indent(
+                    '<PROVIDED-INTERFACE-TREF DEST="%s">%s</PROVIDED-INTERFACE-TREF>'
+                    % (portInterface.tag(self.version), portInterface.ref),
+                    1,
+                ),
+                '</%s>' % port.tag(self.version),
+            )
+        )
+
         return lines
 
     def _writeQueuedSenderComSpecXML(self, ws, comspec, elem):
         assert(isinstance(comspec, autosar.port.DataElementComSpec))
-        lines=[]
-        lines.append('<QUEUED-SENDER-COM-SPEC>')
-        lines.append(self.indent('<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'%(elem.tag(self.version),elem.ref),1))
+        lines = [
+            '<QUEUED-SENDER-COM-SPEC>',
+            self.indent(
+                '<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'
+                % (elem.tag(self.version), elem.ref),
+                1,
+            ),
+        ]
+
         if (self.version>=4.0 and comspec.useEndToEndProtection is not None):
             lines.append(self.indent('<USES-END-TO-END-PROTECTION>{}</USES-END-TO-END-PROTECTION>'.format(self.toBooleanStr(comspec.useEndToEndProtection)), 1))
         lines.append('</QUEUED-SENDER-COM-SPEC>')
@@ -350,8 +432,17 @@ class XMLComponentTypeWriter(ElementWriter):
     def _writeUnqueuedSenderComSpecXML(self, ws, comspec, elem):
         lines=[]
         if self.version<4.0:
-            lines.append('<UNQUEUED-SENDER-COM-SPEC>')
-            lines.append(self.indent('<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'%(elem.tag(self.version),elem.ref),1))
+            lines.extend(
+                (
+                    '<UNQUEUED-SENDER-COM-SPEC>',
+                    self.indent(
+                        '<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'
+                        % (elem.tag(self.version), elem.ref),
+                        1,
+                    ),
+                )
+            )
+
             if isinstance(comspec.canInvalidate,bool):
                 lines.append(self.indent('<CAN-INVALIDATE>%s</CAN-INVALIDATE>'%('true' if comspec.canInvalidate else 'false'),1))
             if comspec.initValueRef is not None:
@@ -359,9 +450,21 @@ class XMLComponentTypeWriter(ElementWriter):
                 lines.append(self.indent('<INIT-VALUE-REF DEST="%s">%s</INIT-VALUE-REF>'%(tag,comspec.initValueRef),1))
             lines.append('</UNQUEUED-SENDER-COM-SPEC>')
         else:
-            lines.append('<NONQUEUED-SENDER-COM-SPEC>')
-            lines.append(self.indent('<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'%(elem.tag(self.version),elem.ref),1))
-            lines.append(self.indent('<USES-END-TO-END-PROTECTION>false</USES-END-TO-END-PROTECTION>',1))
+            lines.extend(
+                (
+                    '<NONQUEUED-SENDER-COM-SPEC>',
+                    self.indent(
+                        '<DATA-ELEMENT-REF DEST="%s">%s</DATA-ELEMENT-REF>'
+                        % (elem.tag(self.version), elem.ref),
+                        1,
+                    ),
+                    self.indent(
+                        '<USES-END-TO-END-PROTECTION>false</USES-END-TO-END-PROTECTION>',
+                        1,
+                    ),
+                )
+            )
+
             if comspec.initValueRef is not None:
                 lines.extend(self.indent(self._writeInitValueRefXML(ws, comspec.initValueRef),1))
             if comspec.initValue is not None:
@@ -373,71 +476,116 @@ class XMLComponentTypeWriter(ElementWriter):
 
     def _writeServerComSpecXML(self, comspec, operation):
         assert(isinstance(comspec, autosar.port.OperationComSpec))
-        lines=[]
-        lines.append('<SERVER-COM-SPEC>')
-        lines.append(self.indent('<OPERATION-REF DEST="%s">%s</OPERATION-REF>'%(operation.tag(self.version),operation.ref),1))
-        lines.append(self.indent('<QUEUE-LENGTH>%d</QUEUE-LENGTH>'%(int(comspec.queueLength)),1))
-        lines.append('</SERVER-COM-SPEC>')
+        lines = [
+            '<SERVER-COM-SPEC>',
+            self.indent(
+                '<OPERATION-REF DEST="%s">%s</OPERATION-REF>'
+                % (operation.tag(self.version), operation.ref),
+                1,
+            ),
+        ]
+
+        lines.extend(
+            (
+                self.indent(
+                    '<QUEUE-LENGTH>%d</QUEUE-LENGTH>' % (int(comspec.queueLength)),
+                    1,
+                ),
+                '</SERVER-COM-SPEC>',
+            )
+        )
+
         return lines
 
     def _writeParameterProvideComSpecXML(self, ws, comspec, param):
         assert(isinstance(comspec, autosar.port.ParameterComSpec))
-        lines = []
         if self.version<4.0:
             raise NotImplementedError('_writeParameterProvideComSpecXML')
-        else:
-            lines.append('<PARAMETER-PROVIDE-COM-SPEC>')
-            if comspec.initValue is not None:
-                lines.append(self.indent('<INIT-VALUE>',1))
-                lines.extend(self.indent(self.writeValueSpecificationXML(comspec.initValue),2))
-                lines.append(self.indent('</INIT-VALUE>',1))
-            lines.append(self.indent('<PARAMETER-REF DEST="%s">%s</PARAMETER-REF>'%(param.tag(self.version),param.ref),1))
-            lines.append('</PARAMETER-PROVIDE-COM-SPEC>')
+        lines = ['<PARAMETER-PROVIDE-COM-SPEC>']
+        if comspec.initValue is not None:
+            lines.append(self.indent('<INIT-VALUE>',1))
+            lines.extend(self.indent(self.writeValueSpecificationXML(comspec.initValue),2))
+            lines.append(self.indent('</INIT-VALUE>',1))
+        lines.extend(
+            (
+                self.indent(
+                    '<PARAMETER-REF DEST="%s">%s</PARAMETER-REF>'
+                    % (param.tag(self.version), param.ref),
+                    1,
+                ),
+                '</PARAMETER-PROVIDE-COM-SPEC>',
+            )
+        )
+
         return lines
 
     def _writeNvDataProvideComSpecXML(self, port, ws, portInterface, comspec):
-        lines = []
         if self.version<4.0:
             raise NotImplementedError('_writeNvDataProvideComSpecXML')
-        else:
-            nvData = portInterface.find(comspec.name)
-            if nvData is None:
-                raise ValueError('%s: invalid nvData reference name: %s'%(port.ref, comspec.name))
-            lines.append('<NV-PROVIDE-COM-SPEC>')
-            if comspec.ramBlockInitValueRef is not None:
-                constant = ws.find(comspec.ramBlockInitValueRef)
-                if constant is None:
-                    raise ValueError('Invalid constant reference: %s'%comspec.ramBlockInitValueRef)
-                lines.append(self.indent('<RAM-BLOCK-INIT-VALUE>',1))
-                lines.append(self.indent('<CONSTANT-REFERENCE>',2))
-                lines.append(self.indent('<CONSTANT-REF DEST="%s">%s</CONSTANT-REF>'%(constant.tag(self.version),constant.ref),3))
-                lines.append(self.indent('</CONSTANT-REFERENCE>',2))
-                lines.append(self.indent('</RAM-BLOCK-INIT-VALUE>',1))
-            if comspec.ramBlockInitValue is not None:
-                lines.append(self.indent('<RAM-BLOCK-INIT-VALUE>',1))
-                lines.extend(self.indent(self.writeValueSpecificationXML(comspec.ramBlockInitValue),2))
-                lines.append(self.indent('</RAM-BLOCK-INIT-VALUE>',1))
-            if comspec.romBlockInitValueRef is not None:
-                constant = ws.find(comspec.romBlockInitValueRef)
-                if constant is None:
-                    raise ValueError('Invalid constant reference: %s'%comspec.romBlockInitValueRef)
-                lines.append(self.indent('<ROM-BLOCK-INIT-VALUE>',1))
-                lines.append(self.indent('<CONSTANT-REFERENCE>',2))
-                lines.append(self.indent('<CONSTANT-REF DEST="%s">%s</CONSTANT-REF>'%(constant.tag(self.version),constant.ref),3))
-                lines.append(self.indent('</CONSTANT-REFERENCE>',2))
-                lines.append(self.indent('</ROM-BLOCK-INIT-VALUE>',1))
-            if comspec.romBlockInitValue is not None:
-                lines.append(self.indent('<ROM-BLOCK-INIT-VALUE>',1))
-                lines.extend(self.indent(self.writeValueSpecificationXML(comspec.romBlockInitValue),2))
-                lines.append(self.indent('</ROM-BLOCK-INIT-VALUE>',1))
-            lines.append(self.indent('<VARIABLE-REF DEST="%s">%s</VARIABLE-REF>'%(nvData.tag(self.version), nvData.ref),1))
-            lines.append('</NV-PROVIDE-COM-SPEC>')
+        nvData = portInterface.find(comspec.name)
+        if nvData is None:
+            raise ValueError('%s: invalid nvData reference name: %s'%(port.ref, comspec.name))
+        lines = ['<NV-PROVIDE-COM-SPEC>']
+        if comspec.ramBlockInitValueRef is not None:
+            constant = ws.find(comspec.ramBlockInitValueRef)
+            if constant is None:
+                raise ValueError('Invalid constant reference: %s'%comspec.ramBlockInitValueRef)
+            lines.extend(
+                (
+                    self.indent('<RAM-BLOCK-INIT-VALUE>', 1),
+                    self.indent('<CONSTANT-REFERENCE>', 2),
+                    self.indent(
+                        '<CONSTANT-REF DEST="%s">%s</CONSTANT-REF>'
+                        % (constant.tag(self.version), constant.ref),
+                        3,
+                    ),
+                    self.indent('</CONSTANT-REFERENCE>', 2),
+                    self.indent('</RAM-BLOCK-INIT-VALUE>', 1),
+                )
+            )
+
+        if comspec.ramBlockInitValue is not None:
+            lines.append(self.indent('<RAM-BLOCK-INIT-VALUE>',1))
+            lines.extend(self.indent(self.writeValueSpecificationXML(comspec.ramBlockInitValue),2))
+            lines.append(self.indent('</RAM-BLOCK-INIT-VALUE>',1))
+        if comspec.romBlockInitValueRef is not None:
+            constant = ws.find(comspec.romBlockInitValueRef)
+            if constant is None:
+                raise ValueError('Invalid constant reference: %s'%comspec.romBlockInitValueRef)
+            lines.extend(
+                (
+                    self.indent('<ROM-BLOCK-INIT-VALUE>', 1),
+                    self.indent('<CONSTANT-REFERENCE>', 2),
+                    self.indent(
+                        '<CONSTANT-REF DEST="%s">%s</CONSTANT-REF>'
+                        % (constant.tag(self.version), constant.ref),
+                        3,
+                    ),
+                    self.indent('</CONSTANT-REFERENCE>', 2),
+                    self.indent('</ROM-BLOCK-INIT-VALUE>', 1),
+                )
+            )
+
+        if comspec.romBlockInitValue is not None:
+            lines.append(self.indent('<ROM-BLOCK-INIT-VALUE>',1))
+            lines.extend(self.indent(self.writeValueSpecificationXML(comspec.romBlockInitValue),2))
+            lines.append(self.indent('</ROM-BLOCK-INIT-VALUE>',1))
+        lines.extend(
+            (
+                self.indent(
+                    '<VARIABLE-REF DEST="%s">%s</VARIABLE-REF>'
+                    % (nvData.tag(self.version), nvData.ref),
+                    1,
+                ),
+                '</NV-PROVIDE-COM-SPEC>',
+            )
+        )
+
         return lines
 
     def _writeModeSwitchSenderComSpecXML(self, ws, comspec, modeGroup):
         assert(isinstance(comspec, autosar.port.ModeSwitchComSpec))
-        lines=[]
-        lines.append('<MODE-SWITCH-SENDER-COM-SPEC>')
+        lines = ['<MODE-SWITCH-SENDER-COM-SPEC>']
         if comspec.enhancedMode is not None:
             lines.append(self.indent('<ENHANCED-MODE-API>{}</ENHANCED-MODE-API>'.format(self.toBooleanStr(comspec.enhancedMode)),1))
         if modeGroup is not None:
@@ -448,9 +596,14 @@ class XMLComponentTypeWriter(ElementWriter):
             lines.append(self.indent('<MODE-GROUP-REF DEST="{}">{}</MODE-GROUP-REF>'.format(destTag, modeGroup.ref), 1))
         if comspec.modeSwitchAckTimeout is not None:
             timeoutStr = self.format_float(float(comspec.modeSwitchAckTimeout)/1000.0)
-            lines.append(self.indent('<MODE-SWITCHED-ACK>',1))
-            lines.append(self.indent('<TIMEOUT>{}</TIMEOUT>'.format(timeoutStr),2))
-            lines.append(self.indent('</MODE-SWITCHED-ACK>',1))
+            lines.extend(
+                (
+                    self.indent('<MODE-SWITCHED-ACK>', 1),
+                    self.indent('<TIMEOUT>{}</TIMEOUT>'.format(timeoutStr), 2),
+                    self.indent('</MODE-SWITCHED-ACK>', 1),
+                )
+            )
+
         if comspec.queueLength is not None:
             lines.append(self.indent('<QUEUE-LENGTH>{:d}</QUEUE-LENGTH>'.format(int(comspec.queueLength)),1))
         lines.append('</MODE-SWITCH-SENDER-COM-SPEC>')
@@ -462,8 +615,13 @@ class XMLComponentTypeWriter(ElementWriter):
         ws = elem.rootWS()
         assert(ws is not None)
 
-        lines=['<SWC-IMPLEMENTATION>']
-        lines.append(self.indent('<{tag}>{text}</{tag}>'.format(tag='SHORT-NAME', text=elem.name), 1))
+        lines = [
+            '<SWC-IMPLEMENTATION>',
+            self.indent(
+                '<{tag}>{text}</{tag}>'.format(tag='SHORT-NAME', text=elem.name), 1
+            ),
+        ]
+
         if elem.codeDescriptors is not None:
 
             lines.append(self.indent('<CODE-DESCRIPTORS>',1))
@@ -486,8 +644,17 @@ class XMLComponentTypeWriter(ElementWriter):
 
                             if artifact.revisionLabels is not None:
                                 lines.append(self.indent('<REVISION-LABELS>',5))
-                                for revisionLabel in artifact.revisionLabels:
-                                    lines.append(self.indent('<{tag}>{text}</{tag}>'.format(tag='REVISION-LABEL', text=revisionLabel), 6))
+                                lines.extend(
+                                    self.indent(
+                                        '<{tag}>{text}</{tag}>'.format(
+                                            tag='REVISION-LABEL',
+                                            text=revisionLabel,
+                                        ),
+                                        6,
+                                    )
+                                    for revisionLabel in artifact.revisionLabels
+                                )
+
                                 lines.append(self.indent('</REVISION-LABELS>',5))
 
                             if artifact.domain is not None:
@@ -496,9 +663,8 @@ class XMLComponentTypeWriter(ElementWriter):
                             lines.append(self.indent('</AUTOSAR-ENGINEERING-OBJECT>',4))
 
                         lines.append(self.indent('</ARTIFACT-DESCRIPTORS>',3))
-                else:
-                    if decriptor.type is not None:
-                        lines.append(self.indent('<{tag}>{text}</{tag}>'.format(tag='TYPE', text=decriptor.type), 3))
+                elif decriptor.type is not None:
+                    lines.append(self.indent('<{tag}>{text}</{tag}>'.format(tag='TYPE', text=decriptor.type), 3))
                 lines.append(self.indent('</CODE>',2))
             lines.append(self.indent('</CODE-DESCRIPTORS>',1))
 
@@ -526,13 +692,21 @@ class XMLComponentTypeWriter(ElementWriter):
         if behavior is None:
             raise autosar.base.InvalidBehaviorRef(elem.behaviorRef)
 
-        if self.version < 4.0:
-            ref = elem.behaviorRef
-        else:
-            ref = behavior.ref
-        lines.append(self.indent('<{tag} DEST="{DEST}">{text}</{tag}>'.format(tag='BEHAVIOR-REF', DEST=behavior.tag(self.version), text=ref), 1))
+        ref = elem.behaviorRef if self.version < 4.0 else behavior.ref
+        lines.extend(
+            (
+                self.indent(
+                    '<{tag} DEST="{DEST}">{text}</{tag}>'.format(
+                        tag='BEHAVIOR-REF',
+                        DEST=behavior.tag(self.version),
+                        text=ref,
+                    ),
+                    1,
+                ),
+                '</SWC-IMPLEMENTATION>',
+            )
+        )
 
-        lines.append('</SWC-IMPLEMENTATION>')
         return lines
 
     def _writeMemorySectionXML(self, ws, memorySections):
@@ -540,8 +714,17 @@ class XMLComponentTypeWriter(ElementWriter):
         if memorySections is not None:
             lines.append('<MEMORY-SECTIONS>')
             for memorySection in memorySections:
-                lines.append(self.indent('<MEMORY-SECTION>', 1))
-                lines.append(self.indent('<{tag}>{text}</{tag}>'.format(tag='SHORT-NAME', text=memorySection.name), 2))
+                lines.extend(
+                    (
+                        self.indent('<MEMORY-SECTION>', 1),
+                        self.indent(
+                            '<{tag}>{text}</{tag}>'.format(
+                                tag='SHORT-NAME', text=memorySection.name
+                            ),
+                            2,
+                        ),
+                    )
+                )
 
                 if memorySection.aligment is not None:
                     lines.append(self.indent('<{tag}>{text}</{tag}>'.format(tag='ALIGNMENT', text=memorySection.aligment), 2))
@@ -551,8 +734,16 @@ class XMLComponentTypeWriter(ElementWriter):
 
                 if memorySection.options is not None:
                     lines.append(self.indent('<OPTIONS>', 2))
-                    for option in memorySection.options:
-                        lines.append(self.indent('<{tag}>{text}</{tag}>'.format(tag='OPTION', text=option), 3))
+                    lines.extend(
+                        self.indent(
+                            '<{tag}>{text}</{tag}>'.format(
+                                tag='OPTION', text=option
+                            ),
+                            3,
+                        )
+                        for option in memorySection.options
+                    )
+
                     lines.append(self.indent('</OPTIONS>', 2))
 
                 if memorySection.size is not None:
@@ -579,20 +770,38 @@ class XMLComponentTypeWriter(ElementWriter):
             for component in components:
                 swc = ws.find(component.typeRef)
                 if swc is None:
-                    raise ValueError('Invalid reference: '+component.typeRef)
-                lines.append(self.indent('<%s>'%componentTag,1))
-                lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%component.name,2))
-                lines.append(self.indent('<TYPE-TREF DEST="%s">%s</TYPE-TREF>'%(swc.tag(self.version),swc.ref),2))
-                lines.append(self.indent('</%s>'%componentTag,1))
+                    raise ValueError(f'Invalid reference: {component.typeRef}')
+                lines.extend(
+                    (
+                        self.indent('<%s>' % componentTag, 1),
+                        self.indent(
+                            '<SHORT-NAME>%s</SHORT-NAME>' % component.name, 2
+                        ),
+                        self.indent(
+                            '<TYPE-TREF DEST="%s">%s</TYPE-TREF>'
+                            % (swc.tag(self.version), swc.ref),
+                            2,
+                        ),
+                        self.indent('</%s>' % componentTag, 1),
+                    )
+                )
+
             lines.append('</COMPONENTS>')
         return lines
 
     def _writeAssemblyConnectorsXML(self, ws, connectors):
         lines=[]
         for connector in connectors:
-            lines.append('<%s>'%connector.tag(self.version))
-            lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%connector.name, 1))
-            lines.append(self.indent('<%s>'%connector.providerInstanceRef.tag(self.version), 1))
+            lines.extend(
+                (
+                    '<%s>' % connector.tag(self.version),
+                    self.indent('<SHORT-NAME>%s</SHORT-NAME>' % connector.name, 1),
+                    self.indent(
+                        '<%s>' % connector.providerInstanceRef.tag(self.version), 1
+                    ),
+                )
+            )
+
             providerComponent = ws.find(connector.providerInstanceRef.componentRef)
             if providerComponent is None:
                 raise ValueError('invalid reference: ' +connector.providerInstanceRef.componentRef)
@@ -601,10 +810,39 @@ class XMLComponentTypeWriter(ElementWriter):
                 raise ValueError('invalid reference: ' +connector.providerInstanceRef.portRef)
             componentTag = 'CONTEXT-COMPONENT-REF' if self.version >= 4.0 else 'COMPONENT-PROTOTYPE-REF'
             portTag = 'TARGET-P-PORT-REF' if self.version >= 4.0 else 'P-PORT-PROTOTYPE-REF'
-            lines.append(self.indent('<%s DEST="%s">%s</%s>'%(componentTag, providerComponent.tag(self.version), providerComponent.ref, componentTag), 2))
-            lines.append(self.indent('<%s DEST="%s">%s</%s>'%(portTag, providePort.tag(self.version), providePort.ref, portTag), 2))
-            lines.append(self.indent('</%s>'%connector.providerInstanceRef.tag(self.version), 1))
-            lines.append(self.indent('<%s>'%connector.requesterInstanceRef.tag(self.version), 1))
+            lines.extend(
+                (
+                    self.indent(
+                        '<%s DEST="%s">%s</%s>'
+                        % (
+                            componentTag,
+                            providerComponent.tag(self.version),
+                            providerComponent.ref,
+                            componentTag,
+                        ),
+                        2,
+                    ),
+                    self.indent(
+                        '<%s DEST="%s">%s</%s>'
+                        % (
+                            portTag,
+                            providePort.tag(self.version),
+                            providePort.ref,
+                            portTag,
+                        ),
+                        2,
+                    ),
+                    self.indent(
+                        '</%s>' % connector.providerInstanceRef.tag(self.version),
+                        1,
+                    ),
+                    self.indent(
+                        '<%s>' % connector.requesterInstanceRef.tag(self.version),
+                        1,
+                    ),
+                )
+            )
+
             requesterComponent = ws.find(connector.requesterInstanceRef.componentRef)
             if requesterComponent is None:
                 raise ValueError('invalid reference: ' +connector.requesterInstanceRef.componentRef)
@@ -612,18 +850,52 @@ class XMLComponentTypeWriter(ElementWriter):
             if requirePort is None:
                 raise ValueError('invalid reference: ' +connector.requesterInstanceRef.portRef)
             portTag = 'TARGET-R-PORT-REF' if self.version >= 4.0 else 'R-PORT-PROTOTYPE-REF'
-            lines.append(self.indent('<%s DEST="%s">%s</%s>'%(componentTag, requesterComponent.tag(self.version), requesterComponent.ref, componentTag), 2))
-            lines.append(self.indent('<%s DEST="%s">%s</%s>'%(portTag, requirePort.tag(self.version), requirePort.ref, portTag), 2))
-            lines.append(self.indent('</%s>'%connector.requesterInstanceRef.tag(self.version), 1))
-            lines.append('</%s>'%connector.tag(self.version))
+            lines.extend(
+                (
+                    self.indent(
+                        '<%s DEST="%s">%s</%s>'
+                        % (
+                            componentTag,
+                            requesterComponent.tag(self.version),
+                            requesterComponent.ref,
+                            componentTag,
+                        ),
+                        2,
+                    ),
+                    self.indent(
+                        '<%s DEST="%s">%s</%s>'
+                        % (
+                            portTag,
+                            requirePort.tag(self.version),
+                            requirePort.ref,
+                            portTag,
+                        ),
+                        2,
+                    ),
+                    self.indent(
+                        '</%s>' % connector.requesterInstanceRef.tag(self.version),
+                        1,
+                    ),
+                    '</%s>' % connector.tag(self.version),
+                )
+            )
+
         return lines
 
     def _writeDelegationConnectorsXML(self, ws, connectors):
         lines=[]
         for connector in connectors:
-            lines.append('<%s>'%connector.tag(self.version))
-            lines.append(self.indent('<SHORT-NAME>%s</SHORT-NAME>'%connector.name, 1))
-            lines.append(self.indent('<%s>'%connector.innerPortInstanceRef.tag(self.version), 1))
+            lines.extend(
+                (
+                    '<%s>' % connector.tag(self.version),
+                    self.indent('<SHORT-NAME>%s</SHORT-NAME>' % connector.name, 1),
+                    self.indent(
+                        '<%s>' % connector.innerPortInstanceRef.tag(self.version),
+                        1,
+                    ),
+                )
+            )
+
             innerComponent = ws.find(connector.innerPortInstanceRef.componentRef)
             if innerComponent is None:
                 raise ValueError('invalid reference: ' +connector.innerPortInstanceRef.componentRef)
@@ -638,41 +910,74 @@ class XMLComponentTypeWriter(ElementWriter):
             outerPort = ws.find(connector.outerPortRef.portRef)
             if outerPort is None:
                 raise ValueError('invalid reference: ' +connector.outerPortRef.portRef)
-            lines.append(self.indent('<OUTER-PORT-REF DEST="%s">%s</OUTER-PORT-REF>'%(outerPort.tag(self.version), outerPort.ref), 1))
-            lines.append('</%s>'%connector.tag(self.version))
+            lines.extend(
+                (
+                    self.indent(
+                        '<OUTER-PORT-REF DEST="%s">%s</OUTER-PORT-REF>'
+                        % (outerPort.tag(self.version), outerPort.ref),
+                        1,
+                    ),
+                    '</%s>' % connector.tag(self.version),
+                )
+            )
+
         return lines
 
     def _writeInnerPortRefV3(self, innerComponent, innerPort):
-        lines = []
-        lines.append('<COMPONENT-PROTOTYPE-REF DEST="%s">%s</COMPONENT-PROTOTYPE-REF>'%(innerComponent.tag(self.version), innerComponent.ref))
+        lines = [
+            '<COMPONENT-PROTOTYPE-REF DEST="%s">%s</COMPONENT-PROTOTYPE-REF>'
+            % (innerComponent.tag(self.version), innerComponent.ref)
+        ]
+
         lines.append('<PORT-PROTOTYPE-REF DEST="%s">%s</PORT-PROTOTYPE-REF>'%(innerPort.tag(self.version), innerPort.ref))
         return lines
 
     def _writeInnerPortRefV4(self, innerComponent, innerPort):
-        lines = []
         if isinstance(innerPort, autosar.port.RequirePort):
             outerTag = 'R-PORT-IN-COMPOSITION-INSTANCE-REF'
             innerTag = 'TARGET-R-PORT-REF'
         else:
             outerTag = 'P-PORT-IN-COMPOSITION-INSTANCE-REF'
             innerTag = 'TARGET-P-PORT-REF'
-        lines.append('<%s>'%outerTag)
-        lines.append(self.indent('<CONTEXT-COMPONENT-REF DEST="%s">%s</CONTEXT-COMPONENT-REF>'%(innerComponent.tag(self.version), innerComponent.ref), 1))
-        lines.append(self.indent('<%s DEST="%s">%s</%s>'%(innerTag, innerPort.tag(self.version), innerPort.ref, innerTag), 1))
-        lines.append('</%s>'%outerTag)
-        return lines
+        return list(
+            (
+                '<%s>' % outerTag,
+                self.indent(
+                    '<CONTEXT-COMPONENT-REF DEST="%s">%s</CONTEXT-COMPONENT-REF>'
+                    % (innerComponent.tag(self.version), innerComponent.ref),
+                    1,
+                ),
+                self.indent(
+                    '<%s DEST="%s">%s</%s>'
+                    % (
+                        innerTag,
+                        innerPort.tag(self.version),
+                        innerPort.ref,
+                        innerTag,
+                    ),
+                    1,
+                ),
+                '</%s>' % outerTag,
+            )
+        )
 
     def _writeInitValueRefXML(self, ws, initValueRef):
-        lines = []
         constant = ws.find(initValueRef)
         if constant is None:
             raise ValueError('Invalid constant reference: %s'%initValueRef)
-        lines.append('<INIT-VALUE>')
-        lines.append(self.indent('<CONSTANT-REFERENCE>',1))
-        lines.append(self.indent('<CONSTANT-REF DEST="%s">%s</CONSTANT-REF>'%(constant.tag(self.version),constant.ref),2))
-        lines.append(self.indent('</CONSTANT-REFERENCE>',1))
-        lines.append('</INIT-VALUE>')
-        return lines
+        return list(
+            (
+                '<INIT-VALUE>',
+                self.indent('<CONSTANT-REFERENCE>', 1),
+                self.indent(
+                    '<CONSTANT-REF DEST="%s">%s</CONSTANT-REF>'
+                    % (constant.tag(self.version), constant.ref),
+                    2,
+                ),
+                self.indent('</CONSTANT-REFERENCE>', 1),
+                '</INIT-VALUE>',
+            )
+        )
 
 class CodeComponentTypeWriter(ElementWriter):
     def __init__(self,version, patch):
@@ -704,10 +1009,7 @@ class CodeComponentTypeWriter(ElementWriter):
 
     def writeElementCode(self, elem, localvars):
         codeWriteFunc = self.switcher.get(type(elem).__name__)
-        if codeWriteFunc is not None:
-            return codeWriteFunc(elem, localvars)
-        else:
-            return None
+        return codeWriteFunc(elem, localvars) if codeWriteFunc is not None else None
 
     def writeApplicationSoftwareComponentCode(self, swc, localvars):
         return self._writeComponentCode(swc, 'createApplicationSoftwareComponent', localvars)
@@ -726,9 +1028,8 @@ class CodeComponentTypeWriter(ElementWriter):
 
 
     def _writeComponentCode(self, swc, methodName, localvars):
-        lines=[]
         ws = localvars['ws']
-        lines.append("swc = package.%s(%s)"%(methodName,repr(swc.name)))
+        lines = ["swc = package.%s(%s)" % (methodName,repr(swc.name))]
         localvars['swc']=swc
         if len(swc.providePorts)>0:
             lines.extend(self._writeComponentProvidePortsCode(swc))

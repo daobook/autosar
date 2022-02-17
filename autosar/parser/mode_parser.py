@@ -20,10 +20,7 @@ class ModeDeclarationParser(ElementParser):
 
     def parseElement(self, xmlElement, parent = None):
         parseFunc = self.switcher.get(xmlElement.tag)
-        if parseFunc is not None:
-            return parseFunc(xmlElement,parent)
-        else:
-            return None
+        return parseFunc(xmlElement,parent) if parseFunc is not None else None
 
     def parseModeDeclarationGroup(self,xmlRoot,rootProject=None,parent=None):
         assert(xmlRoot.tag == 'MODE-DECLARATION-GROUP')
@@ -43,7 +40,6 @@ class ModeDeclarationParser(ElementParser):
     def parseModeDeclarations(self,xmlRoot,parent):
         assert(xmlRoot.tag=="MODE-DECLARATIONS")
         assert(isinstance(parent, autosar.mode.ModeDeclarationGroup))
-        result = []
         for mode in xmlRoot.findall("./MODE-DECLARATION"):
             declarationName = self.parseTextNode(mode.find("./SHORT-NAME"))
             declarationValue = None
@@ -51,5 +47,5 @@ class ModeDeclarationParser(ElementParser):
             if declarationValueXML is not None:
                 declarationValue = self.parseTextNode(declarationValueXML)
             parent.modeDeclarations.append(autosar.mode.ModeDeclaration(declarationName, declarationValue, parent = parent))
-        return result
+        return []
 

@@ -81,21 +81,21 @@ class ComponentTypeParser(ElementParser):
 
     def parseElement(self, xmlElement, parent = None):
         parseFunc = self.switcher.get(xmlElement.tag)
-        if parseFunc is not None:
-            return parseFunc(xmlElement,parent)
-        else:
-            return None
+        return parseFunc(xmlElement,parent) if parseFunc is not None else None
 
     def parseSoftwareComponent(self, xmlRoot, parent=None):
         componentType=None
         handledTags = ['SHORT-NAME']
         if xmlRoot.tag=='APPLICATION-SOFTWARE-COMPONENT-TYPE': #for AUTOSAR 3.x
             componentType = autosar.component.ApplicationSoftwareComponent(self.parseTextNode(xmlRoot.find('SHORT-NAME')),parent)
-        elif (xmlRoot.tag=='COMPLEX-DEVICE-DRIVER-COMPONENT-TYPE') or (xmlRoot.tag=='COMPLEX-DEVICE-DRIVER-SW-COMPONENT-TYPE'):
+        elif xmlRoot.tag in [
+            'COMPLEX-DEVICE-DRIVER-COMPONENT-TYPE',
+            'COMPLEX-DEVICE-DRIVER-SW-COMPONENT-TYPE',
+        ]:
             componentType = autosar.component.ComplexDeviceDriverComponent(self.parseTextNode(xmlRoot.find('SHORT-NAME')),parent)
         elif xmlRoot.tag == 'APPLICATION-SW-COMPONENT-TYPE': #for AUTOSAR 4.x
             componentType = autosar.component.ApplicationSoftwareComponent(self.parseTextNode(xmlRoot.find('SHORT-NAME')),parent)
-        elif (xmlRoot.tag == 'SERVICE-COMPONENT-TYPE') or (xmlRoot.tag == 'SERVICE-SW-COMPONENT-TYPE'):
+        elif xmlRoot.tag in ['SERVICE-COMPONENT-TYPE', 'SERVICE-SW-COMPONENT-TYPE']:
             componentType = autosar.component.ServiceComponent(self.parseTextNode(xmlRoot.find('SHORT-NAME')),parent)
         elif xmlRoot.tag == 'CALPRM-COMPONENT-TYPE': #for AUTOSAR 3.x
             componentType = autosar.component.ParameterComponent(self.parseTextNode(xmlRoot.find('SHORT-NAME')),parent)
@@ -128,14 +128,14 @@ class ComponentTypeParser(ElementParser):
                 elif xmlElem.tag == 'CATEGORY':
                     componentType.category = self.parseTextNode(xmlElem)
                 else:
-                    print('Unhandled tag: '+xmlElem.tag, file=sys.stderr)
+                    print(f'Unhandled tag: {xmlElem.tag}', file=sys.stderr)
         return componentType
 
     def parseComponentPorts(self, componentType, xmlRoot):
         xmlPorts=xmlRoot.find('PORTS')
         assert(xmlPorts is not None)
         for xmlPort in xmlPorts.findall('*'):
-            if(xmlPort.tag == "R-PORT-PROTOTYPE"):
+            if (xmlPort.tag == "R-PORT-PROTOTYPE"):
                 portName = xmlPort.find('SHORT-NAME').text
                 portInterfaceRef = self.parseTextNode(xmlPort.find('REQUIRED-INTERFACE-TREF'))
                 port = autosar.port.RequirePort(portName, portInterfaceRef, autoCreateComSpec = False, parent=componentType)
@@ -147,7 +147,10 @@ class ComponentTypeParser(ElementParser):
                             operationName=_getOperationNameFromComSpec(xmlItem,portInterfaceRef)
                             comspec=autosar.port.OperationComSpec(operationName)
                             port.comspec.append(comspec)
-                        elif xmlItem.tag == 'UNQUEUED-RECEIVER-COM-SPEC' or xmlItem.tag == 'NONQUEUED-RECEIVER-COM-SPEC':
+                        elif xmlItem.tag in [
+                            'UNQUEUED-RECEIVER-COM-SPEC',
+                            'NONQUEUED-RECEIVER-COM-SPEC',
+                        ]:
                             dataElemName = _getDataElemNameFromComSpec(xmlItem,portInterfaceRef)
                             comspec = autosar.port.DataElementComSpec(dataElemName)
                             if xmlItem.find('./ALIVE-TIMEOUT') is not None:
@@ -156,9 +159,8 @@ class ComponentTypeParser(ElementParser):
                                 xmlElem = xmlItem.find('./INIT-VALUE')
                                 if xmlElem != None:
                                     comspec.initValue, comspec.initValueRef = self._parseAr4InitValue(xmlElem)
-                            else:
-                                if xmlItem.find('./INIT-VALUE-REF') != None:
-                                    comspec.initValueRef = self.parseTextNode(xmlItem.find('./INIT-VALUE-REF'))
+                            elif xmlItem.find('./INIT-VALUE-REF') != None:
+                                comspec.initValueRef = self.parseTextNode(xmlItem.find('./INIT-VALUE-REF'))
                             port.comspec.append(comspec)
                         elif xmlItem.tag == 'QUEUED-RECEIVER-COM-SPEC':
                             dataElemName = _getDataElemNameFromComSpec(xmlItem,portInterfaceRef)
@@ -179,7 +181,7 @@ class ComponentTypeParser(ElementParser):
                         else:
                             raise NotImplementedError(xmlItem.tag)
                 componentType.requirePorts.append(port)
-            elif(xmlPort.tag == 'P-PORT-PROTOTYPE'):
+            elif xmlPort.tag == 'P-PORT-PROTOTYPE':
                 portName = xmlPort.find('SHORT-NAME').text
                 portInterfaceRef = self.parseTextNode(xmlPort.find('PROVIDED-INTERFACE-TREF'))
                 port = autosar.port.ProvidePort(portName, portInterfaceRef, autoCreateComSpec = False, parent = componentType)
@@ -192,18 +194,26 @@ class ComponentTypeParser(ElementParser):
                             comspec=autosar.port.OperationComSpec(operationName)
                             comspec.queueLength=self.parseIntNode(xmlItem.find('QUEUE-LENGTH'))
                             port.comspec.append(comspec)
-                        elif xmlItem.tag == 'UNQUEUED-SENDER-COM-SPEC' or xmlItem.tag == 'NONQUEUED-SENDER-COM-SPEC':
+                        elif xmlItem.tag in [
+                            'UNQUEUED-SENDER-COM-SPEC',
+                            'NONQUEUED-SENDER-COM-SPEC',
+                        ]:
                             dataElemName = _getDataElemNameFromComSpec(xmlItem,portInterfaceRef)
                             comspec = autosar.port.DataElementComSpec(dataElemName)
                             if self.version >= 4.0:
                                 xmlElem = xmlItem.find('./INIT-VALUE')
                                 if xmlElem != None:
                                     comspec.initValue, comspec.initValueRef = self._parseAr4InitValue(xmlElem)
-                            else:
-                                if xmlItem.find('./INIT-VALUE-REF') is not None:
-                                    comspec.initValueRef = self.parseTextNode(xmlItem.find('./INIT-VALUE-REF'))
+                            elif xmlItem.find('./INIT-VALUE-REF') is not None:
+                                comspec.initValueRef = self.parseTextNode(xmlItem.find('./INIT-VALUE-REF'))
                             if xmlItem.find('./CAN-INVALIDATE') != None:
-                                comspec.canInvalidate = True if self.parseTextNode(xmlItem.find('./CAN-INVALIDATE'))=='true' else False
+                                comspec.canInvalidate = (
+                                    self.parseTextNode(
+                                        xmlItem.find('./CAN-INVALIDATE')
+                                    )
+                                    == 'true'
+                                )
+
                             port.comspec.append(comspec)
                         elif xmlItem.tag == 'QUEUED-SENDER-COM-SPEC':
                             dataElemName = _getDataElemNameFromComSpec(xmlItem,portInterfaceRef)
@@ -230,7 +240,7 @@ class ComponentTypeParser(ElementParser):
         """
         parses COMPOSITION-TYPE
         """
-        assert (xmlRoot.tag=='COMPOSITION-TYPE') or (xmlRoot.tag=='COMPOSITION-SW-COMPONENT-TYPE')
+        assert xmlRoot.tag in ['COMPOSITION-TYPE', 'COMPOSITION-SW-COMPONENT-TYPE']
         dataTypeMappingRefs = None
         swc=autosar.component.CompositionComponent(self.parseTextNode(xmlRoot.find('SHORT-NAME')),parent)
         self.push()
@@ -269,12 +279,11 @@ class ComponentTypeParser(ElementParser):
         assert(xmlRoot.tag=='COMPONENTS')
         for elem in xmlRoot.findall('./*'):
             componentTag = 'SW-COMPONENT-PROTOTYPE' if self.version >= 4.0 else 'COMPONENT-PROTOTYPE'
-            if elem.tag==componentTag:
-                name=self.parseTextNode(elem.find('SHORT-NAME'))
-                typeRef=self.parseTextNode(elem.find('TYPE-TREF'))
-                parent.components.append(autosar.component.ComponentPrototype(name,typeRef,parent))
-            else:
+            if elem.tag != componentTag:
                 raise NotImplementedError(elem.tag)
+            name=self.parseTextNode(elem.find('SHORT-NAME'))
+            typeRef=self.parseTextNode(elem.find('TYPE-TREF'))
+            parent.components.append(autosar.component.ComponentPrototype(name,typeRef,parent))
 
     def parseConnectorsV3(self,xmlRoot,parent=None):
         """
@@ -319,8 +328,6 @@ class ComponentTypeParser(ElementParser):
                         raise NotImplementedError(xmlChild.tag)
                 if providerComponentRef is None:
                     raise RuntimeError('PROVIDER-IREF/CONTEXT-COMPONENT-REF is missing: item=%s'%name)
-                if providerComponentRef is None:
-                    raise RuntimeError('PROVIDER-IREF/TARGET-P-PORT-REF is missing: item=%s'%name)
                 if requesterComponentRef is None:
                     raise RuntimeError('REQUESTER-IREF/CONTEXT-COMPONENT-REF is missing: item=%s'%name)
                 if requesterPortRef is None:
